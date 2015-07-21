@@ -1,0 +1,6 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ http://packs.bitwig.com/downloads/$1 [R=301,L,QSA]

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+rm -rf .git
+
+git init
+git add *
+git commit -m "Recreate repo"
+# git branch -m gh-pages
+git remote add origin git@github.com:KXStudio/Repository.git
+git push -u --force origin master

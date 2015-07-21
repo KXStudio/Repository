@@ -1,0 +1,6 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ http://downloads.sourceforge.net/project/kxstudio/DEBs/repo/$1 [R=301,L,QSA]

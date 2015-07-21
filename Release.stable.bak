@@ -1,0 +1,7 @@
+Origin: KXStudio (Extra)
+Label: KXStudio (Extra)
+Suite: stable
+Codename: stable
+Architectures: amd64 i386
+Components: free non-free
+Description: Extra KXStudio packages for Debian

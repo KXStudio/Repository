@@ -8,8 +8,8 @@ apt-ftparchive -a i386  packages pool/free > dists/stable/free/binary-i386/Packa
 apt-ftparchive -a amd64 packages pool/non-free > dists/stable/non-free/binary-amd64/Packages
 apt-ftparchive -a i386  packages pool/non-free > dists/stable/non-free/binary-i386/Packages
 
-# apt-ftparchive packages pool/non-free_bitwig    >> dists/stable/non-free/binary-amd64/Packages
-# apt-ftparchive packages pool/non-free_tracktion >> dists/stable/non-free/binary-amd64/Packages
+apt-ftparchive packages pool/non-free_bitwig    >> dists/stable/non-free/binary-amd64/Packages
+apt-ftparchive packages pool/non-free_tracktion >> dists/stable/non-free/binary-amd64/Packages
 
 cat dists/stable/free/binary-amd64/Packages | gzip -c -9 > dists/stable/free/binary-amd64/Packages.gz
 cat dists/stable/free/binary-i386/Packages  | gzip -c -9 > dists/stable/free/binary-i386/Packages.gz

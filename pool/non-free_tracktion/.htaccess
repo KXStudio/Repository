@@ -3,4 +3,4 @@ Options -Indexes
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ http://www.tracktion.com/linux/downloads/linux-latest/$1 [R=301,L,QSA]
+RewriteRule ^(.*)$ http://www.tracktion.com/downloads/tracktion6-64/$1 [R=301,L,QSA]

@@ -2,6 +2,12 @@
 
 set -e
 
+rm -f pool/*/*.deb
+ln -s $(pwd)/packages/free/*.deb pool/free/
+# ln -s $(pwd)/packages/non-free/*.deb pool/non-free/
+ln -s $(pwd)/packages/non-free_bitwig/*.deb pool/non-free_bitwig/
+ln -s $(pwd)/packages/non-free_tracktion/*.deb pool/non-free_tracktion/
+
 apt-ftparchive -a amd64 packages pool/free > dists/stable/free/binary-amd64/Packages
 apt-ftparchive -a i386  packages pool/free > dists/stable/free/binary-i386/Packages
 
@@ -23,5 +29,7 @@ cp Release.stable.bak Release.stable
 apt-ftparchive release dists/stable/ >> Release.stable
 
 mv Release.stable dists/stable/Release
+
+rm -f pool/*/*.deb
 
 gpg --default-key 29213837 --output dists/stable/Release.gpg -ba dists/stable/Release

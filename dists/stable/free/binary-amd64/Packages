@@ -206,6 +206,26 @@ Description: JACK Audio Connection Kit (libraries)
 Multi-Arch: same
 Homepage: http://jackaudio.org/
 
+Package: carla-bridge-wine64
+Priority: optional
+Section: sound
+Installed-Size: 130
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: carla-bridge-wine
+Version: 2:1.9.5+git20150722
+Depends: wine-rt-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
+Recommends: carla-bridge-win64
+Filename: pool/free/carla-bridge-wine64_1.9.5+git20150722_amd64.deb
+Size: 16776
+MD5sum: 27c96d7668639fb1acf857fe3c648a76
+SHA1: bae8fbb49c5549bdfc035bc38ac6ce525b4dfa26
+SHA256: 2cb0ec87e058052e645411d7f4227da7407e15d15bdafdb8861bfadf927318f9
+SHA512: fdae82caeff294911599a9daf5675fc2d66ed77bc81b10ebd550169fe0db56d803c8cf040affd0574bcedb71ccd5609cd092589444922daede3a88da0c06ab81
+Description: carla win64 bridge (wine DLL)
+ This package provides the wine DLL needed for the Carla win64 bridge.
+Multi-Arch: foreign
+
 Package: foo-yc20-vst
 Priority: optional
 Section: sound
@@ -578,26 +598,6 @@ Description: IJG JPEG compliant runtime library.
  standard libjpeg by use of SIMD and other optimizations.
 Multi-Arch: same
 Homepage: http://libjpeg-turbo.virtualgl.org/
-
-Package: carla-bridge-wine64
-Priority: optional
-Section: sound
-Installed-Size: 130
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: amd64
-Source: carla-bridge-wine
-Version: 2:1.9.5+git20150710
-Depends: wine-rt-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
-Recommends: carla-bridge-win64
-Filename: pool/free/carla-bridge-wine64_1.9.5+git20150710_amd64.deb
-Size: 16770
-MD5sum: fae8300191b7653dd5fa54b5a3e19d66
-SHA1: 059391b3609bf21faa061cc2dac80a8e3ffe1994
-SHA256: 5c04beb0f07d96b8442f8b9c33866c15e3e6afb4a97a083fe0fc78bb1a2eb187
-SHA512: 5317ccf44d83b0da761f074f75b6c3259c3b1ee6e73dfa06b73ca66fe579d6683ebdce8482c08986b8d79b6e8a80ed49f87291a20304f2a4fcfbeb3315d2d5a7
-Description: carla win64 bridge (wine DLL)
- This package provides the wine DLL needed for the Carla win64 bridge.
-Multi-Arch: foreign
 
 Package: libgphoto2-2
 Priority: optional

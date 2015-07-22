@@ -206,26 +206,6 @@ Description: JACK Audio Connection Kit (libraries)
 Multi-Arch: same
 Homepage: http://jackaudio.org/
 
-Package: carla-bridge-wine64
-Priority: optional
-Section: sound
-Installed-Size: 130
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: amd64
-Source: carla-bridge-wine
-Version: 2:1.9.5+git20150722
-Depends: wine-rt-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
-Recommends: carla-bridge-win64
-Filename: pool/free/carla-bridge-wine64_1.9.5+git20150722_amd64.deb
-Size: 16776
-MD5sum: 27c96d7668639fb1acf857fe3c648a76
-SHA1: bae8fbb49c5549bdfc035bc38ac6ce525b4dfa26
-SHA256: 2cb0ec87e058052e645411d7f4227da7407e15d15bdafdb8861bfadf927318f9
-SHA512: fdae82caeff294911599a9daf5675fc2d66ed77bc81b10ebd550169fe0db56d803c8cf040affd0574bcedb71ccd5609cd092589444922daede3a88da0c06ab81
-Description: carla win64 bridge (wine DLL)
- This package provides the wine DLL needed for the Carla win64 bridge.
-Multi-Arch: foreign
-
 Package: foo-yc20-vst
 Priority: optional
 Section: sound
@@ -411,6 +391,26 @@ Description: Programs for manipulating JPEG files
   jpegtran: lossless transformations of JPEG files
   tjbench: a simple JPEG benchmarking tool
 Homepage: http://libjpeg-turbo.virtualgl.org/
+
+Package: carla-bridge-wine64
+Priority: optional
+Section: sound
+Installed-Size: 142
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: carla-bridge-wine
+Version: 2:1.9.5+git20150722.2
+Depends: wine-rt-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
+Recommends: carla-bridge-win64
+Filename: pool/free/carla-bridge-wine64_1.9.5+git20150722.2_amd64.deb
+Size: 21066
+MD5sum: 30ad62e72a074c689ef9d43e4db4b786
+SHA1: b3e031937c96d4ed4581be50564c0c2a63a6a285
+SHA256: 758d95f42db46e67abc2da3fed032c503db53b9b0c3542ecbe6f154b232cc4db
+SHA512: 82e32cd60c03fb21697b058819760ea4b7d9373758081c609b675f2c717671b9c4570f720d9dd1c6d8e8043b31877a97ffbb65ccf179acc0eb9ff95fa80202d2
+Description: carla win64 bridge (wine DLL)
+ This package provides the wine DLL needed for the Carla win64 bridge.
+Multi-Arch: foreign
 
 Package: jost-vst
 Priority: optional

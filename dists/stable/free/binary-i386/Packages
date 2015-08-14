@@ -365,21 +365,65 @@ Description: Microsoft Windows Compatibility Layer (Development files)
  using wine's free version of the Microsoft Windows API.
 Homepage: http://www.winehq.org/
 
+Package: wineasio
+Priority: optional
+Section: sound
+Installed-Size: 25
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: i386
+Version: 0.9.0+git20110613-2kxstudio1
+Depends: wineasio-i386
+Pre-Depends: dpkg (>= 1.15.7.2~)
+Recommends: jackd
+Filename: pool/free/wineasio_0.9.0+git20110613-2kxstudio1_i386.deb
+Size: 1154
+MD5sum: 93b188ea2caac9e285fa0190a21a367a
+SHA1: 556db7a9ae0868716a1ef21f0236ad4e8ad43396
+SHA256: b0533499754b3e01d0a2c02068bfe044e6f4b420c9fbcecff6e9589faa6d7be5
+SHA512: ad9b342a05a74c87b76d2a7bcdade2b9e141c27bd4782c7f37ee03e3dff3e4e86ae7825f0af29cb619be66181092ad06436034e838bb5eea7c50657f78dd1063
+Description: Wine ASIO driver for JACK
+ WineASIO is a ASIO driver for Wine,
+ allowing to run Windows audio applications with
+ low latency (as JACK clients).
+Multi-Arch: allowed
+
+Package: libjpeg-turbo-test
+Priority: extra
+Section: debug
+Installed-Size: 53
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Source: libjpeg-turbo
+Version: 1.1.90+svn733-0ubuntu4.4
+Replaces: libjpeg-test (<< 1.1.90+svn722-1ubuntu6)
+Depends: libc6 (>= 2.4)
+Filename: pool/free/libjpeg-turbo-test_1.1.90+svn733-0ubuntu4.4_i386.deb
+Size: 13526
+MD5sum: 9b71c91ab5e76d6263098818d30d8141
+SHA1: 9ea3fca54dfd512c2805bcd77cc0f1f14b9d312b
+SHA256: cfb97a539d80ba72ed757d15747f71b0eecb92e822e3c4feaaffbaad99cb0434
+SHA512: ab0bd8770a22ce593bb25194590e7fd449fb22343288c29d0b2bc7de2b6d00c1ca1b758ca4adaf3d139bb97306c7b0bac5e7cfc4a4c99a7fe5a5b83658571be7
+Description: Program for testing libjpeg-turbo
+ This package contains tjunittest which tests
+ the basic functionality of the library and
+ data files for performing those tests.
+Homepage: http://libjpeg-turbo.virtualgl.org/
+
 Package: ardour4
 Priority: extra
 Section: sound
-Installed-Size: 141482
+Installed-Size: 141721
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: i386
 Source: ardour4-official
-Version: 1:4.1.0-1kxstudio1
-Depends: libasound2 (>= 1.0.16), libc6 (>= 2.11), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglib2.0-0 (>= 2.37.3), libglu1-mesa | libglu1, libgtk2.0-0 (>= 2.24.0), libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116, libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.4.0), libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-render0, libxcb-shm0, libxcb1 (>= 1.6), libxext6, libxrender1
-Filename: pool/free/ardour4_4.1.0-1kxstudio1_i386.deb
-Size: 40595948
-MD5sum: 23305ad4f71589378afcb1de89c370f8
-SHA1: e1db4a20ea8cd72cdd54daa3905b75d496191bd1
-SHA256: eb74a35c09632d146ba9aa846aca28e1350e40c9dbdf2165f782a805dc977489
-SHA512: 34eb40d4b45e27c7d179ee9fb865fd85e8aba6b20f4e947b55ab15809e121dd388ff6072c52961952612019f44d5a68377b31e922ea848406bff2f9c2fb1b5da
+Version: 1:4.2.0-1kxstudio1
+Depends: libasound2 (>= 1.0.16), libc6 (>= 2.11), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglu1-mesa | libglu1, libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116, libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.4.0), libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-render0, libxcb-shm0, libxcb1 (>= 1.6), libxext6, libxrender1
+Filename: pool/free/ardour4_4.2.0-1kxstudio1_i386.deb
+Size: 40637872
+MD5sum: 2bd6f29968d9e24a173f037c681c5f39
+SHA1: d55685557775cf8519abddb6d46334db15dbfa67
+SHA256: acf55a14cf88db4e0891cd60e13f7abbf36dae030c4014f4715001fc9a8dc14e
+SHA512: ac004a3553ced57a2f5d8e609e9506a78aa4dc18cf322a3a4c59b2429fe07f9c475656ae0c96abbdebb86ed1aac6737a09768f22921912b792428d93a2d84367
 Description: digital audio workstation (graphical gtk2 interface)
  Ardour is a multichannel hard disk recorder (HDR) and digital audio
  workstation (DAW).  It can be used to control, record, edit and run
@@ -434,71 +478,6 @@ Description: digital audio workstation (graphical gtk2 interface)
  .
  Further information can be
  found at <http://ardour.org/>.
-Homepage: http://www.ardour.org/
-
-Package: wineasio
-Priority: optional
-Section: sound
-Installed-Size: 25
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: i386
-Version: 0.9.0+git20110613-2kxstudio1
-Depends: wineasio-i386
-Pre-Depends: dpkg (>= 1.15.7.2~)
-Recommends: jackd
-Filename: pool/free/wineasio_0.9.0+git20110613-2kxstudio1_i386.deb
-Size: 1154
-MD5sum: 93b188ea2caac9e285fa0190a21a367a
-SHA1: 556db7a9ae0868716a1ef21f0236ad4e8ad43396
-SHA256: b0533499754b3e01d0a2c02068bfe044e6f4b420c9fbcecff6e9589faa6d7be5
-SHA512: ad9b342a05a74c87b76d2a7bcdade2b9e141c27bd4782c7f37ee03e3dff3e4e86ae7825f0af29cb619be66181092ad06436034e838bb5eea7c50657f78dd1063
-Description: Wine ASIO driver for JACK
- WineASIO is a ASIO driver for Wine,
- allowing to run Windows audio applications with
- low latency (as JACK clients).
-Multi-Arch: allowed
-
-Package: libjpeg-turbo-test
-Priority: extra
-Section: debug
-Installed-Size: 53
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Architecture: i386
-Source: libjpeg-turbo
-Version: 1.1.90+svn733-0ubuntu4.4
-Replaces: libjpeg-test (<< 1.1.90+svn722-1ubuntu6)
-Depends: libc6 (>= 2.4)
-Filename: pool/free/libjpeg-turbo-test_1.1.90+svn733-0ubuntu4.4_i386.deb
-Size: 13526
-MD5sum: 9b71c91ab5e76d6263098818d30d8141
-SHA1: 9ea3fca54dfd512c2805bcd77cc0f1f14b9d312b
-SHA256: cfb97a539d80ba72ed757d15747f71b0eecb92e822e3c4feaaffbaad99cb0434
-SHA512: ab0bd8770a22ce593bb25194590e7fd449fb22343288c29d0b2bc7de2b6d00c1ca1b758ca4adaf3d139bb97306c7b0bac5e7cfc4a4c99a7fe5a5b83658571be7
-Description: Program for testing libjpeg-turbo
- This package contains tjunittest which tests
- the basic functionality of the library and
- data files for performing those tests.
-Homepage: http://libjpeg-turbo.virtualgl.org/
-
-Package: ardour4-dbg
-Priority: extra
-Section: sound
-Installed-Size: 76
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: i386
-Source: ardour4-official
-Version: 1:4.1.0-1kxstudio1
-Depends: ardour4
-Filename: pool/free/ardour4-dbg_4.1.0-1kxstudio1_i386.deb
-Size: 15766
-MD5sum: 7cfcebedbb24e77865ee940f38e2fbd4
-SHA1: 0dbc325108b50ce0643664227c564e7a216ef5ca
-SHA256: ba9bcd1a08f0ccc89f77957f0aeb540f14b92dcc884648f1c4e4a87ce6933a85
-SHA512: 275955715192044dcd691251c57252a329d71c226d38c55b34e683f99448dafe8da46e1db637880882997b1e6dc15b4bcb305dae48e6fd8a2dec0b9a21d9b80d
-Description: digital audio workstation (debugging symbols)
- This package contains the debug symbols for Ardour4.
- .
- You don't need it installed unless you need to debug Ardour.
 Homepage: http://www.ardour.org/
 
 Package: jost
@@ -617,6 +596,27 @@ Description: gphoto2 digital camera port library
  This package contains the runtime code for port access.
 Multi-Arch: same
 Homepage: http://www.gphoto.org/proj/libgphoto2/
+
+Package: ardour4-dbg
+Priority: extra
+Section: sound
+Installed-Size: 77
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: i386
+Source: ardour4-official
+Version: 1:4.2.0-1kxstudio1
+Depends: ardour4
+Filename: pool/free/ardour4-dbg_4.2.0-1kxstudio1_i386.deb
+Size: 16004
+MD5sum: 799e91f4e2edd8e9560b494940ad8b5d
+SHA1: 2b3f5cb6539d3b2ec816e2b46a237b5cc2d78b0e
+SHA256: a41a1d1eccb6701b73a39fe4c896a000ac053ead3947389e87d61dbc235b848f
+SHA512: 9720d06ebd2c65d49853f268a251598cc21be932610871c649de7492f94fd879c16a516e601142a7ba239ac780c73aa3f47c65d499ef5aa6875950e3cc790867
+Description: digital audio workstation (debugging symbols)
+ This package contains the debug symbols for Ardour4.
+ .
+ You don't need it installed unless you need to debug Ardour.
+Homepage: http://www.ardour.org/
 
 Package: jackd2-firewire
 Priority: optional

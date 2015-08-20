@@ -950,6 +950,24 @@ Description: Microsoft Windows Compatibility Layer (Binary Emulator and Library)
 Multi-Arch: allowed
 Homepage: http://www.winehq.org/
 
+Package: kxstudio-repos
+Priority: optional
+Section: metapackages
+Installed-Size: 27
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: all
+Version: 9.1.0~kxstudio1
+Depends: apt-transport-https
+Pre-Depends: software-properties-common, wget, libc6 (>= 2.19~)
+Filename: pool/free/kxstudio-repos_9.1.0~kxstudio1_all.deb
+Size: 5490
+MD5sum: d507724d13248b5fa70d252ceaf9eb0f
+SHA1: d2fb6bb2e173162e0ca0ff4270354d3f7e07b1b9
+SHA256: 0d73e22b1bad6eaa8d241fb3acc231e213618d4e7390b9ce40b5d7b900ef335e
+SHA512: 2a9d9d1f90e6a3f8229e26b907e3dd530c7d1acfdd29c879300fe7e73339a5f25eaef0045b402f89c1571be436c41de1caefd647bced9690a8bc1b988ad81af4
+Description: KXStudio repositories
+ This package will enable the KXStudio repositories.
+
 Package: musescore
 Priority: optional
 Section: sound
@@ -980,22 +998,4 @@ Description: Full featured WYSIWYG score editor
   * import and export of MusicXml and standard midifiles (SMF)
   * platform independent code for Linux, Windows and Mac
 Homepage: http://www.musescore.org/
-
-Package: kxstudio-repos
-Priority: optional
-Section: metapackages
-Installed-Size: 27
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: all
-Version: 8.3.1~kxstudio1
-Pre-Depends: software-properties-common, wget, libc6 (>= 2.19~)
-Recommends: apt
-Filename: pool/free/kxstudio-repos_8.3.1~kxstudio1_all.deb
-Size: 5342
-MD5sum: 0457d2fa164597953f7732bf43cdbf7a
-SHA1: ecc4c5d48eaec125cb14b5e36caafb139018b7cf
-SHA256: 5600b81c57cfdd8864c4b3a86d7d4b7fb5091efa7ed217a43bc256cc91545419
-SHA512: ceb4a23d6542ec49d0257ee6281427379eb2ab4a4ee88cbd67f9f188144313be16dd05a024ec96b829694e5d48afafb9cb29f63dc89bc20570663b58ea0970f7
-Description: KXStudio repositories
- This package will enable the KXStudio repositories.
 

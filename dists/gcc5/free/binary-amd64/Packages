@@ -1,0 +1,92 @@
+Package: ardour4
+Priority: extra
+Section: sound
+Installed-Size: 160824
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: ardour4-official-v5
+Version: 1:4.2.358-1kxstudio1v5
+Depends: libasound2 (>= 1.0.16), libc6 (>= 2.17), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglu1-mesa | libglu1, libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116, libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.6), libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-render0, libxcb-shm0, libxcb1 (>= 1.6), libxext6, libxrender1
+Filename: pool/free-v5/ardour4_4.2.358-1kxstudio1v5_amd64.deb
+Size: 41368446
+MD5sum: af1bdff84fa379763a699d0e5836688d
+SHA1: 2e9335802759a8c25f726a6c1153cd31978cd1ef
+SHA256: 5b3cc030f8c48eacab89771a7f8bcd757e2dd927496a97bc040119502875ce0b
+SHA512: ab1848179a1fcde428ffba9bc884ee101f37fdbb41f6b7f57e8e56a10cfb0d029b330d5b0c8c84022c3731b4d404bc305ead81b3e8a881629d13e40463e6ff25
+Description: digital audio workstation (graphical gtk2 interface)
+ Ardour is a multichannel hard disk recorder (HDR) and digital audio
+ workstation (DAW).  It can be used to control, record, edit and run
+ complex audio setups.
+ .
+ Ardour supports pro-audio interfaces
+ through the ALSA project, which provides high quality, well designed
+ device drivers and API's for audio I/O under Linux. Any interface
+ supported by ALSA can be used with Ardour. This includes the
+ all-digital 26 channel RME Hammerfall, the Midiman Delta 1010 and many
+ others.
+ .
+ Ardour has support for 24 bit samples
+ using floating point internally, non-linear editing with unlimited undo,
+ a user-configurable mixer, MTC master/slave capabilities, MIDI hardware
+ control surface compatibility.
+ .
+ It supports MIDI
+ Machine Control, and so can be controlled from any MMC controller and
+ many modern digital mixers.
+ .
+ Ardour contains a
+ powerful multitrack audio editor/arranger that is completely
+ non-destructive and capable of all standard non-linear editing
+ operations (insert, replace, delete, move, trim, select,
+ cut/copy/paste). The editor has unlimited undo/redo capabilities and can
+ save independent "versions" of a track or an entire piece
+ .
+ Ardour's editor supports the community-developed LADSPA
+ plugin standard.  Arbitrary chains of plugins can be attached to any
+ portion of a track.  Every mixer strip can have any number of inputs
+ and outputs, not just mono, stereo or 5.1.  An N-way panner is
+ included, with support for various panning models.  Pre- and post-fader
+ sends exist, each with their own gain and pan controls.  Every mixer
+ strip acts as its own bus, and thus the bus count in Ardour is
+ unlimited.  You can submix any number of strips into another
+ strip.
+ .
+ Ardour's channel capacity is limited only
+ by the number on your audio interface and the ability of your disk
+ subsystem to stream the data back and forth.
+ .
+ JACK
+ (the JACK Audio Connection Kit) is used for all audio I/O, permitting
+ data to be exchanged in perfect samplesync with other applications
+ and/or hardware audio interfaces.
+ .
+ Ardour is
+ sample rate and size neutral - any hardware formats from 8 to 32 bits,
+ and rates from 8kHz to 192kHz.  Internal processing in 32/64 bit IEEE
+ floating point format.
+ .
+ Further information can be
+ found at <http://ardour.org/>.
+Homepage: http://www.ardour.org/
+
+Package: ardour4-dbg
+Priority: extra
+Section: sound
+Installed-Size: 73
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: ardour4-official-v5
+Version: 1:4.2.358-1kxstudio1v5
+Depends: ardour4
+Filename: pool/free-v5/ardour4-dbg_4.2.358-1kxstudio1v5_amd64.deb
+Size: 16128
+MD5sum: bdfd5581117882ea8101eadab291a412
+SHA1: 82507ce55404012c991358c325a7249cd0f85a75
+SHA256: 54c8e38d364dbb464483dd26b3b3741a716bd2145626f034d48925e5e4033105
+SHA512: 48a99383bfe5383e9b6cac6ee9a9a498a368982356762129987c96a189f70b2fa8f9e3497b2fcaa8c31a631ee5df49aa167628c83e4e8466109112e38cefd922
+Description: digital audio workstation (debugging symbols)
+ This package contains the debug symbols for Ardour4.
+ .
+ You don't need it installed unless you need to debug Ardour.
+Homepage: http://www.ardour.org/
+

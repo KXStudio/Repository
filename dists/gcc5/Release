@@ -1,0 +1,44 @@
+Origin: KXStudio (Extra, GCC5)
+Label: KXStudio (Extra, GCC5)
+Suite: gcc5
+Codename: gcc5
+Architectures: amd64 i386
+Components: free
+Description: Extra, GCC5 KXStudio packages for Debian
+Date: Tue, 22 Sep 2015 12:21:20 UTC
+MD5Sum:
+ ab7495d38f64a9f083c1463bdbcce552             4126 free/binary-amd64/Packages
+ 5464835e245092c3704ee5ef8e8632dc             2114 free/binary-amd64/Packages.gz
+ 33e09cbe9d65bdf042edef440374ccec              165 free/binary-amd64/Release
+ c38022f1126d5ff0fdf843e3fb37767a             4122 free/binary-i386/Packages
+ 5ce9337530a0185f5710207300cf5f7b             2109 free/binary-i386/Packages.gz
+ 458bccd32c5a83852e945a10a4cd2fe2              164 free/binary-i386/Release
+ d41d8cd98f00b204e9800998ecf8427e                0 free/i18n/Translation-en
+ 4059d198768f9f8dc9372dc1c54bc3c3               14 free/i18n/Translation-en.bz2
+SHA1:
+ 09c2f9a06022cccd8e8584873cdcb31fd95d2178             4126 free/binary-amd64/Packages
+ dbab943f8f169fea7d363e09f8161aac969ca575             2114 free/binary-amd64/Packages.gz
+ b52bfc6cb2ad5e0f55296e0948cee008c3e0a715              165 free/binary-amd64/Release
+ f6812aeff3228dedd33f3d6b575cca8c671a168d             4122 free/binary-i386/Packages
+ 5bcd49f820e040346fe87b1bd479ca646c93f3cc             2109 free/binary-i386/Packages.gz
+ ca85a386da3629c6429ec655eb7e1cc10dce0c5d              164 free/binary-i386/Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709                0 free/i18n/Translation-en
+ 64a543afbb5f4bf728636bdcbbe7a2ed0804adc2               14 free/i18n/Translation-en.bz2
+SHA256:
+ d89ae7d937af340f57c6f2ea5a33613dc72dfc9631e8a2ad95d9f54300a4b7fa             4126 free/binary-amd64/Packages
+ f330dfffed322845bbab47ebe3086e83a3868af0bf8494a569aaf2fbecd56d39             2114 free/binary-amd64/Packages.gz
+ eecdda19644e885ac1c8dfbf8ab8bf53e3732f2cb509b6440193ee077ff61321              165 free/binary-amd64/Release
+ 88661deb2ebc8087912882797daaccaf1478057b5eff5c795f67781cdd90c475             4122 free/binary-i386/Packages
+ f1a27bf668f854132b9800a98a7d338382e798366ad4dd672d3a3723dad3ddad             2109 free/binary-i386/Packages.gz
+ ba5c6120a930a442a48907b3222471df6f3c7104b2efbd9911ee95ebfc59b643              164 free/binary-i386/Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 free/i18n/Translation-en
+ d3dda84eb03b9738d118eb2be78e246106900493c0ae07819ad60815134a8058               14 free/i18n/Translation-en.bz2
+SHA512:
+ fac9819759febe9e3d38bff9c8a31833c0bcb49e86d884127560916d1009043b60cc0837342629444372c1407059ceb06cf7877cfaac5162b7160fa05246e1cd             4126 free/binary-amd64/Packages
+ 6461434ef15de0559f655ec3fc5c828d21158612bbe20a40834a3ae8fd64079c5d5ef42cec473ec7b2a97d1b1134a67228351ede0870cccfcdf3f73044352592             2114 free/binary-amd64/Packages.gz
+ 73e07492a32b66a014f3df438ebed39b227a662b13bb30fc8993ff5eb9c97c24ee7afb7d13e81a0ddbbfc64af906fe4c3ff5d6fd868de6a5b184ebc8b36a1592              165 free/binary-amd64/Release
+ 816a8e1df343792aa14e7b1e2fdeb94098a356ca9096beefddd7a8ec955121c5f54956c513a8bdf27c6e68a15cf49cc53dcec3915f07ddb5790f785cdd639ac0             4122 free/binary-i386/Packages
+ f9b74a29610385008df36070f8e4bafa3a737a390d5b2813f6bab3ae204a35835094cd55344cae88d2b44f3d2246192ea1ade35c6a07216d84e213c20f6ae9e3             2109 free/binary-i386/Packages.gz
+ 2f7cf12bc3de56f3f5770cd75fb41c22780ffad70dfa1c6e02c05110ff39e5c726c3e9a8e746b6682d019d34c05fc48d3d2f1d2389309dd11156daef953708e3              164 free/binary-i386/Release
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 free/i18n/Translation-en
+ 6de201dfed1d45412509c65deb34690dc2d09c6aafccfe491fd2f440f92842b9c755b61dc7bcdd4cc0c9f18cf46c2b3a1241e99c4c2a33fff5555e7b2f0b6348               14 free/i18n/Translation-en.bz2

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Ardour-4
+Comment=Digital Audio Workstation
+Exec=/usr/bin/ardour4
+Terminal=false
+Type=Application
+Icon=/opt/ardour4/share/icons/ardour_icon_48px.png
+Categories=AudioVideo;AudioEditing;Audio;Recorder;
+MimeType=application/x-ardour;

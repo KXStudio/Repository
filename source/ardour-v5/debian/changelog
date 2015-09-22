@@ -1,0 +1,73 @@
+ardour4-official-v5 (1:4.2.358-1kxstudio1v5) stable; urgency=medium
+
+  * GCC5-ABI variant
+
+ -- falkTX <falktx@gmail.com>  Tue, 22 Sep 2015 11:52:42 +0200
+
+ardour4-official (1:4.2.358-1kxstudio1) stable; urgency=medium
+
+  * Update to nightly build
+    - Implements LV2 nominalBlockLength
+    - Provides GCC5 ABI builds
+
+ -- falkTX <falktx@gmail.com>  Tue, 22 Sep 2015 11:46:59 +0200
+
+ardour4-official (1:4.2.0-1kxstudio1) stable; urgency=medium
+
+  * New upstream release
+
+ -- falkTX <falktx@gmail.com>  Fri, 14 Aug 2015 11:26:50 +0200
+
+ardour4-official (1:4.1.0-1kxstudio1) stable; urgency=medium
+
+  * New upstream release
+
+ -- falkTX <falktx@gmail.com>  Fri, 26 Jun 2015 10:30:06 +0200
+
+ardour4-official (1:4.0.0-1kxstudio1) stable; urgency=medium
+
+  * New uptream release (version 4)
+
+ -- falkTX <falktx@gmail.com>  Sun, 19 Apr 2015 13:07:47 +0200
+
+ardour3-official (1:3.5.403-1kxstudio1) stable; urgency=low
+
+  * New upstream release
+
+ -- falkTX <falktx@gmail.com>  Fri, 03 Oct 2014 05:05:05 +0100
+
+ardour3-official (1:3.5.380-1kxstudio1) stable; urgency=low
+
+  * New upstream release
+
+ -- falkTX <falktx@gmail.com>  Wed, 14 May 2014 11:34:27 +0100
+
+ardour3-official (1:3.5.357-1kxstudio1) stable; urgency=low
+
+  * New upstream release
+
+ -- falkTX <falktx@gmail.com>  Wed, 26 Feb 2014 18:46:08 +0000
+
+ardour3-official (1:3.5.308-1kxstudio1) stable; urgency=low
+
+  * New upstream release
+
+ -- falkTX <falktx@gmail.com>  Thu, 23 Jan 2014 22:06:59 +0000
+
+ardour3-official (1:3.5.143-2kxstudio1) stable; urgency=low
+
+  * Fix startup script
+
+ -- falkTX <falktx@gmail.com>  Thu, 09 Jan 2014 13:33:38 +0000
+
+ardour3-official (1:3.5.143-1kxstudio) stable; urgency=low
+
+  * New upstream release
+
+ -- falkTX <falktx@gmail.com>  Wed, 08 Jan 2014 16:06:33 +0000
+
+ardour3-official (1:3.5.74-1kxstudio1) lucid; urgency=low
+
+  * Initial packaging of official tarballs
+
+ -- falkTX <falktx@gmail.com>  Wed, 06 Nov 2013 06:30:25 +0000

@@ -1,0 +1,38 @@
+Package: bitwig-studio
+Priority: extra
+Section: Multimedia
+Installed-Size: 290712
+Maintainer: Bitwig GmbH <support@bitwig.com>
+Architecture: amd64
+Version: 1.1.10
+Depends: libcairo2, libxcb-icccm4, libxcb1, libxcb-randr0, libx11-xcb1, libxkbfile1, libxcursor1, libstdc++6, libc6, libgcc1, libpixman-1-0, libfontconfig1, libfreetype6, libpng12-0, libxcb-shm0, libxcb-render0, libx11-6, zlib1g, libxau6, libxdmcp6, libxfixes3, libexpat1, libxrender1, libx11-6, zlib1g, libjack-jackd2-0, xdg-utils, libav-tools, zenity
+Filename: pool/non-free_bitwig/bitwig-studio-1.1.10.deb
+Size: 167313506
+MD5sum: 5a6a9d510f58ba5cfcbccdb20f3dee06
+SHA1: 1daf234acf157f7440dc664ae325876c58c7dcd2
+SHA256: dcf1532ba8ce09aea9fbd73d906a2a84e5b14cb5b21ca5f6bf9dfa574f69ceb6
+SHA512: 401500d5fbbbba057023fa6e43e2eebf348b39c3beef545351c1463b4e5eca480fb64ebc1e05f0b30907638a403d99cc1eeca7fe7cf675eb202a760587b39d7d
+Description: Music production and performance system
+  Bitwig Studio is a multi-platform music-creation system for production, remixing and performance with a focus on flexible editing tools and a super-fast workflow.
+Homepage: http://bitwig.com
+
+Package: tracktion6
+Priority: optional
+Section: sound
+Installed-Size: 17236
+Maintainer: Tracktion <info@tracktion.com>
+Architecture: amd64
+Version: 6.1.10
+Replaces: tracktion
+Depends: libasound2 (>> 1.0.22), libc6 (>= 2.7), libfreetype6 (>= 2.2.1), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libstdc++6 (>= 4.6), libx11-6 (>= 0), libxext6 (>= 0), libxinerama1
+Breaks: tracktion
+Filename: pool/non-free_tracktion/TracktionInstall_6_1_10_Linux_64Bit.deb
+Size: 7083100
+MD5sum: fdce8646697d434c51daa2617911ffcd
+SHA1: 8ddce954fcf08a2a52237187e293cc4d90566c12
+SHA256: 90e6675dbbd867322810a7624d7c23f96679ceb32f9862613939f95a5d6f8bf2
+SHA512: 51beab53203b3ce521ead94a43ecd28d7fdd95ae421ff6c2ab160b0b412ab04b520b6e6cb3e053824d548ba0d721a1e4a94903ec13b706c126b97a233ba9c042
+Description: audio and midi workstation
+ Tracktion is a powerful workstation for audio/midi recording and editing.
+Homepage: http://www.tracktion.com
+

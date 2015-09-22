@@ -1,0 +1,12 @@
+Options -Indexes
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\+
+RewriteRule ^(.*)$ https://github.com/KXStudio/Repository/releases/download/initial/$1 [R=301,L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)\+(.*)$ https://github.com/KXStudio/Repository/releases/download/initial/$1\.$2 [R=301,L,QSA]

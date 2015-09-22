@@ -1,0 +1,1001 @@
+Package: musescore-common
+Priority: optional
+Section: sound
+Installed-Size: 31308
+Maintainer: Toby Smithe <tsmithe@ubuntu.com>
+Architecture: all
+Source: musescore
+Version: 2.0.2-1kxstudio1
+Replaces: mscore-common (<< 0.9.6+dfsg-1)
+Provides: mscore-common
+Breaks: mscore-common (<< 0.9.6+dfsg-1)
+Filename: pool/free/musescore-common_2.0.2-1kxstudio1_all.deb
+Size: 11920972
+MD5sum: 93b18c066988d9f661e2f6a01bca14d9
+SHA1: 0cf511a103ba9ebaee1b7b1e811676896007a346
+SHA256: 69fbcc9b518cf6070bc5425aa7b43249f83700c3af872cf2cf19698214e0a466
+SHA512: 04c229f0889aa961a867b78c0e8167482381df317c3fea399d9fc1c1bbf3a2c868814b12f27e4829b48dc2723f67509588b279e981912705f741dad75c43a41e
+Description: Full featured WYSIWYG score editor (common files)
+ MuseScore is a free WYSIWYG music score typesetter for Linux,
+ licenced under GNU GPL. Features:
+  * WYSIWYG, notes are entered on a "virtual note sheet"
+  * unlimited number of staves
+  * up to four voices/staff
+  * easy and fast note entry with mouse, keyboard or midi
+  * integrated sequencer and FluidSynth software synthesizer
+  * import and export of MusicXml and standard midifiles (SMF)
+  * platform independent code for Linux, Windows and Mac
+ .
+ This package provides some files used by MuseScore, including demo
+ scores, styles, templates, localisations, and some plugins.
+Homepage: http://www.musescore.org/
+
+Package: jackd2-firewire
+Priority: optional
+Section: sound
+Installed-Size: 115
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Source: jackd2
+Version: 1:1.9.10-1~kxstudio1
+Replaces: jackd-firewire
+Provides: jackd-firewire
+Depends: libc6 (>= 2.4), libffado2 (>= 2.0), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.6), jackd2 (= 1:1.9.10-1~kxstudio1)
+Conflicts: jackd-firewire
+Filename: pool/free/jackd2-firewire_1.9.10-1~kxstudio1_amd64.deb
+Size: 72632
+MD5sum: 2478b53891a3017cd8721fdc9cb32eeb
+SHA1: e6635df33153f05dcfd4268f0061d0e64071a6d1
+SHA256: ba8d7a029f1dd268e5d31395e9251771c8b75f0569a1c9d6559ddb2bed75eb67
+SHA512: 3d99bb891cdfa1a8bde9469d4c7938919b9d6db6a138940f8b4272b0f3e9a5c7b9065338076d942c3c135f5e950578ac8ed31b5d9c2da702fdb69f27efcc1363
+Description: JACK Audio Connection Kit (FFADO and FreeBoB backends)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the IEEE1394 (FireWire) backends FFADO and FreeBoB.
+Homepage: http://jackaudio.org/
+
+Package: ardour4
+Priority: extra
+Section: sound
+Installed-Size: 151008
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: ardour4-official
+Version: 1:4.2.0-1kxstudio1
+Depends: libasound2 (>= 1.0.16), libc6 (>= 2.11), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglu1-mesa | libglu1, libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116, libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.4.0), libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-render0, libxcb-shm0, libxcb1 (>= 1.6), libxext6, libxrender1
+Filename: pool/free/ardour4_4.2.0-1kxstudio1_amd64.deb
+Size: 42117302
+MD5sum: af405ce881e6275b6c9fd263719369c1
+SHA1: 8c4a198a735ffab8c3e1a7f5db0d227985a8f089
+SHA256: 18dae7dc97d570e8c77643b019c7cf36b0ced6740264e5872a421d01fa6a234f
+SHA512: 440d21f377f91da478dc11081dacbe473bf9c891a7c671e2d84e444900d6f371d437a4629cbdbda5c2dd817fe9666deceb84225e6cb76e9a3560f67f02dc81eb
+Description: digital audio workstation (graphical gtk2 interface)
+ Ardour is a multichannel hard disk recorder (HDR) and digital audio
+ workstation (DAW).  It can be used to control, record, edit and run
+ complex audio setups.
+ .
+ Ardour supports pro-audio interfaces
+ through the ALSA project, which provides high quality, well designed
+ device drivers and API's for audio I/O under Linux. Any interface
+ supported by ALSA can be used with Ardour. This includes the
+ all-digital 26 channel RME Hammerfall, the Midiman Delta 1010 and many
+ others.
+ .
+ Ardour has support for 24 bit samples
+ using floating point internally, non-linear editing with unlimited undo,
+ a user-configurable mixer, MTC master/slave capabilities, MIDI hardware
+ control surface compatibility.
+ .
+ It supports MIDI
+ Machine Control, and so can be controlled from any MMC controller and
+ many modern digital mixers.
+ .
+ Ardour contains a
+ powerful multitrack audio editor/arranger that is completely
+ non-destructive and capable of all standard non-linear editing
+ operations (insert, replace, delete, move, trim, select,
+ cut/copy/paste). The editor has unlimited undo/redo capabilities and can
+ save independent "versions" of a track or an entire piece
+ .
+ Ardour's editor supports the community-developed LADSPA
+ plugin standard.  Arbitrary chains of plugins can be attached to any
+ portion of a track.  Every mixer strip can have any number of inputs
+ and outputs, not just mono, stereo or 5.1.  An N-way panner is
+ included, with support for various panning models.  Pre- and post-fader
+ sends exist, each with their own gain and pan controls.  Every mixer
+ strip acts as its own bus, and thus the bus count in Ardour is
+ unlimited.  You can submix any number of strips into another
+ strip.
+ .
+ Ardour's channel capacity is limited only
+ by the number on your audio interface and the ability of your disk
+ subsystem to stream the data back and forth.
+ .
+ JACK
+ (the JACK Audio Connection Kit) is used for all audio I/O, permitting
+ data to be exchanged in perfect samplesync with other applications
+ and/or hardware audio interfaces.
+ .
+ Ardour is
+ sample rate and size neutral - any hardware formats from 8 to 32 bits,
+ and rates from 8kHz to 192kHz.  Internal processing in 32/64 bit IEEE
+ floating point format.
+ .
+ Further information can be
+ found at <http://ardour.org/>.
+Homepage: http://www.ardour.org/
+
+Package: wineasio-amd64
+Priority: optional
+Section: sound
+Installed-Size: 172
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: wineasio
+Version: 0.9.0+git20110613-2kxstudio3
+Depends: wine-rt-amd64 | wine-amd64, libjack-jackd2-0 | libjack0
+Pre-Depends: dpkg (>= 1.14.12ubuntu3), multiarch-support
+Conflicts: wineasio (<< 0.9.0+git20110613-2kxstudio1)
+Breaks: wineasio (<< 0.9.0+git20110613-2kxstudio1)
+Filename: pool/free/wineasio-amd64_0.9.0+git20110613-2kxstudio3_amd64.deb
+Size: 30850
+MD5sum: 546ce9c7445522c91b2964e96d3983dd
+SHA1: 523a2a7936c259a9e8225879e09981d938dd6eea
+SHA256: 38e893bbbc472d46ba536b4d7e9c826fcba7d5f6504a38e16f82d22d891f502c
+SHA512: 9637e1ce0dcd68e6eac367f72ec1ce99e3f708cbfbeb7c1cfa6bc0a0e88bb6baef6aae8b2f660d3099e3f48ac860d27f3596e85952b08f83ba7cea026a50eb35
+Description: Wine ASIO driver for JACK (64bit)
+ WineASIO is a ASIO driver for Wine,
+ allowing to run Windows audio applications with
+ low latency (as JACK clients).
+ .
+ This package provides the 64bit driver
+Multi-Arch: foreign
+
+Package: wine-rt-dbg
+Priority: extra
+Section: debug
+Installed-Size: 68190
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: wine-rt
+Version: 1:1.7.41-1~kxstudio1
+Depends: wine-rt-amd64 (= 1:1.7.41-1~kxstudio1)
+Filename: pool/free/wine-rt-dbg_1.7.41-1~kxstudio1_amd64.deb
+Size: 52922812
+MD5sum: e8b9e2f82913eaffac9479e2a3e2f754
+SHA1: 0e64d4505f6a1d7866315ebd7b6f6aa6559df64d
+SHA256: cadc4754f06978f71a98547df669c0ce1b4db5cdda07efdbc5dff95621ae0d0e
+SHA512: c71b1ad9062260250f0c2b7c8ed86f123b07de0b78e0e378392d12e7a0c64cfbbb8ba7e9e0cda70f7dbe30cf9d118da6e69324aa68be5e93046dd0c3c8355f98
+Description: Microsoft Windows Compatibility Layer (debugging symbols)
+ Wine is a compatibility layer for running Windows applications on Linux.
+ Applications are run at full speed without the need of cpu emulation. Wine
+ does not require Microsoft Windows, however it can use native system dll
+ files in place of its own if they are available.
+ .
+ This package includes debugging symbols useful for reporting crashes and other
+ failures.
+Multi-Arch: same
+Homepage: http://www.winehq.org/
+
+Package: libturbojpeg
+Priority: optional
+Section: libs
+Installed-Size: 314
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: libjpeg-turbo
+Version: 1.1.90+svn733-0ubuntu4.4
+Replaces: libjpeg-turbo8 (<< 1.1.90+svn722-1ubuntu6)
+Depends: libc6 (>= 2.14)
+Pre-Depends: multiarch-support
+Filename: pool/free/libturbojpeg_1.1.90+svn733-0ubuntu4.4_amd64.deb
+Size: 121542
+MD5sum: b9113155f3f2a6f95922f410d371547b
+SHA1: 6bab3ba36e9002590ae8cf9338fc7cdccad4bd7d
+SHA256: c152e85a5871fea7705e84702a6aa21f013a82b0ceae88d4f53e39cda7116f4e
+SHA512: c438a7124c642ca7495e1db6ad25c9b986114df2df561d26126dadc4d4ad0c56d1a24ad411f28f4c0a08fbb8deba120746cb071d9521ae6fffd4537200408f49
+Description: IJG JPEG compliant runtime library.
+ Runtime library supporting the Independent JPEG Group's standard
+ for JPEG files.
+ .
+ This package contains the libturbojpeg.so library, used by
+ turboVNC and other users of the past TurboJPEG library.
+Multi-Arch: same
+Homepage: http://libjpeg-turbo.virtualgl.org/
+
+Package: libjack-dev
+Priority: optional
+Section: libdevel
+Installed-Size: 1912
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Source: jack-audio-connection-kit
+Version: 1:0.124.2~20140820-1~kxstudio1
+Provides: libjack-dev-session, libjack0.100.0-dev
+Depends: libjack0 (= 1:0.124.2~20140820-1~kxstudio1), pkg-config, libdbus-1-dev
+Filename: pool/free/libjack-dev_0.124.2~20140820-1~kxstudio1_amd64.deb
+Size: 384492
+MD5sum: 5ddd5b3d6835cf17e045a79c841c0932
+SHA1: eb59e910e7fcd8c39a2fb1ddb4c9c49958d46239
+SHA256: bbdb745c911e8873b112e4c85d5b2f4004b8da0b11af8d06a6a415bab2deddaf
+SHA512: da9055130f39d7b26eaafcb6f7cfd5b0236ff139ef6ad24c3b445fe737b3d5af6b1cd9a542f5f0d980f2f3f1676f5cf25dcc53bb484cf5675340563472162df2
+Description: JACK Audio Connection Kit (development files)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains files needed for the development of JACK applications
+ and an API reference.
+Homepage: http://jackaudio.org/
+
+Package: libjack-jackd2-0
+Priority: optional
+Section: libs
+Installed-Size: 611
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Source: jackd2
+Version: 1:1.9.10-1~kxstudio1
+Replaces: libjack-0.116
+Provides: libjack-0.116
+Depends: libc6 (>= 2.4), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libsamplerate0 (>= 0.1.7), libstdc++6 (>= 4.6)
+Pre-Depends: multiarch-support
+Suggests: jackd2 (= 1:1.9.10-1~kxstudio1)
+Conflicts: jackd2 (>> 1:1.9.10-1~kxstudio1), jackd2 (<< 1:1.9.10-1~kxstudio1), libjack-0.116, libjack0
+Filename: pool/free/libjack-jackd2-0_1.9.10-1~kxstudio1_amd64.deb
+Size: 281854
+MD5sum: 54dc5f9b5af3889c72499fa9e65f6caf
+SHA1: 1a883e8446e9ede4b6d58638d82f16494443adfb
+SHA256: 9c43b0a0ba71b559dcbbfce16c627d2dfb2995bd131f66a2f70d760e36a4a5aa
+SHA512: 135cd7174266b51ab8025a02e37c6843ef22680aa40ccc6b11d6eeaf646171792e2c7660972b3038d7e404f5a00b51e814724568bfe27439d2d482d4bb0acfc9
+Description: JACK Audio Connection Kit (libraries)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the shared libraries.
+Multi-Arch: same
+Homepage: http://jackaudio.org/
+
+Package: foo-yc20-vst
+Priority: optional
+Section: sound
+Installed-Size: 568
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Version: 1.3.0-1kxstudio1
+Provides: vst-plugin
+Depends: libc6 (>= 2.4), libcairo2 (>= 1.2.4), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.4.0)
+Filename: pool/free/foo-yc20-vst_1.3.0-1kxstudio1_amd64.deb
+Size: 173372
+MD5sum: 9d16bb11e3e753daa879de8968f20da2
+SHA1: 961baf03db5507126413d706fa25aa38260b8f0b
+SHA256: 1a7f53ae342e975b3956c6e16b63497c8f24930169a06f3e10ac24983592fcbe
+SHA512: 21b8f75a98ff92cba3225c5350e63c579c1b9ba2d8652ae696d6e14e97a30b298b691b62da1e806ea495db642a1d73b5a550ce9f78d0d6f1113619591054fec9
+Description: YC-20 organ emulation (VST)
+ The YC-20 is a divide-down combo organ designed in the late 60's. This
+ emulation faithfully copies the features, sounds and flaws of the original
+ organ.
+ .
+ Features:
+    - 61 keys
+    - Two main voice sections
+    - Switchable bass section
+    - Generator + matrix mixer => no polyphony restrictions
+    - A realism control to add flaws found in the real organ
+ .
+ Flaws:
+    - Takes quite a bit of CPU power
+    - No touch vibrato
+ .
+ The emulation is written in Faust and uses Jack for audio and MIDI.
+ .
+ This package provides the VST plugin.
+Homepage: http://code.google.com/p/foo-yc20/
+
+Package: libjack-jackd2-dev
+Priority: optional
+Section: libdevel
+Installed-Size: 259
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Source: jackd2
+Version: 1:1.9.10-1~kxstudio1
+Replaces: libjack0.71.2-0 (<< 0.75.0-1)
+Provides: libjack-dev, libjack-dev-session, libjack0.100.0-dev
+Depends: libjack-jackd2-0 (= 1:1.9.10-1~kxstudio1), pkg-config, libdbus-1-dev
+Conflicts: libjack-dev, libjack0.100.0-dev (<< 0.102.20-2)
+Filename: pool/free/libjack-jackd2-dev_1.9.10-1~kxstudio1_amd64.deb
+Size: 99322
+MD5sum: 6828c459cc4ab9700b619cb7f65e210d
+SHA1: f03bd1112413a5877df9b2890c2397ea7b059327
+SHA256: 500921669dc8aa743d8268ef5e0170fc9e007e672a73240743c295ddb19e69c8
+SHA512: db2d9bc30330e78f6954bebfb57e6006db8d68067cd1fa46023da0a611c3a40ceb35d954a9fa47ba698b72753788386be7958f9f99077b43c17bbfce587bd6bb
+Description: JACK Audio Connection Kit (development files)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains files needed for the development of JACK applications
+ and an API reference.
+Multi-Arch: same
+Homepage: http://jackaudio.org/
+
+Package: libdb5.1
+Priority: standard
+Section: libs
+Installed-Size: 1601
+Maintainer: Debian Berkeley DB Group <pkg-db-devel@lists.alioth.debian.org>
+Architecture: amd64
+Source: db
+Version: 5.1.29-5
+Depends: libc6 (>= 2.4)
+Pre-Depends: multiarch-support
+Filename: pool/free/libdb5.1_5.1.29-5_amd64.deb
+Size: 722932
+MD5sum: df9bac3e5aa06480b803af5539eafe04
+SHA1: 6b909d20855864aa16d6094c08417580e28c1faf
+SHA256: 49af90ac9bfcae362beb98c9fc65f6d0b1cb0caea49e0b799d77f16287490cdd
+SHA512: c3b61ccc056e2cffc2602c6bce63d3ec1dc29a324db60dfddf4eb79d4cb93cf67a49f44e111f275f5e0a973bfc1022a03938e2e744dceeb8ec1dac5bf99b6630
+Description: Berkeley v5.1 Database Libraries [runtime]
+ This is the runtime package for programs that use the v5.1 Berkeley
+ database library.
+Multi-Arch: same
+Homepage: http://www.oracle.com/technology/software/products/berkeley-db/index.html
+
+Package: jackd1-firewire
+Priority: optional
+Section: sound
+Installed-Size: 51
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Source: jack-audio-connection-kit
+Version: 1:0.124.2~20140820-1~kxstudio1
+Replaces: jackd-firewire
+Provides: jackd-firewire
+Depends: jackd1 (= 1:0.124.2~20140820-1~kxstudio1), libasound2 (>= 1.0.16), libc6 (>= 2.4), libdb5.1, libffado2 (>= 2.0), libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116
+Conflicts: jackd-firewire
+Filename: pool/free/jackd1-firewire_0.124.2~20140820-1~kxstudio1_amd64.deb
+Size: 32528
+MD5sum: a164ca8faf914620debb2943bc686eeb
+SHA1: 64d9172a40c2f7a077979cf16e81b879f0d2f74e
+SHA256: 8f1dceacd5abc180f7668b0d14e270fcc07fa1805ca331e3845545576c86f644
+SHA512: e2c7b20305998583c0d97a361ab7c31d1b32bd438f819cdac5aebbda68bc7b0f20bd2cec54da65b311a7b636d8e034d16926771a86bca16f20e77ab05d502788
+Description: JACK Audio Connection Kit (FFADO backend)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the IEEE1394 (FireWire) backend (FFADO).
+Homepage: http://jackaudio.org/
+
+Package: jost
+Priority: optional
+Section: sound
+Installed-Size: 3788
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: juced-plugins-vst
+Version: 20110923-0kxstudio1
+Depends: libasound2 (>> 1.0.22), libc6 (>= 2.4), libfreetype6 (>= 2.2.1), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.1.1), libx11-6 (>= 0), libxext6 (>= 0)
+Filename: pool/free/jost_20110923-0kxstudio1_amd64.deb
+Size: 1871288
+MD5sum: 9b3b5bed61663b2bf6fb78306e3b8822
+SHA1: 2d19946f33ca264d2a39f7a62c4f24670f70c6d9
+SHA256: 4c7239d9128a48840db132bd50834b99a25db8ddfd6f996326bce94ad7e1c1e8
+SHA512: f470c1be009ab6216233c24552f9118214cbe36eda0780bc268c53214ca5e9e047e5be12ddf506931fc0153f2f7168bfa8c2f1ae9af573f041c3db554552c318
+Description: Multi technology native host for linux
+ This is the first open source multi-technology
+ (native vst, ladspa, dssi) host in linux.
+ It will mainly host a chain of plugins per instance,
+ publishing jack, alsa and alsa_seq ports in order to be
+ connected in your main stream flow.
+ It still have some very good features that makes it a
+ first class host.
+ .
+ Jost is a native host, it won’t wrap your windows dlls !
+ .
+ This package contains the standalone application.
+
+Package: libjpeg-turbo8-dbg
+Priority: extra
+Section: debug
+Installed-Size: 355
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: libjpeg-turbo
+Version: 1.1.90+svn733-0ubuntu4.4
+Replaces: libjpeg-turbo-dbg (<< 1.1.90+svn722-1ubuntu6), libjpeg62-dbg, libjpeg7-dbg
+Depends: libjpeg-turbo8 (= 1.1.90+svn733-0ubuntu4.4)
+Filename: pool/free/libjpeg-turbo8-dbg_1.1.90+svn733-0ubuntu4.4_amd64.deb
+Size: 262102
+MD5sum: 09130550d40d13761ba2cfaaf366e0e2
+SHA1: 628d8eb3e15cd9cd36b447441fee25a3741cebd2
+SHA256: 6ea3730c5843e01980f417209f096a872ab2d66319536f54bc35506f995f13f8
+SHA512: bdc10e631a7c5f9c758f156e9bb5cdd96b787dc1fcc7f2b51939b7513628918ddaeeefb14bb9ee5450680768c3119b2f7bb4f9a348d48418633727a74c9aa67e
+Description: Debugging symbols for the libjpeg-turbo library
+ An optimized implementation of the Independent JPEG Group's
+ JPEG library is a library for handling JPEG files.
+ .
+ This package contains the debugging symbols for libjpeg-turbo.
+Homepage: http://libjpeg-turbo.virtualgl.org/
+
+Package: libjpeg-turbo-progs
+Priority: optional
+Section: graphics
+Installed-Size: 180
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: libjpeg-turbo
+Version: 1.1.90+svn733-0ubuntu4.4
+Replaces: libjpeg-progs (<< 8c-2ubuntu5)
+Provides: libjpeg-progs
+Depends: libc6 (>= 2.14), libjpeg8 (>= 8c)
+Filename: pool/free/libjpeg-turbo-progs_1.1.90+svn733-0ubuntu4.4_amd64.deb
+Size: 67270
+MD5sum: aa31d27b5f77fc24077ce8475032e7eb
+SHA1: 9240d18d1d6cafd851e513f23a5fc1009f2f6569
+SHA256: fd35fe9c2a52ffb721157f98cc2998645f1e8f44757dd20d04a69ec20dc097f8
+SHA512: 3b27ca657d9ba6dd366d6a0501b02eda4b83dcc16393f59b200ff221edffca3824f227f70851cc46d0eb41e1f01d1d6ba9cc6c5e9d506781bdcc5c64926ee066
+Description: Programs for manipulating JPEG files
+ This package contains programs for manipulating JPEG files:
+  cjpeg/djpeg: convert to/from the JPEG file format
+  rdjpgcom/wrjpgcom: read/write comments in JPEG files
+  jpegtran: lossless transformations of JPEG files
+  tjbench: a simple JPEG benchmarking tool
+Homepage: http://libjpeg-turbo.virtualgl.org/
+
+Package: carla-bridge-wine64
+Priority: optional
+Section: sound
+Installed-Size: 142
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: carla-bridge-wine
+Version: 2:1.9.5+git20150722.2
+Depends: wine-rt-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
+Recommends: carla-bridge-win64
+Filename: pool/free/carla-bridge-wine64_1.9.5+git20150722.2_amd64.deb
+Size: 21066
+MD5sum: 30ad62e72a074c689ef9d43e4db4b786
+SHA1: b3e031937c96d4ed4581be50564c0c2a63a6a285
+SHA256: 758d95f42db46e67abc2da3fed032c503db53b9b0c3542ecbe6f154b232cc4db
+SHA512: 82e32cd60c03fb21697b058819760ea4b7d9373758081c609b675f2c717671b9c4570f720d9dd1c6d8e8043b31877a97ffbb65ccf179acc0eb9ff95fa80202d2
+Description: carla win64 bridge (wine DLL)
+ This package provides the wine DLL needed for the Carla win64 bridge.
+Multi-Arch: foreign
+
+Package: jost-vst
+Priority: optional
+Section: sound
+Installed-Size: 4120
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: juced-plugins-vst
+Version: 20110923-0kxstudio1
+Replaces: vst-plugin-jost
+Provides: vst-plugin
+Depends: libc6 (>= 2.4), libfreetype6 (>= 2.2.1), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.1.1), libx11-6 (>= 0), libxext6 (>= 0)
+Conflicts: vst-plugin-jost
+Filename: pool/free/jost-vst_20110923-0kxstudio1_amd64.deb
+Size: 1922472
+MD5sum: aaf09356fc86befeb59eed44e336af7d
+SHA1: ab6d7434df00cdd4171a79e017738e28e2100117
+SHA256: 34e6c1bfc93c11fbf428a4b628eb9780cf27cc9374be4488ef92849a84c3d121
+SHA512: ad513a9e274fe7c6b694ca0ffdec0ac2b2ec1bb09a1ae40b0bf4d6f19132c49787348db9a403cc548be1621dec23c241551c7be835c8a746522dea4581364b1d
+Description: Multi technology native host for linux (VST)
+ This is the first open source multi-technology
+ (native vst, ladspa, dssi) host in linux.
+ It will mainly host a chain of plugins per instance,
+ publishing jack, alsa and alsa_seq ports in order to be
+ connected in your main stream flow.
+ It still have some very good features that makes it a
+ first class host.
+ .
+ Jost is a native host, it won’t wrap your windows dlls !
+ .
+ This package contains the VST plugin.
+
+Package: jackd1
+Priority: optional
+Section: sound
+Installed-Size: 1200
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Source: jack-audio-connection-kit
+Version: 1:0.124.2~20140820-1~kxstudio1
+Replaces: jack-daemon, jackd (<< 3), libjack0 (<< 1:0.118+svn3796-4)
+Provides: jack-daemon
+Depends: coreutils (>= 4.0), python-dbus, libjack0 (= 1:0.124.2~20140820-1~kxstudio1), libasound2 (>= 1.0.18), libc6 (>= 2.7), libdb5.1, libdbus-1-3 (>= 1.0.2), libexpat1 (>= 2.0.1), libgcc1 (>= 1:4.1.1), libreadline6 (>= 6.0), libsamplerate0 (>= 0.1.7), libsndfile1 (>= 1.0.20), libstdc++6 (>= 4.1.1), libzita-alsa-pcmi0 (>= 0.1.1), libzita-resampler1
+Pre-Depends: multiarch-support
+Recommends: jackd1-firewire, libpam-modules
+Conflicts: jack-daemon, jackd (<< 3)
+Filename: pool/free/jackd1_0.124.2~20140820-1~kxstudio1_amd64.deb
+Size: 454732
+MD5sum: 435e3f4f87562633761ef85665828c9b
+SHA1: e4d26be306e41307d969b3d0eb40e29bbb6fbfcf
+SHA256: 670042257fc4dfa721620523a2527abe90394aba3cc006c809485649b537623f
+SHA512: fabb13a3189b6cf86d5aa8840efdf39e760e8d23326d7c2342954524c23a82cc2e11fd0de7c4d01c90f60799842bae45388819f7f4d9233ff8548b5f20995e51
+Description: JACK Audio Connection Kit (server and example clients)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the daemon jackd as well as some example clients.
+Homepage: http://jackaudio.org/
+
+Package: libgphoto2-port0
+Priority: optional
+Section: libs
+Installed-Size: 573
+Maintainer: Debian PhotoTools Maintainers <pkg-phototools-devel@lists.alioth.debian.org>
+Architecture: amd64
+Source: libgphoto2
+Version: 2.4.14-2
+Replaces: libgphoto2port
+Provides: libgphoto2port
+Depends: libc6 (>= 2.4), libltdl7 (>= 2.4.2), libusb-0.1-4 (>= 2:0.1.12)
+Pre-Depends: multiarch-support
+Suggests: gphoto2 (>> 2.1.0), gtkam
+Conflicts: libgphoto2port
+Breaks: gphoto2 (<= 2.1.1)
+Filename: pool/free/libgphoto2-port0_2.4.14-2_amd64.deb
+Size: 157282
+MD5sum: 22f8490bb42c679d6a1a7c0904ea7b97
+SHA1: 37107913bd8179828b830b647a1aa6d382357abc
+SHA256: 01c1a277b5a1e7713eee05ec1437c924f699e5b390ae1a13fcfb3c42bd282a04
+SHA512: 5e0e693abdfc2e454a8506068245ac19b467b11f0ce9b30c1d1deddc5d834e8733f29ac9626c61a773826be50193695f779a73cad9ddb2e26332a06639957c04
+Description: gphoto2 digital camera port library
+ The gphoto2 library can be used by applications to access various
+ digital camera models, via standard protocols such as USB Mass Storage
+ and PTP, or vendor-specific protocols.
+ .
+ This package contains the runtime code for port access.
+Multi-Arch: same
+Homepage: http://www.gphoto.org/proj/libgphoto2/
+
+Package: libjpeg-turbo-test
+Priority: extra
+Section: debug
+Installed-Size: 54
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: libjpeg-turbo
+Version: 1.1.90+svn733-0ubuntu4.4
+Replaces: libjpeg-test (<< 1.1.90+svn722-1ubuntu6)
+Depends: libc6 (>= 2.4)
+Filename: pool/free/libjpeg-turbo-test_1.1.90+svn733-0ubuntu4.4_amd64.deb
+Size: 13804
+MD5sum: e8f97adeb8a5be1f32554ac143eee3cd
+SHA1: cdf750fdacf8f11250e6dc4013046fdb14e586d0
+SHA256: e323ad4562f352658a8578e08bbaacad346112fd9be29d33212d171c50934e27
+SHA512: 9522f68b50afd32dff6b935b9e4e206e9ff9755a5b09fd2bb9879943bf6a99e8d266b28c7e1aecfbc48aa84e651d596fce728fc3214b67ea3c91b9e1f9d1ac43
+Description: Program for testing libjpeg-turbo
+ This package contains tjunittest which tests
+ the basic functionality of the library and
+ data files for performing those tests.
+Homepage: http://libjpeg-turbo.virtualgl.org/
+
+Package: wineasio
+Priority: optional
+Section: sound
+Installed-Size: 25
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Version: 0.9.0+git20110613-2kxstudio1
+Depends: wineasio-i386, wineasio-amd64
+Pre-Depends: dpkg (>= 1.15.7.2~)
+Recommends: jackd
+Filename: pool/free/wineasio_0.9.0+git20110613-2kxstudio1_amd64.deb
+Size: 1164
+MD5sum: cbeef7ea81f7eaca2e9e6e7df3474d2c
+SHA1: 1a6e056415c8c69f4dcaba4452939f055515201f
+SHA256: a07e5ee79502b1925d4de41db82d9b64728bc3f3a3f4df1b2883b7c1e98134f7
+SHA512: 37d10ec0c2fe42dacbd141b8b7d11e97e01e483ce8361d8749e30a6a086647bbf61b4cd669834fea2599c5e83a50853ec689206ed52e164b0b7f3eb7e3179469
+Description: Wine ASIO driver for JACK
+ WineASIO is a ASIO driver for Wine,
+ allowing to run Windows audio applications with
+ low latency (as JACK clients).
+Multi-Arch: allowed
+
+Package: jackd2
+Priority: optional
+Section: sound
+Installed-Size: 1983
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Version: 1:1.9.10-1~kxstudio1
+Replaces: jack-daemon, jackd (<< 3), libjack0 (<= 1.9.5~dfsg-13)
+Provides: jack-daemon
+Depends: libasound2 (>= 1.0.18), libc6 (>= 2.4), libdbus-1-3 (>= 1.1.4), libexpat1 (>= 2.0.1), libgcc1 (>= 1:4.1.1), libjack-jackd2-0 (= 1:1.9.10-1~kxstudio1), libreadline6 (>= 6.0), libsamplerate0 (>= 0.1.7), libsndfile1 (>= 1.0.20), libstdc++6 (>= 4.6), python, coreutils (>= 4.0), python-dbus, debconf | debconf-2.0
+Pre-Depends: multiarch-support
+Recommends: qjackctl, libpam-modules, jackd2-firewire
+Suggests: jack-tools, meterbridge
+Conflicts: jack-daemon, jackd (<< 3)
+Filename: pool/free/jackd2_1.9.10-1~kxstudio1_amd64.deb
+Size: 806572
+MD5sum: 1b3aedcf10838652732669b5d079d51e
+SHA1: 6fbef99db07494abd6ee640082b4dba5b583edeb
+SHA256: 2f3f186a907b2df66fa753317dcc6f79c9b1cd18ecfe07ae9175ee40fc1fc689
+SHA512: f8a3f4357406fb860b3c85c6f92476e1e9413551187096a4d1f7604818a67bfec489abd927a7dac95034a72e6ad9b504945b43d78292fc06531cba5377cfdd3b
+Description: JACK Audio Connection Kit (server and example clients)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the daemon jackd as well as some example clients.
+Homepage: http://jackaudio.org/
+
+Package: libjpeg-turbo8
+Priority: optional
+Section: libs
+Installed-Size: 308
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: libjpeg-turbo
+Version: 1.1.90+svn733-0ubuntu4.4
+Replaces: libjpeg8 (<< 8c-2ubuntu5)
+Depends: libc6 (>= 2.14)
+Pre-Depends: multiarch-support
+Breaks: libjpeg8 (<< 8c-2ubuntu5)
+Filename: pool/free/libjpeg-turbo8_1.1.90+svn733-0ubuntu4.4_amd64.deb
+Size: 111630
+MD5sum: f07757f65dff63a3d05b731457b49912
+SHA1: 38ed6f184c85321ac3677e56cf8cb51bbfeb880c
+SHA256: 265aa96ac2f70e349f797a92391beaef41d367b9644777382a8c3adb8d435463
+SHA512: 73daaeef30f7ce48be0369afc029ad3b7b6857494a2f4b6d7bfbacacb85683b343af5e691ee3e08ca37fde96b4039bf9426ea36701ceb160b5272385e5040385
+Description: IJG JPEG compliant runtime library.
+ Runtime library supporting the Independent JPEG Group's standard
+ for JPEG files.
+ .
+ This package contains the shared library which is a drop in
+ replacement for libjpeg8, which has better performance than
+ standard libjpeg by use of SIMD and other optimizations.
+Multi-Arch: same
+Homepage: http://libjpeg-turbo.virtualgl.org/
+
+Package: ardour4-dbg
+Priority: extra
+Section: sound
+Installed-Size: 89
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: ardour4-official
+Version: 1:4.2.0-1kxstudio1
+Depends: ardour4
+Filename: pool/free/ardour4-dbg_4.2.0-1kxstudio1_amd64.deb
+Size: 15942
+MD5sum: d0728a818f7f3b7a29933436a6168068
+SHA1: b6e146a65dd11cdd1bb9f1c13b58a84bae15183c
+SHA256: 2c8a391e30ceb515f99a225be17d9279881b6fd12ecf1ccb9b806c7510753f53
+SHA512: 8e518e78dac5c25f03b6fe4ac7421f0f31c56bcb8f15f7120c450d58ffeb6a26ea6c42b89262c6694889320c21c3ca0168960d9b1fb22f90c3015cb876fd2946
+Description: digital audio workstation (debugging symbols)
+ This package contains the debug symbols for Ardour4.
+ .
+ You don't need it installed unless you need to debug Ardour.
+Homepage: http://www.ardour.org/
+
+Package: libgphoto2-2
+Priority: optional
+Section: libs
+Installed-Size: 3374
+Maintainer: Debian PhotoTools Maintainers <pkg-phototools-devel@lists.alioth.debian.org>
+Architecture: amd64
+Source: libgphoto2
+Version: 2.4.14-2
+Depends: libc6 (>= 2.11), libexif12, libgd2-xpm (>= 2.0.36~rc1~dfsg), libgphoto2-port0 (>= 2.4.10.1), libjpeg8 (>= 8c), libltdl7 (>= 2.4.2)
+Pre-Depends: dpkg (>= 1.15.7.2), multiarch-support
+Recommends: udev (>= 0.175), libgphoto2-l10n (>= 2.4.14-2)
+Suggests: gphoto2 (>= 2.1.1)
+Breaks: gphoto2 (<= 2.1.1)
+Filename: pool/free/libgphoto2-2_2.4.14-2_amd64.deb
+Size: 1076962
+MD5sum: c3977d2680d9c744bf8a894e6915fa33
+SHA1: 866215006d481885e9faf33c7e76bf5162605bf8
+SHA256: d38ce250e2f126af44ea7855f8d8c8548ebe5ea7ddd2f2e814f12a68bb9a2f2b
+SHA512: c3fc19f73756aeaf9643ee2609b54454044d131cdca502d5f2f88c0c4d1c9d6ceee6ec8e9afc30b504628eec0bab2c93e1e52767536f9dab72389f73ee0af676
+Description: gphoto2 digital camera library
+ The gphoto2 library can be used by applications to access various
+ digital camera models, via standard protocols such as USB Mass Storage
+ and PTP, or vendor-specific protocols.
+ .
+ This package contains the library.
+ .
+ The gphoto2 command-line frontend is shipped separately, in the gphoto2
+ package.
+Multi-Arch: same
+Homepage: http://www.gphoto.org/proj/libgphoto2/
+
+Package: mda-vst
+Priority: optional
+Section: sound
+Installed-Size: 3520
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Version: 20100214-1kxstudio1
+Replaces: vst-plugin-mda, vst-plugin-mda-pack
+Depends: libc6 (>= 2.4), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.1.1)
+Conflicts: vst-plugin-mda, vst-plugin-mda-pack
+Filename: pool/free/mda-vst_20100214-1kxstudio1_amd64.deb
+Size: 2423280
+MD5sum: df4ac7f6c25fa153b32907b17943de9b
+SHA1: ebd597568f3c6a3b776fa8233ffcda6f43f8bbd2
+SHA256: cac865ba3086275987115f6ee0b0433ad7750b350946afc30871edcf422d719b
+SHA512: 031ef1419e55811bb8731b1b947019283f0094f9d96c895e4962798bc0ac9dc134f2d7ed22ab54222f6b3e9dbfa36f828df6f6834c1f807b181abf92a86fa64a
+Description: MDA VST plugins
+ Linux port of Paul Kellet's mda plugin collection.
+ .
+ This package contains the VST plugins.
+
+Package: carla-bridge-wine64
+Priority: optional
+Section: sound
+Installed-Size: 130
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: carla-bridge-wine
+Version: 1.9.5+git20150423
+Depends: wine-rt-amd64 | wine-amd64, libjack-jackd2-0 | libjack0
+Recommends: carla-bridge-win64
+Filename: pool/free/carla-bridge-wine64_1.9.5+git20150423_amd64.deb
+Size: 16938
+MD5sum: 0191cec79456cc37c2186bdb902e5c45
+SHA1: 951abd0446caa3eb1e3764f81fedbbf9f9ef7dae
+SHA256: c7fe852197e693f4f8dbeb113d4286e92d902a3bbc873a6d5af43d1038381209
+SHA512: 9a792d5c6bf34ad6ac34500aedab80e13a89c5300f4ce73dd98811ed98df17bc990426c75a7550de2608106352bc3138936ec9f7d1e6dfe36ffa5cbf3c86b04e
+Description: carla win64 bridge (wine DLL)
+ This package provides the wine DLL needed for the Carla win64 bridge.
+Multi-Arch: foreign
+
+Package: libjpeg-turbo8-dev
+Priority: optional
+Section: libdevel
+Installed-Size: 1140
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: libjpeg-turbo
+Version: 1.1.90+svn733-0ubuntu4.4
+Replaces: libjpeg62-dev, libjpeg7-dev, libjpeg8-dev (<< 8c-2ubuntu5)
+Provides: libjpeg-dev
+Depends: libjpeg-turbo8 (= 1.1.90+svn733-0ubuntu4.4), libc-dev
+Conflicts: libjpeg62-dev, libjpeg7-dev
+Filename: pool/free/libjpeg-turbo8-dev_1.1.90+svn733-0ubuntu4.4_amd64.deb
+Size: 391380
+MD5sum: becb762bf0e03937a80ad1ed48882121
+SHA1: f5607bd561fd1dc2a306d118a912df51501c2f29
+SHA256: d7d94ded69356ba106c751e67cd022457de385aac4e62c41b092f93acfe472a0
+SHA512: c32442eb0871cbfaf9b5f4ab0b94feb7a3ea05c5ef0ac90a3bc9e3be976464cfec79c42f46c4489949c05218792351a8d9be20121546a8f9d19b7ed644ff852d
+Description: Development files for the IJG JPEG library
+ The Independent JPEG Group's JPEG library is a library for handling
+ JPEG files.
+ .
+ This package contains the static library, headers and documentation.
+Multi-Arch: same
+Homepage: http://libjpeg-turbo.virtualgl.org/
+
+Package: wine-rt-amd64
+Priority: optional
+Section: otherosfs
+Installed-Size: 144779
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: wine-rt
+Version: 1:1.7.41-1~kxstudio1
+Replaces: wine-amd64, wine1.4-amd64, wine1.5-amd64, wine1.6-amd64, wine1.7-amd64
+Provides: wine-amd64, wine1.4-amd64, wine1.5-amd64, wine1.6-amd64, wine1.7-amd64
+Depends: libasound2 (>= 1.0.16), libc6 (>= 2.10), libexif12, libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglib2.0-0 (>= 2.12.0), libglu1-mesa | libglu1, libgphoto2-2 (>= 2.4.10.1), libgphoto2-port0 (>= 2.4.10.1), libgstreamer-plugins-base0.10-0 (>= 0.10.22), libgstreamer0.10-0 (>= 0.10.26), libldap-2.4-2 (>= 2.4.7), libmpg123-0 (>= 1.6.2), libopenal1, libx11-6, libxext6, libxml2 (>= 2.7.4), zlib1g (>= 1:1.1.4), wine-rt:any (= 1:1.7.41-1~kxstudio1), libncurses5
+Pre-Depends: dpkg (>= 1.14.12ubuntu3), multiarch-support
+Recommends: libasound2-plugins, libcapi20-3, libcups2, libdbus-1-3, libfontconfig1 | libfontconfig, libfreetype6, libgif4, libgnutls26, libjpeg8, libosmesa6, libpng12-0, libsane, libtiff5 | libtiff4, libv4l-0, libxcomposite1, libxcursor1, libxi6, libxinerama1, libxrandr2, libxrender1, libxslt1.1, libxt6, libxxf86vm1, p11-kit-modules, unixodbc, wine-gecko2.36, wine-mono4.5.6
+Conflicts: wine-amd64
+Filename: pool/free/wine-rt-amd64_1.7.41-1~kxstudio1_amd64.deb
+Size: 30263276
+MD5sum: 265c74781ee3d86382d9c04fb46b15fa
+SHA1: 4e36c5f73ce273b3f503aefc7cd1aa98a0b298db
+SHA256: cf058c4501de45697f9e070133b7a4987dfcb0832f92897e5f69ec704e8e980b
+SHA512: fe2e3145e0698990788181bf2331da0f19b57ca1f88c40dab2ed097c765b247d449724a2baaba9d28bd1046adce8afa510d38719c468ef1ec31b5d4f76842fd8
+Description: Microsoft Windows Compatibility Layer (64-bit support)
+ Wine is a compatibility layer for running Windows applications on Linux.
+ Applications are run at full speed without the need of cpu emulation. Wine
+ does not require Microsoft Windows, however it can use native system dll
+ files in place of its own if they are available.
+ .
+ This package includes a program loader for running unmodified Windows
+ executables as well as the Wine project's free version of the Windows API for
+ running programs ported from Windows.
+ .
+ This package provides support for loading 64-bit x86 Windows applications
+Multi-Arch: foreign
+Homepage: http://www.winehq.org/
+
+Package: wine-rt-dev
+Priority: optional
+Section: libdevel
+Installed-Size: 28416
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: wine-rt
+Version: 1:1.7.41-1~kxstudio1
+Replaces: wine-dev
+Provides: wine-dev
+Depends: libc6-dev, wine-rt-amd64 (= 1:1.7.41-1~kxstudio1)
+Pre-Depends: dpkg (>= 1.14.12ubuntu3)
+Conflicts: wine-dev
+Filename: pool/free/wine-rt-dev_1.7.41-1~kxstudio1_amd64.deb
+Size: 3320050
+MD5sum: 2ae7ac427639c33d35741dcc0aa30fb9
+SHA1: dc8e4c5ee9df744d66c4ae9a83ced4dd83916496
+SHA256: b315f1208a24913e49c747ff447522e7900d0de55c77ce92fbab41502b2ecb98
+SHA512: da59c4d357c3b50b80662b655be1b7daaec87602fa5ac98304a058c5254f8a2b1d1f897dccdaaa394f6103be669a754f358ff223f5b8164e29d788780233dc38
+Description: Microsoft Windows Compatibility Layer (Development files)
+ Wine is a compatibility layer for running Windows applications on Linux.
+ Applications are run at full speed without the need of cpu emulation. Wine
+ does not require Microsoft Windows, however it can use native system dll
+ files in place of its own if they are available.
+ .
+ This package consists of the development files needed to compile programs
+ using wine's free version of the Microsoft Windows API.
+Homepage: http://www.winehq.org/
+
+Package: calf-plugins
+Priority: extra
+Section: sound
+Installed-Size: 54536
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: calf-kxstudio
+Version: 1:0.0.19-1kxstudio2
+Depends: libatk1.0-0 (>= 1.29.3), libc6 (>= 2.7), libcairo2 (>= 1.2.4), libexpat1 (>= 1.95.8), libfontconfig1 (>= 2.8.0), libfreetype6 (>= 2.2.1), libgcc1 (>= 1:4.1.1), libglib2.0-0 (>= 2.16.0), libgtk2.0-0 (>= 2.14.0), libjack-jackd2-0 | libjack0, libpango1.0-0 (>= 1.14.0), libstdc++6 (>= 4.6), gtk2-engines-pixbuf
+Filename: pool/free/calf-plugins_0.0.19-1kxstudio2_amd64.deb
+Size: 24429448
+MD5sum: cbee8e29f0bea7ede7d586b766e5989c
+SHA1: 52fb695c0f3c716eae3fb4721356456c216919c2
+SHA256: fe92cf5febefa04f157133be42fd560a90d246d9e498301f1be75a39c0fa6003
+SHA512: f8b53d2407391037011a5b1c389e3c60f835e05d0b4281bba69fca2a59bc5315c03039eb4a42e644f0a75b1c7454f4ac95414d4d99b1ef97c3fd880b68fdeea5
+Description: Calf Studiogear - audio effects and sound generators
+ The Calf plugins include all todays frequently used studio effects
+ along with some feature-rich sound processors.
+ .
+ The Calf Rack offers you all Calf effects and synthesizers in an
+ easy-to-use studio rack. Wire the effects trough Jack to build your own
+ studio environment and trigger the sound processors live or through a
+ MIDI sequencer or tracker.
+ .
+ This package provides the KXStudio's custom calf version, which
+ adds back LADSPA, DSSI and LV2 external-UI support removed by upstream.
+Homepage: http://calf.sourceforge.net/
+
+Package: libjack0
+Priority: optional
+Section: libs
+Installed-Size: 120
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Source: jack-audio-connection-kit
+Version: 1:0.124.2~20140820-1~kxstudio1
+Replaces: libjack-0.116
+Provides: libjack-0.116
+Depends: libc6 (>= 2.7), libdb5.1, libdbus-1-3 (>= 1.0.2)
+Pre-Depends: multiarch-support
+Suggests: jackd1 (= 1:0.124.2~20140820-1~kxstudio1)
+Conflicts: jackd1 (>> 1:0.124.2~20140820-1~kxstudio1), jackd1 (<< 1:0.124.2~20140820-1~kxstudio1), libjack-0.116
+Filename: pool/free/libjack0_0.124.2~20140820-1~kxstudio1_amd64.deb
+Size: 64740
+MD5sum: 835ec404246f85b7a0122a578e34f4c3
+SHA1: 75eaa00d96fb37198db72dc0b6ce433b0c6ad0c6
+SHA256: 55ee87fb9a4804c93ab5b6ae6b5442e26aa57442c76b41e04ae063abd83bf76e
+SHA512: 231c9a86969b8e6a5c2e1d69a6c128fbe95392f472c9c32ca334d25f2619611f20227ee29895cd5d3d00bfb5b738dc41390a2624bb7c8dde30185f34058742df
+Description: JACK Audio Connection Kit (libraries)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the shared libraries.
+Multi-Arch: same
+Homepage: http://jackaudio.org/
+
+Package: libgd2-xpm
+Priority: optional
+Section: libs
+Installed-Size: 611
+Maintainer: GD team <pkg-gd-devel@lists.alioth.debian.org>
+Architecture: amd64
+Source: libgd2
+Version: 2.0.36~rc1~dfsg-6.1
+Provides: libgd2
+Depends: libc6 (>= 2.11), libfontconfig1 (>= 2.9.0), libfreetype6 (>= 2.2.1), libjpeg8 (>= 8c), libpng12-0 (>= 1.2.13-4), libx11-6, libxpm4, zlib1g (>= 1:1.1.4)
+Pre-Depends: multiarch-support
+Suggests: libgd-tools
+Conflicts: libgd2, libgd2-noxpm
+Filename: pool/free/libgd2-xpm_2.0.36~rc1~dfsg-6.1_amd64.deb
+Size: 231678
+MD5sum: a22622afe89738f750a7a33ce3f026a5
+SHA1: 9967b0dc233ca05c94584bf40bef2d681f746e94
+SHA256: 009ec00612b6198dff6bf01bfa1848717d8d21d970e144d8af195d2dc27d71ad
+SHA512: 76e9214c6267b08b119993bc236d8cdf2daa67684913e25572da62b4f53a004b161d56eb0afe6329df5015f8d3218ae1bbda971f9eff4e66fae9e531f2cacbd4
+Description: GD Graphics Library version 2
+ GD is a graphics library. It allows your code to quickly draw images
+ complete with lines, arcs, text, multiple colours, cut and paste from
+ other images, flood fills, and write out the result as a PNG file.
+ This is particularly useful in World Wide Web applications, where PNG is
+ one of the formats accepted for inline images by most browsers.
+ .
+ This is the runtime package of the library, built with XPM (X pixmap)
+ and fontconfig support.
+Multi-Arch: same
+Homepage: http://www.libgd.org/
+
+Package: wine-rt
+Priority: optional
+Section: otherosfs
+Installed-Size: 5968
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Version: 1:1.7.41-1~kxstudio1
+Replaces: wine, wine1.0, wine1.2, wine1.3, wine1.4, wine1.5, wine1.6, wine1.7
+Provides: wine
+Depends: debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.4), libgettextpo0, wine-rt-amd64 (= 1:1.7.41-1~kxstudio1), binfmt-support (>= 1.1.2), procps, util-linux, wine-rt-i386 (= 1:1.7.41-1~kxstudio1)
+Pre-Depends: dpkg (>= 1.15.7.2~)
+Recommends: cups-bsd, gnome-exe-thumbnailer | kde-runtime, ttf-droid | fonts-droid, ttf-liberation | fonts-liberation, ttf-mscorefonts-installer, ttf-umefont | fonts-horai-umefont, ttf-unfonts-core | fonts-unfonts-core, ttf-wqy-microhei, winetricks, xdg-utils
+Suggests: dosbox:any, winbind
+Conflicts: wine1.0, wine1.2, wine1.3, wine1.4, wine1.5, wine1.6, wine1.7
+Filename: pool/free/wine-rt_1.7.41-1~kxstudio1_amd64.deb
+Size: 2451754
+MD5sum: 09c4032e105e5201f83bab78898c702e
+SHA1: afa4b9c0de3d765729e11c1f4314ea1227de8c08
+SHA256: 3e6efa0d2da3b06e10acd007069e1e91ff28d5af906e77f19e4d9eaa1273a8e0
+SHA512: b53c88946acc9687988d359ae96810f9732e2fa6aa6d9f48cdb184e7c9ebbd000e4dfd3f801729d2f176c5d8b382864acb3b052531137179c035766d1aed39bd
+Description: Microsoft Windows Compatibility Layer (Binary Emulator and Library)
+ Wine is a compatibility layer for running Windows applications on Linux.
+ Applications are run at full speed without the need of cpu emulation. Wine
+ does not require Microsoft Windows, however it can use native system dll
+ files in place of its own if they are available.
+ .
+ This package includes a program loader for running unmodified Windows
+ executables as well as the Wine project's free version of the Windows API for
+ running programs ported from Windows.
+Multi-Arch: allowed
+Homepage: http://www.winehq.org/
+
+Package: kxstudio-repos
+Priority: optional
+Section: metapackages
+Installed-Size: 27
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: all
+Version: 9.1.0~kxstudio1
+Depends: apt-transport-https
+Pre-Depends: software-properties-common, wget, libc6 (>= 2.19~)
+Filename: pool/free/kxstudio-repos_9.1.0~kxstudio1_all.deb
+Size: 5490
+MD5sum: d507724d13248b5fa70d252ceaf9eb0f
+SHA1: d2fb6bb2e173162e0ca0ff4270354d3f7e07b1b9
+SHA256: 0d73e22b1bad6eaa8d241fb3acc231e213618d4e7390b9ce40b5d7b900ef335e
+SHA512: 2a9d9d1f90e6a3f8229e26b907e3dd530c7d1acfdd29c879300fe7e73339a5f25eaef0045b402f89c1571be436c41de1caefd647bced9690a8bc1b988ad81af4
+Description: KXStudio repositories
+ This package will enable the KXStudio repositories.
+
+Package: musescore
+Priority: optional
+Section: sound
+Installed-Size: 53872
+Maintainer: Toby Smithe <tsmithe@ubuntu.com>
+Architecture: amd64
+Version: 2.0.2-1kxstudio1
+Replaces: mscore (<< 0.9.6+dfsg-1)
+Provides: mscore
+Depends: libasound2 (>> 1.0.22), libc6 (>= 2.11), libdbus-1-3 (>= 1.4.0), libfontconfig1 (>= 2.8.0), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglib2.0-0 (>= 2.22.0), libice6 (>= 1:1.0.0), libportaudio2, libpulse0 (>= 0.9.16), libsm6, libstdc++6 (>= 4.6), libx11-6 (>= 0), libx11-xcb1, libxcb1 (>= 0), libxi6 (>= 2:1.2.99.4), libxrender1, zlib1g (>= 1:1.1.4), musescore-common (>= 2.0), xdg-utils, desktop-file-utils
+Recommends: pulseaudio-utils
+Suggests: timgm6mb-soundfont, fluid-soundfont-gm
+Breaks: mscore (<< 0.9.6+dfsg-1)
+Filename: pool/free/musescore_2.0.2-1kxstudio1_amd64.deb
+Size: 16695190
+MD5sum: db0e3bc9eb3d969e868ad317573dd553
+SHA1: df2a81cbc15c36dacb6ffae272ac750309a07559
+SHA256: 1cc90a6412a16b42c366a1dc890a8ed73cebe91ef417d1ccc683d479ef82e656
+SHA512: a1bf6da2e3c37f7f0a925c0847f6170da89b459cbc3f51b3e886cd9927fb9dd87975a07b69751b444fa6eed9784e2dce6ebb7b2270de471afe44844badc6b611
+Description: Full featured WYSIWYG score editor
+ MuseScore is a free WYSIWYG music score typesetter for Linux,
+ licenced under GNU GPL. Features:
+  * WYSIWYG, notes are entered on a "virtual note sheet"
+  * unlimited number of staves
+  * up to four voices/staff
+  * easy and fast note entry with mouse, keyboard or midi
+  * integrated sequencer and FluidSynth software synthesizer
+  * import and export of MusicXml and standard midifiles (SMF)
+  * platform independent code for Linux, Windows and Mac
+Homepage: http://www.musescore.org/
+

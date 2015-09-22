@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+VERSION=$(shell ls | grep \.run | head -n 1 | awk 'sub("bit-","\n")' | tail -n 1 | awk 'sub(".run","\n")' | head -n 1)
+
+ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH),amd64)
+ARDOUR_FILE=Ardour_64bit-$(VERSION).run
+else
+ARDOUR_FILE=Ardour_32bit-$(VERSION).run
+endif
+
+override_dh_auto_install:
+	chmod +x $(ARDOUR_FILE)
+	./$(ARDOUR_FILE) --target ./tmp --noexec
+	chmod -x $(ARDOUR_FILE)
+
+	cd tmp && \
+	tar -xf *.tar.bz2
+
+	rm    tmp/Ardour_*-*/bin/ardour4
+	rm    tmp/Ardour_*-*/bin/*.uninstall.sh
+	rm -r tmp/Ardour_*-*/etc/fonts/conf.d/
+# 	rm    tmp/Ardour_*-*/lib/libQt*
+
+# 	cp /opt/kxstudio/lib/suil-0/*_in_gtk2.so tmp/Ardour_*-*/lib/
+
+override_dh_auto_clean:
+	chmod -x $(ARDOUR_FILE) || true
+	rm -rf ./tmp
+
+override_dh_strip:
+	dh_strip --dbg-package=ardour4-dbg
+
+override_dh_shlibdeps:
+	env LD_LIBRARY_PATH=$(CURDIR)/debian/ardour4/opt/ardour4/lib:$(LD_LIBRARY_PATH) dh_shlibdeps
+
+%:
+	dh $@

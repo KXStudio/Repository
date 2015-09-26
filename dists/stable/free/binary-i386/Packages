@@ -320,20 +320,39 @@ Description: Multi technology native host for linux (VST)
 Package: kxstudio-repos
 Priority: optional
 Section: metapackages
-Installed-Size: 27
+Installed-Size: 11
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: all
-Version: 9.1.0~kxstudio1
+Version: 9.2.0~kxstudio1
 Depends: apt-transport-https
 Pre-Depends: software-properties-common, wget, libc6 (>= 2.19~)
-Filename: pool/free/kxstudio-repos_9.1.0~kxstudio1_all.deb
-Size: 5490
-MD5sum: d507724d13248b5fa70d252ceaf9eb0f
-SHA1: d2fb6bb2e173162e0ca0ff4270354d3f7e07b1b9
-SHA256: 0d73e22b1bad6eaa8d241fb3acc231e213618d4e7390b9ce40b5d7b900ef335e
-SHA512: 2a9d9d1f90e6a3f8229e26b907e3dd530c7d1acfdd29c879300fe7e73339a5f25eaef0045b402f89c1571be436c41de1caefd647bced9690a8bc1b988ad81af4
+Filename: pool/free/kxstudio-repos_9.2.0~kxstudio1_all.deb
+Size: 5528
+MD5sum: 1944a64df44f5e6589a9ef5e8457cffb
+SHA1: d5f4ad3c9bee9545d7d3bd09ef74748483450689
+SHA256: 8f987b74b6d6b1b86ddda492145b73d98b2df6045569ca3a7ac932695158c77e
+SHA512: 43549612af343d46a17fd8e3327fcc1ebb0c0b4574e5c6a204330217a63495184efa771996895bee11c14b6519861b006e97aafb746d34046a826745819f59ad
 Description: KXStudio repositories
  This package will enable the KXStudio repositories.
+
+Package: kxstudio-repos-gcc5
+Priority: optional
+Section: metapackages
+Installed-Size: 3
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: all
+Source: kxstudio-repos
+Version: 9.2.0~kxstudio1
+Depends: kxstudio-repos
+Pre-Depends: libglibmm-2.4-1v5
+Filename: pool/free/kxstudio-repos-gcc5_9.2.0~kxstudio1_all.deb
+Size: 2674
+MD5sum: 1c76a8c7fef92836335cce64970404f8
+SHA1: bddff5e94d6ce3218cac491de7d434855d24aa0e
+SHA256: eac016af1b96f016396189a3176ae05aad4b90055f43d1f7ffa16f0249e589fc
+SHA512: 1541ce33b9cbbeb24eb86854e51609ceb7dac30730afafdf9ee620078fb80e324db67a7f6220de861c617bf860ddc88ce307b53ba5ffe4efe8b452028ebedc15
+Description: KXStudio repositories (GCC5 Packages)
+ This package will enable the GCC5 packages for the KXStudio repositories.
 
 Package: libdb5.1
 Priority: standard

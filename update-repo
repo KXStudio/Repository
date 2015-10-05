@@ -6,8 +6,8 @@ rm -f pool/*/*.deb
 ln -s $(pwd)/packages/free/*.deb pool/free/
 ln -s $(pwd)/packages/free-v5/*.deb pool/free-v5/
 # ln -s $(pwd)/packages/non-free/*.deb pool/non-free/
-ln -s $(pwd)/packages/non-free_bitwig/*.deb pool/non-free_bitwig/
-ln -s $(pwd)/packages/non-free_tracktion/*.deb pool/non-free_tracktion/
+# ln -s $(pwd)/packages/non-free_bitwig/*.deb pool/non-free_bitwig/
+# ln -s $(pwd)/packages/non-free_tracktion/*.deb pool/non-free_tracktion/
 
 apt-ftparchive -a amd64 packages pool/free > dists/stable/free/binary-amd64/Packages
 apt-ftparchive -a i386  packages pool/free > dists/stable/free/binary-i386/Packages

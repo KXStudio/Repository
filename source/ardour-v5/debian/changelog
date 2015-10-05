@@ -1,3 +1,9 @@
+ardour4-official-v5 (1:4.2.546-1kxstudio1v5) stable; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Mon, 05 Oct 2015 11:48:53 +0200
+
 ardour4-official-v5 (1:4.2.358-1kxstudio1v5) stable; urgency=medium
 
   * GCC5-ABI variant

@@ -32,7 +32,7 @@ ETC_DIR=$INSTALL_DIR/etc
 export ARDOUR_BUNDLED=true
 
 # NSM needs a path to this script
-export ARDOUR_SELF="$0"
+export ARDOUR_SELF="ardour4"
 
 # edited
 
@@ -46,7 +46,7 @@ export LD_LIBRARY_PATH=$INSTALL_DIR/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
 if [ "T" = "$DEBUG" ]; then
 	export ARDOUR_INSIDE_GDB=1
-	exec gdb $INSTALL_DIR/bin/ardour-4.2.358
+	exec gdb $INSTALL_DIR/bin/ardour-4.2.546
 else
-	exec $INSTALL_DIR/bin/ardour-4.2.358 $ARGS
+	exec $INSTALL_DIR/bin/ardour-4.2.546 $ARGS
 fi

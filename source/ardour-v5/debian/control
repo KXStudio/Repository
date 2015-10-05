@@ -9,8 +9,7 @@ Build-Depends: cdbs,
  libasound2-dev,
  libjack-dev | libjack-jackd2-dev,
  libice-dev, libsm-dev,
- libx11-dev, libxext-dev, libxinerama-dev, libxrender-dev,
- suil-libs
+ libx11-dev, libxext-dev, libxinerama-dev, libxrender-dev
 Standards-Version: 3.9.4
 DM-Upload-Allowed: yes
 Homepage: http://www.ardour.org/

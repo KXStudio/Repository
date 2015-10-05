@@ -19,9 +19,6 @@ override_dh_auto_install:
 	rm    tmp/Ardour_*-*/bin/ardour4
 	rm    tmp/Ardour_*-*/bin/*.uninstall.sh
 	rm -r tmp/Ardour_*-*/etc/fonts/conf.d/
-# 	rm    tmp/Ardour_*-*/lib/libQt*
-
-# 	cp /opt/kxstudio/lib/suil-0/*_in_gtk2.so tmp/Ardour_*-*/lib/
 
 override_dh_auto_clean:
 	chmod -x $(ARDOUR_FILE) || true

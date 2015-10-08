@@ -1,0 +1,6 @@
+Archive: gcc5
+Component: non-free
+Origin: KXStudio (Extra, GCC5)
+Label: KXStudio (Extra, GCC5)
+Architecture: amd64
+Description: Extra, GCC5 KXStudio packages for Debian

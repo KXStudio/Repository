@@ -6,6 +6,7 @@ rm -f pool/*/*.deb
 ln -s $(pwd)/packages/free/*.deb pool/free/
 ln -s $(pwd)/packages/free-v5/*.deb pool/free-v5/
 # ln -s $(pwd)/packages/non-free/*.deb pool/non-free/
+# ln -s $(pwd)/packages/non-free-v5/*.deb pool/non-free-v5/
 # ln -s $(pwd)/packages/non-free_bitwig/*.deb pool/non-free_bitwig/
 # ln -s $(pwd)/packages/non-free_tracktion/*.deb pool/non-free_tracktion/
 
@@ -18,6 +19,9 @@ apt-ftparchive -a i386  packages pool/free-v5 > dists/gcc5/free/binary-i386/Pack
 apt-ftparchive -a amd64 packages pool/non-free > dists/stable/non-free/binary-amd64/Packages
 apt-ftparchive -a i386  packages pool/non-free > dists/stable/non-free/binary-i386/Packages
 
+apt-ftparchive -a amd64 packages pool/non-free-v5 > dists/gcc5/non-free/binary-amd64/Packages
+apt-ftparchive -a i386  packages pool/non-free-v5 > dists/gcc5/non-free/binary-i386/Packages
+
 # apt-ftparchive packages pool/non-free_bitwig    >> dists/stable/non-free/binary-amd64/Packages
 # apt-ftparchive packages pool/non-free_tracktion >> dists/stable/non-free/binary-amd64/Packages
 
@@ -29,6 +33,9 @@ cat dists/gcc5/free/binary-i386/Packages  | gzip -c -9 > dists/gcc5/free/binary-
 
 cat dists/stable/non-free/binary-amd64/Packages | gzip -c -9 > dists/stable/non-free/binary-amd64/Packages.gz
 cat dists/stable/non-free/binary-i386/Packages  | gzip -c -9 > dists/stable/non-free/binary-i386/Packages.gz
+
+cat dists/gcc5/non-free/binary-amd64/Packages | gzip -c -9 > dists/gcc5/non-free/binary-amd64/Packages.gz
+cat dists/gcc5/non-free/binary-i386/Packages  | gzip -c -9 > dists/gcc5/non-free/binary-i386/Packages.gz
 
 rm -f dists/stable/Release dists/stable/Release.gpg
 rm -f dists/gcc5/Release dists/gcc5/Release.gpg

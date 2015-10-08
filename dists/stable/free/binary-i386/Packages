@@ -323,15 +323,15 @@ Section: metapackages
 Installed-Size: 11
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: all
-Version: 9.2.0~kxstudio1
+Version: 9.2.1~kxstudio1
 Depends: apt-transport-https
 Pre-Depends: software-properties-common, wget, libc6 (>= 2.19~)
-Filename: pool/free/kxstudio-repos_9.2.0~kxstudio1_all.deb
-Size: 5528
-MD5sum: 1944a64df44f5e6589a9ef5e8457cffb
-SHA1: d5f4ad3c9bee9545d7d3bd09ef74748483450689
-SHA256: 8f987b74b6d6b1b86ddda492145b73d98b2df6045569ca3a7ac932695158c77e
-SHA512: 43549612af343d46a17fd8e3327fcc1ebb0c0b4574e5c6a204330217a63495184efa771996895bee11c14b6519861b006e97aafb746d34046a826745819f59ad
+Filename: pool/free/kxstudio-repos_9.2.1~kxstudio1_all.deb
+Size: 5532
+MD5sum: 629629d3bb3ff07a27aad639e4d676b6
+SHA1: 33e52255566b74e8e7e0b3b76d44a05daf5f6129
+SHA256: d4b3bfdda05c99d1d59babe059677e576a4512c46bdde0ace098fc04cfcdc772
+SHA512: 03e1f8691ae370c269714f49366ce963b577482edaaec34d50bcf1fb1856b24a0e7c3f2f8ab25192a5e2f52dfef17902d519c336de2d5a4aeed86e4dfaca1eb8
 Description: KXStudio repositories
  This package will enable the KXStudio repositories.
 
@@ -342,15 +342,15 @@ Installed-Size: 3
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: all
 Source: kxstudio-repos
-Version: 9.2.0~kxstudio1
+Version: 9.2.1~kxstudio1
 Depends: kxstudio-repos
 Pre-Depends: libglibmm-2.4-1v5
-Filename: pool/free/kxstudio-repos-gcc5_9.2.0~kxstudio1_all.deb
-Size: 2674
-MD5sum: 1c76a8c7fef92836335cce64970404f8
-SHA1: bddff5e94d6ce3218cac491de7d434855d24aa0e
-SHA256: eac016af1b96f016396189a3176ae05aad4b90055f43d1f7ffa16f0249e589fc
-SHA512: 1541ce33b9cbbeb24eb86854e51609ceb7dac30730afafdf9ee620078fb80e324db67a7f6220de861c617bf860ddc88ce307b53ba5ffe4efe8b452028ebedc15
+Filename: pool/free/kxstudio-repos-gcc5_9.2.1~kxstudio1_all.deb
+Size: 2802
+MD5sum: 0b9ffbc61b95c484e247ad1edbc26d0d
+SHA1: 1a3cc75d4c68bbdfb82adc5d7ed904d3840b0e22
+SHA256: bb0d906e7daddf5bb6866b50e6269116af02327ebc904e87c11feaf9cdb5bad9
+SHA512: ec90de9a225387ab9f85f222847d0b4b7943b062da0f73b0a3a18c7b0b2068793f087158567baeb59a9ed6f0cdfc3499f62680e1523621bfed4d72531e2877b5
 Description: KXStudio repositories (GCC5 Packages)
  This package will enable the GCC5 packages for the KXStudio repositories.
 

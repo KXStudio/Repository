@@ -121,39 +121,19 @@ Homepage: http://calf.sourceforge.net/
 Package: carla-bridge-wine64
 Priority: optional
 Section: sound
-Installed-Size: 130
+Installed-Size: 141
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: amd64
 Source: carla-bridge-wine
-Version: 1.9.5+git20150423
-Depends: wine-rt-amd64 | wine-amd64, libjack-jackd2-0 | libjack0
-Recommends: carla-bridge-win64
-Filename: pool/free/carla-bridge-wine64_1.9.5+git20150423_amd64.deb
-Size: 16938
-MD5sum: 0191cec79456cc37c2186bdb902e5c45
-SHA1: 951abd0446caa3eb1e3764f81fedbbf9f9ef7dae
-SHA256: c7fe852197e693f4f8dbeb113d4286e92d902a3bbc873a6d5af43d1038381209
-SHA512: 9a792d5c6bf34ad6ac34500aedab80e13a89c5300f4ce73dd98811ed98df17bc990426c75a7550de2608106352bc3138936ec9f7d1e6dfe36ffa5cbf3c86b04e
-Description: carla win64 bridge (wine DLL)
- This package provides the wine DLL needed for the Carla win64 bridge.
-Multi-Arch: foreign
-
-Package: carla-bridge-wine64
-Priority: optional
-Section: sound
-Installed-Size: 142
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: amd64
-Source: carla-bridge-wine
-Version: 2:1.9.5+git20150722.2
+Version: 2:1.9.5+git20151011
 Depends: wine-rt-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
 Recommends: carla-bridge-win64
-Filename: pool/free/carla-bridge-wine64_1.9.5+git20150722.2_amd64.deb
-Size: 21066
-MD5sum: 30ad62e72a074c689ef9d43e4db4b786
-SHA1: b3e031937c96d4ed4581be50564c0c2a63a6a285
-SHA256: 758d95f42db46e67abc2da3fed032c503db53b9b0c3542ecbe6f154b232cc4db
-SHA512: 82e32cd60c03fb21697b058819760ea4b7d9373758081c609b675f2c717671b9c4570f720d9dd1c6d8e8043b31877a97ffbb65ccf179acc0eb9ff95fa80202d2
+Filename: pool/free/carla-bridge-wine64_1.9.5+git20151011_amd64.deb
+Size: 21124
+MD5sum: 6f57b98b187f6e97fcf9851baa1956c8
+SHA1: 44e41103c12009790dc5f128b019b6b5149a5a65
+SHA256: 017dff795c608bfad90c6820dca42a05a9ebe0d228393b7723d120701125f046
+SHA512: 04bed1665ebcc077c05db33f1885769b3cac6233e4f8f6c951f52f8617e4e7bf3064e2bf67cd393be6b6bd47916da51a3e4be389fecf48288d89fa27204ae3cf
 Description: carla win64 bridge (wine DLL)
  This package provides the wine DLL needed for the Carla win64 bridge.
 Multi-Arch: foreign

@@ -75,7 +75,7 @@ Description: digital audio workstation (graphical gtk2 interface)
 
 Package: ardour4-dbg
 Architecture: any
-Section: sound
+Section: debug
 Depends: ardour4
 Description: digital audio workstation (debugging symbols)
  This package contains the debug symbols for Ardour4.

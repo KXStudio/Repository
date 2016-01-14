@@ -6,7 +6,7 @@ checkdebug(){
     for arg in "$@"
         do
             case "$arg" in
-                --debug )
+                --gdb )
                     DEBUG="T"
             esac
         done
@@ -45,7 +45,7 @@ export LD_LIBRARY_PATH=$INSTALL_DIR/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
 if [ "T" = "$DEBUG" ]; then
 	export ARDOUR_INSIDE_GDB=1
-	exec gdb $INSTALL_DIR/bin/ardour-4.4.143
+	exec gdb $INSTALL_DIR/bin/ardour-4.6.22
 else
-	exec $INSTALL_DIR/bin/ardour-4.4.143 "$@"
+	exec $INSTALL_DIR/bin/ardour-4.6.22 "$@"
 fi

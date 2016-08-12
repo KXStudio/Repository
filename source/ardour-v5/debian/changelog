@@ -1,3 +1,9 @@
+ardour-official-v5 (1:5.0.0-1kxstudio1v5) stable; urgency=medium
+
+  * Update to 5.0.0
+
+ -- falkTX <falktx@gmail.com>  Fri, 12 Aug 2016 19:54:55 +0200
+
 ardour4-official-v5 (1:4.7.0-1kxstudio1v5) stable; urgency=medium
 
   * Update

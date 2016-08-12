@@ -1,4 +1,0 @@
-?package(ardour4):needs="X11" section="Applications/Sound" \
-  hints="Professional,Featureful,WAV,GTK,MIDI,Music Editor,DAW,Multitrack,JACK,LADSPA" \
-  title="Ardour Digital Audio Workstation 4" command="/usr/bin/ardour4"
-

@@ -14,21 +14,25 @@ override_dh_auto_install:
 	chmod -x $(ARDOUR_FILE)
 
 	cd tmp && \
-	tar -xf *.tar.bz2
+	tar -xf *.tar
 
-	rm    tmp/Ardour_*-*/bin/ardour4
+	rm    tmp/Ardour_*-*/bin/ardour5
 	rm    tmp/Ardour_*-*/bin/*.uninstall.sh
 	rm -r tmp/Ardour_*-*/etc/fonts/conf.d/
+	rm -r tmp/Ardour_*-*/lib/LV2/3D_delay.lv2
+	rm -r tmp/Ardour_*-*/lib/LV2/dyno-mite.lv2
+	rm -r tmp/Ardour_*-*/lib/LV2/gvplus.lv2
+	rm -r tmp/Ardour_*-*/lib/LV2/XT-*.lv2
 
 override_dh_auto_clean:
 	chmod -x $(ARDOUR_FILE) || true
 	rm -rf ./tmp
 
 override_dh_strip:
-	dh_strip --dbg-package=ardour4-dbg
+	dh_strip --dbg-package=ardour-dbg
 
 override_dh_shlibdeps:
-	env LD_LIBRARY_PATH=$(CURDIR)/debian/ardour4/opt/ardour4/lib:$(LD_LIBRARY_PATH) dh_shlibdeps
+	env LD_LIBRARY_PATH=$(CURDIR)/debian/ardour/opt/ardour/lib:$(LD_LIBRARY_PATH) dh_shlibdeps
 
 %:
 	dh $@

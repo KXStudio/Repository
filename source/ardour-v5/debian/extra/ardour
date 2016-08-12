@@ -20,7 +20,7 @@ checkdebug "$@"
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 export PREBUNDLE_ENV="$(env)"
 
-BIN_DIR=/opt/ardour4/bin
+BIN_DIR=/opt/ardour/bin
 INSTALL_DIR=$(dirname $BIN_DIR)
 LIB_DIR=$INSTALL_DIR/lib
 ETC_DIR=$INSTALL_DIR/etc
@@ -31,12 +31,12 @@ ETC_DIR=$INSTALL_DIR/etc
 export ARDOUR_BUNDLED=true
 
 # NSM needs a path to this script
-export ARDOUR_SELF="ardour4"
+export ARDOUR_SELF="ardour"
 
 # edited
 
 export LXVST_PATH="$VST_PATH"
-export PATH=/opt/ardour4/bin:$PATH
+export PATH=/opt/ardour/bin:$PATH
 
 # Disable extra modules from being loaded by gtk (example, libcanberra-gtk-module.so)
 export GTK_MODULES=""
@@ -45,7 +45,7 @@ export LD_LIBRARY_PATH=$INSTALL_DIR/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
 if [ "T" = "$DEBUG" ]; then
 	export ARDOUR_INSIDE_GDB=1
-	exec gdb $INSTALL_DIR/bin/ardour-4.7.0
+	exec gdb $INSTALL_DIR/bin/ardour-5.0.0
 else
-	exec $INSTALL_DIR/bin/ardour-4.7.0 "$@"
+	exec  $INSTALL_DIR/bin/ardour-5.0.0 "$@"
 fi

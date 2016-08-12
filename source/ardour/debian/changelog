@@ -1,3 +1,10 @@
+ardour-official (1:5.0.0-1kxstudio1) stable; urgency=medium
+
+  * Update to 5.0.0
+  * Generic ardour package
+
+ -- falkTX <falktx@gmail.com>  Fri, 12 Aug 2016 19:20:51 +0200
+
 ardour4-official (1:4.7.0-1kxstudio1) stable; urgency=medium
 
   * Update

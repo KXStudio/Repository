@@ -1,4 +1,4 @@
-Source: ardour4-official
+Source: ardour-official
 Section: sound
 Priority: extra
 Maintainer: falkTX <falktx@gmail.com>
@@ -14,10 +14,12 @@ Standards-Version: 3.9.4
 DM-Upload-Allowed: yes
 Homepage: http://www.ardour.org/
 
-Package: ardour4
+Package: ardour
 Architecture: any
 Section: sound
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: ardour2, ardour3, ardour4
+Replaces: ardour2, ardour3, ardour4
 Description: digital audio workstation (graphical gtk2 interface)
  Ardour is a multichannel hard disk recorder (HDR) and digital audio
  workstation (DAW).  It can be used to control, record, edit and run
@@ -73,10 +75,12 @@ Description: digital audio workstation (graphical gtk2 interface)
  Further information can be
  found at <http://ardour.org/>.
 
-Package: ardour4-dbg
+Package: ardour-dbg
 Architecture: any
 Section: debug
-Depends: ardour4
+Depends: ardour
+Conflicts: ardour2-dbg, ardour3-dbg, ardour4-dbg
+Replaces: ardour2-dbg, ardour3-dbg, ardour4-dbg
 Description: digital audio workstation (debugging symbols)
  This package contains the debug symbols for Ardour4.
  .

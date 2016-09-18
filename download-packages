@@ -1,0 +1,28 @@
+#!/bin/bash
+
+REPO_URL="http://kxstudio.linuxaudio.org/repo/pool"
+#REPO_URL="https://github.com/KXStudio/Repository/releases/download/initial"
+
+set -e
+
+# free
+cd packages/free/
+for pkg in $(cat ../../dists/stable/free/binary-amd64/Packages | grep jack | awk 'sub("Filename: pool/free/","")'); do
+  #pkg=$(echo $pkg | awk 'gsub("~",".")')
+  wget -c ${REPO_URL}/${pkg}
+done
+for pkg in $(cat ../../dists/stable/free/binary-i386/Packages | grep jack | awk 'sub("Filename: pool/free/","")'); do
+  #pkg=$(echo $pkg | awk 'gsub("~",".")')
+  wget -c ${REPO_URL}/${pkg}
+done
+cd ../..
+
+# free-v5
+cd packages/free-v5/
+for pkg in $(cat ../../dists/gcc5/free/binary-amd64/Packages | awk 'sub("Filename: pool/free-v5/","")'); do
+  wget -c ${REPO_URL}/free-v5/${pkg}
+done
+for pkg in $(cat ../../dists/gcc5/free/binary-i386/Packages | awk 'sub("Filename: pool/free-v5/","")'); do
+  wget -c ${REPO_URL}/free-v5/${pkg}
+done
+cd ../..

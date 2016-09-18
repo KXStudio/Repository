@@ -51,7 +51,5 @@ mv Release.gcc5 dists/gcc5/Release
 
 rm -f pool/*/*.deb
 
-gpg --default-key 29213837 --enable-dsa2 --output dists/stable/Release.gpg -ba dists/stable/Release
-gpg --default-key 29213837 --enable-dsa2 --output dists/gcc5/Release.gpg -ba dists/gcc5/Release
-
-# 2048R/0AA38242
+gpg --default-key 0AA38242 --output dists/stable/Release.gpg -ba dists/stable/Release
+gpg --default-key 0AA38242 --output dists/gcc5/Release.gpg -ba dists/gcc5/Release

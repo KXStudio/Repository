@@ -1,4 +1,8 @@
 debian/ardour.desktop usr/share/applications/
+debian/app*16px.png   usr/share/icons/hicolor/16x16/apps/
+debian/app*22px.png   usr/share/icons/hicolor/22x22/apps/
+debian/app*32px.png   usr/share/icons/hicolor/32x32/apps/
+debian/app*48px.png   usr/share/icons/hicolor/48x48/apps/
 debian/ardour.xml     usr/share/mime/packages/
 debian/extra/ardour   usr/bin/
 

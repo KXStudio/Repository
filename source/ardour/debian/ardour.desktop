@@ -5,6 +5,6 @@ Comment=Digital Audio Workstation
 Exec=/usr/bin/ardour
 Terminal=false
 Type=Application
-Icon=/opt/ardour/share/icons/ardour-app-icon_osx.png
+Icon=/opt/ardour/share/resources/Ardour-icon_512px.png
 Categories=AudioVideo;AudioEditing;Audio;Recorder;
 MimeType=application/x-ardour;

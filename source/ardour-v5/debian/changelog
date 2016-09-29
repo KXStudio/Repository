@@ -1,3 +1,10 @@
+ardour-official-v5 (1:5.3.5-1kxstudio2v5) stable; urgency=medium
+
+  * Add app icons
+  * Fix desktop file
+
+ -- falkTX <falktx@gmail.com>  Thu, 29 Sep 2016 15:16:58 +0200
+
 ardour-official-v5 (1:5.3.5-1kxstudio1v5) stable; urgency=medium
 
   * Update

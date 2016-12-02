@@ -1,3 +1,9 @@
+ardour-official (1:5.5.0-1kxstudio1) stable; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Thu, 01 Dec 2016 14:14:26 +0100
+
 ardour-official (1:5.3.4-1kxstudio2) stable; urgency=medium
 
   * Add app icons

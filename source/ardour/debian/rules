@@ -18,21 +18,25 @@ override_dh_auto_install:
 
 	rm    tmp/Ardour_*-*/bin/ardour5
 	rm    tmp/Ardour_*-*/bin/*.uninstall.sh
-	rm -r tmp/Ardour_*-*/etc/bash_completion.d/
-	rm -r tmp/Ardour_*-*/etc/fonts/
-	rm -r tmp/Ardour_*-*/etc/gtk-2.0/
-	rm -r tmp/Ardour_*-*/etc/pango/
-	rm -r tmp/Ardour_*-*/etc/xml/
+	rm -r tmp/Ardour_*-*/etc/bash_completion.d
+	rm -r tmp/Ardour_*-*/etc/fonts
+	rm -r tmp/Ardour_*-*/etc/gtk-2.0
+	rm -r tmp/Ardour_*-*/etc/xml
 	rm -r tmp/Ardour_*-*/lib/LV2/3D_delay.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/dyno-mite.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/gvplus.lv2
+	rm -r tmp/Ardour_*-*/lib/LV2/lv2core.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/Micro-Glide.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/XT-*.lv2
 
-	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/16x16/apps/
-	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/22x22/apps/
-	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/32x32/apps/
-	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/48x48/apps/
+	install -d $(CURDIR)/debian/ardour/usr/lib/lv2
+	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/16x16/apps
+	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/22x22/apps
+	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/32x32/apps
+	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/48x48/apps
+
+	mv tmp/Ardour_*-*/lib/LV2/*.lv2 $(CURDIR)/debian/ardour/usr/lib/lv2/
+	rm -rf tmp/Ardour_*-*/lib/LV2
 
 	cp debian/app*16px.png $(CURDIR)/debian/ardour/usr/share/icons/hicolor/16x16/apps/application-x-ardour.png
 	cp debian/app*22px.png $(CURDIR)/debian/ardour/usr/share/icons/hicolor/22x22/apps/application-x-ardour.png

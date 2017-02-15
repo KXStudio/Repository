@@ -17,7 +17,7 @@ Homepage: http://www.ardour.org/
 Package: ardour
 Architecture: any
 Section: sound
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
 Conflicts: ardour2, ardour3, ardour4
 Replaces: ardour2, ardour3, ardour4
 Description: digital audio workstation (graphical gtk2 interface)

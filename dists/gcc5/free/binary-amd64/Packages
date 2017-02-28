@@ -93,20 +93,20 @@ Homepage: http://www.ardour.org/
 Package: ardour
 Priority: extra
 Section: sound
-Installed-Size: 211283
+Installed-Size: 211373
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: amd64
 Source: ardour-official-v5
-Version: 1:5.6.51-1kxstudio1v5
+Version: 1:5.8.0-1kxstudio1v5
 Replaces: ardour2, ardour3, ardour4
 Depends: lv2-dev
 Conflicts: ardour2, ardour3, ardour4
-Filename: pool/free-v5/ardour_5.6.51-1kxstudio1v5_amd64.deb
-Size: 96401990
-MD5sum: 432294f9f6d81722eb87d981610d81b4
-SHA1: dfd9d8fab75c883189a55c594e7ef700c784e5ff
-SHA256: 6a6a9c0ffc55e768b89e4703a9c5ff1ef09cf596c85d151099dd15f9807becf7
-SHA512: cf3d05dd5004f0763b3b1b1bbe50103c840dd5473c16439b6bfe832e065f603164c5fb73f3fc6fff7df09d67121ee3e0682a4980f1c8b3535574c78d7db49acd
+Filename: pool/free-v5/ardour_5.8.0-1kxstudio1v5_amd64.deb
+Size: 96437630
+MD5sum: dc5e95532015f1f9c5ac3104484ab099
+SHA1: f2b1684ba8d110d1dc779ccad0d1478579c2ca95
+SHA256: 3ed2939104f0e3e8197b9537111a117269a0230846f190c4a2e463e7a340ff40
+SHA512: db69c172c0d0c9318b88b47ab6ad5b0c9248fc43d7a96424b1b512570b30a3f00381c6a07e4449c125a633154d60fcd0a981286e06a460512a3a72c13623679b
 Description: digital audio workstation (graphical gtk2 interface)
  Ardour is a multichannel hard disk recorder (HDR) and digital audio
  workstation (DAW).  It can be used to control, record, edit and run
@@ -170,16 +170,16 @@ Installed-Size: 105
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: amd64
 Source: ardour-official-v5
-Version: 1:5.6.51-1kxstudio1v5
+Version: 1:5.8.0-1kxstudio1v5
 Replaces: ardour2-dbg, ardour3-dbg, ardour4-dbg
 Depends: ardour
 Conflicts: ardour2-dbg, ardour3-dbg, ardour4-dbg
-Filename: pool/free-v5/ardour-dbg_5.6.51-1kxstudio1v5_amd64.deb
-Size: 28056
-MD5sum: 6b14962ddb8947dfb4d013aa8aa4b1a2
-SHA1: ef0955057e72a4c91a6e07f8b477faa69f12190a
-SHA256: 8762bd59674374109e0a11ded9b0bfe0167f5b3756cea687509efcfcd650aaa7
-SHA512: bdddc8bf61a8d21aca77383ab000de1deae5be48046c991073bd010758385aeb2d4b066aba832dc767178c64e404219b20723c1164beb4642c09b7db577f8d81
+Filename: pool/free-v5/ardour-dbg_5.8.0-1kxstudio1v5_amd64.deb
+Size: 28086
+MD5sum: e335b6679e09895124b4ecf75d1e90bf
+SHA1: 1bc9a3162f2366c6051cded4bd6567281a1ca6a2
+SHA256: 06a267bbb4cff40b31a938143a364f695dad69c05fd3208bdd50080bf9daf0f1
+SHA512: 02c0fe7cff7f514febb608ceffe1bee0bbaeeb7398f0846f5d986d8c2e763ad023b757b2493db1fb4e45e0e93e7bea5e5b3daca15b04ff5589371fa271dd959c
 Description: digital audio workstation (debugging symbols)
  This package contains the debug symbols for Ardour4.
  .

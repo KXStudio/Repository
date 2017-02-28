@@ -1,11 +1,11 @@
 #!/usr/bin/make -f
 
-VERSION=$(shell ls | grep \.run | head -n 1 | awk 'sub("bit-","\n")' | tail -n 1 | awk 'sub(".run","\n")' | head -n 1)
+VERSION=$(shell ls | grep \.run | head -n 1 | awk 'sub("-","\n")' | tail -n 1 | awk 'sub("-x86","\n")' | head -n 1)
 
 ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH),amd64)
-ARDOUR_FILE=Ardour_64bit-$(VERSION).run
+ARDOUR_FILE=Ardour-$(VERSION)-x86_64-gcc5.run
 else
-ARDOUR_FILE=Ardour_32bit-$(VERSION).run
+ARDOUR_FILE=Ardour-$(VERSION)-x86-gcc5.run
 endif
 
 override_dh_auto_install:

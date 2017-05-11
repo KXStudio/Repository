@@ -5,72 +5,72 @@ Codename: stable
 Architectures: amd64 i386
 Components: free non-free
 Description: Extra KXStudio packages for Debian
-Date: Tue, 28 Feb 2017 15:05:44 UTC
+Date: Thu, 11 May 2017 16:59:30 UTC
 MD5Sum:
- 7875371ccbe71b79ccc25b1758f125fd            52814 free/binary-amd64/Packages
- 294f73a4bf8a92cd26f935e12b175b95            14723 free/binary-amd64/Packages.gz
+ 35a71ae3dc6d59fb79ca90a8d36594eb            58130 free/binary-amd64/Packages
+ 13d41a653352f2c2590c9342d348dc7f            15935 free/binary-amd64/Packages.gz
  b7018d08ec0ef5f538b4c69284a67701              149 free/binary-amd64/Release
- 9b2521214715a4fd192fe2f701819c5a            51813 free/binary-i386/Packages
- f6603c7248dfd59a1c460ae11d821c6f            14416 free/binary-i386/Packages.gz
+ 87eb180eac371e1a45dc36e0f17406b2            57117 free/binary-i386/Packages
+ adb3e877fda2e97ca83196e4ce6a8a35            15905 free/binary-i386/Packages.gz
  5a1a2962616b44da60e90a6f8ae79b8f              148 free/binary-i386/Release
  d41d8cd98f00b204e9800998ecf8427e                0 free/i18n/Translation-en
  4059d198768f9f8dc9372dc1c54bc3c3               14 free/i18n/Translation-en.bz2
  d41d8cd98f00b204e9800998ecf8427e                0 non-free/binary-amd64/Packages
- 5ed5bdfe8bc79799b297cdfe2aea7459               20 non-free/binary-amd64/Packages.gz
+ 41ffed57e9f6237e1cad9948bb2a2c55               20 non-free/binary-amd64/Packages.gz
  59ed9d556a1f72875ade73a286dca5dc              153 non-free/binary-amd64/Release
  d41d8cd98f00b204e9800998ecf8427e                0 non-free/binary-i386/Packages
- 5ed5bdfe8bc79799b297cdfe2aea7459               20 non-free/binary-i386/Packages.gz
+ 41ffed57e9f6237e1cad9948bb2a2c55               20 non-free/binary-i386/Packages.gz
  bd53e7a2163ef50d555cfb85b86d7066              152 non-free/binary-i386/Release
  d41d8cd98f00b204e9800998ecf8427e                0 non-free/i18n/Translation-en
  4059d198768f9f8dc9372dc1c54bc3c3               14 non-free/i18n/Translation-en.bz2
 SHA1:
- c7af1cbb99fcf114804c9fc9dcf2a73b2c609f3a            52814 free/binary-amd64/Packages
- c68ca1d9d998ee76594670a594d4092ebfcefefd            14723 free/binary-amd64/Packages.gz
+ 17056b8e6b70f91e0a500b1d95ee7c23c329c7e4            58130 free/binary-amd64/Packages
+ d6b9c0d5aed8ceccd96e5054ae4333571047e869            15935 free/binary-amd64/Packages.gz
  0bc15f9f1d0911f5a410aa74b0a7a900613d0cb7              149 free/binary-amd64/Release
- 1a99b42878b662bb7b9e2d09fd66e9f05cc5804f            51813 free/binary-i386/Packages
- 00063e78beb1532636ec6e08009c883a4db4d1a7            14416 free/binary-i386/Packages.gz
+ 17485c067ea15a5b0e8db8ef10d39dabc47b0fc2            57117 free/binary-i386/Packages
+ de5e51c4c843ae0655f24fa9a5669ea70d35a543            15905 free/binary-i386/Packages.gz
  3c58fda787d29939b7de16df5c5eb6abad1cf92e              148 free/binary-i386/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 free/i18n/Translation-en
  64a543afbb5f4bf728636bdcbbe7a2ed0804adc2               14 free/i18n/Translation-en.bz2
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 non-free/binary-amd64/Packages
- 046f021c850a99dafc2f5121286bc68787a584bb               20 non-free/binary-amd64/Packages.gz
+ cdf695da86f028403ca180210dacfb546a3c9204               20 non-free/binary-amd64/Packages.gz
  98ba70cbafffdbff20924c7b594eb611c7516996              153 non-free/binary-amd64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 non-free/binary-i386/Packages
- 046f021c850a99dafc2f5121286bc68787a584bb               20 non-free/binary-i386/Packages.gz
+ cdf695da86f028403ca180210dacfb546a3c9204               20 non-free/binary-i386/Packages.gz
  8efab536311c7eca1f35e27ecdeae4c68db2c322              152 non-free/binary-i386/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 non-free/i18n/Translation-en
  64a543afbb5f4bf728636bdcbbe7a2ed0804adc2               14 non-free/i18n/Translation-en.bz2
 SHA256:
- ce607c9bbe62085b3129ac7066b122c4d60bec89c38a0e4c048a68d8ee8dea45            52814 free/binary-amd64/Packages
- dc265bdcd326d7a6f513e0a9287808a7f49753389f586cf92da5be2c00035e14            14723 free/binary-amd64/Packages.gz
+ 91a514f5cddd0462bbeabcf52f404b6c3908faf3d23c46c9fea8ee0660d835e9            58130 free/binary-amd64/Packages
+ 42b5fb4a158549ff83b15782738b85575ee3e2d41c59f56f0c2192b8a2dc62c9            15935 free/binary-amd64/Packages.gz
  8914dbb9553ce0713adfdba4abfda87dca6eb2f53972fc801708c8c2b15ead85              149 free/binary-amd64/Release
- e58be4e51b27076fd68255b54b03a2a44ac48fcfe5e2e0fbbbf66eaad32bd415            51813 free/binary-i386/Packages
- 91b1607997dc5e7f5120faaa72cf1ee78f29dfbdbc3989397ba5e9086821e217            14416 free/binary-i386/Packages.gz
+ 435ab7ae54439857f8f6496a7ed7e94af5da4942d32e8ca87116d0d35d4dd070            57117 free/binary-i386/Packages
+ ca66a5b96bd8a5e0a339189857c7a5aad78791acb1dbda93d50836656ad3a1e9            15905 free/binary-i386/Packages.gz
  55f861fce1a15bf71bda8946359fcd841f9a2fcf44d25a08b9a0e1bd98005a1a              148 free/binary-i386/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 free/i18n/Translation-en
  d3dda84eb03b9738d118eb2be78e246106900493c0ae07819ad60815134a8058               14 free/i18n/Translation-en.bz2
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 non-free/binary-amd64/Packages
- f625c0e1e0b51ac30df0ea8455d298b14e4eae9ae731a90f2cbc80917db08c55               20 non-free/binary-amd64/Packages.gz
+ 7d6c83e3b7b639d1bf5e6d98cc25166a9e8240bf84abba1f954602a595a428d7               20 non-free/binary-amd64/Packages.gz
  c4a8c971d89523499f3d4ce4522f23838f9c924b1d5aa49ac68b13c23f68396d              153 non-free/binary-amd64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 non-free/binary-i386/Packages
- f625c0e1e0b51ac30df0ea8455d298b14e4eae9ae731a90f2cbc80917db08c55               20 non-free/binary-i386/Packages.gz
+ 7d6c83e3b7b639d1bf5e6d98cc25166a9e8240bf84abba1f954602a595a428d7               20 non-free/binary-i386/Packages.gz
  c20d60615c37b892503a2333af08ef5f0c07d9d3acebc8c8c4473c85c785f9f6              152 non-free/binary-i386/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 non-free/i18n/Translation-en
  d3dda84eb03b9738d118eb2be78e246106900493c0ae07819ad60815134a8058               14 non-free/i18n/Translation-en.bz2
 SHA512:
- a3861e30243bff467ceee46c5b15b25082ca7654857d62e33b9a18764123bed006b6fd16b901fe99eb9c3943a9dd118cdcca5a7fa48c2b4db4270468e1a7f716            52814 free/binary-amd64/Packages
- 3c725be5b44ea7a0792ea31c0d0dcf3d5c999465d1b6a85c42bc8fed87cf46ee5014c42571d7ca87b152ab20fc5f16ea16d14f407acc8832a47e2e99541079b4            14723 free/binary-amd64/Packages.gz
+ e7aa9d3fe1e9eeb03c52457bece1c47969b665fdf1d678c8f6a2de4e4eb7f485997a3684c554ef06048d845f68361ad97a20bd9c2ae4d6ac5a429cd6566f180a            58130 free/binary-amd64/Packages
+ d225b8594c9a6247036f78380fd4c34fa8087c53c5d48246322c87bcf99fb58993153efe49ad67a7054298d075f1bb08ee5084d37cb78e3ac5eef76ac3d726da            15935 free/binary-amd64/Packages.gz
  69b3a22deb6de3d5becbe53ff532879bec58b0a73624aaa317f596410501bbca97cec8676f85ce145d881034870fc96147f3db771a7af631e960c736161d88b8              149 free/binary-amd64/Release
- d4d5eefb13026e63b78864cae74b2890960e8cd70f9e3e69a70e16f7a60685c0f72a81191c703c5d5518a68f617c06384916fe9262a1e2a22f86153c5ea7e3f6            51813 free/binary-i386/Packages
- c0b87c4f5ce0faa781abe9ef02566dc15a1eae4c98b0151d61331a1268b7450dcf9d9751f40632d6273898a810ee66102008adb55c3516cd5099052c272e068c            14416 free/binary-i386/Packages.gz
+ 4335cb537f4a024fbbedad3e16b098c05598d75e27619fa7fd802bd5a5b35010213b82c7c5f10c6db34bd749bad9165e87886ced557599b6bce14c6a2619af29            57117 free/binary-i386/Packages
+ 346e2a8f43fc3db060f8c932ede2218f7ee24bfc00caaec405431aa77f880809c7095740d1b78668e3adfe65e454a22297c9d0e7b96857d470c120b0548cc5bd            15905 free/binary-i386/Packages.gz
  78717936e1bf3b5916f450562b45f64bb19aa4ba1412150a584f6eacba6d1b6651026341e88d47ceee534b25cb700ad0837c636eb049e155d6b72d3f07836b8f              148 free/binary-i386/Release
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 free/i18n/Translation-en
  6de201dfed1d45412509c65deb34690dc2d09c6aafccfe491fd2f440f92842b9c755b61dc7bcdd4cc0c9f18cf46c2b3a1241e99c4c2a33fff5555e7b2f0b6348               14 free/i18n/Translation-en.bz2
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 non-free/binary-amd64/Packages
- ff93d3ab957feb631f9baa15d342fcb1247b2088dd05583a5248539ff8f7b00bf7fdea7c761207f4b6387ba79f2a79e091a39708d95205e84380bfbff2c82fb2               20 non-free/binary-amd64/Packages.gz
+ f2860666f45912eb43b0d82c0c2dcea09648498bb32bcd7df734fd1f189dd90d0fc6cf271fabcc90b122b938d8d8e260b6a6c36a19b320e2f65756883147a563               20 non-free/binary-amd64/Packages.gz
  578b064f090a3933bf913022cfa3326a8a33267162dbf8d582c52eb7128b38aaddc713cf9423d927cec7b593d56893b877b22675611dce892813aed33edece11              153 non-free/binary-amd64/Release
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 non-free/binary-i386/Packages
- ff93d3ab957feb631f9baa15d342fcb1247b2088dd05583a5248539ff8f7b00bf7fdea7c761207f4b6387ba79f2a79e091a39708d95205e84380bfbff2c82fb2               20 non-free/binary-i386/Packages.gz
+ f2860666f45912eb43b0d82c0c2dcea09648498bb32bcd7df734fd1f189dd90d0fc6cf271fabcc90b122b938d8d8e260b6a6c36a19b320e2f65756883147a563               20 non-free/binary-i386/Packages.gz
  a9f46a24a9d7cebea27c960aa6f27c7935edab45ad627d886a11b06e2fafa031571f8e1ff1a27559be3878aaf69e176b298392b79e3560b58dff1e0365e804f1              152 non-free/binary-i386/Release
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 non-free/i18n/Translation-en
  6de201dfed1d45412509c65deb34690dc2d09c6aafccfe491fd2f440f92842b9c755b61dc7bcdd4cc0c9f18cf46c2b3a1241e99c4c2a33fff5555e7b2f0b6348               14 non-free/i18n/Translation-en.bz2

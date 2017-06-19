@@ -1,3 +1,9 @@
+ardour-official (1:5.10.0-1kxstudio1) stable; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Mon, 19 Jun 2017 11:57:15 +0200
+
 ardour-official (1:5.9.0-1kxstudio1) stable; urgency=medium
 
   * Update

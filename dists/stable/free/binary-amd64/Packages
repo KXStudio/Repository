@@ -1,112 +1,20 @@
-Package: ardour4
-Priority: extra
-Section: sound
-Installed-Size: 165126
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: amd64
-Source: ardour4-official
-Version: 1:4.7.0-1kxstudio1
-Depends: libasound2 (>= 1.0.16), libc6 (>= 2.11), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglu1-mesa | libglu1, libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116, libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.4.0), libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-render0, libxcb-shm0, libxcb1 (>= 1.6), libxext6, libxrender1
-Filename: pool/free/ardour4_4.7.0-1kxstudio1_amd64.deb
-Size: 46124058
-MD5sum: b704551a39134b98eec28e47be116fc3
-SHA1: 137453ba014f6db2f9b91a7a3924bb7d29565993
-SHA256: 8feb6bc6d7e43197651851a073bc730b6de1f5beb8b50e258e3e598cbf88f217
-SHA512: df1dce910628d3668cc793090dbd373769cc8af3d67b882ca43af0b79dd94b225da7914fb56ac4907ffb65bdd7e39a05b6a2fe908c9408b02b65e80490adda62
-Description: digital audio workstation (graphical gtk2 interface)
- Ardour is a multichannel hard disk recorder (HDR) and digital audio
- workstation (DAW).  It can be used to control, record, edit and run
- complex audio setups.
- .
- Ardour supports pro-audio interfaces
- through the ALSA project, which provides high quality, well designed
- device drivers and API's for audio I/O under Linux. Any interface
- supported by ALSA can be used with Ardour. This includes the
- all-digital 26 channel RME Hammerfall, the Midiman Delta 1010 and many
- others.
- .
- Ardour has support for 24 bit samples
- using floating point internally, non-linear editing with unlimited undo,
- a user-configurable mixer, MTC master/slave capabilities, MIDI hardware
- control surface compatibility.
- .
- It supports MIDI
- Machine Control, and so can be controlled from any MMC controller and
- many modern digital mixers.
- .
- Ardour contains a
- powerful multitrack audio editor/arranger that is completely
- non-destructive and capable of all standard non-linear editing
- operations (insert, replace, delete, move, trim, select,
- cut/copy/paste). The editor has unlimited undo/redo capabilities and can
- save independent "versions" of a track or an entire piece
- .
- Ardour's editor supports the community-developed LADSPA
- plugin standard.  Arbitrary chains of plugins can be attached to any
- portion of a track.  Every mixer strip can have any number of inputs
- and outputs, not just mono, stereo or 5.1.  An N-way panner is
- included, with support for various panning models.  Pre- and post-fader
- sends exist, each with their own gain and pan controls.  Every mixer
- strip acts as its own bus, and thus the bus count in Ardour is
- unlimited.  You can submix any number of strips into another
- strip.
- .
- Ardour's channel capacity is limited only
- by the number on your audio interface and the ability of your disk
- subsystem to stream the data back and forth.
- .
- JACK
- (the JACK Audio Connection Kit) is used for all audio I/O, permitting
- data to be exchanged in perfect samplesync with other applications
- and/or hardware audio interfaces.
- .
- Ardour is
- sample rate and size neutral - any hardware formats from 8 to 32 bits,
- and rates from 8kHz to 192kHz.  Internal processing in 32/64 bit IEEE
- floating point format.
- .
- Further information can be
- found at <http://ardour.org/>.
-Homepage: http://www.ardour.org/
-
-Package: ardour4-dbg
-Priority: extra
-Section: debug
-Installed-Size: 40
-Maintainer: falkTX <falktx@gmail.com>
-Architecture: amd64
-Source: ardour4-official
-Version: 1:4.7.0-1kxstudio1
-Depends: ardour4
-Filename: pool/free/ardour4-dbg_4.7.0-1kxstudio1_amd64.deb
-Size: 10606
-MD5sum: 8c104d7bd0a3f79b382842ce8c1074b3
-SHA1: 527a4e76a3f533f9bda629f8ecdbe0ae3e165563
-SHA256: e667af65da13638ff37e72763430e0d8c7a5b54e3037eca65c5f53ca4474f938
-SHA512: f563026f02fcb6470875ed0331ba7e732e285ade8379ebab86313c1abd31e8011368c8fd4b3abcd77135879bf3170788e5fd071e72a840ae7ebadc6af4610be1
-Description: digital audio workstation (debugging symbols)
- This package contains the debug symbols for Ardour4.
- .
- You don't need it installed unless you need to debug Ardour.
-Homepage: http://www.ardour.org/
-
 Package: ardour
 Priority: extra
 Section: sound
-Installed-Size: 212096
+Installed-Size: 212717
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: amd64
 Source: ardour-official
-Version: 1:5.10.0-1kxstudio1
+Version: 1:5.11.4-1kxstudio1
 Replaces: ardour2, ardour3, ardour4
 Depends: libasound2 (>= 1.0.16), libc6 (>= 2.11), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglu1-mesa | libglu1, libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116, libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.4.0), libx11-6 (>= 2:1.4.99.1), libxcb-render0, libxcb-shm0, libxcb1 (>= 1.6), libxext6, libxrender1, lv2-dev
 Conflicts: ardour2, ardour3, ardour4
-Filename: pool/free/ardour_5.10.0-1kxstudio1_amd64.deb
-Size: 96464432
-MD5sum: 2910a551ab06fdef5cd1ba5ee5a7e071
-SHA1: e59dad2ab1c932d27be4db205b8143f4e961bd93
-SHA256: fc5cb86d207146dfabce3e98d96054988e86ef7327c9b91e72f221c5d7515f89
-SHA512: 28a32dcc58c46ef7d0714c7e44f57c64a4942a22cf7bea1b430dbc93184b5987dc641dcfe7eef2ab66a3cc3365a771847b071f7cc54619993ddf21fbea72e02d
+Filename: pool/free/ardour_5.11.4-1kxstudio1_amd64.deb
+Size: 96647672
+MD5sum: 450e1fb3fd38e86c296a03e23ac835d6
+SHA1: 6fc882fc4d678882de31617f587fe536eeed863a
+SHA256: 6d32c6119de43ca0c5c18bab41cbb83baec408e26afdb56aced17996fe5484cc
+SHA512: c11988f3c661198da8534378be2f076693be888d4bc3911af7c59fcb0ffda8f21ad35542ceb83d1f6fc945e2f8c933fe1c6994f58ef5c1d7e05fd3d57199ad95
 Description: digital audio workstation (graphical gtk2 interface)
  Ardour is a multichannel hard disk recorder (HDR) and digital audio
  workstation (DAW).  It can be used to control, record, edit and run
@@ -170,16 +78,16 @@ Installed-Size: 104
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: amd64
 Source: ardour-official
-Version: 1:5.10.0-1kxstudio1
+Version: 1:5.11.4-1kxstudio1
 Replaces: ardour2-dbg, ardour3-dbg, ardour4-dbg
 Depends: ardour
 Conflicts: ardour2-dbg, ardour3-dbg, ardour4-dbg
-Filename: pool/free/ardour-dbg_5.10.0-1kxstudio1_amd64.deb
-Size: 28262
-MD5sum: 1cdffa6ac3c5939e85d177828f95b889
-SHA1: 6595a1bf69f24d3adce2c5caf3df60aa547c54f5
-SHA256: 38cd981ad356ab8889fb7b29c5ce5bf1c11f014e60368abecca8250f3ff39590
-SHA512: 56da02e75bb88f39d90a1dff7a6b5d4d3d0c72bbcae88670e1e8657e0287c2f5af2bd073411964ab767ff16009214c850a265d3a03e7dd4651e94e99e1ba75bf
+Filename: pool/free/ardour-dbg_5.11.4-1kxstudio1_amd64.deb
+Size: 28342
+MD5sum: 583ace1855cb69b0ae00c8a106953aa6
+SHA1: 7fbab66df42c66c2c2eb38a0648f6088465b61be
+SHA256: 5dc972e66231d46525c9e8da8649c6e258944048d53d511dcca7491ea1289f26
+SHA512: 89f084e36e6af68f4ac2d2988aaeeb389e7926209fca1adb4a3eb88394bca3eaede3e5f28312cbdf0dcd2871e89518bc52544a6ac892cf8da96d5b29c8ecbc15
 Description: digital audio workstation (debugging symbols)
  This package contains the debug symbols for Ardour4.
  .

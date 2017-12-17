@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
 VERSION=$(shell ls | grep \.run | head -n 1 | awk 'sub("-","\n")' | tail -n 1 | awk 'sub("-x86","\n")' | head -n 1)
+GCC5=$(shell cat debian/changelog | head -n 1 | grep -q v5 && echo true)
 
 ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH),amd64)
 ARDOUR_FILE=Ardour-$(VERSION)-x86_64.run
@@ -13,8 +14,13 @@ override_dh_auto_install:
 	./$(ARDOUR_FILE) --target ./tmp --noexec
 	chmod -x $(ARDOUR_FILE)
 
+ifeq ($(GCC5),true)
 	cd tmp && \
-	tar -xf *.tar
+	tar -xf *-gcc5-$(VERSION).tar
+else
+	cd tmp && \
+	tar -xf *-gcc4-$(VERSION).tar
+endif
 
 	rm    tmp/Ardour_*-*/bin/ardour5
 	rm    tmp/Ardour_*-*/bin/*.uninstall.sh

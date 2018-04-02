@@ -5,16 +5,16 @@ Installed-Size: 207788
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: i386
 Source: ardour-official-v5
-Version: 1:5.12.0-1kxstudio1v5
+Version: 2:5.12.0-1kxstudio1v5
 Replaces: ardour2, ardour3, ardour4
 Depends: libasound2 (>= 1.0.16), libc6 (>= 2.11), libdbus-1-3 (>= 1.0.2), libgcc1 (>= 1:4.1.1), libgl1-mesa-glx | libgl1, libglu1-mesa | libglu1, libjack-jackd2-0 (>= 1.9.5~dfsg-14) | libjack-0.116, libqt5core5a (>= 5.0.2), libqt5gui5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libqtcore4 (>= 4:4.5.3), libqtgui4 (>= 4:4.5.3), libstdc++6 (>= 4.6), libx11-6 (>= 2:1.4.99.1), libxcb-render0, libxcb-shm0, libxcb1 (>= 1.6), libxext6, libxrender1, lv2-dev
 Conflicts: ardour2, ardour3, ardour4
 Filename: pool/free-v5/ardour_5.12.0-1kxstudio1v5_i386.deb
-Size: 97247128
-MD5sum: f5fb2ae000c347ba9101b9ae51313cb0
-SHA1: 1939bf4f9425d17028e946889b5f8309f0b6e2a8
-SHA256: 207e51dbaf97609baa8754fb79cd4413c2370e72fef9e9557f319e103fc2c44b
-SHA512: fdb8db1df639c98754f9d7ed31aa35e373c5c0c8eb891caf6c856eb6188d36b14d5fdcb3c2071331e2c6b450af04986441d073e3c139b8a53091765a3fdd4c2b
+Size: 97247130
+MD5sum: f6a5e7895bd9d49c7cea1bd4ce2fa91e
+SHA1: af7f9a49950ea291eb481bea98e74d4bac865468
+SHA256: b6fc88d364dbbb9ec489e00d572d7ffb9efd6d7e65cb626b5fd01d3754fc531a
+SHA512: 0ce98f138f5b6f6c60d062ce8dee0be904d38b0d9ed91d196aaa0fdd1c6dd47238a0051f7772d98bcb4dfe4bf61c1b990a10b51c65ae9bc9eb96df3e5ef3fbfc
 Description: digital audio workstation (graphical gtk2 interface)
  Ardour is a multichannel hard disk recorder (HDR) and digital audio
  workstation (DAW).  It can be used to control, record, edit and run
@@ -78,16 +78,16 @@ Installed-Size: 92
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: i386
 Source: ardour-official-v5
-Version: 1:5.12.0-1kxstudio1v5
+Version: 2:5.12.0-1kxstudio1v5
 Replaces: ardour2-dbg, ardour3-dbg, ardour4-dbg
 Depends: ardour
 Conflicts: ardour2-dbg, ardour3-dbg, ardour4-dbg
 Filename: pool/free-v5/ardour-dbg_5.12.0-1kxstudio1v5_i386.deb
-Size: 29290
-MD5sum: 54869e8f60f2e937fd36a672293cbae3
-SHA1: 85fec178fe878441e71c01f6ee4fe7dec8a675b8
-SHA256: 7f5513392041e51b54ab3551a519e05cac33558e7655626e8590f3aedc6099bc
-SHA512: a0703319ca99254208edb52ed7370009a1f7c2daa6c796cfb636fe71856d3657064d471b34d2f76bff8c1ddfd4136794e6d01fd92575cb730bb82221cd5f4623
+Size: 29288
+MD5sum: 0d93c4be1438f5d160314fa3c7555b08
+SHA1: a35b2e3e4559872bf9c46a25ead29afd5e6b9326
+SHA256: 505c024759498c6a0a0c27d101ce3113b93870424e06f7b3e92986528ca95ebd
+SHA512: 8f47b57e30906ac58576ecbcc4b9bf3b882ad07041a407a9886d214c5f85968ad750bda96e6a8ad4969ebe8429a95b7037505e1e4e2cc2f06cca2826276b8912
 Description: digital audio workstation (debugging symbols)
  This package contains the debug symbols for Ardour4.
  .

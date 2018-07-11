@@ -1,3 +1,9 @@
+ardour-official (1:5.12.0-1kxstudio2) stable; urgency=medium
+
+  * Drop freetype lib, update suil
+
+ -- falkTX <falktx@gmail.com>  Thu, 12 Jul 2018 00:20:24 +0200
+
 ardour-official (1:5.12.0-1kxstudio1) stable; urgency=medium
 
   * Update

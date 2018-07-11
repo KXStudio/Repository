@@ -15,6 +15,8 @@ endif
 # ARDOUR_FILE=Ardour-$(VERSION)-x86-gcc5.run
 # endif
 
+DEB_PKG_VER=0.10.0+git20180711
+
 override_dh_auto_install:
 	chmod +x $(ARDOUR_FILE)
 	./$(ARDOUR_FILE) --target ./tmp --noexec
@@ -37,12 +39,38 @@ endif
 	rm -r tmp/Ardour_*-*/etc/fonts
 	rm -r tmp/Ardour_*-*/etc/gtk-2.0
 	rm -r tmp/Ardour_*-*/etc/xml
+	rm -r tmp/Ardour_*-*/lib/libfreetype.so.6
+	rm -r tmp/Ardour_*-*/lib/libsuil*
 	rm -r tmp/Ardour_*-*/lib/LV2/3D_delay.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/dyno-mite.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/gvplus.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/lv2core.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/Micro-Glide.lv2
 	rm -r tmp/Ardour_*-*/lib/LV2/XT-*.lv2
+
+ifeq ($(GCC5),true)
+ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH),amd64)
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/gcc5-deps/+files/suil-libs_$(DEB_PKG_VER)v5_amd64.deb
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/gcc5-deps/+files/suil-static_$(DEB_PKG_VER)v5_amd64.deb
+else
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/gcc5-deps/+files/suil-libs_$(DEB_PKG_VER)v5_i386.deb
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/gcc5-deps/+files/suil-static_$(DEB_PKG_VER)v5_i386.deb
+endif
+else
+ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH),amd64)
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/libs/+files/suil-libs_$(DEB_PKG_VER)_amd64.deb
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/libs/+files/suil-static_$(DEB_PKG_VER)_amd64.deb
+else
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/libs/+files/suil-libs_$(DEB_PKG_VER)_i386.deb
+	wget https://launchpad.net/~kxstudio-debian/+archive/ubuntu/libs/+files/suil-static_$(DEB_PKG_VER)_i386.deb
+endif
+endif
+	dpkg -x suil-libs_*.deb deb-libs
+	dpkg -x suil-static_*.deb deb-libs
+	install -m 644 \
+		deb-libs/opt/kxstudio/lib/suil-0/libsuil_* \
+		deb-libs/opt/kxstudio/lib/suil-shared/libsuil-0.so.0 \
+		tmp/Ardour_*-*/lib/
 
 	install -d $(CURDIR)/debian/ardour/usr/lib/lv2
 	install -d $(CURDIR)/debian/ardour/usr/share/icons/hicolor/16x16/apps
@@ -60,7 +88,7 @@ endif
 
 override_dh_auto_clean:
 	chmod -x $(ARDOUR_FILE) || true
-	rm -rf ./tmp
+	rm -rf ./tmp deb-libs *.deb
 
 override_dh_strip:
 	dh_strip --dbg-package=ardour-dbg

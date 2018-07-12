@@ -58,6 +58,9 @@ endif
 endif
 	dpkg -x suil-libs_*.deb deb-libs
 	dpkg -x suil-static_*.deb deb-libs
+ifneq ($(GCC5),true)
+	rm deb-libs/opt/kxstudio/lib/suil-0/libsuil_*qt5*
+endif
 	install -m 644 \
 		deb-libs/opt/kxstudio/lib/suil-0/libsuil_* \
 		deb-libs/opt/kxstudio/lib/suil-shared/libsuil-0.so.0 \

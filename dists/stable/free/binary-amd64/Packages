@@ -133,7 +133,7 @@ Maintainer: falkTX <falktx@gmail.com>
 Installed-Size: 161
 Depends: wine-rt-amd64 | wine-staging-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
 Recommends: carla-bridge-win64
-Filename: pool/free/carla-bridge-wine64_1.9.8+git20180819_amd64.deb
+Filename: pool/free/carla-bridge-wine64_1.9.8.git20180819_amd64.deb
 Size: 21588
 MD5sum: b476ff37a4ec7901d38119bc32e9f7ce
 SHA1: f5a5a53f34a88c8f0c429314cf22eddc660ff6fc

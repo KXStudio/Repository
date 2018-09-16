@@ -1,44 +1,20 @@
-Package: ardour-dbg
-Architecture: amd64
-Version: 2:5.12.0-1kxstudio2v5
-Priority: extra
-Section: debug
-Source: ardour-official-v5
-Maintainer: falkTX <falktx@gmail.com>
-Installed-Size: 105
-Depends: ardour
-Conflicts: ardour2-dbg, ardour3-dbg, ardour4-dbg
-Replaces: ardour2-dbg, ardour3-dbg, ardour4-dbg
-Filename: pool/free-v5/ardour-dbg_5.12.0-1kxstudio2v5_amd64.deb
-Size: 28210
-MD5sum: f12e1f3ffc700dec041656b476dff899
-SHA1: 041c0eb81acac6df56bb8f4d73c023f0de879b1d
-SHA256: 1ea9c5966179ed9328676a716f6d291ca6fcf0050257b30a990c20e6c2543f77
-SHA512: 17808dbe2d0973d31e989edeb11d7b0a26e507df4f2a987a7a5dd77a3abfc03cedb4d4ba176af5625e4b7be659b5c798c742768635e20b727cbfe5e1a76de7bb
-Homepage: http://www.ardour.org/
-Description: digital audio workstation (debugging symbols)
- This package contains the debug symbols for Ardour4.
- .
- You don't need it installed unless you need to debug Ardour.
-
 Package: ardour
-Architecture: amd64
-Version: 2:5.12.0-1kxstudio2v5
 Priority: extra
 Section: sound
-Source: ardour-official-v5
-Maintainer: falkTX <falktx@gmail.com>
 Installed-Size: 212905
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: ardour-official-v5
+Version: 2:5.12.0-1kxstudio2v5
+Replaces: ardour2, ardour3, ardour4
 Depends: lv2-dev
 Conflicts: ardour2, ardour3, ardour4
-Replaces: ardour2, ardour3, ardour4
 Filename: pool/free-v5/ardour_5.12.0-1kxstudio2v5_amd64.deb
 Size: 96847962
 MD5sum: 806058e83d225bddf929225971ea8b51
 SHA1: 597b9041aca2c0eeca880a96587143d4bf7c3c55
 SHA256: 55eb681f976afc5d09a9febc3dabb4ea26ae783c9f9be8102f48e6b7cf9afd8d
 SHA512: c7e9cd8d1e6f71c264b5bfe432cea3034a1ee00037fa4beb4cc407b278c8cf1fac9384d7ada1dab3d762b544d52c9f93d00fd79e5a9727bf666c7641b540e3c0
-Homepage: http://www.ardour.org/
 Description: digital audio workstation (graphical gtk2 interface)
  Ardour is a multichannel hard disk recorder (HDR) and digital audio
  workstation (DAW).  It can be used to control, record, edit and run
@@ -93,4 +69,28 @@ Description: digital audio workstation (graphical gtk2 interface)
  .
  Further information can be
  found at <http://ardour.org/>.
+Homepage: http://www.ardour.org/
+
+Package: ardour-dbg
+Priority: extra
+Section: debug
+Installed-Size: 105
+Maintainer: falkTX <falktx@gmail.com>
+Architecture: amd64
+Source: ardour-official-v5
+Version: 2:5.12.0-1kxstudio2v5
+Replaces: ardour2-dbg, ardour3-dbg, ardour4-dbg
+Depends: ardour
+Conflicts: ardour2-dbg, ardour3-dbg, ardour4-dbg
+Filename: pool/free-v5/ardour-dbg_5.12.0-1kxstudio2v5_amd64.deb
+Size: 28210
+MD5sum: f12e1f3ffc700dec041656b476dff899
+SHA1: 041c0eb81acac6df56bb8f4d73c023f0de879b1d
+SHA256: 1ea9c5966179ed9328676a716f6d291ca6fcf0050257b30a990c20e6c2543f77
+SHA512: 17808dbe2d0973d31e989edeb11d7b0a26e507df4f2a987a7a5dd77a3abfc03cedb4d4ba176af5625e4b7be659b5c798c742768635e20b727cbfe5e1a76de7bb
+Description: digital audio workstation (debugging symbols)
+ This package contains the debug symbols for Ardour4.
+ .
+ You don't need it installed unless you need to debug Ardour.
+Homepage: http://www.ardour.org/
 

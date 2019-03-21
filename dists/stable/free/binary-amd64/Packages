@@ -125,19 +125,19 @@ Homepage: http://calf.sourceforge.net/
 Package: carla-bridge-wine64
 Priority: optional
 Section: sound
-Installed-Size: 162
+Installed-Size: 163
 Maintainer: falkTX <falktx@gmail.com>
 Architecture: amd64
 Source: carla-bridge-wine
-Version: 2:1.9.14+git20190227
+Version: 2:2.1~alpha2+git20190321
 Depends: wine-rt-amd64 | wine-staging-amd64 | wine-amd64 | wine, libjack-jackd2-0 | libjack0, libc6 (>= 2.19~)
 Recommends: carla-bridge-win64
-Filename: pool/free/carla-bridge-wine64_1.9.14+git20190227_amd64.deb
-Size: 21922
-MD5sum: 754f0dd66065b1a717c01966ac973eba
-SHA1: d6f70e08494a6f338495c409e6919b6a56fe37e5
-SHA256: 94301852b8d3efbcae656b4a158cb549e7f4a0116f6ece58ecb779dbeab788f3
-SHA512: e29ae23acfb57678981fa2b983c4f49dcde966a6339b7a2bada9b91a78c664daf0c6d0377a0291b4e972d56b09774dbc47c4649e08f42104e902a196e175d710
+Filename: pool/free/carla-bridge-wine64_2.1_alpha2.git20190321_amd64.deb
+Size: 22230
+MD5sum: 8f67f302481f28b0d242f6a02d588ce8
+SHA1: 805778a457f4593a51619884d242eeb64705e7b2
+SHA256: cb6f16813e767ca97b3f2614aeca430e86d8ceac6b7af9e613e4ab77e6916aac
+SHA512: 540b397be28e800d8318ed76bb56dea94fefdc0ec2a3113bc6cda5c45c300c6b07419bcd06419b11b8f78886a6d93c039210c551a5084ead706968bc8c617511
 Description: carla win64 bridge (wine DLL)
  This package provides the wine DLL needed for the Carla win64 bridge.
 Multi-Arch: foreign

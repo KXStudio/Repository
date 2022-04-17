@@ -1,0 +1,10 @@
+--- opus-static-1.1.orig/opus.pc.in
++++ opus-static-1.1/opus.pc.in
+@@ -11,6 +11,6 @@ URL: http://opus-codec.org/
+ Version: @VERSION@
+ Requires:
+ Conflicts:
+-Libs: -L${libdir} -lopus
++Libs: -L${libdir} -lopus -lm
+ Libs.private: @LIBM@
+ Cflags: -I${includedir}/opus

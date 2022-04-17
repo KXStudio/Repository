@@ -1,0 +1,12 @@
+Source: kxstudio-build-scripts
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.0
+
+Package: kxstudio-build-scripts
+Architecture: all
+Depends: ${misc:Depends}
+Description: Build scripts for KXStudio repositories
+ This package provides the build scripts used in the KXStudio repositories.

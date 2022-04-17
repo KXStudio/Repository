@@ -1,8 +1,7 @@
 *.deb
-source/ardour*/*.run
-source/*.debian.tar.gz
-source/*.orig.tar.gz
-source/*.dsc
-source/*.build
-source/*.changes
-
+/source/ardour*/*.run
+/source/*.debian.tar.gz
+/source/*.orig.tar.gz
+/source/*.dsc
+/source/*.build
+/source/*.changes

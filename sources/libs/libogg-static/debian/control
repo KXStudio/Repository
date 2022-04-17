@@ -1,0 +1,20 @@
+Source: libogg-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool
+Standards-Version: 4.5.0
+Homepage: http://xiph.org/ogg/
+
+Package: libogg-static
+Architecture: any
+Depends: ${misc:Depends}
+Description: Ogg bitstream library (static)
+ Libogg is a library for manipulating ogg bitstreams.
+ It handles both making ogg bitstreams and getting packets from ogg bitstreams.
+ .
+ This package provides the static library used in KXStudio builds.

@@ -1,0 +1,15 @@
+Description: Fix "privacy-breach-logo" lintian error.
+Author: Fabian Greffrath <fabian+debian@greffrath.com>
+
+--- a/doc/doxygen.footer.html
++++ b/doc/doxygen.footer.html
+@@ -8,9 +8,6 @@
+ 				Copyright (c) 2000-2009  Josh Coalson
+ 				Copyright (c) 2011-2016  Xiph.Org Foundation
+ 			</td>
+-			<td width="1%" align="right">
+-				<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=13478&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+-			</td>
+ 		</tr>
+ 	</table>
+ </div>

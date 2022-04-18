@@ -1,0 +1,21 @@
+>From 0533326767646c6970bca03f895af81c75c05baf Mon Sep 17 00:00:00 2001
+From: Dafydd Harries <daf@rhydd.org>
+Date: Sat, 3 Dec 2016 16:58:53 -0500
+Subject: [PATCH] remove build path from generated FLAC.tag file
+
+Use sed to update paths to point to locations in /usr/include rather than
+locations in the source directory at build time.
+---
+ doc/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -25,6 +25,7 @@ FLAC.tag: Doxyfile
+ 	rm -rf html/api
+ 	mv doxytmp/html html/api
+ 	rm -rf doxytmp
++	sed -ie 's,>.*/include/,>/usr/include/,' FLAC.tag
+ else
+ FLAC.tag:
+ 	touch $@

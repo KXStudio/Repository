@@ -1,0 +1,19 @@
+--- flac-static-1.3.0.orig/src/libFLAC++/flac++.pc.in
++++ flac-static-1.3.0/src/libFLAC++/flac++.pc.in
+@@ -7,5 +7,5 @@ Name: FLAC++
+ Description: Free Lossless Audio Codec Library (C++ API)
+ Version: @VERSION@
+ Requires: flac
+-Libs: -L${libdir} -lFLAC++
++Libs: -L${libdir} -lFLAC++ -lFLAC -logg -lm
+ Cflags: -I${includedir}
+--- flac-static-1.3.0.orig/src/libFLAC/flac.pc.in
++++ flac-static-1.3.0/src/libFLAC/flac.pc.in
+@@ -7,6 +7,6 @@ Name: FLAC
+ Description: Free Lossless Audio Codec Library
+ Version: @VERSION@
+ Requires.private: @OGG_PACKAGE@
+-Libs: -L${libdir} -lFLAC
++Libs: -L${libdir} -lFLAC -logg -lm
+ Libs.private: -lm
+ Cflags: -I${includedir}

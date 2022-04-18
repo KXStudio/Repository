@@ -1,0 +1,23 @@
+From 2e7931c27eb15e387da440a37f12437e35b22dd4 Mon Sep 17 00:00:00 2001
+From: Erik de Castro Lopo <erikd@mega-nerd.com>
+Date: Mon, 7 Oct 2019 12:55:58 +1100
+Subject: [PATCH 20/63] libFLAC/bitreader.c: Fix out-of-bounds read
+
+Credit: Oss-Fuzz
+Issue: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=17069
+Testcase: fuzzer_decoder-5670265022840832
+---
+ src/libFLAC/bitreader.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/libFLAC/bitreader.c
++++ b/src/libFLAC/bitreader.c
+@@ -864,7 +864,7 @@ incomplete_lsbs:
+ 			cwords = br->consumed_words;
+ 			words = br->words;
+ 			ucbits = FLAC__BITS_PER_WORD - br->consumed_bits;
+-			b = br->buffer[cwords] << br->consumed_bits;
++			b = cwords < br->capacity ? br->buffer[cwords] << br->consumed_bits : 0;
+ 		} while(cwords >= words && val < end);
+ 	}
+ 

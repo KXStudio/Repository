@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+ifeq ($(DEB_HOST_ARCH),amd64)
+EXTRA_CONFIG=--enable-sse
+else
+EXTRA_CONFIG=--disable-sse
+endif
+
+override_dh_auto_configure:
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio/ \
+		    --enable-static \
+		    --disable-shared \
+		    --disable-doxygen-docs \
+		    --disable-thorough-tests \
+		    --disable-xmms-plugin \
+		    $(EXTRA_CONFIG)
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted files
+	rm $(CURDIR)/debian/tmp/opt/kxstudio/lib/libFLAC.la
+	rm $(CURDIR)/debian/tmp/opt/kxstudio/lib/libFLAC++.la
+	rm -r $(CURDIR)/debian/tmp/opt/kxstudio/share/doc
+
+%:
+	dh $@

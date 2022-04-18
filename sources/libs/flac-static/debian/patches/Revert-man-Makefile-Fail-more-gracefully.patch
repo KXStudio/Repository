@@ -1,0 +1,27 @@
+From f19bf6e040c11ba5535cf141ab7a76af64614a97 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Thu, 6 Jun 2013 12:07:58 +0200
+Subject: [PATCH] Revert "man/Makefile : Fail more gracefully."
+
+This reverts commit 023f06f6cbc316127ca1a4fb4178ef344a413bd5.
+---
+ man/Makefile.am |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -18,12 +18,10 @@
+ 
+ if FLaC__HAS_DOCBOOK_TO_MAN
+ flac.1: flac.sgml
+-	docbook-to-man $? > $@
+-	(docbook2man $? && mv FLAC.1 $@)
++	docbook-to-man $? > $@ || (docbook2man $? && mv FLAC.1 $@)
+ 
+ metaflac.1: metaflac.sgml
+-	docbook-to-man $? > $@
+-	(docbook2man $? && mv METAFLAC.1 $@)
++	docbook-to-man $? > $@ || (docbook2man $? && mv METAFLAC.1 $@)
+ else
+ flac.1:
+ 	echo "*** Warning: docbook-to-man not found; man pages will not be built."

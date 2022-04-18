@@ -8,6 +8,8 @@ Build-Depends: debhelper-compat (= 13),
   automake,
   libtool
 Standards-Version: 4.5.0
+Homepage: https://www.opus-codec.org/
+Rules-Requires-Root: no
 
 Package: libopus-static
 Architecture: any

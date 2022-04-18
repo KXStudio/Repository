@@ -5,7 +5,7 @@ include /usr/share/dpkg/kxstudio.mk
 
 override_dh_auto_configure:
 	./configure --disable-maintainer-mode \
-		    --prefix=/opt/kxstudio/ \
+		    --prefix=/opt/kxstudio \
 		    --enable-static \
 		    --disable-shared
 

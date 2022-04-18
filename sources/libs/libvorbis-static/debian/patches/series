@@ -1,0 +1,3 @@
+0001-Fix-build-failure-with-DSO-link-changes.patch
+0002-Avoid-SIGFPE-when-bytespersample-is-zero.patch
+9001-Fix-libs.patch

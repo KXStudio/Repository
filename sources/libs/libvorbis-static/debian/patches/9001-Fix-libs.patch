@@ -1,0 +1,28 @@
+--- libvorbis-static-1.3.4.orig/vorbis.pc.in
++++ libvorbis-static-1.3.4/vorbis.pc.in
+@@ -10,6 +10,6 @@ Description: vorbis is the primary Ogg V
+ Version: @VERSION@
+ Requires.private: ogg
+ Conflicts:
+-Libs: -L${libdir} -lvorbis 
++Libs: -L${libdir} -lvorbis -logg -lm
+ Libs.private: @VORBIS_LIBS@
+ Cflags: -I${includedir}
+--- libvorbis-static-1.3.4.orig/vorbisenc.pc.in
++++ libvorbis-static-1.3.4/vorbisenc.pc.in
+@@ -10,5 +10,5 @@ Description: vorbisenc is a library that
+ Version: @VERSION@
+ Requires.private: vorbis
+ Conflicts:
+-Libs: -L${libdir} -lvorbisenc
++Libs: -L${libdir} -lvorbisenc -lvorbis -logg -lm
+ Cflags: -I${includedir}
+--- libvorbis-static-1.3.4.orig/vorbisfile.pc.in
++++ libvorbis-static-1.3.4/vorbisfile.pc.in
+@@ -10,5 +10,5 @@ Description: vorbisfile is a library tha
+ Version: @VERSION@
+ Requires.private: vorbis
+ Conflicts:
+-Libs: -L${libdir} -lvorbisfile
++Libs: -L${libdir} -lvorbisfile -lvorbis -logg -lm
+ Cflags: -I${includedir}

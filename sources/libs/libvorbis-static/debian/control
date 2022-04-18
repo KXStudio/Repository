@@ -1,0 +1,24 @@
+Source: libvorbis-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool,
+  pkg-config,
+  libogg-static (>= 6:1.3.5-1kxstudio1)
+Standards-Version: 4.5.0
+Homepage: https://xiph.org/vorbis/
+Rules-Requires-Root: no
+
+Package: libvorbis-static
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libogg-static
+Description: Vorbis General Audio Compression Codec (static)
+ Ogg Vorbis is a fully open, non-proprietary, patent-and-royalty-free,
+ general-purpose compressed audio format for audio and music at fixed
+ and variable bitrates from 16 to 128 kbps/channel.
+ .
+ This package provides the static library used in KXStudio builds.

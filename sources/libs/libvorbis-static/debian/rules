@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_configure:
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio \
+		    --enable-static \
+		    --disable-shared \
+		    --disable-docs \
+		    --disable-examples
+
+override_dh_auto_test:
+	# tests fail with multiple jobs
+	dh_auto_test -- -j1
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted files
+	rm $(CURDIR)/debian/libvorbis-static/opt/kxstudio/lib/libvorbis.la
+	rm $(CURDIR)/debian/libvorbis-static/opt/kxstudio/lib/libvorbisenc.la
+	rm $(CURDIR)/debian/libvorbis-static/opt/kxstudio/lib/libvorbisfile.la
+	rm -r $(CURDIR)/debian/libvorbis-static/opt/kxstudio/share/doc
+
+%:
+	dh $@

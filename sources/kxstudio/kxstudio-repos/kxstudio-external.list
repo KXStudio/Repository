@@ -1,0 +1,2 @@
+deb [arch=amd64,i386] https://kx.studio/repo/ stable free
+deb [arch=amd64,i386] https://kx.studio/repo/ gcc5 free

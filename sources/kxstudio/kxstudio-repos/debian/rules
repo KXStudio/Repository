@@ -1,0 +1,9 @@
+#! /usr/bin/make -f
+
+regenerate-keyrings:
+	rm -f keyrings/*.gpg
+	gpg --no-default-keyring --default-key 29213837 --enable-dsa2 --output keyrings/falktx-keyring.gpg --export 2D3445A829213837
+	cp /etc/apt/trusted.gpg.d/kxstudio-debian-kxstudio.gpg keyrings/kxstudio-debian.gpg
+
+%:
+	dh $@

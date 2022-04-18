@@ -1,0 +1,15 @@
+Source: kxstudio-repos
+Section: metapackages
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+
+Package: kxstudio-repos
+Architecture: all
+Pre-depends: libc6 (>= 2.31~)
+Depends: ${misc:Depends}, gpgv
+Recommends: gnupg | gnupg1
+Description: KXStudio repositories
+ This package will enable the KXStudio repositories.

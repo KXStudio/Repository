@@ -1,0 +1,14 @@
+deb http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic main

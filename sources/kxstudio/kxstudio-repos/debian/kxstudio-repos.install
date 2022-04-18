@@ -1,0 +1,2 @@
+keyrings/*.gpg etc/apt/trusted.gpg.d/
+*.list         etc/apt/sources.list.d/

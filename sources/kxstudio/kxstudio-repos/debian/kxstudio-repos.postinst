@@ -1,0 +1,80 @@
+#!/bin/bash
+
+set -e
+
+#DEBHELPER#
+
+###########################################################################################
+# Restore repository files if the user removed them by mistake
+
+if [ ! -f /etc/apt/sources.list.d/kxstudio-debian-ppas.list ]; then
+  echo "deb http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic main
+
+deb http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic main
+" > /etc/apt/sources.list.d/kxstudio-debian-ppas.list
+fi
+
+if [ ! -f /etc/apt/sources.list.d/kxstudio-debian-ppas.list ]; then
+  echo "deb http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu focal main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu focal main
+
+deb http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu focal main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu focal main
+
+deb http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu focal main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu focal main
+
+deb http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu focal main
+#deb-src http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu focal main
+" > /etc/apt/sources.list.d/kxstudio-debian-ppas-2.list
+fi
+
+if [ ! -f /etc/apt/sources.list.d/kxstudio-free.list ]; then
+  echo "deb [arch=amd64,i386] https://kx.studio/repo/ stable free
+deb [arch=amd64,i386] https://kx.studio/repo/ gcc5 free
+" > /etc/apt/sources.list.d/kxstudio-free.list
+fi
+
+###########################################################################################
+# remove old stuff
+
+rm -f /etc/apt/sources.list.d/kxstudio-debian.list
+rm -f /etc/apt/sources.list.d/kxstudio-debian.new.list
+rm -f /etc/apt/sources.list.d/kxstudio-debian.gcc5.list
+rm -f /etc/apt/sources.list.d/kxstudio-debian.gcc5plus.list
+rm -f /etc/apt/sources.list.d/kxstudio-free.list
+rm -f /etc/apt/sources.list.d/kxstudio-free.gcc5.list
+
+###########################################################################################
+# non-free repo is empty now
+
+rm -f /etc/apt/sources.list.d/kxstudio-non-free.list
+
+###########################################################################################
+# Fix for Ubuntu version upgrades messing up stuff
+
+VERSIONS=("cosmic" "disco" "eoan")
+
+for VERSION in ${VERSIONS[@]}; do
+  sed "s/ $VERSION / bionic /"  -i /etc/apt/sources.list.d/kxstudio-debian-ppas.list
+
+  rm -f /etc/apt/sources.list.d/kxstudio-debian-libs-"$VERSION".list
+  rm -f /etc/apt/sources.list.d/kxstudio-debian-music-"$VERSION".list
+  rm -f /etc/apt/sources.list.d/kxstudio-debian-plugins-"$VERSION".list
+  rm -f /etc/apt/sources.list.d/kxstudio-debian-apps-"$VERSION".list
+  rm -f /etc/apt/sources.list.d/kxstudio-debian-kxstudio-"$VERSION".list
+  rm -f /etc/apt/sources.list.d/kxstudio-debian-ubuntus-"$VERSION".list
+done
+
+###########################################################################################

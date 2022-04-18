@@ -1,0 +1,259 @@
+kxstudio-repos (11.0.1) focal; urgency=medium
+
+  * Update for 20.04 as builder base
+
+ -- falkTX <falktx@falktx.com>  Mon, 18 Apr 2022 15:59:34 +0100
+
+kxstudio-repos (10.0.3) bionic; urgency=medium
+
+  * Fix post-install script
+
+ -- falkTX <falktx@gmail.com>  Mon, 14 Oct 2019 01:35:40 +0100
+
+kxstudio-repos (10.0.2) bionic; urgency=medium
+
+  * Use new kx.studio domain
+
+ -- falkTX <falktx@gmail.com>  Sun, 08 Sep 2019 01:32:26 +0100
+
+kxstudio-repos (10.0.1) bionic; urgency=medium
+
+  * Fixup a few loose ends
+
+ -- falkTX <falktx@gmail.com>  Sat, 07 Sep 2019 23:01:19 +0100
+
+kxstudio-repos (10.0.0) bionic; urgency=medium
+
+  * New setup for bionic based repos
+
+ -- falkTX <falktx@gmail.com>  Sat, 07 Sep 2019 21:49:05 +0100
+
+kxstudio-repos (9.5.1~kxstudio3) trusty; urgency=medium
+
+  * Add xenial ppa:kxstudio-debian/kxstudio to kxstudio-debian.gcc5.list
+
+ -- falkTX <falktx@gmail.com>  Sat, 31 Mar 2018 19:13:21 +0200
+
+kxstudio-repos (9.4.10~kxstudio1) trusty; urgency=medium
+
+  * Fix ubuntus repo for debian
+
+ -- falkTX <falktx@gmail.com>  Fri, 23 Feb 2018 07:53:32 +0100
+
+kxstudio-repos (9.4.9~kxstudio1) trusty; urgency=medium
+
+  * Add back external repo.
+  * Handle trisquel and elementaryOS distros
+
+ -- falkTX <falktx@gmail.com>  Fri, 09 Feb 2018 09:52:58 +0100
+
+kxstudio-repos (9.4.8~kxstudio1) trusty; urgency=medium
+
+  * Fix repos for bionic, buster, sylvia and tara
+
+ -- falkTX <falktx@gmail.com>  Sat, 03 Feb 2018 11:36:28 +0100
+
+kxstudio-repos (9.4.7~kxstudio2) trusty; urgency=medium
+
+  * Remove non-free repo
+  * Disable external repo for now
+
+ -- falkTX <falktx@gmail.com>  Fri, 02 Feb 2018 18:31:32 +0100
+
+kxstudio-repos (9.4.6~kxstudio1) trusty; urgency=medium
+
+  * Add artful to ubuntu repos
+  * Allow mint to use ubuntu repos
+
+ -- falkTX <falktx@gmail.com>  Wed, 28 Jun 2017 17:53:05 +0200
+
+kxstudio-repos (9.4.5~kxstudio1) trusty; urgency=medium
+
+  * Remove LinuxMint special tricks, no longer needed
+
+ -- falkTX <falktx@gmail.com>  Thu, 15 Jun 2017 09:58:10 +0200
+
+kxstudio-repos (9.4.3~kxstudio1) trusty; urgency=medium
+
+  * Don't auto-remove ubuntus ppa if under ubuntu
+
+ -- falkTX <falktx@gmail.com>  Thu, 08 Jun 2017 18:36:45 +0200
+
+kxstudio-repos (9.4.1~kxstudio1) trusty; urgency=medium
+
+  * Auto-remove ubuntus ppa if under debian
+
+ -- falkTX <falktx@gmail.com>  Sat, 05 Nov 2016 15:29:45 +0100
+
+kxstudio-repos (9.4.0~kxstudio1) trusty; urgency=medium
+
+  * Stop using apt-key, ship keyrings instead
+
+ -- falkTX <falktx@gmail.com>  Sat, 05 Nov 2016 15:18:46 +0100
+
+kxstudio-repos (9.3.2~kxstudio1) trusty; urgency=medium
+
+  * Add gnupg as dependency
+
+ -- falkTX <falktx@gmail.com>  Fri, 28 Oct 2016 14:11:29 +0200
+
+kxstudio-repos (9.3.1~kxstudio1) trusty; urgency=medium
+
+  * Add 'zesty' to distro list
+
+ -- falkTX <falktx@gmail.com>  Mon, 24 Oct 2016 09:23:47 +0200
+
+kxstudio-repos (9.3.0~kxstudio1) trusty; urgency=medium
+
+  * Add '[arch=amd64,i386]' to old lucid and external repos
+  * Add new gcc5/gcc5-deps repos based on xenial
+  * Add Yakkety post-install fix
+
+ -- falkTX <falktx@gmail.com>  Wed, 27 Jul 2016 11:59:54 +0200
+
+kxstudio-repos (9.2.2~trusty1) trusty; urgency=medium
+
+  * Trusty build
+
+ -- falkTX <falktx@gmail.com>  Mon, 07 Dec 2015 11:58:07 +0100
+
+kxstudio-repos (9.2.2~kxstudio1) trusty; urgency=medium
+
+  * Add support for xenial
+
+ -- falkTX <falktx@gmail.com>  Mon, 07 Dec 2015 11:56:24 +0100
+
+kxstudio-repos (9.2.1~kxstudio1) stable; urgency=medium
+
+  * Add GCC5 repos
+
+ -- falkTX <falktx@gmail.com>  Sat, 26 Sep 2015 23:05:43 +0200
+
+kxstudio-repos (9.1.0~kxstudio1) trusty; urgency=medium
+
+  * Add special case for solydxk
+
+ -- falkTX <falktx@gmail.com>  Thu, 20 Aug 2015 13:03:05 +0200
+
+kxstudio-repos (9.0.0~kxstudio1) trusty; urgency=medium
+
+  * Change external repo to be linuxaudio.org based
+
+ -- falkTX <falktx@gmail.com>  Tue, 21 Jul 2015 15:55:35 +0200
+
+kxstudio-repos (8.3.1~trusty3) trusty; urgency=medium
+
+  * Trusty build bump for ISO installs
+
+ -- falkTX <falktx@gmail.com>  Sat, 11 Jul 2015 00:26:44 +0200
+
+kxstudio-repos (8.3.1~kxstudio1) stable; urgency=medium
+
+  * Fix postinst if kxstudio-non-free.list file has been deleted
+
+ -- falkTX <falktx@gmail.com>  Sat, 20 Jun 2015 19:25:05 +0200
+
+kxstudio-repos (8.3.0~kxstudio1) stable; urgency=medium
+
+  * Split free/non-free external repo into 2 files
+  * Don't error out if add-apt-repository fails
+
+ -- falkTX <falktx@gmail.com>  Sat, 13 Jun 2015 03:14:38 +0200
+
+kxstudio-repos (8.2.3~kxstudio1) stable; urgency=medium
+
+  * Fix Ubuntu-specific repo not being added for 14.04 systems
+
+ -- falkTX <falktx@gmail.com>  Fri, 05 Jun 2015 15:56:45 +0200
+
+kxstudio-repos (8.2.2~kxstudio1) trusty; urgency=medium
+
+  * Don't try to add PPA if running debian
+
+ -- falkTX <falktx@gmail.com>  Tue, 26 May 2015 15:09:22 +0200
+
+kxstudio-repos (8.2.1~kxstudio1) trusty; urgency=medium
+
+  * Fix possibly duplicated music entries
+
+ -- falkTX <falktx@gmail.com>  Wed, 13 May 2015 15:31:38 +0200
+
+kxstudio-repos (8.2.0~kxstudio1) trusty; urgency=medium
+
+  * Restore repository files if the user removed them by mistake
+
+ -- falkTX <falktx@gmail.com>  Wed, 13 May 2015 14:26:39 +0200
+
+kxstudio-repos (8.1.0~kxstudio1) trusty; urgency=medium
+
+  * Common package for all distro versions
+
+ -- falkTX <falktx@gmail.com>  Mon, 11 May 2015 14:52:24 +0200
+
+kxstudio-repos (8.0.1~kxstudio1) trusty; urgency=medium
+
+  * Add base libc6 requirement
+  * Make the same package work for debian and ubuntu
+
+ -- falkTX <falktx@gmail.com>  Mon, 11 May 2015 13:08:22 +0200
+
+kxstudio-repos (8.0.0~kxstudio1) trusty; urgency=medium
+
+  * Rework package for repo changes (base is now trusty)
+
+ -- falkTX <falktx@gmail.com>  Mon, 11 May 2015 12:27:11 +0200
+
+kxstudio-repos (7.2.0~trusty3) trusty; urgency=medium
+
+  * Bump for ISO install fix
+
+ -- falkTX <falktx@gmail.com>  Sun, 29 Mar 2015 23:23:32 +0200
+
+kxstudio-repos (7.2.0~trusty2) trusty; urgency=medium
+
+  * Fix post-install via KXStudio ISO
+  * Add ffmpeg repo
+
+ -- falkTX <falktx@gmail.com>  Wed, 04 Feb 2015 00:38:27 +0000
+
+kxstudio-repos (7.2.0~trusty1) trusty; urgency=medium
+
+  * trusty build
+
+ -- falkTX <falktx@gmail.com>  Sat, 21 Dec 2013 23:53:41 +0000
+
+kxstudio-repos (7.2.0~saucy1) saucy; urgency=medium
+
+  * saucy build
+
+ -- falkTX <falktx@gmail.com>  Sat, 21 Dec 2013 23:52:49 +0000
+
+kxstudio-repos (7.2.0~raring1) raring; urgency=medium
+
+  * raring build
+
+ -- falkTX <falktx@gmail.com>  Sat, 21 Dec 2013 23:51:42 +0000
+
+kxstudio-repos (7.2.0~quantal1) quantal; urgency=medium
+
+  * quantal build
+
+ -- falkTX <falktx@gmail.com>  Sat, 21 Dec 2013 23:50:27 +0000
+
+kxstudio-repos (7.2.0~precise1) precise; urgency=medium
+
+  * precise build
+
+ -- falkTX <falktx@gmail.com>  Sat, 21 Dec 2013 23:48:43 +0000
+
+kxstudio-repos (7.2.0~kxstudio1) lucid; urgency=medium
+
+  * Fix LinuxMint Maya
+
+ -- falkTX <falktx@gmail.com>  Sat, 21 Dec 2013 23:47:10 +0000
+
+kxstudio-repos (7.1.0~kxstudio2) lucid; urgency=low
+
+  * New packaging for debian repos
+
+ -- falkTX <falktx@gmail.com>  Wed, 14 Aug 2013 23:38:10 +0100

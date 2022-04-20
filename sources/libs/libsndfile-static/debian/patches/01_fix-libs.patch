@@ -1,0 +1,10 @@
+--- libsndfile-static-1.1.0.orig/sndfile.pc.in
++++ libsndfile-static-1.1.0/sndfile.pc.in
+@@ -7,6 +7,6 @@ Name: sndfile
+ Requires:
+ Requires.private: @EXTERNAL_XIPH_REQUIRE@ @EXTERNAL_MPEG_REQUIRE@
+ Version: @VERSION@
+-Libs: -L${libdir} -lsndfile
++Libs: -L${libdir} -lsndfile -lmp3lame -lmpg123 -lopus -lFLAC -lvorbisenc -lvorbis -logg -lm
+ Libs.private: @EXTERNAL_MPEG_LIBS@
+ Cflags: -I${includedir}

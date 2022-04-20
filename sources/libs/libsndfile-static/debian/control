@@ -1,0 +1,49 @@
+Source: libsndfile-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool,
+  pkg-config,
+  flac-static,
+  libmp3lame-static,
+  libmpg123-static,
+  libopus-static,
+  libvorbis-static,
+  libasound2-dev
+Standards-Version: 4.5.0
+Homepage: https://libsndfile.github.io/libsndfile/
+Rules-Requires-Root: no
+
+Package: libsndfile-static
+Architecture: any
+Depends: ${misc:Depends},
+  flac-static,
+  libmp3lame-static,
+  libmpg123-static,
+  libopus-static,
+  libvorbis-static
+Description: Library for reading/writing audio files (static)
+ libsndfile is a library of C routines for reading and writing files containing
+ sampled audio data.
+ .
+ This package provides the static library used in KXStudio builds.
+
+Package: sndfile-programs
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommends: sndfile-tools
+Description: Sample programs that use libsndfile
+ This package contains simple programs which use libsndfile for operating on
+ sound files.
+ .
+ Programs include:
+   - sndfile-cmp : compare the audio data of two files
+   - sndfile-concat : concatenate two or more files
+   - sndfile-convert : convert between sound file formats
+   - sndfile-info : print information about files
+   - sndfile-metadata-get/set : get and set file metadata
+   - sndfile-play : play a sound file

@@ -1,0 +1,59 @@
+Source: liblo-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool
+Standards-Version: 4.5.0
+Homepage: https://github.com/radarsat1/liblo
+Rules-Requires-Root: no
+
+Package: liblo-static
+Architecture: any
+Depends: ${misc:Depends}
+Description: Lightweight OSC library (static)
+ LibLO is a lightweight, easy to use implementation of the OSC (Open
+ Sound Control) protocol (see
+ <https://www.cnmat.berkeley.edu/OpenSoundControl/> for details).
+ .
+ Open Sound Control (OSC) is a protocol for communication among
+ computers, sound synthesizers, and other multimedia devices that is
+ optimized for modern networking technology. OSC features:
+ .
+  * Open-ended, dynamic, URL-style symbolic naming scheme
+  * Symbolic and high-resolution numeric argument data
+  * Pattern matching language to specify multiple recipients of a
+    single message
+  * High resolution time tags
+  * "Bundles" of messages whose effects must occur simultaneously
+  * Query system to dynamically find out the capabilities of an OSC
+    server and get documentation
+ .
+ This package provides the static library used in KXStudio builds.
+
+Package: liblo-tools
+Section: utils
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Lightweight OSC library
+ LibLO is a lightweight, easy to use implementation of the OSC (Open
+ Sound Control) protocol (see
+ <https://www.cnmat.berkeley.edu/OpenSoundControl/> for details).
+ .
+ Open Sound Control (OSC) is a protocol for communication among
+ computers, sound synthesizers, and other multimedia devices that is
+ optimized for modern networking technology. OSC features:
+ .
+  * Open-ended, dynamic, URL-style symbolic naming scheme
+  * Symbolic and high-resolution numeric argument data
+  * Pattern matching language to specify multiple recipients of a
+    single message
+  * High resolution time tags
+  * "Bundles" of messages whose effects must occur simultaneously
+  * Query system to dynamically find out the capabilities of an OSC
+    server and get documentation
+ .
+ This package contains the tools included with the library.

@@ -1,0 +1,9 @@
+--- liblo-static-0.27+svn231.orig/liblo.pc.in
++++ liblo-static-0.27+svn231/liblo.pc.in
+@@ -6,5 +6,5 @@ includedir=@includedir@
+ Name: liblo
+ Version: @PACKAGE_VERSION@
+ Description: A lightweight OSC server/client library
+-Libs: -L${libdir} -llo @LIBPTHREAD@ @extralibs@
++Libs: -L${libdir} -llo @LIBPTHREAD@ @extralibs@ -lm
+ Cflags: -I${includedir}

@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_configure:
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio \
+		    --enable-static \
+		    --disable-shared \
+		    --disable-sqlite
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted files
+	rm $(CURDIR)/debian/tmp/opt/kxstudio/lib/libsndfile.la
+	rm -r $(CURDIR)/debian/tmp/opt/kxstudio/share/doc
+
+%:
+	dh $@

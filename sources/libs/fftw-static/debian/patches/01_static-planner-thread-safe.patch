@@ -1,0 +1,56 @@
+diff --git a/api/apiplan.c b/api/apiplan.c
+index b8642a9..c7df958 100644
+--- a/api/apiplan.c
++++ b/api/apiplan.c
+@@ -20,7 +20,50 @@
+ 
+ #include "api/api.h"
+ 
+-static planner_hook_t before_planner_hook = 0, after_planner_hook = 0;
++#if defined(__WIN32__) || defined(_WIN32) || defined(_WINDOWS)
++/* hack: windef.h defines INT for its own purposes and this causes
++   a conflict with our own INT in ifftw.h.  Divert the windows
++   definition into another name unlikely to cause a conflict */
++#define INT magnus_ab_INTegro_seclorum_nascitur_ordo
++#include <windows.h>
++#include <process.h>
++#include <intrin.h>
++#undef INT
++
++/* windows does not have statically-initialized mutexes---fake a
++   spinlock */
++static volatile LONG planner_mutex = 0;
++
++static void lock_planner_mutex(void)
++{
++     while (InterlockedExchange(&planner_mutex, 1) == 1) {
++          YieldProcessor();
++          Sleep(0);
++     }
++}
++
++static void unlock_planner_mutex(void)
++{
++     LONG old = InterlockedExchange(&planner_mutex, 0);
++     A(old == 1);
++}
++#else
++#include <pthread.h>
++
++static pthread_mutex_t planner_mutex = PTHREAD_MUTEX_INITIALIZER;
++
++static void lock_planner_mutex(void)
++{
++     pthread_mutex_lock(&planner_mutex);
++}
++
++static void unlock_planner_mutex(void)
++{
++     pthread_mutex_unlock(&planner_mutex);
++}
++#endif
++
++static planner_hook_t before_planner_hook = lock_planner_mutex, after_planner_hook = unlock_planner_mutex;
+ 
+ void X(set_planner_hooks)(planner_hook_t before, planner_hook_t after)
+ {

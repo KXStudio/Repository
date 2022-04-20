@@ -1,0 +1,3 @@
+01_static-planner-thread-safe.patch
+02_force-pthread-libs.patch
+03_assume-neon-is-present.patch

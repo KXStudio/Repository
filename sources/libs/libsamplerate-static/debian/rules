@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio.mk
+
+export LDFLAGS += $(shell pkg-config --libs sndfile)
+
+override_dh_auto_configure:
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio \
+		    --enable-static \
+		    --disable-shared \
+		    --enable-fftw \
+		    --enable-sndfile \
+		    --disable-alsa
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted files
+	rm $(CURDIR)/debian/libsamplerate-static/opt/kxstudio/lib/libsamplerate.la
+	rm -r $(CURDIR)/debian/libsamplerate-static/opt/kxstudio/share/doc
+
+%:
+	dh $@

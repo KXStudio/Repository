@@ -1,0 +1,23 @@
+Source: fftw3-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool,
+  pkg-config
+Standards-Version: 4.5.0
+Homepage: https://fftw.org/
+Rules-Requires-Root: no
+
+Package: fftw3-static
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Library for computing Fast Fourier Transforms (static)
+ The FFTW library computes Fast Fourier Transforms (FFT) in one or more
+ dimensions. It is extremely fast.
+ .
+ This package provides the static library used in KXStudio builds, in both
+ single and double precisions.

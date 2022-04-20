@@ -1,0 +1,10 @@
+--- fftw3-static-3.3.5~git20160520.orig/fftw.pc.in
++++ fftw3-static-3.3.5~git20160520/fftw.pc.in
+@@ -6,6 +6,6 @@ includedir=@includedir@
+ Name: FFTW
+ Description: fast Fourier transform library
+ Version: @VERSION@
+-Libs: -L${libdir} -lfftw3@PREC_SUFFIX@ @LIBQUADMATH@
++Libs: -L${libdir} -lfftw3@PREC_SUFFIX@ @LIBQUADMATH@ -lpthread -lm
+ Libs.private: -lm
+ Cflags: -I${includedir}

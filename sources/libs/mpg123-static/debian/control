@@ -1,0 +1,23 @@
+Source: mpg123-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool,
+  pkg-config,
+  libltdl-dev
+Standards-Version: 4.5.0
+Homepage: https://mpg123.org/
+Rules-Requires-Root: no
+
+Package: libmpg123-static
+Architecture: any
+Depends: ${misc:Depends}
+Description: MPEG layer 1/2/3 audio decoder (static)
+ mpg123 is a real time MPEG 1.0/2.0/2.5 audio player/decoder for layers
+ 1, 2 and 3 (MPEG 1.0 layer 3 also known as MP3).
+ .
+ This package provides the static library used in KXStudio builds.

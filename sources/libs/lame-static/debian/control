@@ -1,0 +1,24 @@
+Source: lame-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool,
+  pkg-config
+Standards-Version: 4.5.0
+Homepage: http://lame.sourceforge.net/
+Rules-Requires-Root: no
+
+Package: libmp3lame-static
+Architecture: any
+Depends: ${misc:Depends}
+Description: MP3 encoding library (static)
+ LAME (recursive acronym for "LAME Ain't an MP3 Encoder") is a research
+ project for learning about and improving MP3 encoding technology.
+ LAME includes an MP3 encoding library, a simple frontend application,
+ and other tools for sound analysis, as well as convenience tools.
+ .
+ This package provides the static library used in KXStudio builds.

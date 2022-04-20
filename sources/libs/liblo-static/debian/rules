@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_autoreconf:
+	test -e README || ln -v README.md README
+	dh_autoreconf
+
+override_dh_autoreconf_clean:
+	rm -f README
+	dh_autoreconf_clean
+
+override_dh_auto_configure:
+# 	env NOCONFIGURE=1 ./autogen.sh
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio \
+		    --enable-static \
+		    --disable-shared \
+		    --enable-tests \
+		    --enable-examples \
+		    --disable-network-tests
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted files
+	rm $(CURDIR)/debian/tmp/opt/kxstudio/lib/liblo.la
+
+%:
+	dh $@

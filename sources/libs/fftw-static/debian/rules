@@ -1,0 +1,68 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_SSE = y
+include /usr/share/dpkg/kxstudio.mk
+
+BASE_CONFIG = \
+	--disable-maintainer-mode \
+	--prefix=/opt/kxstudio/ \
+	--enable-static \
+	--disable-shared \
+	--disable-debug \
+	--disable-doc \
+	--enable-threads
+
+ifeq ($(DEB_HOST_ARCH),armhf)
+BASE_CONFIG += --with-slow-timer
+EXTRA_CONFIG_SINGLE = --enable-neon
+EXTRA_CONFIG_DOUBLE =
+else ifeq ($(DEB_HOST_ARCH),arm64)
+BASE_CONFIG += --with-slow-timer
+EXTRA_CONFIG_SINGLE = --enable-neon
+EXTRA_CONFIG_DOUBLE = --enable-neon
+else
+EXTRA_CONFIG_SINGLE = --enable-avx --enable-sse2 --enable-sse
+EXTRA_CONFIG_DOUBLE = --enable-avx --enable-sse2
+endif
+
+override_dh_autoreconf:
+	# skip
+
+override_dh_auto_configure:
+	# skip
+
+override_dh_auto_build:
+	# skip
+
+override_dh_auto_test:
+	# skip
+
+override_dh_auto_install:
+	# single
+	./configure $(BASE_CONFIG) $(EXTRA_CONFIG_SINGLE) --enable-single
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/fftw3-static
+	$(MAKE) -C tests smallcheck
+	$(MAKE) clean
+
+	# double
+	./configure $(BASE_CONFIG) $(EXTRA_CONFIG_DOUBLE)
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/fftw3-static
+	$(MAKE) -C tests smallcheck
+	$(MAKE) clean
+
+	# remove unwanted files
+	rm $(CURDIR)/debian/fftw3-static/opt/kxstudio/lib/*.la
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f config.log
+	rm -f FFTW3Config.cmake
+	rm -f FFTW3ConfigVersion.cmake
+	rm -f FFTW3fConfig.cmake
+	rm -f FFTW3fConfigVersion.cmake
+	rm -f fftw3.pc
+	rm -f fftw3f.pc
+	rm -f tools/fftw-wisdom.1
+
+%:
+	dh $@

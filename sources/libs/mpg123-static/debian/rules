@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+# export LDFLAGS += -Wl,--whole-archive
+
+ifeq ($(DEB_HOST_ARCH),armhf)
+EXTRA_CONFIG = --with-cpu=neon
+else ifeq ($(DEB_HOST_ARCH),arm64)
+EXTRA_CONFIG = --with-cpu=neon64
+else
+EXTRA_CONFIG = --with-cpu=x86-64
+endif
+
+override_dh_auto_configure:
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio \
+		    --enable-static \
+		    --disable-shared \
+		    --enable-lfs-alias \
+		    --with-audio=dummy \
+		    $(EXTRA_CONFIG)
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted files
+	rm $(CURDIR)/debian/libmpg123-static/opt/kxstudio/lib/libmpg123.la
+	rm $(CURDIR)/debian/libmpg123-static/opt/kxstudio/lib/libout123.la
+	rm $(CURDIR)/debian/libmpg123-static/opt/kxstudio/lib/libsyn123.la
+	rm -r $(CURDIR)/debian/libmpg123-static/opt/kxstudio/share/man
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f config.log
+
+override_dh_auto_test:
+	# skip
+
+%:
+	dh $@

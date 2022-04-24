@@ -1,3 +1,9 @@
+kxstudio-build-scripts (2) focal; urgency=medium
+
+  * Add KXSTUDIO_EXPLICIT_PATH_INCLUDE flag
+
+ -- falkTX <falktx@falktx.com>  Sun, 24 Apr 2022 23:59:36 +0100
+
 kxstudio-build-scripts (1) focal; urgency=medium
 
   * Initial package

@@ -1,5 +1,6 @@
 #!/usr/bin/make -f
 
+KXSTUDIO_EXPLICIT_PATH_INCLUDE = y
 KXSTUDIO_NO_FASTMATH = y
 include /usr/share/dpkg/kxstudio.mk
 

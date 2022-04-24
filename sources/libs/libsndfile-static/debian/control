@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 2),
   autoconf,
   automake,
   libtool,
@@ -13,7 +13,8 @@ Build-Depends: debhelper-compat (= 13),
   libmpg123-static,
   libopus-static,
   libvorbis-static,
-  libasound2-dev
+  libasound2-dev,
+  python3
 Standards-Version: 4.5.0
 Homepage: https://libsndfile.github.io/libsndfile/
 Rules-Requires-Root: no

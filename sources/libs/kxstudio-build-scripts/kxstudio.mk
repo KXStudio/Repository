@@ -21,3 +21,9 @@ export CPPFLAGS=
 export LDFLAGS=-Wl,-O1,--as-needed,--no-undefined,--gc-sections,--strip-all
 export PATH:=/opt/kxstudio/bin:$(PATH)
 export PKG_CONFIG_PATH=/opt/kxstudio/lib/pkgconfig
+
+ifeq ($(KXSTUDIO_EXPLICIT_PATH_INCLUDE),y)
+export CFLAGS += -I/opt/kxstudio/include
+export CXXFLAGS += -I/opt/kxstudio/include
+export LDFLAGS += -L/opt/kxstudio/lib
+endif

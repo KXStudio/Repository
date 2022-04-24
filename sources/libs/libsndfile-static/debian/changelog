@@ -1,3 +1,9 @@
+libsndfile-static (6:1.1.0-2kxstudio1) focal; urgency=medium
+
+  * Fix missing mp3 support
+
+ -- falkTX <falktx@falktx.com>  Mon, 25 Apr 2022 00:07:41 +0100
+
 libsndfile-static (6:1.1.0-1kxstudio1) focal; urgency=medium
 
   * Initial package

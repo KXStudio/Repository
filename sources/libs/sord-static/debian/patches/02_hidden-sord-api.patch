@@ -1,0 +1,21 @@
+Index: sord-static/include/sord/sord.h
+===================================================================
+--- sord-static.orig/include/sord/sord.h
++++ sord-static/include/sord/sord.h
+@@ -27,15 +27,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
+-#if defined(_WIN32) && !defined(SORD_STATIC) && defined(SORD_INTERNAL)
+-#  define SORD_API __declspec(dllexport)
+-#elif defined(_WIN32) && !defined(SORD_STATIC)
+-#  define SORD_API __declspec(dllimport)
+-#elif defined(__GNUC__)
+-#  define SORD_API __attribute__((visibility("default")))
+-#else
+-#  define SORD_API
+-#endif
++#define SORD_API
+ 
+ #ifdef __cplusplus
+ extern "C" {

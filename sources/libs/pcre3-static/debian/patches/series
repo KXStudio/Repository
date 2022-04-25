@@ -1,0 +1,11 @@
+PCRE6_compatible_API.patch
+pcreposix.patch
+pcre_info.patch
+pcregrep.1-patch
+soname.patch
+no_jit_x32_powerpcspe.patch
+Disable_JIT_on_sparc64.patch
+CVE-2017-6004.patch
+upstream-fix-for-cve-2017-7186-upstream-
+patch-from-mariadb-to-fix-stack-frame-si
+upstream-patch-fixing-cve-2020-14155.patch

@@ -14,7 +14,6 @@ Rules-Requires-Root: no
 Package: libopus-static
 Architecture: any
 Depends: ${misc:Depends}
-Conflicts: libopus-static
 Description: Opus codec library (static)
  The Opus codec is designed for interactive speech and audio transmission over
  the Internet. It is designed by the IETF Codec Working Group and incorporates

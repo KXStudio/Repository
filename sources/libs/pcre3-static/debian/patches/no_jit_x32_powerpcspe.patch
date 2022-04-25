@@ -1,0 +1,38 @@
+From: Matthew Vernon <matthew@debian.org>
+Date: Wed, 13 Jul 2016 21:20:13 +0100
+Subject: no_jit_x32_powerpcspe
+
+---
+ sljit/sljitConfigInternal.h | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/sljit/sljitConfigInternal.h b/sljit/sljitConfigInternal.h
+index 9275b14..b2bc80a 100644
+--- a/sljit/sljitConfigInternal.h
++++ b/sljit/sljitConfigInternal.h
+@@ -117,7 +117,11 @@
+ #if defined(__i386__) || defined(__i386)
+ #define SLJIT_CONFIG_X86_32 1
+ #elif defined(__x86_64__)
+-#define SLJIT_CONFIG_X86_64 1
++# if defined(__ILP32__)
++#  define SLJIT_CONFIG_UNSUPPORTED 1
++# else
++#  define SLJIT_CONFIG_X86_64 1
++# endif
+ #elif defined(__arm__) || defined(__ARM__)
+ #ifdef __thumb2__
+ #define SLJIT_CONFIG_ARM_THUMB2 1
+@@ -131,7 +135,11 @@
+ #elif defined(__ppc64__) || defined(__powerpc64__) || defined(_ARCH_PPC64) || (defined(_POWER) && defined(__64BIT__))
+ #define SLJIT_CONFIG_PPC_64 1
+ #elif defined(__ppc__) || defined(__powerpc__) || defined(_ARCH_PPC) || defined(_ARCH_PWR) || defined(_ARCH_PWR2) || defined(_POWER)
+-#define SLJIT_CONFIG_PPC_32 1
++# ifndef __NO_FPRS__
++#  define SLJIT_CONFIG_PPC_32 1
++# else
++#  define SLJIT_CONFIG_UNSUPPORTED 1
++# endif
+ #elif defined(__mips__) && !defined(_LP64)
+ #define SLJIT_CONFIG_MIPS_32 1
+ #elif defined(__mips64)

@@ -1,0 +1,12 @@
+diff --git a/wscript b/wscript
+index 4e8ebde..41e784c 100644
+--- a/wscript
++++ b/wscript
+@@ -231,7 +231,6 @@ def build(bld):
+     # Man pages
+     bld.install_files('${MANDIR}/man1', bld.path.ant_glob('doc/*.1'))
+ 
+-    bld.add_post_fun(autowaf.run_ldconfig)
+ 
+ def lint(ctx):
+     "checks code for style issues"

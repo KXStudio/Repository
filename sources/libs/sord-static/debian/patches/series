@@ -1,0 +1,3 @@
+01_dont-run-ldconfig.patch
+02_hidden-sord-api.patch
+03_force-libs.patch

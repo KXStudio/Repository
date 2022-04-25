@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_configure:
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio \
+		    --enable-static \
+		    --disable-shared \
+		    --enable-utf8 \
+		    --enable-unicode-properties \
+		    --enable-pcre16 \
+		    --enable-pcre32
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted files
+	rm $(CURDIR)/debian/libpcre3-static/opt/kxstudio/lib/*.la
+	rm -r $(CURDIR)/debian/libpcre3-static/opt/kxstudio/bin
+	rm -r $(CURDIR)/debian/libpcre3-static/opt/kxstudio/share
+
+%:
+	dh $@

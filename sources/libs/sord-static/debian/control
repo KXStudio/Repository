@@ -1,0 +1,34 @@
+Source: sord-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  python3,
+  pkg-config,
+  libpcre3-static,
+  libserd-static
+Standards-Version: 4.5.0
+Homepage: http://drobilla.net/software/sord/
+Rules-Requires-Root: no
+
+Package: libsord-static
+Architecture: any
+Depends: ${misc:Depends}, libserd-static
+Conflicts: sord-static
+Breaks: sord-static
+Description: library for storing RDF data in memory (static)
+ Sord is a lightweight C library for storing Resource
+ Description Framework (RDF) data in memory.
+ .
+ This package provides the static library used in KXStudio builds.
+
+Package: sordi
+Architecture: any
+Section: text
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: library for storing RDF data in memory - utilities
+ Sord is a lightweight C library for storing Resource
+ Description Framework (RDF) data in memory.
+ .
+ This package provides the 'sordi' and 'sord_validate' utilities.

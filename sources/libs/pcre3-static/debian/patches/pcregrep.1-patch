@@ -1,0 +1,30 @@
+From: Mark Baker <mark@mnb.org.uk>
+Date: Wed, 13 Jul 2016 21:20:13 +0100
+Subject: pcregrep.1-patch
+
+---
+ doc/pcregrep.1 | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/doc/pcregrep.1 b/doc/pcregrep.1
+index 9886675..07b8f57 100644
+--- a/doc/pcregrep.1
++++ b/doc/pcregrep.1
+@@ -3,6 +3,7 @@
+ pcregrep - a grep with Perl-compatible regular expressions.
+ .SH SYNOPSIS
+ .B pcregrep [options] [long options] [pattern] [path1 path2 ...]
++.B zpcregrep [options] [long options] [pattern] [file1 file2 ...]
+ .
+ .SH DESCRIPTION
+ .rs
+@@ -87,6 +88,9 @@ the matching substrings are being shown.
+ If the \fBLC_ALL\fP or \fBLC_CTYPE\fP environment variable is set,
+ \fBpcregrep\fP uses the value to set a locale when calling the PCRE library.
+ The \fB--locale\fP option can be used to override this.
++.P
++\fBzpcregrep\fR is a wrapper script that allows pcregrep to work on
++gzip compressed files.
+ .
+ .
+ .SH "SUPPORT FOR COMPRESSED FILES"

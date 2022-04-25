@@ -1,0 +1,26 @@
+From: Matthew Vernon <matthew@debian.org>
+Date: Thu, 30 Nov 2017 15:37:30 +0000
+X-Dgit-Generated: 2:8.39-6 a1c9961364820d491470bba8fb48bf51b0c56895
+Subject: Patch from MariaDB to fix stack frame size detection
+
+This comes via Ondřej Surý <ondrej@debian.org> in #878107. Upstream
+don't consider it sufficiently important to fix, but it is causing us
+issues.
+
+---
+
+--- pcre3-8.39.orig/pcre_exec.c
++++ pcre3-8.39/pcre_exec.c
+@@ -509,6 +509,12 @@ Returns:       MATCH_MATCH if matched
+                  (e.g. stopped by repeated call or recursion limit)
+ */
+ 
++#ifdef __GNUC__
++static int
++match(REGISTER PCRE_PUCHAR eptr, REGISTER const pcre_uchar *ecode,
++  PCRE_PUCHAR mstart, int offset_top, match_data *md, eptrblock *eptrb,
++  unsigned int rdepth) __attribute__((noinline,noclone));
++#endif
+ static int
+ match(REGISTER PCRE_PUCHAR eptr, REGISTER const pcre_uchar *ecode,
+   PCRE_PUCHAR mstart, int offset_top, match_data *md, eptrblock *eptrb,

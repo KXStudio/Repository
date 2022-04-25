@@ -1,0 +1,53 @@
+From: Mark Baker <mark@mnb.org.uk>
+Date: Wed, 13 Jul 2016 21:20:13 +0100
+Subject: PCRE6_compatible_API
+
+---
+ pcrecpp.cc | 6 ++++++
+ pcrecpp.h  | 2 ++
+ pcretest.c | 2 +-
+ 3 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/pcrecpp.cc b/pcrecpp.cc
+index d09c9ab..728b074 100644
+--- a/pcrecpp.cc
++++ b/pcrecpp.cc
+@@ -80,6 +80,12 @@ static const string empty_string;
+ // If the user doesn't ask for any options, we just use this one
+ static RE_Options default_options;
+ 
++// PCRE6.x compatible API
++void RE::Init(const char *c_pat, const RE_Options* options) {
++  const string cxx_pat(c_pat);
++  Init(cxx_pat, options);
++}
++
+ void RE::Init(const string& pat, const RE_Options* options) {
+   pattern_ = pat;
+   if (options == NULL) {
+diff --git a/pcrecpp.h b/pcrecpp.h
+index 3e594b0..a520057 100644
+--- a/pcrecpp.h
++++ b/pcrecpp.h
+@@ -658,6 +658,8 @@ class PCRECPP_EXP_DEFN RE {
+  private:
+ 
+   void Init(const string& pattern, const RE_Options* options);
++  // Old version from PCRE 6.x, for compatibility
++  void Init(const char *pattern, const RE_Options* options);
+   void Cleanup();
+ 
+   // Match against "text", filling in "vec" (up to "vecsize" * 2/3) with
+diff --git a/pcretest.c b/pcretest.c
+index 78ef517..f42f0a3 100644
+--- a/pcretest.c
++++ b/pcretest.c
+@@ -2984,7 +2984,7 @@ int main(int argc, char **argv)
+ {
+ FILE *infile = stdin;
+ const char *version;
+-int options = 0;
++long int options = 0;
+ int study_options = 0;
+ int default_find_match_limit = FALSE;
+ pcre_uint32 default_options = 0;

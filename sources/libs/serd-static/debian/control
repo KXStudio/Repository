@@ -9,9 +9,11 @@ Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/serd/
 Rules-Requires-Root: no
 
-Package: serd-static
+Package: libserd-static
 Architecture: any
 Depends: ${misc:Depends}
+Conflicts: serd-static
+Breaks: serd-static
 Description: lightweight RDF syntax library (static)
  Serd is a lightweight C library for RDF syntax which supports reading
  and writing Turtle and NTriples.

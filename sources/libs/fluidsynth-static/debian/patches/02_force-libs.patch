@@ -1,0 +1,9 @@
+--- fluidsynth-static-1.1.6.orig/fluidsynth.pc.in
++++ fluidsynth-static-1.1.6/fluidsynth.pc.in
+@@ -6,5 +6,5 @@ includedir=@includedir@
+ Name: FluidSynth
+ Description: Software SoundFont synth
+ Version: @VERSION@
+-Libs: -L${libdir} -lfluidsynth
++Libs: -L${libdir} -lfluidsynth -lglib-2.0 -lgthread-2.0 -lsndfile -lFLAC -lvorbisenc -lvorbis -logg -lpthread -lrt -lm
+ Cflags: -I${includedir}

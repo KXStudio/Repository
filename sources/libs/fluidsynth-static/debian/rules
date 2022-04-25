@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio.mk
+
+EXTRA_CONF_FLAGS  = -DCMAKE_BUILD_TYPE=Release
+EXTRA_CONF_FLAGS += -Denable-debug=OFF
+EXTRA_CONF_FLAGS += -Denable-profiling=OFF
+EXTRA_CONF_FLAGS += -Denable-ladspa=OFF
+EXTRA_CONF_FLAGS += -Denable-fpe-check=OFF
+EXTRA_CONF_FLAGS += -Denable-portaudio=OFF
+EXTRA_CONF_FLAGS += -Denable-trap-on-fpe=OFF
+EXTRA_CONF_FLAGS += -Denable-aufile=OFF
+EXTRA_CONF_FLAGS += -Denable-dbus=OFF
+EXTRA_CONF_FLAGS += -Denable-ipv6=OFF
+EXTRA_CONF_FLAGS += -Denable-jack=OFF
+EXTRA_CONF_FLAGS += -Denable-midishare=OFF
+EXTRA_CONF_FLAGS += -Denable-oss=OFF
+EXTRA_CONF_FLAGS += -Denable-pulseaudio=OFF
+EXTRA_CONF_FLAGS += -Denable-readline=OFF
+EXTRA_CONF_FLAGS += -Denable-ladcca=OFF
+EXTRA_CONF_FLAGS += -Denable-lash=OFF
+EXTRA_CONF_FLAGS += -Denable-alsa=OFF
+EXTRA_CONF_FLAGS += -Denable-coreaudio=OFF
+EXTRA_CONF_FLAGS += -Denable-coremidi=OFF
+EXTRA_CONF_FLAGS += -Denable-framework=OFF
+EXTRA_CONF_FLAGS += -Denable-floats=ON
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(EXTRA_CONF_FLAGS) \
+		-DCMAKE_INSTALL_PREFIX=/opt/kxstudio \
+		-DBUILD_SHARED_LIBS=OFF
+
+%:
+	dh $@ -S cmake

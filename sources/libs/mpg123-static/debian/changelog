@@ -1,3 +1,9 @@
+mpg123-static (6:1.29.3-2kxstudio2) focal; urgency=medium
+
+  * Do not use fpu for ARM builds, fixing libsndfile test-case
+
+ -- falkTX <falktx@falktx.com>  Mon, 25 Apr 2022 00:53:14 +0100
+
 mpg123-static (6:1.29.3-1kxstudio3) focal; urgency=medium
 
   * Initial package

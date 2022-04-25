@@ -1,3 +1,9 @@
+fftw3-static (6:3.3.10-1kxstudio2) focal; urgency=medium
+
+  * Build with SSE
+
+ -- falkTX <falktx@falktx.com>  Mon, 25 Apr 2022 00:44:13 +0100
+
 fftw3-static (6:3.3.10-1kxstudio1) focal; urgency=medium
 
   * Initial package

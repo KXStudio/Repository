@@ -3,12 +3,10 @@
 KXSTUDIO_NO_FASTMATH = y
 include /usr/share/dpkg/kxstudio.mk
 
-# export LDFLAGS += -Wl,--whole-archive
-
 ifeq ($(DEB_HOST_ARCH),armhf)
-EXTRA_CONFIG = --with-cpu=neon
+EXTRA_CONFIG = --with-cpu=arm_nofpu
 else ifeq ($(DEB_HOST_ARCH),arm64)
-EXTRA_CONFIG = --with-cpu=neon64
+EXTRA_CONFIG = --with-cpu=generic_nofpu
 else
 EXTRA_CONFIG = --with-cpu=x86-64
 endif

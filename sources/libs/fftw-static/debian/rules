@@ -1,6 +1,5 @@
 #!/usr/bin/make -f
 
-KXSTUDIO_NO_SSE = y
 include /usr/share/dpkg/kxstudio.mk
 
 BASE_CONFIG = \

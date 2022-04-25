@@ -1,4 +1,4 @@
-libsndfile-static (6:1.1.0-2kxstudio1) focal; urgency=medium
+libsndfile-static (6:1.1.0-2kxstudio2) focal; urgency=medium
 
   * Fix missing mp3 support
 

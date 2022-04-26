@@ -11,3 +11,10 @@ Architecture: all
 Depends: ${misc:Depends}
 Description: Build scripts for KXStudio repositories
  This package provides the build scripts used in the KXStudio repositories.
+
+Package: kxstudio-audio-plugin-tester
+Architecture: all
+Depends: ${misc:Depends}, kxstudio-build-scripts, lv2lint
+Description: Audio plugin test setup for KXStudio repositories
+ This package provides the setup used for testing audio plugins
+ in the KXStudio repositories.

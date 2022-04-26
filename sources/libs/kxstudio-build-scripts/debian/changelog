@@ -1,3 +1,9 @@
+kxstudio-build-scripts (3) focal; urgency=medium
+
+  * Build carla for testing plugins
+
+ -- falkTX <falktx@falktx.com>  Tue, 26 Apr 2022 10:14:48 +0100
+
 kxstudio-build-scripts (2) focal; urgency=medium
 
   * Add KXSTUDIO_EXPLICIT_PATH_INCLUDE flag

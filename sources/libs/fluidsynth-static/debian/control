@@ -12,9 +12,11 @@ Standards-Version: 4.5.0
 Homepage: https://www.fluidsynth.org/
 Rules-Requires-Root: no
 
-Package: fluidsynth-static
+Package: libfluidsynth-static
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libsndfile-static, libglib2.0-dev
+Conflicts: fluidsynth-static
+Breaks: fluidsynth-static
 Description: Real-time MIDI software synthesizer (static)
  Fluidsynth is a real-time midi synthesizer based on the soundfont2
  specifications. It can be used to render MIDI input or MIDI files to audio.

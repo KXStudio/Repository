@@ -1,0 +1,47 @@
+Source: lilv-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  python3,
+  pkg-config,
+  libsndfile-static,
+  libsratom-static,
+  libjack-dev | libjack-jackd2-dev
+Standards-Version: 4.5.0
+Homepage: http://drobilla.net/software/lilv/
+Rules-Requires-Root: no
+
+Package: liblilv-static
+Architecture: any
+Depends: ${misc:Depends}, libsratom-static
+Conflicts: lilv-static
+Breaks: lilv-static
+Description: library for simple use of LV2 plugins (static)
+ Lilv (formerly SLV2) is a library for LV2 hosts intended to make using
+ LV2 Plugins as simple as possible (without sacrificing capabilities).
+ .
+ Lilv is the successor to SLV2, rewritten to be significantly faster
+ and have minimal dependencies.
+ .
+ This package provides the static library used in KXStudio builds.
+
+Package: lilv-utils
+Section: sound
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: lv2-host
+Description: library for simple use of LV2 plugins (runtime files)
+ Lilv (formerly SLV2) is a library for LV2 hosts intended to make using
+ LV2 Plugins as simple as possible (without sacrificing capabilities).
+ .
+ Lilv is the successor to SLV2, rewritten to be significantly faster
+ and have minimal dependencies.
+ .
+ This package provides the following utilities:
+  * lv2info - Extract information about an installed LV2 plugin.
+  * lv2ls - List all installed LV2 plugins.
+  * lv2apply - Apply an LV2 plugin to an audio file.
+  * lv2bench - Benchmark all installed and supported LV2 plugins.
+  * lilv-bench

@@ -5,5 +5,5 @@
  Description: Software SoundFont synth
  Version: @VERSION@
 -Libs: -L${libdir} -lfluidsynth
-+Libs: -L${libdir} -lfluidsynth -lglib-2.0 -lgthread-2.0 -lsndfile -lFLAC -lvorbisenc -lvorbis -logg -lpthread -lrt -lm
++Libs: -L${libdir} -lfluidsynth -lglib-2.0 -lgthread-2.0 -lsndfile -lmp3lame -lmpg123 -lopus -lFLAC -lvorbisenc -lvorbis -logg -lpthread -lrt -lm
  Cflags: -I${includedir}

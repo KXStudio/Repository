@@ -1,0 +1,36 @@
+From 6cf78f419edeb85f54e6e0442515fc8be410ad5b Mon Sep 17 00:00:00 2001
+From: Timothy Krause <tmkrs4482@gmail.com>
+Date: Tue, 30 Nov 2021 06:26:10 -0700
+Subject: [PATCH] write the output upto the event and then update the state.
+
+---
+ plugins/eg-midigate.lv2/midigate.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/eg-midigate.lv2/midigate.c b/plugins/eg-midigate.lv2/midigate.c
+index 53794405..db110336 100644
+--- a/plugins/eg-midigate.lv2/midigate.c
++++ b/plugins/eg-midigate.lv2/midigate.c
+@@ -160,7 +160,11 @@ run(LV2_Handle instance, uint32_t sample_count)
+   uint32_t  offset = 0;
+ 
+   LV2_ATOM_SEQUENCE_FOREACH (self->control, ev) {
+-    if (ev->body.type == self->uris.midi_MidiEvent) {
++
++	write_output(self, offset, ev->time.frames - offset);
++	offset = (uint32_t)ev->time.frames;
++
++	if (ev->body.type == self->uris.midi_MidiEvent) {
+       const uint8_t* const msg = (const uint8_t*)(ev + 1);
+       switch (lv2_midi_message_type(msg)) {
+       case LV2_MIDI_MSG_NOTE_ON:
+@@ -185,9 +189,6 @@ run(LV2_Handle instance, uint32_t sample_count)
+         break;
+       }
+     }
+-
+-    write_output(self, offset, ev->time.frames - offset);
+-    offset = (uint32_t)ev->time.frames;
+   }
+ 
+   write_output(self, offset, sample_count - offset);

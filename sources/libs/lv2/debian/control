@@ -1,0 +1,45 @@
+Source: lv2
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  python3,
+  pkg-config,
+  libsndfile-static,
+  libsamplerate-static,
+  libgtk2.0-dev,
+  lcov
+Standards-Version: 4.5.0
+Homepage: http://lv2plug.in/
+Rules-Requires-Root: no
+
+Package: lv2-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}, sordi
+# mod-sdk-lv2, kxstudio-lv2-extensions
+Description: LV2 audio plugin specification
+ LV2 is a simple but extensible successor of LADSPA plugins,
+ intended to address the limitations of LADSPA which many
+ applications have outgrown.
+ .
+ This package contains the LV2 audio plugin specification,
+ with all the official extension packages, as well as example
+ plugins, lv2specgen, and additional data.
+ .
+ Implementations are encouraged to abandon the “copy paste
+ headers” practice and depend on this package instead.
+
+Package: lv2-examples
+Section: sound
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: lv2-plugin
+Description: LV2 audio plugin specification (example plugins)
+ LV2 is a simple but extensible successor of LADSPA plugins,
+ intended to address the limitations of LADSPA which many
+ applications have outgrown.
+ .
+ This package contains some LV2 example plugins.

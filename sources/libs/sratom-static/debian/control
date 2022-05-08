@@ -1,0 +1,30 @@
+Source: sratom-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  python3,
+  pkg-config,
+  libsord-static,
+  lv2-dev (>= 6:1.18.2-1kxstudio1)
+Standards-Version: 4.5.0
+Homepage: http://drobilla.net/software/sratom/
+Rules-Requires-Root: no
+
+Package: libsratom-static
+Architecture: any
+Depends: ${misc:Depends}, libsord-static, lv2-dev
+Conflicts: sratom-static
+Breaks: sratom-static
+Description: library for serialising LV2 atoms to/from Turtle (static)
+ Sratom is a new C library for serialising LV2 atoms to/from Turtle.
+ It is intended to be a full serialisation solution for LV2 atoms,
+ allowing implementations to serialise binary atoms to strings and
+ read them back again. This is particularly useful for saving plugin
+ state, or implementing plugin control with network transparency.
+ Sratom uses Serd and Sord to do the work, it is a small library
+ implemented in a single source file, suitable for direct inclusion
+ in projects if avoiding a dependency is desired.
+ .
+ This package provides the static library used in KXStudio builds.

@@ -1,0 +1,245 @@
+From 3a4020958acf5b88f366e5bc99e3009a7beca104 Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Fri, 12 Mar 2021 20:12:01 -0500
+Subject: [PATCH] Add owl:imports to ontologies
+
+These are required by OWL tools to use vocabulary from another ontology.
+Though we don't use OWL tools in LV2, they are at least useful for sanity
+checking the semantic side of things.  These properties are also nice to have
+anyway, since they clearly describe the dependencies between specifications.
+---
+ lv2/atom/atom.ttl               | 5 ++++-
+ lv2/buf-size/buf-size.ttl       | 4 +++-
+ lv2/core/lv2core.ttl            | 3 ++-
+ lv2/event/event.ttl             | 3 ++-
+ lv2/log/log.ttl                 | 3 ++-
+ lv2/morph/morph.ttl             | 3 ++-
+ lv2/options/options.ttl         | 3 ++-
+ lv2/parameters/parameters.ttl   | 5 ++++-
+ lv2/port-groups/port-groups.ttl | 3 ++-
+ lv2/port-props/port-props.ttl   | 3 ++-
+ lv2/presets/presets.ttl         | 3 ++-
+ lv2/resize-port/resize-port.ttl | 3 ++-
+ lv2/state/state.ttl             | 3 ++-
+ lv2/ui/ui.ttl                   | 5 +++--
+ lv2/urid/urid.ttl               | 3 ++-
+ 15 files changed, 36 insertions(+), 16 deletions(-)
+
+diff --git a/lv2/atom/atom.ttl b/lv2/atom/atom.ttl
+index ddfb430d..ef221ad3 100644
+--- a/lv2/atom/atom.ttl
++++ b/lv2/atom/atom.ttl
+@@ -14,7 +14,10 @@
+ 		<forge.h> ,
+ 		<atom.meta.ttl> ;
+ 	rdfs:label "LV2 Atom" ;
+-	rdfs:comment "A generic value container and several data types." .
++	rdfs:comment "A generic value container and several data types." ;
++	owl:imports <http://lv2plug.in/ns/lv2core> ,
++		<http://lv2plug.in/ns/extensions/ui> ,
++		<http://lv2plug.in/ns/extensions/units> .
+ 
+ atom:cType
+ 	a rdf:Property ,
+diff --git a/lv2/buf-size/buf-size.ttl b/lv2/buf-size/buf-size.ttl
+index 88631982..c78d2cc8 100644
+--- a/lv2/buf-size/buf-size.ttl
++++ b/lv2/buf-size/buf-size.ttl
+@@ -11,7 +11,9 @@
+ 	rdfs:label "LV2 Buf Size" ;
+ 	rdfs:comment "Access to, and restrictions on, buffer sizes." ;
+ 	rdfs:seeAlso <buf-size.h> ,
+-		<buf-size.meta.ttl> .
++		<buf-size.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> ,
++		<http://lv2plug.in/ns/ext/options> .
+ 
+ bufsz:boundedBlockLength
+ 	a lv2:Feature ;
+diff --git a/lv2/core/lv2core.ttl b/lv2/core/lv2core.ttl
+index f5836c6e..87541693 100644
+--- a/lv2/core/lv2core.ttl
++++ b/lv2/core/lv2core.ttl
+@@ -11,7 +11,8 @@
+ 	rdfs:comment "An extensible open standard for audio plugins." ;
+ 	rdfs:seeAlso <lv2.h> ,
+ 		<lv2_util.h> ,
+-		<lv2core.meta.ttl> .
++		<lv2core.meta.ttl> ;
++	owl:imports doap: .
+ 
+ lv2:Specification
+ 	a rdfs:Class ,
+diff --git a/lv2/event/event.ttl b/lv2/event/event.ttl
+index de400d43..3114fc58 100644
+--- a/lv2/event/event.ttl
++++ b/lv2/event/event.ttl
+@@ -11,7 +11,8 @@
+ 	rdfs:comment "A port-based real-time generic event interface." ;
+ 	rdfs:seeAlso <event.h> ,
+ 		<event-helpers.h> ,
+-		<event.meta.ttl> .
++		<event.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ ev:EventPort
+ 	a rdfs:Class ;
+diff --git a/lv2/log/log.ttl b/lv2/log/log.ttl
+index 46cba45e..a8c42367 100644
+--- a/lv2/log/log.ttl
++++ b/lv2/log/log.ttl
+@@ -10,7 +10,8 @@
+ 	rdfs:label "LV2 Log" ;
+ 	rdfs:comment "A feature for writing log messages." ;
+ 	rdfs:seeAlso <log.h> ,
+-		<log.meta.ttl> .
++		<log.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ log:Entry
+ 	a rdfs:Class ;
+diff --git a/lv2/morph/morph.ttl b/lv2/morph/morph.ttl
+index 303293da..a771e030 100644
+--- a/lv2/morph/morph.ttl
++++ b/lv2/morph/morph.ttl
+@@ -13,7 +13,8 @@
+ 	rdfs:label "LV2 Morph" ;
+ 	rdfs:comment "Ports that can dynamically change type." ;
+ 	rdfs:seeAlso <morph.h> ,
+-		<morph.meta.ttl> .
++		<morph.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ morph:MorphPort
+ 	a rdfs:Class ,
+diff --git a/lv2/options/options.ttl b/lv2/options/options.ttl
+index f8388da8..78defeff 100644
+--- a/lv2/options/options.ttl
++++ b/lv2/options/options.ttl
+@@ -10,7 +10,8 @@
+ 	rdfs:label "LV2 Options" ;
+ 	rdfs:comment "Runtime options for LV2 plugins and UIs." ;
+ 	rdfs:seeAlso <options.h> ,
+-		<options.meta.ttl> .
++		<options.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ opts:Option
+ 	a rdfs:Class ;
+diff --git a/lv2/parameters/parameters.ttl b/lv2/parameters/parameters.ttl
+index 5c3dadf9..99878127 100644
+--- a/lv2/parameters/parameters.ttl
++++ b/lv2/parameters/parameters.ttl
+@@ -11,7 +11,10 @@
+ 	a owl:Ontology ;
+ 	rdfs:label "LV2 Parameters" ;
+ 	rdfs:comment "Common parameters for audio processing." ;
+-	rdfs:seeAlso <parameters.meta.ttl> .
++	rdfs:seeAlso <parameters.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/ext/atom> ,
++		<http://lv2plug.in/ns/ext/port-groups> ,
++		<http://lv2plug.in/ns/lv2core> .
+ 
+ param:ControlGroup
+ 	a rdfs:Class ;
+diff --git a/lv2/port-groups/port-groups.ttl b/lv2/port-groups/port-groups.ttl
+index d248f28b..5173aa09 100644
+--- a/lv2/port-groups/port-groups.ttl
++++ b/lv2/port-groups/port-groups.ttl
+@@ -9,7 +9,8 @@
+ 	a owl:Ontology ;
+ 	rdfs:label "LV2 Port Groups" ;
+ 	rdfs:comment "Multi-channel groups of LV2 ports." ;
+-	rdfs:seeAlso <port-groups.meta.ttl> .
++	rdfs:seeAlso <port-groups.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ pg:Group
+ 	a rdfs:Class ;
+diff --git a/lv2/port-props/port-props.ttl b/lv2/port-props/port-props.ttl
+index 1ddeed07..ea25c6bd 100644
+--- a/lv2/port-props/port-props.ttl
++++ b/lv2/port-props/port-props.ttl
+@@ -9,7 +9,8 @@
+ 	a owl:Ontology ;
+ 	rdfs:label "LV2 Port Properties" ;
+ 	rdfs:comment "Various properties for LV2 plugin ports." ;
+-	rdfs:seeAlso <port-props.meta.ttl> .
++	rdfs:seeAlso <port-props.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ pprops:trigger
+ 	a lv2:PortProperty ;
+diff --git a/lv2/presets/presets.ttl b/lv2/presets/presets.ttl
+index c1caf43c..156f0813 100644
+--- a/lv2/presets/presets.ttl
++++ b/lv2/presets/presets.ttl
+@@ -9,7 +9,8 @@
+ 	a owl:Ontology ;
+ 	rdfs:label "LV2 Presets" ;
+ 	rdfs:comment "Presets for LV2 plugins." ;
+-	rdfs:seeAlso <presets.meta.ttl> .
++	rdfs:seeAlso <presets.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ pset:Bank
+ 	a rdfs:Class ;
+diff --git a/lv2/resize-port/resize-port.ttl b/lv2/resize-port/resize-port.ttl
+index 29cd18b3..a6712e71 100644
+--- a/lv2/resize-port/resize-port.ttl
++++ b/lv2/resize-port/resize-port.ttl
+@@ -10,7 +10,8 @@
+ 	rdfs:label "LV2 Resize Port" ;
+ 	rdfs:comment "Dynamically sized LV2 port buffers." ;
+ 	rdfs:seeAlso <resize-port.h> ,
+-		<resize-port.meta.ttl> .
++		<resize-port.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ rsz:resize
+ 	a lv2:Feature ;
+diff --git a/lv2/state/state.ttl b/lv2/state/state.ttl
+index 19ccaa22..48537c82 100644
+--- a/lv2/state/state.ttl
++++ b/lv2/state/state.ttl
+@@ -9,7 +9,8 @@
+ 	rdfs:label "LV2 State" ;
+ 	rdfs:comment "An interface for LV2 plugins to save and restore state." ;
+ 	rdfs:seeAlso <state.h> ,
+-		<state.meta.ttl> .
++		<state.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ state:interface
+ 	a lv2:ExtensionData ;
+diff --git a/lv2/ui/ui.ttl b/lv2/ui/ui.ttl
+index 61f8bcac..654f1d7a 100644
+--- a/lv2/ui/ui.ttl
++++ b/lv2/ui/ui.ttl
+@@ -10,9 +10,10 @@
+ 	a owl:Ontology ;
+ 	rdfs:label "LV2 UI" ;
+ 	rdfs:comment "User interfaces for LV2 plugins." ;
+-	owl:imports <http://lv2plug.in/ns/lv2core> ;
+ 	rdfs:seeAlso <ui.h> ,
+-		<ui.meta.ttl> .
++		<ui.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> ,
++		<http://lv2plug.in/ns/ext/options> .
+ 
+ ui:UI
+ 	a rdfs:Class ,
+diff --git a/lv2/urid/urid.ttl b/lv2/urid/urid.ttl
+index 2c44b561..53aa1e57 100644
+--- a/lv2/urid/urid.ttl
++++ b/lv2/urid/urid.ttl
+@@ -8,7 +8,8 @@
+ 	rdfs:label "LV2 URID" ;
+ 	rdfs:comment "Features for mapping URIs to and from integers." ;
+ 	rdfs:seeAlso <urid.h> ,
+-		<urid.meta.ttl> .
++		<urid.meta.ttl> ;
++	owl:imports <http://lv2plug.in/ns/lv2core> .
+ 
+ urid:map
+ 	a lv2:Feature ;

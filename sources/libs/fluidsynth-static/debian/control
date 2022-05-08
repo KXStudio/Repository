@@ -6,7 +6,7 @@ Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts,
   cmake,
   pkg-config,
-  libsndfile-static,
+  libsndfile-static (>= 6:1.1.0-2kxstudio2),
   libglib2.0-dev
 Standards-Version: 4.5.0
 Homepage: https://www.fluidsynth.org/

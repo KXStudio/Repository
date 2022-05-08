@@ -1,0 +1,12 @@
+diff --git a/wscript b/wscript
+index 4e8ebde..41e784c 100644
+--- a/wscript
++++ b/wscript
+@@ -231,7 +231,6 @@ def build(bld):
+     if bld.env.DOCS:
+         bld.recurse('doc/c')
+ 
+-    bld.add_post_fun(autowaf.run_ldconfig)
+ 
+ 
+ def test(tst):

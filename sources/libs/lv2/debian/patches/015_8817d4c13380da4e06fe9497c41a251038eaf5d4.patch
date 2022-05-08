@@ -1,0 +1,43 @@
+From 8817d4c13380da4e06fe9497c41a251038eaf5d4 Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Fri, 12 Mar 2021 23:36:23 -0500
+Subject: [PATCH] Fix type and range of patch:value
+
+This was obviously wrong.  I'm not sure how this happened, probably a
+copy/paste mistake.
+---
+ lv2/patch/patch.ttl | 4 +---
+ wscript             | 3 +++
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/lv2/patch/patch.ttl b/lv2/patch/patch.ttl
+index 78040094..0fb2012f 100644
+--- a/lv2/patch/patch.ttl
++++ b/lv2/patch/patch.ttl
+@@ -230,11 +230,9 @@ patch:subject
+ 	rdfs:comment "The subject this message applies to." .
+ 
+ patch:value
+-	a rdf:Property ,
+-		owl:DatatypeProperty ;
++	a rdf:Property ;
+ 	rdfs:label "value" ;
+ 	rdfs:domain patch:Set ;
+-	rdfs:range rdf:Property ;
+ 	rdfs:comment "The value of a property in a patch:Set message." .
+ 
+ patch:wildcard
+diff --git a/wscript b/wscript
+index 6ecb0d92..37a24e86 100644
+--- a/wscript
++++ b/wscript
+@@ -686,6 +686,9 @@ def test_vocabularies(check, specs, files):
+     # Check that all properties are either datatype or object properties
+     for r in sorted(model.triples([None, rdf.type, rdf.Property])):
+         subject = r[0]
++        if str(subject) == 'http://lv2plug.in/ns/ext/patch#value':
++            continue # patch:value is just a "promiscuous" rdf:Property
++
+         types = list(model.objects(subject, rdf.type))
+ 
+         check(lambda: ((owl.DatatypeProperty in types) or

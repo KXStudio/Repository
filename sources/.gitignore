@@ -5,17 +5,15 @@
 *.dsc
 *.orig.*
 
-/libs/*/*
-!/libs/*/debian
+files
+include-binaries
 
-/libs/*/debian/*
-!/libs/*/debian/patches
-!/libs/*/debian/source
+/libs/*/*
+!/libs/*/debian/patches/*.patch
+!/libs/*/debian/patches/series
+!/libs/*/debian/source/format
 !/libs/*/debian/changelog
 !/libs/*/debian/control
 !/libs/*/debian/rules
-
-!/libs/kxstudio-build-scripts/
-/libs/kxstudio-build-scripts/files
 
 /kxstudio/kxstudio-repos/keyrings/

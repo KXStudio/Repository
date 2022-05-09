@@ -1,0 +1,2 @@
+debian/tmp/opt/kxstudio/bin/*       usr/bin/
+debian/tmp/opt/kxstudio/share/man/* usr/share/man/

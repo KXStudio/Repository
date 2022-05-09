@@ -17,6 +17,8 @@ include-binaries
 !/libs/*/debian/source/format
 !/libs/*/debian/changelog
 !/libs/*/debian/control
+!/libs/*/debian/install
+!/libs/*/debian/*.install
 !/libs/*/debian/rules
 
 !/libs/kxstudio-build-scripts/*.mk

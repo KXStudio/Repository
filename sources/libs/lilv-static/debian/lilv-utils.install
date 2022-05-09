@@ -1,0 +1,3 @@
+/usr/share/man/man1/
+debian/tmp/opt/kxstudio/bin/*                   usr/bin/
+debian/tmp/opt/kxstudio/etc/bash_completion.d/* usr/share/bash-completion/completions/

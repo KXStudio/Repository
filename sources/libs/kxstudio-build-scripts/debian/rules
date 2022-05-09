@@ -23,13 +23,20 @@ CARLA_BACKEND_EXTRAFLAGS += EXTERNAL_PLUGINS=false
 CARLA_BACKEND_EXTRAFLAGS += USING_JUCE=false
 CARLA_BACKEND_EXTRAFLAGS += USING_JUCE_AUDIO_DEVICES=false
 CARLA_BACKEND_EXTRAFLAGS += USING_JUCE_GUI_EXTRA=false
+CARLA_BACKEND_EXTRAFLAGS += USING_RTAUDIO=false
+CARLA_BACKEND_EXTRAFLAGS += NOOPT=true
+
+export CFLAGS=
+export CXXFLAGS=
+export CPPFLAGS=
+export LDFLAGS=
 
 override_dh_auto_configure:
 	mkdir -p build
 	tar -x -C build --overwrite --strip-components=1 -f carla.tar.gz
 
 override_dh_auto_build:
-	make all -C build $(CARLA_BACKEND_EXTRAFLAGS)
+	$(MAKE) all -C build $(CARLA_BACKEND_EXTRAFLAGS)
 
 override_dh_auto_clean:
 	if [ ! -f carla.tar.gz ]; then wget https://github.com/falkTX/Carla/archive/refs/tags/v2.4.3.tar.gz -O carla.tar.gz; fi

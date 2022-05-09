@@ -36,7 +36,7 @@ export LV2_PATH=$(pwd)/debian/${PKG_NAME}/usr/lib/lv2:/tmp/lv2-spec
 
 rm -rf /tmp/lv2-spec
 mkdir /tmp/lv2-spec
-cp -r /usr/lib/lv2/{atom,buf-size,core,data-access,kx-control-input-port-change-request,kx-programs,instance-access,midi,parameters,port-groups,port-props,options,patch,presets,resize-port,state,time,ui,units,urid,worker}.lv2 /tmp/lv2-spec/
+cp -r /usr/lib/lv2/{atom,buf-size,core,data-access,instance-access,midi,parameters,port-groups,port-props,options,patch,presets,resize-port,state,time,ui,units,urid,worker}.lv2 /tmp/lv2-spec/
 
 if [ -d debian/${PKG_NAME}/usr/lib/lv2 ]; then
     pushd debian/${PKG_NAME}/usr/lib/lv2

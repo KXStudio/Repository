@@ -2,7 +2,15 @@
 
 include /usr/share/dpkg/architecture.mk
 
-FLAGS  = -O3 -fPIC -DPIC -fvisibility=hidden -fdata-sections -ffunction-sections -DNDEBUG
+FLAGS  = -O3
+FLAGS += -fPIC -DPIC
+FLAGS += -fdata-sections -ffunction-sections
+FLAGS += -fno-common
+FLAGS += -fno-gnu-unique
+FLAGS += -fno-strict-aliasing -flto -ffat-lto-objects
+FLAGS += -fvisibility=hidden
+FLAGS += -DNDEBUG
+
 ifeq ($(DEB_HOST_ARCH),armhf)
 FLAGS += -march=armv7ve -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=neon-vfpv4
 else ifeq ($(DEB_HOST_ARCH),arm64)
@@ -15,12 +23,12 @@ ifeq ($(KXSTUDIO_NO_FASTMATH),)
 FLAGS += -ffast-math
 endif
 
-export CFLAGS=$(FLAGS)
-export CXXFLAGS=$(FLAGS) -fvisibility-inlines-hidden
-export CPPFLAGS=
-export LDFLAGS=-Wl,-O1,--as-needed,--no-undefined,--gc-sections,--strip-all
-export PATH:=/opt/kxstudio/bin:$(PATH)
-export PKG_CONFIG_PATH=/opt/kxstudio/lib/pkgconfig
+export CFLAGS = $(FLAGS)
+export CXXFLAGS = $(FLAGS) -fvisibility-inlines-hidden
+export CPPFLAGS =
+export LDFLAGS = $(FLAGS) -Wl,-O1,--as-needed,--no-undefined,--gc-sections,--strip-all -Werror=odr -Werror=lto-type-mismatch
+export PATH := /opt/kxstudio/bin:$(PATH)
+export PKG_CONFIG_PATH = /opt/kxstudio/lib/pkgconfig
 
 ifeq ($(KXSTUDIO_EXPLICIT_PATH_INCLUDE),y)
 export CFLAGS += -I/opt/kxstudio/include

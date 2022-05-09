@@ -1,3 +1,9 @@
+kxstudio-build-scripts (5) focal; urgency=medium
+
+  * Tweak default flags
+
+ -- falkTX <falktx@falktx.com>  Mon, 09 May 2022 12:43:04 +0100
+
 kxstudio-build-scripts (4) focal; urgency=medium
 
   * Add lv2lint and lilv-utils as dependencies

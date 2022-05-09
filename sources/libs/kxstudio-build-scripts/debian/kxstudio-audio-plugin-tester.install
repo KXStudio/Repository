@@ -1,0 +1,4 @@
+build/bin/carla-bridge-native /opt/kxstudio/lib/carla/
+build/bin/carla-discovery-native /opt/kxstudio/lib/carla/
+
+kxstudio-audio-plugin.* /usr/share/dpkg/

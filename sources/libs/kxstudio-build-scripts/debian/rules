@@ -34,6 +34,7 @@ export LDFLAGS=
 override_dh_auto_configure:
 	mkdir -p build
 	tar -x -C build --overwrite --strip-components=1 -f carla.tar.gz
+	patch -d build -p1 -i ../carla-fixes.patch
 
 override_dh_auto_build:
 	$(MAKE) all -C build $(CARLA_BACKEND_EXTRAFLAGS)

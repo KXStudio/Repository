@@ -1,0 +1,21 @@
+From 9cced339c34db7213cfb81c5c13a1b963fb9db75 Mon Sep 17 00:00:00 2001
+From: Fabio Pesari <fpesari@tuxfamily.org>
+Date: Fri, 22 Apr 2022 14:14:05 +0200
+Subject: [PATCH] Added -lm to plugins
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9636c5e..f0ad4e1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,6 +28,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Airwindows.lv2)
+ function(add_plugin PLUGIN_NAME)
+   add_library(${PLUGIN_NAME} SHARED src/${PLUGIN_NAME}/${PLUGIN_NAME}.c)
+   target_include_directories(${PLUGIN_NAME} PRIVATE ${LV2_INCLUDE_DIRS})
++  target_link_libraries(${PLUGIN_NAME} m)
+   set_target_properties(${PLUGIN_NAME} PROPERTIES PREFIX "")
+ 
+   if(MSVC)

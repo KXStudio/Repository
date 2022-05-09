@@ -1,0 +1,21 @@
+Source: airwindows-lv2
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 6)
+Standards-Version: 4.5.0
+Homepage: https://github.com/hannesbraun/airwindows-lv2
+Rules-Requires-Root: no
+
+Package: airwindows-lv2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: lv2-plugin
+Description: LV2 port of Airwindows plugins by Chris Johnson
+ Airwindows is a collection of modular, graphic-less, stripped-down audio
+ plugins.
+ .
+ Airwindows’ reputation was built out of generic-interface plugins, which
+ typically focus on doing only one thing, often with very simple controls,
+ labelled to help understanding but not to encourage formulaic work.

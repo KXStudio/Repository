@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio-audio-plugin.mk
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX=/usr/lib/lv2 -DCMAKE_BUILD_TYPE=Release
+
+override_dh_auto_install:
+	dh_auto_install
+	$(call kxstudio_audio_plugin_test)
+
+%:
+	dh $@ -Scmake

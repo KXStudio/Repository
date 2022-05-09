@@ -1,3 +1,9 @@
+kxstudio-build-scripts (6) focal; urgency=medium
+
+  * Fix carla mem leaks
+
+ -- falkTX <falktx@falktx.com>  Mon, 09 May 2022 20:25:28 +0100
+
 kxstudio-build-scripts (5) focal; urgency=medium
 
   * Tweak default flags

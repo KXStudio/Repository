@@ -5,6 +5,7 @@
 *.dsc
 *.orig.*
 *.tar.*
+*.upload
 
 files
 include-binaries
@@ -24,8 +25,23 @@ include-binaries
 !/libs/*/debian/rules
 
 !/libs/kxstudio-build-scripts/*.mk
+!/libs/kxstudio-build-scripts/*.patch
 !/libs/kxstudio-build-scripts/*.sh
 !/libs/kxstudio-build-scripts/*.supp
 !/libs/kxstudio-build-scripts/debian/copyright
+
+/plugins/*/*
+!/plugins/*/debian
+/plugins/*/debian/*
+!/plugins/*/debian/patches
+/plugins/*/debian/patches/*
+!/plugins/*/debian/patches/*.patch
+!/plugins/*/debian/patches/series
+!/plugins/*/debian/source/format
+!/plugins/*/debian/changelog
+!/plugins/*/debian/control
+!/plugins/*/debian/install
+!/plugins/*/debian/*.install
+!/plugins/*/debian/rules
 
 /kxstudio/kxstudio-repos/keyrings/

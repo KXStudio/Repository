@@ -1,0 +1,989 @@
+diff --git a/source/modules/water/buffers/AudioSampleBuffer.h b/source/modules/water/buffers/AudioSampleBuffer.h
+index 1716c5efd..8ae1e6388 100644
+--- a/source/modules/water/buffers/AudioSampleBuffer.h
++++ b/source/modules/water/buffers/AudioSampleBuffer.h
+@@ -205,39 +205,6 @@ public:
+     */
+     ~AudioSampleBuffer() noexcept {}
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    /** Move constructor */
+-    AudioSampleBuffer (AudioSampleBuffer&& other) noexcept
+-        : numChannels (other.numChannels),
+-          size (other.size),
+-          allocatedBytes (other.allocatedBytes),
+-          channels (other.channels),
+-          allocatedData (static_cast<HeapBlock<char>&&> (other.allocatedData)),
+-          isClear (other.isClear)
+-    {
+-        std::memcpy (preallocatedChannelSpace, other.preallocatedChannelSpace, sizeof (preallocatedChannelSpace));
+-        other.numChannels = 0;
+-        other.size = 0;
+-        other.allocatedBytes = 0;
+-    }
+-
+-    /** Move assignment */
+-    AudioSampleBuffer& operator= (AudioSampleBuffer&& other) noexcept
+-    {
+-        numChannels = other.numChannels;
+-        size = other.size;
+-        allocatedBytes = other.allocatedBytes;
+-        channels = other.channels;
+-        allocatedData = static_cast<HeapBlock<char>&&> (other.allocatedData);
+-        isClear = other.isClear;
+-        memcpy (preallocatedChannelSpace, other.preallocatedChannelSpace, sizeof (preallocatedChannelSpace));
+-        other.numChannels = 0;
+-        other.size = 0;
+-        other.allocatedBytes = 0;
+-        return *this;
+-    }
+-   #endif
+-
+     //==============================================================================
+     /** Returns the number of channels of audio data that this buffer contains.
+         @see getSampleData
+diff --git a/source/modules/water/containers/Array.h b/source/modules/water/containers/Array.h
+index a03857e55..e4367c9f2 100644
+--- a/source/modules/water/containers/Array.h
++++ b/source/modules/water/containers/Array.h
+@@ -81,15 +81,6 @@ public:
+             new (data.elements + i) ElementType (other.data.elements[i]);
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    Array (Array<ElementType>&& other) noexcept
+-        : data (static_cast<ArrayAllocationBase<ElementType>&&> (other.data)),
+-          numUsed (other.numUsed)
+-    {
+-        other.numUsed = 0;
+-    }
+-   #endif
+-
+     /** Initalises from a null-terminated C array of values.
+ 
+         @param values   the array to copy from
+@@ -137,17 +128,6 @@ public:
+         return *this;
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    Array& operator= (Array&& other) noexcept
+-    {
+-        deleteAllElements();
+-        data = static_cast<ArrayAllocationBase<ElementType>&&> (other.data);
+-        numUsed = other.numUsed;
+-        other.numUsed = 0;
+-        return *this;
+-    }
+-   #endif
+-
+     //==============================================================================
+     /** Compares this array to another one.
+         Two arrays are considered equal if they both contain the same set of
+@@ -380,22 +360,6 @@ public:
+         return true;
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    /** Appends a new element at the end of the array.
+-
+-        @param newElement       the new object to add to the array
+-        @see set, insert, addIfNotAlreadyThere, addSorted, addUsingDefaultSort, addArray
+-    */
+-    bool add (ElementType&& newElement) noexcept
+-    {
+-        if (! data.ensureAllocatedSize (static_cast<size_t>(numUsed + 1)))
+-            return false;
+-
+-        new (data.elements + numUsed++) ElementType (static_cast<ElementType&&> (newElement));
+-        return true;
+-    }
+-   #endif
+-
+     /** Inserts a new element into the array at a given position.
+ 
+         If the index is less than 0 or greater than the size of the array, the
+diff --git a/source/modules/water/containers/ArrayAllocationBase.h b/source/modules/water/containers/ArrayAllocationBase.h
+index f3049d8e5..878ad81fc 100644
+--- a/source/modules/water/containers/ArrayAllocationBase.h
++++ b/source/modules/water/containers/ArrayAllocationBase.h
+@@ -44,29 +44,6 @@ namespace water {
+ template <class ElementType>
+ class ArrayAllocationBase
+ {
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-private:
+-   #if defined(__GNUC__) && !defined(__clang__) && __GNUC__ < 5
+-    template <typename T>
+-    struct IsTriviallyCopyable : std::integral_constant<bool, false> {};
+-   #else
+-    template <typename T>
+-    using IsTriviallyCopyable = std::is_trivially_copyable<T>;
+-   #endif
+-
+-    template <typename T>
+-    using TriviallyCopyableVoid = typename std::enable_if<IsTriviallyCopyable<T>::value, void>::type;
+-
+-    template <typename T>
+-    using TriviallyCopyableBool = typename std::enable_if<IsTriviallyCopyable<T>::value, bool>::type;
+-
+-    template <typename T>
+-    using NonTriviallyCopyableVoid = typename std::enable_if<! IsTriviallyCopyable<T>::value, void>::type;
+-
+-    template <typename T>
+-    using NonTriviallyCopyableBool = typename std::enable_if<! IsTriviallyCopyable<T>::value, bool>::type;
+-#endif // WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-
+ public:
+     //==============================================================================
+     /** Creates an empty array. */
+@@ -81,19 +58,6 @@ public:
+     {
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    ArrayAllocationBase (ArrayAllocationBase<ElementType>&& other) noexcept
+-        : elements (static_cast<HeapBlock<ElementType>&&> (other.elements)),
+-          numAllocated (other.numAllocated) {}
+-
+-    ArrayAllocationBase& operator= (ArrayAllocationBase<ElementType>&& other) noexcept
+-    {
+-        elements = static_cast<HeapBlock<ElementType>&&> (other.elements);
+-        numAllocated = other.numAllocated;
+-        return *this;
+-    }
+-   #endif
+-
+     //==============================================================================
+     /** Changes the amount of storage allocated.
+ 
+@@ -102,12 +66,7 @@ public:
+ 
+         @param numNewElements  the number of elements that are needed
+     */
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    template <typename T = ElementType> TriviallyCopyableBool<T>
+-   #else
+-    bool
+-   #endif
+-    setAllocatedSize (const size_t numNewElements) noexcept
++    bool setAllocatedSize (const size_t numNewElements) noexcept
+     {
+         if (numAllocated != numNewElements)
+         {
+@@ -127,43 +86,6 @@ public:
+         return true;
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    template <typename T = ElementType>
+-    NonTriviallyCopyableBool<T> setAllocatedSize (const size_t numNewElements) noexcept
+-    {
+-        if (numAllocated == numNewElements)
+-            return true;
+-
+-        if (numNewElements > 0)
+-        {
+-            HeapBlock<ElementType> newElements;
+-
+-            if (! newElements.malloc (numNewElements))
+-                return false;
+-
+-            size_t i = 0;
+-
+-            for (; i < numAllocated && i < numNewElements; ++i)
+-            {
+-                new (newElements + i) ElementType (std::move (elements[i]));
+-                elements[i].~ElementType();
+-            }
+-
+-            for (; i < numNewElements; ++i)
+-                new (newElements + i) ElementType ();
+-
+-            elements = std::move (newElements);
+-        }
+-        else
+-        {
+-            elements.free();
+-        }
+-
+-        numAllocated = numNewElements;
+-        return true;
+-    }
+-   #endif
+-
+     /** Increases the amount of storage allocated if it is less than a given amount.
+ 
+         This will retain any data currently held in the array, but will add
+@@ -198,12 +120,7 @@ public:
+         std::swap (numAllocated, other.numAllocated);
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    template <typename T = ElementType> TriviallyCopyableVoid<T>
+-   #else
+-    void
+-   #endif
+-    moveMemory (ElementType* target, const ElementType* source, const size_t numElements) noexcept
++    void moveMemory (ElementType* target, const ElementType* source, const size_t numElements) noexcept
+     {
+         CARLA_SAFE_ASSERT_RETURN(target != nullptr,);
+         CARLA_SAFE_ASSERT_RETURN(source != nullptr,);
+@@ -213,42 +130,6 @@ public:
+         std::memmove (target, source, ((size_t) numElements) * sizeof (ElementType));
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    template <typename T = ElementType>
+-    NonTriviallyCopyableVoid<T> moveMemory (ElementType* target, const ElementType* source, const size_t numElements) noexcept
+-    {
+-        CARLA_SAFE_ASSERT_RETURN(target != nullptr,);
+-        CARLA_SAFE_ASSERT_RETURN(source != nullptr,);
+-        CARLA_SAFE_ASSERT_RETURN(target != source,);
+-        CARLA_SAFE_ASSERT_RETURN(numElements != 0,);
+-
+-        if (target > source)
+-        {
+-            for (size_t i = 0; i < numElements; ++i)
+-            {
+-                moveElement (target, std::move (*source));
+-                ++target;
+-                ++source;
+-            }
+-        }
+-        else
+-        {
+-            for (size_t i = 0; i < numElements; ++i)
+-            {
+-                moveElement (target, std::move (*source));
+-                --target;
+-                --source;
+-            }
+-        }
+-    }
+-
+-    void moveElement (ElementType* destination, const ElementType&& source)
+-    {
+-        destination->~ElementType();
+-        new (destination) ElementType (std::move (source));
+-    }
+-   #endif
+-
+     //==============================================================================
+     HeapBlock<ElementType> elements;
+     size_t numAllocated;
+diff --git a/source/modules/water/containers/LinkedListPointer.h b/source/modules/water/containers/LinkedListPointer.h
+index c71d52d23..ed75fc268 100644
+--- a/source/modules/water/containers/LinkedListPointer.h
++++ b/source/modules/water/containers/LinkedListPointer.h
+@@ -81,23 +81,6 @@ public:
+         return *this;
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    LinkedListPointer (LinkedListPointer&& other) noexcept
+-        : item (other.item)
+-    {
+-        other.item = nullptr;
+-    }
+-
+-    LinkedListPointer& operator= (LinkedListPointer&& other) noexcept
+-    {
+-        wassert (this != &other); // hopefully the compiler should make this situation impossible!
+-
+-        item = other.item;
+-        other.item = nullptr;
+-        return *this;
+-    }
+-   #endif
+-
+     //==============================================================================
+     /** Returns the item which this pointer points to. */
+     inline operator ObjectType*() const noexcept
+diff --git a/source/modules/water/containers/NamedValueSet.cpp b/source/modules/water/containers/NamedValueSet.cpp
+index 9302e1691..7543af158 100644
+--- a/source/modules/water/containers/NamedValueSet.cpp
++++ b/source/modules/water/containers/NamedValueSet.cpp
+@@ -44,19 +44,6 @@ NamedValueSet& NamedValueSet::operator= (const NamedValueSet& other)
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-NamedValueSet::NamedValueSet (NamedValueSet&& other) noexcept
+-    : values (static_cast<Array<NamedValue>&&> (other.values))
+-{
+-}
+-
+-NamedValueSet& NamedValueSet::operator= (NamedValueSet&& other) noexcept
+-{
+-    other.values.swapWith (values);
+-    return *this;
+-}
+-#endif
+-
+ NamedValueSet::~NamedValueSet() noexcept
+ {
+ }
+@@ -117,23 +104,6 @@ var* NamedValueSet::getVarPointer (const Identifier& name) const noexcept
+     return nullptr;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-bool NamedValueSet::set (const Identifier& name, var&& newValue)
+-{
+-    if (var* const v = getVarPointer (name))
+-    {
+-        if (v->equalsWithSameType (newValue))
+-            return false;
+-
+-        *v = static_cast<var&&> (newValue);
+-        return true;
+-    }
+-
+-    values.add (NamedValue (name, static_cast<var&&> (newValue)));
+-    return true;
+-}
+-#endif
+-
+ bool NamedValueSet::set (const Identifier& name, const var& newValue)
+ {
+     if (var* const v = getVarPointer (name))
+diff --git a/source/modules/water/containers/NamedValueSet.h b/source/modules/water/containers/NamedValueSet.h
+index 7d0caa02e..ea4ef421d 100644
+--- a/source/modules/water/containers/NamedValueSet.h
++++ b/source/modules/water/containers/NamedValueSet.h
+@@ -50,11 +50,6 @@ public:
+     /** Replaces this set with a copy of another set. */
+     NamedValueSet& operator= (const NamedValueSet&);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    NamedValueSet (NamedValueSet&&) noexcept;
+-    NamedValueSet& operator= (NamedValueSet&&) noexcept;
+-   #endif
+-
+     /** Destructor. */
+     ~NamedValueSet() noexcept;
+ 
+@@ -68,27 +63,6 @@ public:
+         NamedValue (const Identifier& n, const var& v) : name (n), value (v) {}
+         NamedValue (const NamedValue& other) : name (other.name), value (other.value) {}
+ 
+-    #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-        NamedValue (NamedValue&& other) noexcept
+-        : name (static_cast<Identifier&&> (other.name)),
+-          value (static_cast<var&&> (other.value))
+-        {
+-        }
+-
+-        NamedValue (Identifier&& n, var&& v) noexcept
+-        : name (static_cast<Identifier&&> (n)),
+-          value (static_cast<var&&> (v))
+-        {
+-        }
+-
+-        NamedValue& operator= (NamedValue&& other) noexcept
+-        {
+-            name = static_cast<Identifier&&> (other.name);
+-            value = static_cast<var&&> (other.value);
+-            return *this;
+-        }
+-     #endif
+-
+         bool operator== (const NamedValue& other) const noexcept   { return name == other.name && value == other.value; }
+         bool operator!= (const NamedValue& other) const noexcept   { return ! operator== (other); }
+ 
+@@ -124,14 +98,6 @@ public:
+     */
+     bool set (const Identifier& name, const var& newValue);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    /** Changes or adds a named value.
+-        @returns    true if a value was changed or added; false if the
+-                    value was already set the value passed-in.
+-    */
+-    bool set (const Identifier& name, var&& newValue);
+-   #endif
+-
+     /** Returns true if the set contains an item with the specified name. */
+     bool contains (const Identifier& name) const noexcept;
+ 
+diff --git a/source/modules/water/containers/OwnedArray.h b/source/modules/water/containers/OwnedArray.h
+index 1a90100cd..ffa89203f 100644
+--- a/source/modules/water/containers/OwnedArray.h
++++ b/source/modules/water/containers/OwnedArray.h
+@@ -73,25 +73,6 @@ public:
+         deleteAllObjects();
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    OwnedArray (OwnedArray&& other) noexcept
+-        : data (static_cast<ArrayAllocationBase <ObjectClass*>&&> (other.data)),
+-          numUsed (other.numUsed)
+-    {
+-        other.numUsed = 0;
+-    }
+-
+-    OwnedArray& operator= (OwnedArray&& other) noexcept
+-    {
+-        deleteAllObjects();
+-
+-        data = static_cast<ArrayAllocationBase <ObjectClass*>&&> (other.data);
+-        numUsed = other.numUsed;
+-        other.numUsed = 0;
+-        return *this;
+-    }
+-   #endif
+-
+     //==============================================================================
+     /** Clears the array, optionally deleting the objects inside it first. */
+     void clear (bool deleteObjects = true)
+diff --git a/source/modules/water/containers/Variant.cpp b/source/modules/water/containers/Variant.cpp
+index a93dba9fb..0472b10e3 100644
+--- a/source/modules/water/containers/Variant.cpp
++++ b/source/modules/water/containers/Variant.cpp
+@@ -265,34 +265,6 @@ var& var::operator= (const double v)             { type->cleanUp (value); type =
+ var& var::operator= (const char* const v)        { type->cleanUp (value); type = &VariantType_String::instance; new (value.stringValue) String (v); return *this; }
+ var& var::operator= (const String& v)            { type->cleanUp (value); type = &VariantType_String::instance; new (value.stringValue) String (v); return *this; }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-var::var (var&& other) noexcept
+-    : type (other.type),
+-      value (other.value)
+-{
+-    other.type = &VariantType_Void::instance;
+-}
+-
+-var& var::operator= (var&& other) noexcept
+-{
+-    swapWith (other);
+-    return *this;
+-}
+-
+-var::var (String&& v)  : type (&VariantType_String::instance)
+-{
+-    new (value.stringValue) String (static_cast<String&&> (v));
+-}
+-
+-var& var::operator= (String&& v)
+-{
+-    type->cleanUp (value);
+-    type = &VariantType_String::instance;
+-    new (value.stringValue) String (static_cast<String&&> (v));
+-    return *this;
+-}
+-#endif
+-
+ //==============================================================================
+ bool var::equals (const var& other) const noexcept
+ {
+diff --git a/source/modules/water/containers/Variant.h b/source/modules/water/containers/Variant.h
+index 0e181712a..c1472a733 100644
+--- a/source/modules/water/containers/Variant.h
++++ b/source/modules/water/containers/Variant.h
+@@ -69,13 +69,6 @@ public:
+     var& operator= (const char* value);
+     var& operator= (const String& value);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    var (var&&) noexcept;
+-    var (String&&);
+-    var& operator= (var&&) noexcept;
+-    var& operator= (String&&);
+-   #endif
+-
+     void swapWith (var& other) noexcept;
+ 
+     /** Returns a var object that can be used where you need the javascript "undefined" value. */
+diff --git a/source/modules/water/files/File.cpp b/source/modules/water/files/File.cpp
+index 2ce0f6f8e..8c74854f0 100644
+--- a/source/modules/water/files/File.cpp
++++ b/source/modules/water/files/File.cpp
+@@ -86,19 +86,6 @@ File& File::operator= (const File& other)
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-File::File (File&& other) noexcept
+-    : fullPath (static_cast<String&&> (other.fullPath))
+-{
+-}
+-
+-File& File::operator= (File&& other) noexcept
+-{
+-    fullPath = static_cast<String&&> (other.fullPath);
+-    return *this;
+-}
+-#endif
+-
+ bool File::isNull() const
+ {
+     return fullPath.isEmpty();
+diff --git a/source/modules/water/files/File.h b/source/modules/water/files/File.h
+index 1fa1a7c3e..2c8077963 100644
+--- a/source/modules/water/files/File.h
++++ b/source/modules/water/files/File.h
+@@ -89,11 +89,6 @@ public:
+     /** Copies from another file object. */
+     File& operator= (const File& otherFile);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    File (File&&) noexcept;
+-    File& operator= (File&&) noexcept;
+-   #endif
+-
+     //==============================================================================
+     /** Checks whether the file actually exists.
+ 
+diff --git a/source/modules/water/memory/HeapBlock.h b/source/modules/water/memory/HeapBlock.h
+index b8c232e11..98656e872 100644
+--- a/source/modules/water/memory/HeapBlock.h
++++ b/source/modules/water/memory/HeapBlock.h
+@@ -94,20 +94,6 @@ public:
+         std::free (data);
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    HeapBlock (HeapBlock&& other) noexcept
+-        : data (other.data)
+-    {
+-        other.data = nullptr;
+-    }
+-
+-    HeapBlock& operator= (HeapBlock&& other) noexcept
+-    {
+-        std::swap (data, other.data);
+-        return *this;
+-    }
+-   #endif
+-
+     //==============================================================================
+     /** Returns a raw pointer to the allocated data.
+         This may be a null pointer if the data hasn't yet been allocated, or if it has been
+diff --git a/source/modules/water/memory/MemoryBlock.cpp b/source/modules/water/memory/MemoryBlock.cpp
+index 6e83b8dfc..8b380da88 100644
+--- a/source/modules/water/memory/MemoryBlock.cpp
++++ b/source/modules/water/memory/MemoryBlock.cpp
+@@ -87,22 +87,6 @@ MemoryBlock& MemoryBlock::operator= (const MemoryBlock& other)
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-MemoryBlock::MemoryBlock (MemoryBlock&& other) noexcept
+-    : data (static_cast<HeapBlock<char>&&> (other.data)),
+-      size (other.size)
+-{
+-}
+-
+-MemoryBlock& MemoryBlock::operator= (MemoryBlock&& other) noexcept
+-{
+-    data = static_cast<HeapBlock<char>&&> (other.data);
+-    size = other.size;
+-    return *this;
+-}
+-#endif
+-
+-
+ //==============================================================================
+ bool MemoryBlock::operator== (const MemoryBlock& other) const noexcept
+ {
+diff --git a/source/modules/water/memory/MemoryBlock.h b/source/modules/water/memory/MemoryBlock.h
+index 4383139d6..701120cfa 100644
+--- a/source/modules/water/memory/MemoryBlock.h
++++ b/source/modules/water/memory/MemoryBlock.h
+@@ -68,11 +68,6 @@ public:
+     */
+     MemoryBlock& operator= (const MemoryBlock&);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    MemoryBlock (MemoryBlock&&) noexcept;
+-    MemoryBlock& operator= (MemoryBlock&&) noexcept;
+-   #endif
+-
+     //==============================================================================
+     /** Compares two memory blocks.
+         @returns true only if the two blocks are the same size and have identical contents.
+diff --git a/source/modules/water/memory/ReferenceCountedObject.h b/source/modules/water/memory/ReferenceCountedObject.h
+index 4f5a256ee..b23ed914d 100644
+--- a/source/modules/water/memory/ReferenceCountedObject.h
++++ b/source/modules/water/memory/ReferenceCountedObject.h
+@@ -301,22 +301,6 @@ public:
+         return *this;
+     }
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    /** Takes-over the object from another pointer. */
+-    ReferenceCountedObjectPtr (ReferenceCountedObjectPtr&& other) noexcept
+-        : referencedObject (other.referencedObject)
+-    {
+-        other.referencedObject = nullptr;
+-    }
+-
+-    /** Takes-over the object from another pointer. */
+-    ReferenceCountedObjectPtr& operator= (ReferenceCountedObjectPtr&& other)
+-    {
+-        std::swap (referencedObject, other.referencedObject);
+-        return *this;
+-    }
+-   #endif
+-
+     /** Destructor.
+         This will decrement the object's reference-count, which will cause the
+         object to be deleted when the ref-count hits zero.
+diff --git a/source/modules/water/midi/MidiMessage.cpp b/source/modules/water/midi/MidiMessage.cpp
+index 21c90f508..a4354222e 100644
+--- a/source/modules/water/midi/MidiMessage.cpp
++++ b/source/modules/water/midi/MidiMessage.cpp
+@@ -286,24 +286,6 @@ MidiMessage& MidiMessage::operator= (const MidiMessage& other)
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-MidiMessage::MidiMessage (MidiMessage&& other) noexcept
+-   : timeStamp (other.timeStamp), size (other.size)
+-{
+-    packedData.allocatedData = other.packedData.allocatedData;
+-    other.size = 0;
+-}
+-
+-MidiMessage& MidiMessage::operator= (MidiMessage&& other) noexcept
+-{
+-    packedData.allocatedData = other.packedData.allocatedData;
+-    timeStamp = other.timeStamp;
+-    size = other.size;
+-    other.size = 0;
+-    return *this;
+-}
+-#endif
+-
+ MidiMessage::~MidiMessage() noexcept
+ {
+     if (isHeapAllocated())
+diff --git a/source/modules/water/midi/MidiMessage.h b/source/modules/water/midi/MidiMessage.h
+index 07f15c467..6b78d55f8 100644
+--- a/source/modules/water/midi/MidiMessage.h
++++ b/source/modules/water/midi/MidiMessage.h
+@@ -113,11 +113,6 @@ public:
+     /** Copies this message from another one. */
+     MidiMessage& operator= (const MidiMessage& other);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    MidiMessage (MidiMessage&&) noexcept;
+-    MidiMessage& operator= (MidiMessage&&) noexcept;
+-   #endif
+-
+     //==============================================================================
+     /** Returns a pointer to the raw midi data.
+         @see getRawDataSize
+diff --git a/source/modules/water/midi/MidiMessageSequence.h b/source/modules/water/midi/MidiMessageSequence.h
+index f85f5fd05..bfe27d061 100644
+--- a/source/modules/water/midi/MidiMessageSequence.h
++++ b/source/modules/water/midi/MidiMessageSequence.h
+@@ -55,18 +55,6 @@ public:
+     /** Replaces this sequence with another one. */
+     MidiMessageSequence& operator= (const MidiMessageSequence&);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    MidiMessageSequence (MidiMessageSequence&& other) noexcept
+-        : list (static_cast<OwnedArray<MidiEventHolder>&&> (other.list))
+-    {}
+-
+-    MidiMessageSequence& operator= (MidiMessageSequence&& other) noexcept
+-    {
+-        list = static_cast<OwnedArray<MidiEventHolder>&&> (other.list);
+-        return *this;
+-    }
+-   #endif
+-
+     /** Destructor. */
+     ~MidiMessageSequence();
+ 
+diff --git a/source/modules/water/misc/Result.cpp b/source/modules/water/misc/Result.cpp
+index b8706e771..49f1f85e1 100644
+--- a/source/modules/water/misc/Result.cpp
++++ b/source/modules/water/misc/Result.cpp
+@@ -45,19 +45,6 @@ Result& Result::operator= (const Result& other)
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-Result::Result (Result&& other) noexcept
+-    : errorMessage (static_cast<String&&> (other.errorMessage))
+-{
+-}
+-
+-Result& Result::operator= (Result&& other) noexcept
+-{
+-    errorMessage = static_cast<String&&> (other.errorMessage);
+-    return *this;
+-}
+-#endif
+-
+ bool Result::operator== (const Result& other) const noexcept
+ {
+     return errorMessage == other.errorMessage;
+diff --git a/source/modules/water/misc/Result.h b/source/modules/water/misc/Result.h
+index ab4cf9bf1..495a19fc9 100644
+--- a/source/modules/water/misc/Result.h
++++ b/source/modules/water/misc/Result.h
+@@ -100,11 +100,6 @@ public:
+     Result (const Result&);
+     Result& operator= (const Result&);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    Result (Result&&) noexcept;
+-    Result& operator= (Result&&) noexcept;
+-   #endif
+-
+     bool operator== (const Result& other) const noexcept;
+     bool operator!= (const Result& other) const noexcept;
+ 
+diff --git a/source/modules/water/text/Identifier.cpp b/source/modules/water/text/Identifier.cpp
+index e542d6eeb..3f1850369 100644
+--- a/source/modules/water/text/Identifier.cpp
++++ b/source/modules/water/text/Identifier.cpp
+@@ -32,16 +32,6 @@ Identifier::~Identifier() noexcept {}
+ 
+ Identifier::Identifier (const Identifier& other) noexcept  : name (other.name) {}
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-Identifier::Identifier (Identifier&& other) noexcept : name (static_cast<String&&> (other.name)) {}
+-
+-Identifier& Identifier::operator= (Identifier&& other) noexcept
+-{
+-    name = static_cast<String&&> (other.name);
+-    return *this;
+-}
+-#endif
+-
+ Identifier& Identifier::operator= (const Identifier& other) noexcept
+ {
+     name = other.name;
+diff --git a/source/modules/water/text/Identifier.h b/source/modules/water/text/Identifier.h
+index a044b3a3a..ab768cd10 100644
+--- a/source/modules/water/text/Identifier.h
++++ b/source/modules/water/text/Identifier.h
+@@ -70,14 +70,6 @@ public:
+     /** Creates a copy of another identifier. */
+     Identifier& operator= (const Identifier& other) noexcept;
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    /** Creates a copy of another identifier. */
+-    Identifier (Identifier&& other) noexcept;
+-
+-    /** Creates a copy of another identifier. */
+-    Identifier& operator= (Identifier&& other) noexcept;
+-   #endif
+-
+     /** Destructor */
+     ~Identifier() noexcept;
+ 
+diff --git a/source/modules/water/text/String.cpp b/source/modules/water/text/String.cpp
+index 51b20bc25..1dd593468 100644
+--- a/source/modules/water/text/String.cpp
++++ b/source/modules/water/text/String.cpp
+@@ -247,19 +247,6 @@ String& String::operator= (const String& other) noexcept
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-String::String (String&& other) noexcept   : text (other.text)
+-{
+-    other.text = &(emptyString.text);
+-}
+-
+-String& String::operator= (String&& other) noexcept
+-{
+-    std::swap (text, other.text);
+-    return *this;
+-}
+-#endif
+-
+ inline String::PreallocationBytes::PreallocationBytes (const size_t num) noexcept : numBytes (num) {}
+ 
+ String::String (const PreallocationBytes& preallocationSize)
+diff --git a/source/modules/water/text/String.h b/source/modules/water/text/String.h
+index 0a0ba99f1..ffa8ecf3b 100644
+--- a/source/modules/water/text/String.h
++++ b/source/modules/water/text/String.h
+@@ -56,10 +56,6 @@ public:
+     /** Creates a copy of another string. */
+     String (const String& other) noexcept;
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    String (String&& other) noexcept;
+-   #endif
+-
+     /** Creates a string from a zero-terminated ascii text string.
+ 
+         The string passed-in must not contain any characters with a value above 127, because
+@@ -139,10 +135,6 @@ public:
+     /** Replaces this string's contents with another string. */
+     String& operator= (const String& other) noexcept;
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    String& operator= (String&& other) noexcept;
+-   #endif
+-
+     /** Appends another string at the end of this one. */
+     String& operator+= (const String& stringToAppend);
+     /** Appends another string at the end of this one. */
+diff --git a/source/modules/water/text/StringArray.cpp b/source/modules/water/text/StringArray.cpp
+index c0fddb5db..36856f4a7 100644
+--- a/source/modules/water/text/StringArray.cpp
++++ b/source/modules/water/text/StringArray.cpp
+@@ -36,13 +36,6 @@ StringArray::StringArray (const StringArray& other)
+ {
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-StringArray::StringArray (StringArray&& other) noexcept
+-    : strings (static_cast<Array <String>&&> (other.strings))
+-{
+-}
+-#endif
+-
+ StringArray::StringArray (const String& firstValue)
+ {
+     strings.add (firstValue);
+@@ -69,14 +62,6 @@ StringArray& StringArray::operator= (const StringArray& other)
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-StringArray& StringArray::operator= (StringArray&& other) noexcept
+-{
+-    strings = static_cast<Array<String>&&> (other.strings);
+-    return *this;
+-}
+-#endif
+-
+ StringArray::~StringArray()
+ {
+ }
+@@ -125,13 +110,6 @@ bool StringArray::add (const String& newString)
+     return strings.add (newString);
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-bool StringArray::add (String&& stringToAdd)
+-{
+-    return strings.add (static_cast<String&&> (stringToAdd));
+-}
+-#endif
+-
+ bool StringArray::insert (const int index, const String& newString)
+ {
+     return strings.insert (index, newString);
+diff --git a/source/modules/water/text/StringArray.h b/source/modules/water/text/StringArray.h
+index 57ed5d300..d7244a066 100644
+--- a/source/modules/water/text/StringArray.h
++++ b/source/modules/water/text/StringArray.h
+@@ -47,10 +47,6 @@ public:
+     /** Creates a copy of another string array */
+     StringArray (const StringArray&);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    StringArray (StringArray&&) noexcept;
+-   #endif
+-
+     /** Creates an array containing a single string. */
+     explicit StringArray (const String& firstValue);
+ 
+@@ -80,10 +76,6 @@ public:
+     /** Copies the contents of another string array into this one */
+     StringArray& operator= (const StringArray&);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    StringArray& operator= (StringArray&&) noexcept;
+-   #endif
+-
+     /** Swaps the contents of this and another StringArray. */
+     void swapWith (StringArray&) noexcept;
+ 
+@@ -159,11 +151,6 @@ public:
+     /** Appends a string at the end of the array. */
+     bool add (const String& stringToAdd);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    /** Appends a string at the end of the array. */
+-    bool add (String&& stringToAdd);
+-   #endif
+-
+     /** Inserts a string into the array.
+ 
+         This will insert a string into the array at the given index, moving
+diff --git a/source/modules/water/water.h b/source/modules/water/water.h
+index 33b908c27..d8305a0ee 100644
+--- a/source/modules/water/water.h
++++ b/source/modules/water/water.h
+@@ -32,18 +32,12 @@
+ // Compiler support
+ 
+ #if (__cplusplus >= 201103L || defined (__GXX_EXPERIMENTAL_CXX0X__)) && (__GNUC__ * 100 + __GNUC_MINOR__) >= 405
+- #define WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS 1
+-
+  #if (__GNUC__ * 100 + __GNUC_MINOR__) >= 407 && ! defined (WATER_DELETED_FUNCTION)
+   #define WATER_DELETED_FUNCTION = delete
+  #endif
+ #endif
+ 
+ #ifdef __clang__
+- #if __has_feature (cxx_implicit_moves) && __clang_major__ >= 9
+-  #define WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS 1
+- #endif
+-
+  #if __has_feature (cxx_deleted_functions)
+   #define WATER_DELETED_FUNCTION = delete
+  #endif
+diff --git a/source/modules/water/xml/XmlElement.cpp b/source/modules/water/xml/XmlElement.cpp
+index 2de0fa34e..92bfecc7e 100644
+--- a/source/modules/water/xml/XmlElement.cpp
++++ b/source/modules/water/xml/XmlElement.cpp
+@@ -133,31 +133,6 @@ XmlElement& XmlElement::operator= (const XmlElement& other)
+     return *this;
+ }
+ 
+-#if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-XmlElement::XmlElement (XmlElement&& other) noexcept
+-    : nextListItem      (static_cast<LinkedListPointer<XmlElement>&&> (other.nextListItem)),
+-      firstChildElement (static_cast<LinkedListPointer<XmlElement>&&> (other.firstChildElement)),
+-      attributes        (static_cast<LinkedListPointer<XmlAttributeNode>&&> (other.attributes)),
+-      tagName           (static_cast<String&&> (other.tagName))
+-{
+-}
+-
+-XmlElement& XmlElement::operator= (XmlElement&& other) noexcept
+-{
+-    wassert (this != &other); // hopefully the compiler should make this situation impossible!
+-
+-    removeAllAttributes();
+-    deleteAllChildElements();
+-
+-    nextListItem      = static_cast<LinkedListPointer<XmlElement>&&> (other.nextListItem);
+-    firstChildElement = static_cast<LinkedListPointer<XmlElement>&&> (other.firstChildElement);
+-    attributes        = static_cast<LinkedListPointer<XmlAttributeNode>&&> (other.attributes);
+-    tagName           = static_cast<String&&> (other.tagName);
+-
+-    return *this;
+-}
+-#endif
+-
+ void XmlElement::copyChildrenAndAttributesFrom (const XmlElement& other)
+ {
+     wassert (firstChildElement.get() == nullptr);
+diff --git a/source/modules/water/xml/XmlElement.h b/source/modules/water/xml/XmlElement.h
+index d27b7d98d..273d28e4c 100644
+--- a/source/modules/water/xml/XmlElement.h
++++ b/source/modules/water/xml/XmlElement.h
+@@ -166,11 +166,6 @@ public:
+     /** Creates a (deep) copy of another element. */
+     XmlElement& operator= (const XmlElement&);
+ 
+-   #if WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS
+-    XmlElement (XmlElement&&) noexcept;
+-    XmlElement& operator= (XmlElement&&) noexcept;
+-   #endif
+-
+     /** Deleting an XmlElement will also delete all of its child elements. */
+     ~XmlElement() noexcept;
+ 

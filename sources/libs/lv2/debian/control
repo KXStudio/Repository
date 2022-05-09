@@ -1,13 +1,13 @@
 Source: lv2
-Section: libs
+Section: devel
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 5),
   python3,
   pkg-config,
-  libsndfile-static,
-  libsamplerate-static,
+  libsndfile-static (>= 6:1.1.0-2kxstudio3),
+  libsamplerate-static (>= 6:0.2.2-1kxstudio3),
   libgtk2.0-dev,
   lcov
 Standards-Version: 4.5.0
@@ -15,7 +15,6 @@ Homepage: http://lv2plug.in/
 Rules-Requires-Root: no
 
 Package: lv2-dev
-Section: libdevel
 Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}, sordi

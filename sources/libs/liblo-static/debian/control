@@ -1,9 +1,9 @@
 Source: liblo-static
-Section: libs
+Section: devel
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 5),
   autoconf,
   automake,
   libtool

@@ -1,9 +1,9 @@
 Source: serd-static
-Section: libs
+Section: devel
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 5),
   python3
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/serd/
@@ -21,8 +21,8 @@ Description: lightweight RDF syntax library (static)
  This package provides the static library used in KXStudio builds.
 
 Package: serdi
+Section: utils
 Architecture: any
-Section: text
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: lightweight RDF syntax library - serdi tool
  Serd is a lightweight C library for RDF syntax which supports reading

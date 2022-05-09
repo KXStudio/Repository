@@ -1,15 +1,15 @@
 Source: libsamplerate-static
-Section: libs
+Section: devel
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 5),
   autoconf,
   automake,
   libtool,
   pkg-config,
-  libsndfile-static (>= 6:1.1.0-2kxstudio2),
-  fftw3-static
+  libsndfile-static (>= 6:1.1.0-2kxstudio3),
+  fftw3-static (>= 6:3.3.10-1kxstudio3)
 Standards-Version: 4.5.0
 Homepage: http://www.mega-nerd.com/SRC/
 Rules-Requires-Root: no

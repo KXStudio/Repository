@@ -1,14 +1,14 @@
 Source: libvorbis-static
-Section: libs
+Section: devel
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 5),
   autoconf,
   automake,
   libtool,
   pkg-config,
-  libogg-static (>= 6:1.3.5-1kxstudio1)
+  libogg-static (>= 6:1.3.5-1kxstudio2)
 Standards-Version: 4.5.0
 Homepage: https://xiph.org/vorbis/
 Rules-Requires-Root: no

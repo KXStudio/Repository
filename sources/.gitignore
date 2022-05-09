@@ -12,6 +12,8 @@ include-binaries
 /libs/*/*
 !/libs/*/debian
 /libs/*/debian/*
+!/libs/*/debian/patches
+/libs/*/debian/patches/*
 !/libs/*/debian/patches/*.patch
 !/libs/*/debian/patches/series
 !/libs/*/debian/source/format

@@ -1,12 +1,12 @@
 Source: sratom-static
-Section: libs
+Section: devel
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 5),
   python3,
   pkg-config,
-  libsord-static,
+  libsord-static (>= 6:0.16.8-1kxstudio4),
   lv2-dev (>= 6:1.18.2-1kxstudio1)
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/sratom/

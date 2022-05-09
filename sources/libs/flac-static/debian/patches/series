@@ -3,3 +3,4 @@ privacy-breach-logo.patch
 0001-remove-build-path-from-generated-FLAC.tag-file.patch
 0020-libFLAC-bitreader.c-Fix-out-of-bounds-read.patch
 9001-Fix-libs.patch
+9002-hidden-flac-api.patch

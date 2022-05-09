@@ -1,13 +1,13 @@
 Source: lilv-static
-Section: libs
+Section: devel
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-build-scripts,
+  kxstudio-build-scripts (>= 5),
   python3,
   pkg-config,
-  libsndfile-static,
-  libsratom-static
+  libsndfile-static (>= 6:1.1.0-2kxstudio3),
+  libsratom-static (>= 6:0.6.8-1kxstudio2)
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/lilv/
 Rules-Requires-Root: no

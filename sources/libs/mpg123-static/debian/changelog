@@ -1,4 +1,4 @@
-mpg123-static (6:1.29.3-2kxstudio2) focal; urgency=medium
+mpg123-static (6:1.29.3-2kxstudio3) focal; urgency=medium
 
   * Do not use fpu for ARM builds, fixing libsndfile test-case
 

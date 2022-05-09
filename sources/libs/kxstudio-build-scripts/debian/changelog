@@ -1,3 +1,10 @@
+kxstudio-build-scripts (4) focal; urgency=medium
+
+  * Add lv2lint and lilv-utils as dependencies
+  * Start audio plugin test scripts
+
+ -- falkTX <falktx@falktx.com>  Mon, 09 May 2022 10:11:38 +0100
+
 kxstudio-build-scripts (3) focal; urgency=medium
 
   * Build carla for testing plugins

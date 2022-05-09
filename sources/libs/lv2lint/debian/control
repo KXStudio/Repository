@@ -1,0 +1,24 @@
+Source: lv2lint
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  meson,
+  pkg-config,
+  libelf-dev,
+  libx11-dev,
+  liblilv-static
+Standards-Version: 4.5.0
+XSC-KXStudio-VCS: https://open-music-kontrollers.ch/lv2/lv2lint/
+Rules-Requires-Root: no
+
+Package: lv2lint
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, lv2-dev
+Description: Check whether a given LV2 plugin is up to the specification
+ lv2lint is an LV2 lint-like tool that checks whether a given plugin and its
+ UI(s) match up with the provided metadata and adhere to well-known best practices.
+ .
+ Run it as part of your continuous integration pipeline together with lv2/sord_validate
+ to reduce the likelihood of shipping plugins with major flaws in order to prevent unsatisfied users.

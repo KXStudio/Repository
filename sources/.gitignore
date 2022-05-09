@@ -4,16 +4,24 @@
 *.debian.*
 *.dsc
 *.orig.*
+*.tar.*
 
 files
 include-binaries
 
 /libs/*/*
+!/libs/*/debian
+/libs/*/debian/*
 !/libs/*/debian/patches/*.patch
 !/libs/*/debian/patches/series
 !/libs/*/debian/source/format
 !/libs/*/debian/changelog
 !/libs/*/debian/control
 !/libs/*/debian/rules
+
+!/libs/kxstudio-build-scripts/*.mk
+!/libs/kxstudio-build-scripts/*.sh
+!/libs/kxstudio-build-scripts/*.supp
+!/libs/kxstudio-build-scripts/debian/copyright
 
 /kxstudio/kxstudio-repos/keyrings/

@@ -7,8 +7,7 @@ Build-Depends: debhelper-compat (= 13),
   python3,
   pkg-config,
   libsndfile-static,
-  libsratom-static,
-  libjack-dev | libjack-jackd2-dev
+  libsratom-static
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/lilv/
 Rules-Requires-Root: no

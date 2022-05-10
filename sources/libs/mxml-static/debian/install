@@ -1,0 +1,3 @@
+*.a    /opt/kxstudio/lib/
+*.pc   /opt/kxstudio/lib/pkgconfig/
+mxml.h /opt/kxstudio/include/

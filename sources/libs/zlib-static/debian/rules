@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_configure:
+	./configure --static --prefix=/opt/kxstudio/
+
+%:
+	dh $@

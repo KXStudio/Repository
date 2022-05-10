@@ -1,0 +1,44 @@
+Source: mxml-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool
+Standards-Version: 4.5.0
+Homepage: https://github.com/michaelrsweet/mxml
+Rules-Requires-Root: no
+
+Package: libmxml-static
+Architecture: any
+Depends: ${misc:Depends}
+Conflicts: mxml-static
+Breaks: mxml-static
+Description: small XML parsing library (static)
+ Mini-XML is a small XML parsing library that you can use to read XML and
+ XML-like data files in your application without requiring large non-standard
+ libraries.
+ .
+ Mini-XML provides the following functionality:
+  * Reading of UTF-8 and UTF-16 and writing of UTF-8 encoded XML files and
+    strings.
+  * Data is stored in a linked-list tree structure, preserving the XML data
+    hierarchy.
+  * Supports arbitrary element names, attributes, and attribute values with
+    no preset limits, just available memory.
+  * Supports integer, real, opaque ("cdata"), and text data types in "leaf"
+    nodes.
+  * Functions for creating, indexing, and managing trees of data.
+  * "Find" and "walk" functions for easily locating and navigating trees of
+    data.
+ .
+ Mini-XML doesn't do validation or other types of processing on the data based
+ upon schema files or other sources of definition information, nor does it
+ support character entities other than those required by the XML specification.
+ .
+ This package contains the files necessary for running applications that
+ use the Mini-XML library.
+ .
+ This package provides the static library used in KXStudio builds.

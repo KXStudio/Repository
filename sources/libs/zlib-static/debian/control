@@ -1,0 +1,22 @@
+Source: zlib-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  autoconf,
+  automake,
+  libtool
+Standards-Version: 4.5.0
+Homepage: https://github.com/madler/zlib
+Rules-Requires-Root: no
+
+Package: zlib-static
+Architecture: any
+Depends: ${misc:Depends}
+Description: compression library (static)
+ zlib is a library implementing the deflate compression method found
+ in gzip and PKZIP.  This package includes the development support
+ files.
+ .
+ This package provides the static library used in KXStudio builds.

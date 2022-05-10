@@ -3,7 +3,9 @@ Section: sound
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
-  kxstudio-audio-plugin-tester (>= 6)
+  kxstudio-audio-plugin-tester (>= 7),
+  cmake,
+  pkg-config
 Standards-Version: 4.5.0
 Homepage: https://github.com/hannesbraun/airwindows-lv2
 Rules-Requires-Root: no

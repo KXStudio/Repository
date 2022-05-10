@@ -1,3 +1,9 @@
+kxstudio-build-scripts (7) focal; urgency=medium
+
+  * Skip main valgrind test on armhf
+
+ -- falkTX <falktx@falktx.com>  Tue, 10 May 2022 10:19:52 +0100
+
 kxstudio-build-scripts (6) focal; urgency=medium
 
   * Fix carla mem leaks

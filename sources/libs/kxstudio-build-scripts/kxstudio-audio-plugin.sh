@@ -47,8 +47,8 @@ cp -r /usr/lib/lv2/{atom,buf-size,core,data-access,instance-access,midi,paramete
 if [ -d debian/${PKG_NAME}/usr/lib/lv2 ]; then
     pushd debian/${PKG_NAME}/usr/lib/lv2
     lv2_validate */*.ttl
-    lv2lint $(lv2ls)
-    # -s lv2_generate_ttl -l ld-linux-x86-64.so.2 -M nopack $(lv2ls)
+    lv2lint -s lv2_generate_ttl $(lv2ls)
+    # -l ld-linux-x86-64.so.2 -M nopack $(lv2ls)
     for p in $(ls); do
         ${VALRIND_DISCOVERY_BIN} lv2 ./${p}
     done
@@ -85,11 +85,12 @@ if [ -d debian/${PKG_NAME}/usr/lib/vst ]; then
     popd
 fi
 
-if [ -d debian/${PKG_NAME}/usr/lib/vst3 ]; then
-    pushd debian/${PKG_NAME}/usr/lib/vst3
-    for p in $(ls); do
-        ${VALRIND_DISCOVERY_BIN} vst3 ./${p}
-        ${VALRIND_BRIDGE_BIN} vst3 ./${p} "" 1>/dev/null;
-    done
-    popd
-fi
+# TODO wait until carla supports vst3 natively
+# if [ -d debian/${PKG_NAME}/usr/lib/vst3 ]; then
+#     pushd debian/${PKG_NAME}/usr/lib/vst3
+#     for p in $(ls); do
+#         ${VALRIND_DISCOVERY_BIN} vst3 ./${p}
+#         ${VALRIND_BRIDGE_BIN} vst3 ./${p} "" 1>/dev/null;
+#     done
+#     popd
+# fi

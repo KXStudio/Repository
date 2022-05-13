@@ -1,3 +1,10 @@
+kxstudio-build-scripts (8) focal; urgency=medium
+
+  * Ignore lv2_generate_ttl symbol
+  * Do not run tests on vst3 plugins for now
+
+ -- falkTX <falktx@falktx.com>  Fri, 13 May 2022 16:40:22 +0100
+
 kxstudio-build-scripts (7) focal; urgency=medium
 
   * Skip main valgrind test on armhf

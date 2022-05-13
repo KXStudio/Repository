@@ -1,90 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9636c5e..6696c38 100644
+index 37cd72f..5f8e689 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -39,52 +39,64 @@ function(add_plugin PLUGIN_NAME)
-   configure_file(src/${PLUGIN_NAME}/${PLUGIN_NAME}.ttl ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/${PLUGIN_NAME}.ttl)
- endfunction()
-
--add_plugin(Acceleration)
-+# Yay Distortions
-+add_plugin(Dyno)
-+add_plugin(Mojo)
-+add_plugin(Spiral)
-+
-+# Yay Reverbs
-+add_plugin(Galactic)
-+add_plugin(PocketVerbs)
-+add_plugin(StarChild)
-+
-+# Yay Misc
-+add_plugin(DeBess)
-+add_plugin(Baxandall)
-+add_plugin(Channel8)
-+add_plugin(EveryTrim)
-+add_plugin(Mackity)
-+
-+# Maybe
- add_plugin(Acceleration2)
- add_plugin(ADClip7)
--add_plugin(Baxandall)
--add_plugin(BitShiftGain)
- add_plugin(Capacitor)
- add_plugin(Capacitor2)
--add_plugin(Channel8)
- add_plugin(ClipOnly)
- add_plugin(ClipOnly2)
- add_plugin(Console7Buss)
- add_plugin(Console7Cascade)
- add_plugin(Console7Channel)
- add_plugin(Console7Crunch)
--add_plugin(DCVoltage)
--add_plugin(DeBess)
--add_plugin(Dyno)
- add_plugin(EdIsDim)
--add_plugin(EveryTrim)
--add_plugin(Galactic)
-+add_plugin(MidSide)
-+add_plugin(MV)
-+add_plugin(Nikola)
-+add_plugin(Pressure5)
-+add_plugin(Sidepass)
-+
-+# Nay
-+add_plugin(Acceleration)
-+add_plugin(BitShiftGain)
-+add_plugin(DCVoltage)
- add_plugin(HermeTrim)
- add_plugin(Hypersonic)
- add_plugin(Infrasonic)
- add_plugin(Interstage)
- add_plugin(LeftoMono)
--add_plugin(Mackity)
--add_plugin(MidSide)
--add_plugin(Mojo)
--add_plugin(MV)
--add_plugin(Nikola)
--add_plugin(PocketVerbs)
--add_plugin(Pressure5)
- add_plugin(PurestConsoleBuss)
- add_plugin(PurestConsoleChannel)
- add_plugin(PurestGain)
- add_plugin(RightoMono)
--add_plugin(Sidepass)
- add_plugin(Slew)
- add_plugin(SlewOnly)
--add_plugin(Spiral)
--add_plugin(StarChild)
- add_plugin(SubsOnly)
- add_plugin(Ultrasonic)
- add_plugin(UltrasonicLite)
+@@ -95,6 +95,9 @@ add_plugin(UltrasonicLite)
  add_plugin(UltrasonicMed)
-
+ add_plugin(Vibrato)
+ 
 +set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsingle-precision-constant -std=gnu99 -Wno-implicit-fallthrough -Werror=incompatible-pointer-types")
 +set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fsingle-precision-constant")
 +
  configure_file(src/manifest.ttl.in ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/manifest.ttl)
-
+ 
  if(APPLE OR UNIX)
 diff --git a/src/ADClip7/ADClip7.c b/src/ADClip7/ADClip7.c
 index e502a66..9f0c763 100644
@@ -95,20 +21,20 @@ index e502a66..9f0c763 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define ADCLIP7_URI "https://hannesbraun.net/ns/lv2/airwindows/adclip7"
-
+ 
 @@ -26,8 +27,6 @@ typedef struct {
  	const float* enhance;
  	const float* mode;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  	//default stuff
  	double lastSampleL;
  	double lastSampleR;
 @@ -46,7 +45,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -126,7 +52,7 @@ index e502a66..9f0c763 100644
 -	adclip7->fpdR = 1.0;
 -	while (adclip7->fpdR < 16386) adclip7->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -169,9 +163,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -135,13 +61,13 @@ index e502a66..9f0c763 100644
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = adclip7->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = adclip7->fpdR * 1.18e-17;
 -
-
+ 
  		if (inputGain != 1.0) {
  			inputSampleL *= inputGain;
 @@ -517,20 +508,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		if (inputSampleR < -adclip7->refclipR) inputSampleR = -adclip7->refclipR;
  		//final iron bar
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float) inputSampleL, &expon);
@@ -158,7 +84,7 @@ index e502a66..9f0c763 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Acceleration/Acceleration.c b/src/Acceleration/Acceleration.c
 index d6af6c5..f4366a0 100644
 --- a/src/Acceleration/Acceleration.c
@@ -168,20 +94,20 @@ index d6af6c5..f4366a0 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define ACCELERATION_URI "https://hannesbraun.net/ns/lv2/airwindows/acceleration"
-
+ 
 @@ -22,8 +23,6 @@ typedef struct {
  	const float* limit;
  	const float* drywet;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  	//default stuff
  	double ataLastOutL;
  	double s1L;
 @@ -50,7 +49,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -199,7 +125,7 @@ index d6af6c5..f4366a0 100644
 -	acceleration->fpdR = 1.0;
 -	while (acceleration->fpdR < 16386) acceleration->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -145,8 +139,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -209,11 +135,11 @@ index d6af6c5..f4366a0 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = acceleration->fpdR * 1.18e-17;
  		drySampleL = inputSampleL;
  		drySampleR = inputSampleR;
-
+ 
 @@ -205,20 +197,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  			inputSampleR = (inputSampleR * wet) + (drySampleR * (1.0 - wet));
  		}
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float) inputSampleL, &expon);
@@ -230,7 +156,7 @@ index d6af6c5..f4366a0 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Acceleration2/Acceleration2.c b/src/Acceleration2/Acceleration2.c
 index 3cdf047..88b5f03 100644
 --- a/src/Acceleration2/Acceleration2.c
@@ -240,9 +166,9 @@ index 3cdf047..88b5f03 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define ACCELERATION2_URI "https://hannesbraun.net/ns/lv2/airwindows/acceleration2"
-
+ 
 @@ -36,14 +37,11 @@ typedef struct {
  	double biquadB[11]; //note that this stereo form doesn't require L and R forms!
  	//This is because so much of it is coefficients etc. that are the same on both channels.
@@ -251,7 +177,7 @@ index 3cdf047..88b5f03 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Acceleration2;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -269,7 +195,7 @@ index 3cdf047..88b5f03 100644
 -	acceleration2->fpdR = 1.0;
 -	while (acceleration2->fpdR < 16386) acceleration2->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -145,8 +138,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -279,11 +205,11 @@ index 3cdf047..88b5f03 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = acceleration2->fpdR * 1.18e-17;
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 @@ -194,20 +185,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  			inputSampleR = (inputSampleR * wet) + (drySampleR * (1.0 - wet));
  		}
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -300,7 +226,7 @@ index 3cdf047..88b5f03 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Baxandall/Baxandall.c b/src/Baxandall/Baxandall.c
 index 263b1ca..82d7f52 100644
 --- a/src/Baxandall/Baxandall.c
@@ -310,20 +236,20 @@ index 263b1ca..82d7f52 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define BAXANDALL_URI "https://hannesbraun.net/ns/lv2/airwindows/baxandall"
-
+ 
 @@ -25,8 +26,6 @@ typedef struct {
  	const float* bass;
  	const float* outputGain;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  	//default stuff
  	double trebleAL[9];
  	double trebleBL[9];
 @@ -42,7 +41,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -340,7 +266,7 @@ index 263b1ca..82d7f52 100644
 -	baxandall->fpdR = 1.0;
 -	while (baxandall->fpdR < 16386) baxandall->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -183,8 +178,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -348,13 +274,13 @@ index 263b1ca..82d7f52 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = baxandall->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = baxandall->fpdR * 1.18e-17;
-
+ 
  		if (output != 1.0) {
  			inputSampleL *= output;
 @@ -258,20 +251,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleR = asin(inputSampleR);
  		//amplitude aspect
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float) inputSampleL, &expon);
@@ -371,21 +297,21 @@ index 263b1ca..82d7f52 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/BitShiftGain/BitShiftGain.c b/src/BitShiftGain/BitShiftGain.c
 index 4c5a5d1..1235099 100644
 --- a/src/BitShiftGain/BitShiftGain.c
 +++ b/src/BitShiftGain/BitShiftGain.c
 @@ -2,6 +2,7 @@
-
+ 
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define BITSHIFTGAIN_URI "https://hannesbraun.net/ns/lv2/airwindows/bitshiftgain"
-
+ 
 @@ -21,7 +22,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -402,9 +328,9 @@ index 907c2d3..fe0d466 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CAPACITOR_URI "https://hannesbraun.net/ns/lv2/airwindows/capacitor"
-
+ 
 @@ -62,14 +63,11 @@ typedef struct {
  	double lastLowpass;
  	double lastHighpass;
@@ -413,7 +339,7 @@ index 907c2d3..fe0d466 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Capacitor;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -431,7 +357,7 @@ index 907c2d3..fe0d466 100644
 -	capacitor->fpdR = 1.0;
 -	while (capacitor->fpdR < 16386) capacitor->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -186,8 +179,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -441,11 +367,11 @@ index 907c2d3..fe0d466 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = capacitor->fpdR * 1.18e-17;
  		drySampleL = inputSampleL;
  		drySampleR = inputSampleR;
-
+ 
 @@ -365,20 +356,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleL = (drySampleL * dry) + (inputSampleL * capacitor->wet);
  		inputSampleR = (drySampleR * dry) + (inputSampleR * capacitor->wet);
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -462,7 +388,7 @@ index 907c2d3..fe0d466 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Capacitor2/Capacitor2.c b/src/Capacitor2/Capacitor2.c
 index 111ff8a..53050eb 100644
 --- a/src/Capacitor2/Capacitor2.c
@@ -472,9 +398,9 @@ index 111ff8a..53050eb 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CAPACITOR2_URI "https://hannesbraun.net/ns/lv2/airwindows/capacitor2"
-
+ 
 @@ -65,14 +66,11 @@ typedef struct {
  	double lastLowpass;
  	double lastHighpass;
@@ -483,7 +409,7 @@ index 111ff8a..53050eb 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Capacitor2;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -501,7 +427,7 @@ index 111ff8a..53050eb 100644
 -	capacitor2->fpdR = 1.0;
 -	while (capacitor2->fpdR < 16386) capacitor2->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -185,8 +178,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -511,11 +437,11 @@ index 111ff8a..53050eb 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = capacitor2->fpdR * 1.18e-17;
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 @@ -377,20 +368,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleL = (drySampleL * (1.0 - capacitor2->wet)) + (inputSampleL * nonLinTrim * capacitor2->wet);
  		inputSampleR = (drySampleR * (1.0 - capacitor2->wet)) + (inputSampleR * nonLinTrim * capacitor2->wet);
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -532,7 +458,7 @@ index 111ff8a..53050eb 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Channel8/Channel8.c b/src/Channel8/Channel8.c
 index 5130655..80e75a7 100644
 --- a/src/Channel8/Channel8.c
@@ -542,20 +468,20 @@ index 5130655..80e75a7 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CHANNEL8_URI "https://hannesbraun.net/ns/lv2/airwindows/channel8"
-
+ 
 @@ -25,8 +26,6 @@ typedef struct {
  	const float* drive;
  	const float* outputGain;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  	//default stuff
  	double iirSampleLA;
  	double iirSampleRA;
 @@ -45,7 +44,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -566,7 +492,7 @@ index 5130655..80e75a7 100644
 @@ -87,10 +86,6 @@ static void activate(LV2_Handle instance)
  {
  	Channel8* channel8 = (Channel8*) instance;
-
+ 
 -	channel8->fpdL = 1.0;
 -	while (channel8->fpdL < 16386) channel8->fpdL = rand() * UINT32_MAX;
 -	channel8->fpdR = 1.0;
@@ -580,13 +506,13 @@ index 5130655..80e75a7 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = channel8->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = channel8->fpdR * 1.18e-17;
-
+ 
  		double dielectricScaleL = fabs(2.0 - ((inputSampleL + nonLin) / nonLin));
  		double dielectricScaleR = fabs(2.0 - ((inputSampleR + nonLin) / nonLin));
 @@ -236,20 +229,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  			inputSampleR *= output;
  		}
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -603,7 +529,78 @@ index 5130655..80e75a7 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
+diff --git a/src/Channel9/Channel9.c b/src/Channel9/Channel9.c
+index 5e18790..da51ecd 100644
+--- a/src/Channel9/Channel9.c
++++ b/src/Channel9/Channel9.c
+@@ -4,6 +4,7 @@
+ #include <stdbool.h>
+ #include <stdint.h>
+ #include <stdlib.h>
++#include "../optimizations.h"
+ 
+ #define CHANNEL9_URI "https://hannesbraun.net/ns/lv2/airwindows/channel9"
+ 
+@@ -25,8 +26,6 @@ typedef struct {
+ 	const float* drive;
+ 	const float* outputGain;
+ 
+-	uint32_t fpdL;
+-	uint32_t fpdR;
+ 	//default stuff
+ 	double iirSampleLA;
+ 	double iirSampleRA;
+@@ -48,7 +47,7 @@ typedef struct {
+ 
+ static LV2_Handle instantiate(
+ 	const LV2_Descriptor* descriptor,
+-	double rate,
++	realdouble rate,
+ 	const char* bundle_path,
+ 	const LV2_Feature* const* features)
+ {
+@@ -94,10 +93,6 @@ static void activate(LV2_Handle instance)
+ 		channel9->biquadA[x] = 0.0;
+ 		channel9->biquadB[x] = 0.0;
+ 	}
+-	channel9->fpdL = 1.0;
+-	while (channel9->fpdL < 16386) channel9->fpdL = rand() * UINT32_MAX;
+-	channel9->fpdR = 1.0;
+-	while (channel9->fpdR < 16386) channel9->fpdR = rand() * UINT32_MAX;
+ 	channel9->iirSampleLA = 0.0;
+ 	channel9->iirSampleRA = 0.0;
+ 	channel9->iirSampleLB = 0.0;
+@@ -188,8 +183,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 	while (sampleFrames-- > 0) {
+ 		double inputSampleL = *in1;
+ 		double inputSampleR = *in2;
+-		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = channel9->fpdL * 1.18e-17;
+-		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = channel9->fpdR * 1.18e-17;
+ 		double tempSample;
+ 
+ 		if (channel9->biquadA[0] < 0.49999) {
+@@ -313,20 +306,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 			channel9->biquadB[13] = inputSampleR; //DF1 right
+ 		}
+ 
+-		//begin 32 bit stereo floating point dither
+-		int expon;
+-		frexpf((float)inputSampleL, &expon);
+-		channel9->fpdL ^= channel9->fpdL << 13;
+-		channel9->fpdL ^= channel9->fpdL >> 17;
+-		channel9->fpdL ^= channel9->fpdL << 5;
+-		inputSampleL += (((double)channel9->fpdL - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		frexpf((float)inputSampleR, &expon);
+-		channel9->fpdR ^= channel9->fpdR << 13;
+-		channel9->fpdR ^= channel9->fpdR >> 17;
+-		channel9->fpdR ^= channel9->fpdR << 5;
+-		inputSampleR += (((double)channel9->fpdR - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		//end 32 bit stereo floating point dither
+-
+ 		*out1 = (float) inputSampleL;
+ 		*out2 = (float) inputSampleR;
+ 
 diff --git a/src/ClipOnly/ClipOnly.c b/src/ClipOnly/ClipOnly.c
 index 2d83605..94f0ef8 100644
 --- a/src/ClipOnly/ClipOnly.c
@@ -613,11 +610,11 @@ index 2d83605..94f0ef8 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CLIPONLY_URI "https://hannesbraun.net/ns/lv2/airwindows/cliponly"
-
+ 
 @@ -28,7 +29,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -634,11 +631,11 @@ index eec1237..7f28c8c 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CLIPONLY2_URI "https://hannesbraun.net/ns/lv2/airwindows/cliponly2"
-
+ 
 @@ -31,7 +32,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -655,18 +652,18 @@ index f6f006e..2cd7e8b 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CONSOLE7BUSS_URI "https://hannesbraun.net/ns/lv2/airwindows/console7buss"
-
+ 
 @@ -25,14 +26,11 @@ typedef struct {
-
+ 
  	double biquadA[15];
  	double biquadB[15];
 -
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Console7Buss;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -683,7 +680,7 @@ index f6f006e..2cd7e8b 100644
 -	console7Buss->fpdR = 1.0;
 -	while (console7Buss->fpdR < 16386) console7Buss->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -118,8 +112,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -691,13 +688,13 @@ index f6f006e..2cd7e8b 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = console7Buss->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = console7Buss->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = console7Buss->biquadA[2] * inputSampleL + console7Buss->biquadA[3] * console7Buss->biquadA[7] + console7Buss->biquadA[4] * console7Buss->biquadA[8] - console7Buss->biquadA[5] * console7Buss->biquadA[9] - console7Buss->biquadA[6] * console7Buss->biquadA[10];
  		console7Buss->biquadA[8] = console7Buss->biquadA[7];
 @@ -176,20 +168,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		}
  		//we re-amplify after the distortion relative to how much we cut back previously.
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -714,7 +711,7 @@ index f6f006e..2cd7e8b 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Console7Cascade/Console7Cascade.c b/src/Console7Cascade/Console7Cascade.c
 index 2f5f8ee..e4fd69d 100644
 --- a/src/Console7Cascade/Console7Cascade.c
@@ -724,9 +721,9 @@ index 2f5f8ee..e4fd69d 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CONSOLE7CASCADE_URI "https://hannesbraun.net/ns/lv2/airwindows/console7cascade"
-
+ 
 @@ -28,14 +29,11 @@ typedef struct {
  	double biquadC[15];
  	double biquadD[15];
@@ -735,7 +732,7 @@ index 2f5f8ee..e4fd69d 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Console7Cascade;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -752,7 +749,7 @@ index 2f5f8ee..e4fd69d 100644
 -	console7Cascade->fpdR = 1.0;
 -	while (console7Cascade->fpdR < 16386) console7Cascade->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -150,8 +144,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -760,13 +757,13 @@ index 2f5f8ee..e4fd69d 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = console7Cascade->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = console7Cascade->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = console7Cascade->biquadA[2] * inputSampleL + console7Cascade->biquadA[3] * console7Cascade->biquadA[7] + console7Cascade->biquadA[4] * console7Cascade->biquadA[8] - console7Cascade->biquadA[5] * console7Cascade->biquadA[9] - console7Cascade->biquadA[6] * console7Cascade->biquadA[10];
  		console7Cascade->biquadA[8] = console7Cascade->biquadA[7];
 @@ -292,20 +284,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		}
  		//we re-amplify after the distortion relative to how much we cut back previously.
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -783,7 +780,7 @@ index 2f5f8ee..e4fd69d 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Console7Channel/Console7Channel.c b/src/Console7Channel/Console7Channel.c
 index 9d531c4..e76936a 100644
 --- a/src/Console7Channel/Console7Channel.c
@@ -793,18 +790,18 @@ index 9d531c4..e76936a 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CONSOLE7CHANNEL_URI "https://hannesbraun.net/ns/lv2/airwindows/console7channel"
-
+ 
 @@ -24,14 +25,11 @@ typedef struct {
  	double chasespeed;
-
+ 
  	double biquadA[15];
 -
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Console7Channel;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -821,7 +818,7 @@ index 9d531c4..e76936a 100644
 -	console7Channel->fpdR = 1.0;
 -	while (console7Channel->fpdR < 16386) console7Channel->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -109,8 +103,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -829,13 +826,13 @@ index 9d531c4..e76936a 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = console7Channel->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = console7Channel->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = console7Channel->biquadA[2] * inputSampleL + console7Channel->biquadA[3] * console7Channel->biquadA[7] + console7Channel->biquadA[4] * console7Channel->biquadA[8] - console7Channel->biquadA[5] * console7Channel->biquadA[9] - console7Channel->biquadA[6] * console7Channel->biquadA[10];
  		console7Channel->biquadA[8] = console7Channel->biquadA[7];
 @@ -155,20 +147,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		}
  		//we re-amplify after the distortion relative to how much we cut back previously.
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -852,7 +849,7 @@ index 9d531c4..e76936a 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Console7Crunch/Console7Crunch.c b/src/Console7Crunch/Console7Crunch.c
 index 8f3049e..7d51bb7 100644
 --- a/src/Console7Crunch/Console7Crunch.c
@@ -862,9 +859,9 @@ index 8f3049e..7d51bb7 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define CONSOLE7CRUNCH_URI "https://hannesbraun.net/ns/lv2/airwindows/console7crunch"
-
+ 
 @@ -28,14 +29,11 @@ typedef struct {
  	double biquadC[15];
  	double biquadD[15];
@@ -873,7 +870,7 @@ index 8f3049e..7d51bb7 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Console7Crunch;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -890,7 +887,7 @@ index 8f3049e..7d51bb7 100644
 -	console7Crunch->fpdR = 1.0;
 -	while (console7Crunch->fpdR < 16386) console7Crunch->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -150,8 +144,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -898,13 +895,13 @@ index 8f3049e..7d51bb7 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = console7Crunch->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = console7Crunch->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = console7Crunch->biquadA[2] * inputSampleL + console7Crunch->biquadA[3] * console7Crunch->biquadA[7] + console7Crunch->biquadA[4] * console7Crunch->biquadA[8] - console7Crunch->biquadA[5] * console7Crunch->biquadA[9] - console7Crunch->biquadA[6] * console7Crunch->biquadA[10];
  		console7Crunch->biquadA[8] = console7Crunch->biquadA[7];
 @@ -292,20 +284,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		}
  		//we re-amplify after the distortion relative to how much we cut back previously.
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -921,21 +918,21 @@ index 8f3049e..7d51bb7 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/DCVoltage/DCVoltage.c b/src/DCVoltage/DCVoltage.c
 index 18f904e..8d17086 100644
 --- a/src/DCVoltage/DCVoltage.c
 +++ b/src/DCVoltage/DCVoltage.c
 @@ -2,6 +2,7 @@
-
+ 
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define DCVOLTAGE_URI "https://hannesbraun.net/ns/lv2/airwindows/dcvoltage"
-
+ 
 @@ -21,7 +22,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -952,17 +949,17 @@ index 54a84d6..85ec475 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define DEBESS_URI "https://hannesbraun.net/ns/lv2/airwindows/debess"
-
+ 
 @@ -43,13 +44,11 @@ typedef struct {
-
-
+ 
+ 
  	bool flip;
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } DeBess;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -972,14 +969,14 @@ index 54a84d6..85ec475 100644
  {
 @@ -115,10 +114,6 @@ static void activate(LV2_Handle instance)
  	debess->iirSampleBR = 0.0;
-
+ 
  	debess->flip = false;
 -	debess->fpdL = 1.0;
 -	while (debess->fpdL < 16386) debess->fpdL = rand() * UINT32_MAX;
 -	debess->fpdR = 1.0;
 -	while (debess->fpdR < 16386) debess->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -145,8 +140,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -987,13 +984,13 @@ index 54a84d6..85ec475 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = debess->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = debess->fpdR * 1.18e-17;
-
+ 
  		debess->sL[0] = inputSampleL; //set up so both [0] and [1] will be input sample
  		debess->sR[0] = inputSampleR; //set up so both [0] and [1] will be input sample
 @@ -208,20 +201,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		}
  		//sense monitoring
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1010,7 +1007,7 @@ index 54a84d6..85ec475 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Dyno/Dyno.c b/src/Dyno/Dyno.c
 index ed028dd..cbbdf58 100644
 --- a/src/Dyno/Dyno.c
@@ -1020,9 +1017,9 @@ index ed028dd..cbbdf58 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define DYNO_URI "https://hannesbraun.net/ns/lv2/airwindows/dyno"
-
+ 
 @@ -18,14 +19,11 @@ typedef struct {
  	const float* input[2];
  	float* output[2];
@@ -1031,7 +1028,7 @@ index ed028dd..cbbdf58 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Dyno;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1042,7 +1039,7 @@ index ed028dd..cbbdf58 100644
 @@ -56,14 +54,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	Dyno* dyno = (Dyno*) instance;
@@ -1052,7 +1049,7 @@ index ed028dd..cbbdf58 100644
 -	while (dyno->fpdR < 16386) dyno->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -79,8 +70,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -1061,13 +1058,13 @@ index ed028dd..cbbdf58 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = dyno_instance->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = dyno_instance->fpdR * 1.18e-17;
-
+ 
  		if (gain != 1.0) {
  			inputSampleL *= gain;
 @@ -94,20 +83,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		if (dyno > 0.0) inputSampleR = (sin(inputSampleR * dyno) / dyno) * 1.1654321;
  		//dyno is the one that tries to raise peak energy
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1084,7 +1081,7 @@ index ed028dd..cbbdf58 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/EdIsDim/EdIsDim.c b/src/EdIsDim/EdIsDim.c
 index 9fb5f2d..3a2d982 100644
 --- a/src/EdIsDim/EdIsDim.c
@@ -1094,9 +1091,9 @@ index 9fb5f2d..3a2d982 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define EDISDIM_URI "https://hannesbraun.net/ns/lv2/airwindows/edisdim"
-
+ 
 @@ -18,14 +19,11 @@ typedef struct {
  	const float* input[2];
  	float* output[2];
@@ -1105,7 +1102,7 @@ index 9fb5f2d..3a2d982 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } EdIsDim;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1116,7 +1113,7 @@ index 9fb5f2d..3a2d982 100644
 @@ -56,14 +54,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	EdIsDim* edisdim = (EdIsDim*) instance;
@@ -1126,7 +1123,7 @@ index 9fb5f2d..3a2d982 100644
 -	while (edisdim->fpdR < 16386) edisdim->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -85,8 +76,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -1135,13 +1132,13 @@ index 9fb5f2d..3a2d982 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = edisdim->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = edisdim->fpdR * 1.18e-17;
-
+ 
  		inputSampleL *= midgain;
  		inputSampleR *= sidegain;
 @@ -94,22 +83,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		mid = (inputSampleL + inputSampleR) / 2.0;
  		side = (inputSampleL - inputSampleR) / 2.0;
-
+ 
 -		//begin 32 bit floating point dither
 -		int expon;
 -		frexpf((float)mid, &expon);
@@ -1160,7 +1157,7 @@ index 9fb5f2d..3a2d982 100644
 -
  		*out1 = (float) mid;
  		*out2 = (float) side;
-
+ 
 diff --git a/src/EveryTrim/EveryTrim.c b/src/EveryTrim/EveryTrim.c
 index d22e1b9..58f8c57 100644
 --- a/src/EveryTrim/EveryTrim.c
@@ -1170,9 +1167,9 @@ index d22e1b9..58f8c57 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define EVERYTRIM_URI "https://hannesbraun.net/ns/lv2/airwindows/everytrim"
-
+ 
 @@ -26,14 +27,11 @@ typedef struct {
  	const float* mid;
  	const float* side;
@@ -1181,7 +1178,7 @@ index d22e1b9..58f8c57 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } EveryTrim;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1192,7 +1189,7 @@ index d22e1b9..58f8c57 100644
 @@ -76,14 +74,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	EveryTrim* everytrim = (EveryTrim*) instance;
@@ -1202,7 +1199,7 @@ index d22e1b9..58f8c57 100644
 -	while (everytrim->fpdR < 16386) everytrim->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -111,8 +102,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -1211,13 +1208,13 @@ index d22e1b9..58f8c57 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = everytrim->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = everytrim->fpdR * 1.18e-17;
-
+ 
  		mid = inputSampleL + inputSampleR;
  		side = inputSampleL - inputSampleR;
 @@ -122,20 +111,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleR = (mid - side) * rightgain;
  		//contains mastergain and the gain trim fixing the mid/side
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1234,7 +1231,7 @@ index d22e1b9..58f8c57 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Galactic/Galactic.c b/src/Galactic/Galactic.c
 index 4629372..e38e881 100644
 --- a/src/Galactic/Galactic.c
@@ -1244,27 +1241,27 @@ index 4629372..e38e881 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define GALACTIC_URI "https://hannesbraun.net/ns/lv2/airwindows/galactic"
-
+ 
 @@ -48,7 +49,7 @@ typedef struct {
-
+ 
  	double aML[3111];
  	double aMR[3111];
 -	double vibML, vibMR, depthM, oldfpd;
 +	double vibML, vibMR, depthM;
-
+ 
  	double feedbackAL;
  	double feedbackBL;
 @@ -101,14 +102,12 @@ typedef struct {
-
+ 
  	double vibM;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  	//default stuff
  } Galactic;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1274,7 +1271,7 @@ index 4629372..e38e881 100644
  {
 @@ -253,13 +252,6 @@ static void activate(LV2_Handle instance)
  	galactic->cycle = 0;
-
+ 
  	galactic->vibM = 3.0;
 -
 -	galactic->oldfpd = 429496.7295;
@@ -1284,7 +1281,7 @@ index 4629372..e38e881 100644
 -	galactic->fpdR = 1;
 -	while (galactic->fpdR < 16386) galactic->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -308,15 +300,12 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -1294,19 +1291,19 @@ index 4629372..e38e881 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = galactic->fpdR * 1.18e-17;
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 -		galactic->vibM += (galactic->oldfpd * drift);
 +		galactic->vibM += drift;
  		if (galactic->vibM > (3.141592653589793238 * 2.0)) {
  			galactic->vibM = 0.0;
 -			galactic->oldfpd = 0.4294967295 + (galactic->fpdL * 0.0000000000618);
  		}
-
+ 
  		galactic->aML[galactic->countM] = inputSampleL * attenuate;
 @@ -496,20 +485,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  			inputSampleR = (inputSampleR * wet) + (drySampleR * (1.0 - wet));
  		}
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1323,7 +1320,7 @@ index 4629372..e38e881 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/HermeTrim/HermeTrim.c b/src/HermeTrim/HermeTrim.c
 index 1f2d728..fd754f4 100644
 --- a/src/HermeTrim/HermeTrim.c
@@ -1333,9 +1330,9 @@ index 1f2d728..fd754f4 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define HERMETRIM_URI "https://hannesbraun.net/ns/lv2/airwindows/hermetrim"
-
+ 
 @@ -26,14 +27,11 @@ typedef struct {
  	const float* mid;
  	const float* side;
@@ -1344,7 +1341,7 @@ index 1f2d728..fd754f4 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } HermeTrim;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1355,7 +1352,7 @@ index 1f2d728..fd754f4 100644
 @@ -76,14 +74,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	HermeTrim* hermetrim = (HermeTrim*) instance;
@@ -1365,7 +1362,7 @@ index 1f2d728..fd754f4 100644
 -	while (hermetrim->fpdR < 16386) hermetrim->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -111,8 +102,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -1374,13 +1371,13 @@ index 1f2d728..fd754f4 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = hermetrim->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = hermetrim->fpdR * 1.18e-17;
-
+ 
  		mid = inputSampleL + inputSampleR;
  		side = inputSampleL - inputSampleR;
 @@ -122,20 +111,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleR = (mid - side) * rightgain;
  		//contains mastergain and the gain trim fixing the mid/side
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1397,7 +1394,7 @@ index 1f2d728..fd754f4 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Hypersonic/Hypersonic.c b/src/Hypersonic/Hypersonic.c
 index 68e8a7e..4f9daa7 100644
 --- a/src/Hypersonic/Hypersonic.c
@@ -1407,9 +1404,9 @@ index 68e8a7e..4f9daa7 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define HYPERSONIC_URI "https://hannesbraun.net/ns/lv2/airwindows/hypersonic"
-
+ 
 @@ -40,15 +41,12 @@ typedef struct {
  	double fixE[fix_total];
  	double fixF[fix_total];
@@ -1419,7 +1416,7 @@ index 68e8a7e..4f9daa7 100644
 -	uint32_t fpdR;
  	//default stuff
  } Hypersonic;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1436,7 +1433,7 @@ index 68e8a7e..4f9daa7 100644
 -	hypersonic->fpdR = 1.0;
 -	while (hypersonic->fpdR < 16386) hypersonic->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -182,8 +176,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -1444,13 +1441,13 @@ index 68e8a7e..4f9daa7 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = hypersonic->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = hypersonic->fpdR * 1.18e-17;
-
+ 
  		double outSample = (inputSampleL * hypersonic->fixA[fix_a0]) + hypersonic->fixA[fix_sL1];
  		hypersonic->fixA[fix_sL1] = (inputSampleL * hypersonic->fixA[fix_a1]) - (outSample * hypersonic->fixA[fix_b1]) + hypersonic->fixA[fix_sL2];
 @@ -248,20 +240,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		hypersonic->fixG[fix_sR2] = (inputSampleR * hypersonic->fixG[fix_a2]) - (outSample * hypersonic->fixG[fix_b2]);
  		inputSampleR = outSample; //fixed biquad filtering ultrasonics
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1467,7 +1464,7 @@ index 68e8a7e..4f9daa7 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Infrasonic/Infrasonic.c b/src/Infrasonic/Infrasonic.c
 index 82c2d71..7288316 100644
 --- a/src/Infrasonic/Infrasonic.c
@@ -1477,9 +1474,9 @@ index 82c2d71..7288316 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define INFRASONIC_URI "https://hannesbraun.net/ns/lv2/airwindows/infrasonic"
-
+ 
 @@ -22,13 +23,11 @@ typedef struct {
  	double biquadC[15];
  	double biquadD[15];
@@ -1487,7 +1484,7 @@ index 82c2d71..7288316 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Infrasonic;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1504,7 +1501,7 @@ index 82c2d71..7288316 100644
 -	infrasonic->fpdR = 1.0;
 -	while (infrasonic->fpdR < 16386) infrasonic->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -136,8 +131,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -1512,13 +1509,13 @@ index 82c2d71..7288316 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = infrasonic->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = infrasonic->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = infrasonic->biquadA[2] * inputSampleL + infrasonic->biquadA[3] * infrasonic->biquadA[7] + infrasonic->biquadA[4] * infrasonic->biquadA[8] - infrasonic->biquadA[5] * infrasonic->biquadA[9] - infrasonic->biquadA[6] * infrasonic->biquadA[10];
  		infrasonic->biquadA[8] = infrasonic->biquadA[7];
 @@ -209,20 +202,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		infrasonic->biquadE[14] = infrasonic->biquadE[13];
  		infrasonic->biquadE[13] = inputSampleR; //DF1 right
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1535,7 +1532,7 @@ index 82c2d71..7288316 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Interstage/Interstage.c b/src/Interstage/Interstage.c
 index 885ef83..2d4df77 100644
 --- a/src/Interstage/Interstage.c
@@ -1545,9 +1542,9 @@ index 885ef83..2d4df77 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define INTERSTAGE_URI "https://hannesbraun.net/ns/lv2/airwindows/interstage"
-
+ 
 @@ -33,14 +34,12 @@ typedef struct {
  	double iirSampleER;
  	double iirSampleFR;
@@ -1556,7 +1553,7 @@ index 885ef83..2d4df77 100644
 -	uint32_t fpdR;
  	bool flip;
  } Interstage;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1574,7 +1571,7 @@ index 885ef83..2d4df77 100644
 -	while (interstage->fpdR < 16386) interstage->fpdR = rand() * UINT32_MAX;
  	interstage->flip = true;
  }
-
+ 
 @@ -113,8 +108,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
  		double inputSampleL = *in1;
@@ -1583,11 +1580,11 @@ index 885ef83..2d4df77 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = interstage->fpdR * 1.18e-17;
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 @@ -174,20 +167,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		interstage->lastSampleL = inputSampleL;
  		interstage->lastSampleR = inputSampleR;
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1604,21 +1601,21 @@ index 885ef83..2d4df77 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/LeftoMono/LeftoMono.c b/src/LeftoMono/LeftoMono.c
 index bd0b49d..8fedca5 100644
 --- a/src/LeftoMono/LeftoMono.c
 +++ b/src/LeftoMono/LeftoMono.c
 @@ -2,6 +2,7 @@
-
+ 
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define LEFTOMONO_URI "https://hannesbraun.net/ns/lv2/airwindows/leftomono"
-
+ 
 @@ -22,7 +23,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1635,13 +1632,13 @@ index 8d57a06..25f7b82 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define MV_URI "https://hannesbraun.net/ns/lv2/airwindows/mv"
-
+ 
 @@ -27,9 +28,6 @@ typedef struct {
  	const float* gain;
  	const float* drywet;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
 -
@@ -1649,7 +1646,7 @@ index 8d57a06..25f7b82 100644
  	double aBL[14618];
  	double aCL[14358];
 @@ -173,7 +171,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1658,7 +1655,7 @@ index 8d57a06..25f7b82 100644
  	const LV2_Feature* const* features)
  {
 @@ -433,11 +431,6 @@ static void activate(LV2_Handle instance)
-
+ 
  	mv->feedbackL = 0.0;
  	mv->feedbackR = 0.0;
 -
@@ -1667,21 +1664,21 @@ index 8d57a06..25f7b82 100644
 -	mv->fpdR = 1.0;
 -	while (mv->fpdR < 16386) mv->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -468,8 +461,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		double inputSampleL = *in1;
  		double inputSampleR = *in2;
-
+ 
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = mv->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = mv->fpdR * 1.18e-17;
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 @@ -1314,20 +1305,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		}
  		//Dry/Wet control, defaults to the last slider
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1698,7 +1695,7 @@ index 8d57a06..25f7b82 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Mackity/Mackity.c b/src/Mackity/Mackity.c
 index 5250dd8..933d3a7 100644
 --- a/src/Mackity/Mackity.c
@@ -1708,9 +1705,9 @@ index 5250dd8..933d3a7 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define MACKITY_URI "https://hannesbraun.net/ns/lv2/airwindows/mackity"
-
+ 
 @@ -28,14 +29,11 @@ typedef struct {
  	double iirSampleBR;
  	double biquadA[15];
@@ -1719,7 +1716,7 @@ index 5250dd8..933d3a7 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Mackity;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1737,7 +1734,7 @@ index 5250dd8..933d3a7 100644
 -	mackity->fpdR = 1.0;
 -	while (mackity->fpdR < 16386) mackity->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -132,8 +125,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -1745,13 +1742,13 @@ index 5250dd8..933d3a7 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = mackity->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = mackity->fpdR * 1.18e-17;
-
+ 
  		if (fabs(mackity->iirSampleAL) < 1.18e-37) mackity->iirSampleAL = 0.0;
  		mackity->iirSampleAL = (mackity->iirSampleAL * (1.0 - iirAmountA)) + (inputSampleL * iirAmountA);
 @@ -194,20 +185,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  			inputSampleR *= outPad;
  		}
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1768,7 +1765,7 @@ index 5250dd8..933d3a7 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/MidSide/MidSide.c b/src/MidSide/MidSide.c
 index 4c27ce7..7ee0c90 100644
 --- a/src/MidSide/MidSide.c
@@ -1778,9 +1775,9 @@ index 4c27ce7..7ee0c90 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define MIDSIDE_URI "https://hannesbraun.net/ns/lv2/airwindows/midside"
-
+ 
 @@ -18,14 +19,11 @@ typedef struct {
  	const float* input[2];
  	float* output[2];
@@ -1789,7 +1786,7 @@ index 4c27ce7..7ee0c90 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } MidSide;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1800,7 +1797,7 @@ index 4c27ce7..7ee0c90 100644
 @@ -56,14 +54,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	MidSide* midside = (MidSide*) instance;
@@ -1810,7 +1807,7 @@ index 4c27ce7..7ee0c90 100644
 -	while (midside->fpdR < 16386) midside->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -86,8 +77,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -1819,13 +1816,13 @@ index 4c27ce7..7ee0c90 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = midside->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = midside->fpdR * 1.18e-17;
-
+ 
  		mid = inputSampleL + inputSampleR;
  		side = inputSampleL - inputSampleR;
 @@ -95,21 +84,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		mid *= midgain;
  		side *= sidegain;
-
+ 
 -		//begin 32 bit floating point dither
 -		int expon;
 -		frexpf((float)mid, &expon);
@@ -1843,7 +1840,81 @@ index 4c27ce7..7ee0c90 100644
 -
  		*out1 = (float) mid;
  		*out2 = (float) side;
-
+ 
+diff --git a/src/MoNoam/MoNoam.c b/src/MoNoam/MoNoam.c
+index 8c9a33b..b59a4bc 100644
+--- a/src/MoNoam/MoNoam.c
++++ b/src/MoNoam/MoNoam.c
+@@ -3,6 +3,7 @@
+ #include <math.h>
+ #include <stdint.h>
+ #include <stdlib.h>
++#include "../optimizations.h"
+ 
+ #define MONOAM_URI "https://hannesbraun.net/ns/lv2/airwindows/monoam"
+ 
+@@ -27,14 +28,11 @@ typedef struct {
+ 	const float* input[2];
+ 	float* output[2];
+ 	const float* monotor;
+-
+-	uint32_t fpdL;
+-	uint32_t fpdR;
+ } MoNoam;
+ 
+ static LV2_Handle instantiate(
+ 	const LV2_Descriptor* descriptor,
+-	double rate,
++	realdouble rate,
+ 	const char* bundle_path,
+ 	const LV2_Feature* const* features)
+ {
+@@ -65,14 +63,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
+ 	}
+ }
+ 
+-static void activate(LV2_Handle instance)
+-{
+-	MoNoam* moNoam = (MoNoam*) instance;
+-	moNoam->fpdL = 1.0;
+-	while (moNoam->fpdL < 16386) moNoam->fpdL = rand() * UINT32_MAX;
+-	moNoam->fpdR = 1.0;
+-	while (moNoam->fpdR < 16386) moNoam->fpdR = rand() * UINT32_MAX;
+-}
++static void activate(LV2_Handle instance) {}
+ 
+ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ {
+@@ -93,8 +84,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 	while (sampleFrames-- > 0) {
+ 		double inputSampleL = *in1;
+ 		double inputSampleR = *in2;
+-		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = moNoam->fpdL * 1.18e-17;
+-		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = moNoam->fpdR * 1.18e-17;
+ 
+ 		double mid;
+ 		mid = inputSampleL + inputSampleR;
+@@ -117,20 +106,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 			inputSampleR = *in2;
+ 		}
+ 
+-		//begin 32 bit stereo floating point dither
+-		int expon;
+-		frexpf((float)inputSampleL, &expon);
+-		moNoam->fpdL ^= moNoam->fpdL << 13;
+-		moNoam->fpdL ^= moNoam->fpdL >> 17;
+-		moNoam->fpdL ^= moNoam->fpdL << 5;
+-		inputSampleL += (((double)moNoam->fpdL - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		frexpf((float)inputSampleR, &expon);
+-		moNoam->fpdR ^= moNoam->fpdR << 13;
+-		moNoam->fpdR ^= moNoam->fpdR >> 17;
+-		moNoam->fpdR ^= moNoam->fpdR << 5;
+-		inputSampleR += (((double)moNoam->fpdR - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		//end 32 bit stereo floating point dither
+-
+ 		*out1 = (float) inputSampleL;
+ 		*out2 = (float) inputSampleR;
+ 
 diff --git a/src/Mojo/Mojo.c b/src/Mojo/Mojo.c
 index ee39090..d8ef7cf 100644
 --- a/src/Mojo/Mojo.c
@@ -1853,9 +1924,9 @@ index ee39090..d8ef7cf 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define MOJO_URI "https://hannesbraun.net/ns/lv2/airwindows/mojo"
-
+ 
 @@ -18,14 +19,11 @@ typedef struct {
  	const float* input[2];
  	float* output[2];
@@ -1864,7 +1935,7 @@ index ee39090..d8ef7cf 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Mojo;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1875,7 +1946,7 @@ index ee39090..d8ef7cf 100644
 @@ -56,14 +54,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	Mojo* mojo = (Mojo*) instance;
@@ -1885,7 +1956,7 @@ index ee39090..d8ef7cf 100644
 -	while (mojo->fpdR < 16386) mojo->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -79,8 +70,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -1894,13 +1965,13 @@ index ee39090..d8ef7cf 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = mojoInstance->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = mojoInstance->fpdR * 1.18e-17;
-
+ 
  		if (gain != 1.0) {
  			inputSampleL *= gain;
 @@ -94,20 +83,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		if (mojo > 0.0) inputSampleR = (sin(inputSampleR * mojo * M_PI * 0.5) / mojo) * 0.987654321;
  		//mojo is the one that flattens WAAAAY out very softly before wavefolding
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1917,7 +1988,7 @@ index ee39090..d8ef7cf 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Nikola/Nikola.c b/src/Nikola/Nikola.c
 index 772fbe2..0a5a274 100644
 --- a/src/Nikola/Nikola.c
@@ -1927,9 +1998,9 @@ index 772fbe2..0a5a274 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define NIKOLA_URI "https://hannesbraun.net/ns/lv2/airwindows/nikola"
-
+ 
 @@ -29,14 +30,11 @@ typedef struct {
  	int framenumberR;
  	bool wasNegativeR;
@@ -1938,7 +2009,7 @@ index 772fbe2..0a5a274 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Nikola;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -1956,7 +2027,7 @@ index 772fbe2..0a5a274 100644
 -	nikola->fpdR = 1.0;
 -	while (nikola->fpdR < 16386) nikola->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -103,8 +96,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -1966,11 +2037,11 @@ index 772fbe2..0a5a274 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = nikola->fpdR * 1.18e-17;
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 @@ -2965,20 +2956,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  			inputSampleR = (inputSampleR * wet) + (drySampleR * (1.0 - wet));
  		}
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -1987,7 +2058,7 @@ index 772fbe2..0a5a274 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/PocketVerbs/PocketVerbs.c b/src/PocketVerbs/PocketVerbs.c
 index 694321a..df4be1f 100644
 --- a/src/PocketVerbs/PocketVerbs.c
@@ -1997,9 +2068,9 @@ index 694321a..df4be1f 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define POCKETVERBS_URI "https://hannesbraun.net/ns/lv2/airwindows/pocketverbs"
-
+ 
 @@ -245,14 +246,11 @@ typedef struct {
  	int countdown;
  	double peakL;
@@ -2008,7 +2079,7 @@ index 694321a..df4be1f 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } PocketVerbs;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2025,22 +2096,22 @@ index 694321a..df4be1f 100644
 -	pocketverbs->fpdR = 1.0;
 -	while (pocketverbs->fpdR < 16386) pocketverbs->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -1778,9 +1772,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		double inputSampleL = *in1;
  		double inputSampleR = *in2;
-
+ 
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = pocketverbs->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = pocketverbs->fpdR * 1.18e-17;
 -
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 @@ -13590,20 +13581,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleR += drySampleR;
  		//here we combine the tanks with the dry signal
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2057,7 +2128,7 @@ index 694321a..df4be1f 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Pressure5/Pressure5.c b/src/Pressure5/Pressure5.c
 index 0ea5c79..e16c291 100644
 --- a/src/Pressure5/Pressure5.c
@@ -2067,18 +2138,18 @@ index 0ea5c79..e16c291 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define PRESSURE5_URI "https://hannesbraun.net/ns/lv2/airwindows/pressure5"
-
+ 
 @@ -70,14 +71,11 @@ typedef struct {
  	bool wasNegClipR; //Stereo ClipOnly2
-
+ 
  	double slewMax; //to adust mewiness
 -
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Pressure5;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2096,7 +2167,7 @@ index 0ea5c79..e16c291 100644
 -	pressure5->fpdR = 1.0;
 -	while (pressure5->fpdR < 16386) pressure5->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -202,8 +195,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -2106,11 +2177,11 @@ index 0ea5c79..e16c291 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = pressure5->fpdR * 1.18e-17;
  		double drySampleL = inputSampleL;
  		double drySampleR = inputSampleR;
-
+ 
 @@ -373,20 +364,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		//end ClipOnly2 stereo as a little, compressed chunk that can be dropped into code
  		//final clip runs AFTER the Dry/Wet. It serves as a safety clip even if you're not full wet
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2127,7 +2198,143 @@ index 0ea5c79..e16c291 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
+diff --git a/src/PurestConsole2Buss/PurestConsole2Buss.c b/src/PurestConsole2Buss/PurestConsole2Buss.c
+index bd444ec..75c6163 100644
+--- a/src/PurestConsole2Buss/PurestConsole2Buss.c
++++ b/src/PurestConsole2Buss/PurestConsole2Buss.c
+@@ -3,6 +3,7 @@
+ #include <math.h>
+ #include <stdint.h>
+ #include <stdlib.h>
++#include "../optimizations.h"
+ 
+ #define PURESTCONSOLE2BUSS_URI "https://hannesbraun.net/ns/lv2/airwindows/purestconsole2buss"
+ 
+@@ -19,13 +20,11 @@ typedef struct {
+ 	float* output[2];
+ 
+ 	double biquadA[15];
+-	uint32_t fpdL;
+-	uint32_t fpdR;
+ } PurestConsole2Buss;
+ 
+ static LV2_Handle instantiate(
+ 	const LV2_Descriptor* descriptor,
+-	double rate,
++	realdouble rate,
+ 	const char* bundle_path,
+ 	const LV2_Feature* const* features)
+ {
+@@ -60,10 +59,6 @@ static void activate(LV2_Handle instance)
+ 	for (int x = 0; x < 15; x++) {
+ 		purestConsole2Buss->biquadA[x] = 0.0;
+ 	}
+-	purestConsole2Buss->fpdL = 1.0;
+-	while (purestConsole2Buss->fpdL < 16386) purestConsole2Buss->fpdL = rand() * UINT32_MAX;
+-	purestConsole2Buss->fpdR = 1.0;
+-	while (purestConsole2Buss->fpdR < 16386) purestConsole2Buss->fpdR = rand() * UINT32_MAX;
+ }
+ 
+ static void run(LV2_Handle instance, uint32_t sampleFrames)
+@@ -89,8 +84,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 	while (sampleFrames-- > 0) {
+ 		double inputSampleL = *in1;
+ 		double inputSampleR = *in2;
+-		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = purestConsole2Buss->fpdL * 1.18e-17;
+-		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = purestConsole2Buss->fpdR * 1.18e-17;
+ 
+ 		if (purestConsole2Buss->biquadA[0] < 0.49999) {
+ 			double tempSample = purestConsole2Buss->biquadA[2] * inputSampleL + purestConsole2Buss->biquadA[3] * purestConsole2Buss->biquadA[7] + purestConsole2Buss->biquadA[4] * purestConsole2Buss->biquadA[8] - purestConsole2Buss->biquadA[5] * purestConsole2Buss->biquadA[9] - purestConsole2Buss->biquadA[6] * purestConsole2Buss->biquadA[10];
+@@ -117,20 +110,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 		inputSampleR = asin(inputSampleR);
+ 		//amplitude aspect
+ 
+-		//begin 32 bit stereo floating point dither
+-		int expon;
+-		frexpf((float)inputSampleL, &expon);
+-		purestConsole2Buss->fpdL ^= purestConsole2Buss->fpdL << 13;
+-		purestConsole2Buss->fpdL ^= purestConsole2Buss->fpdL >> 17;
+-		purestConsole2Buss->fpdL ^= purestConsole2Buss->fpdL << 5;
+-		inputSampleL += (((double)purestConsole2Buss->fpdL - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		frexpf((float)inputSampleR, &expon);
+-		purestConsole2Buss->fpdR ^= purestConsole2Buss->fpdR << 13;
+-		purestConsole2Buss->fpdR ^= purestConsole2Buss->fpdR >> 17;
+-		purestConsole2Buss->fpdR ^= purestConsole2Buss->fpdR << 5;
+-		inputSampleR += (((double)purestConsole2Buss->fpdR - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		//end 32 bit stereo floating point dither
+-
+ 		*out1 = (float) inputSampleL;
+ 		*out2 = (float) inputSampleR;
+ 
+diff --git a/src/PurestConsole2Channel/PurestConsole2Channel.c b/src/PurestConsole2Channel/PurestConsole2Channel.c
+index 32c7d35..37ed37a 100644
+--- a/src/PurestConsole2Channel/PurestConsole2Channel.c
++++ b/src/PurestConsole2Channel/PurestConsole2Channel.c
+@@ -3,6 +3,7 @@
+ #include <math.h>
+ #include <stdint.h>
+ #include <stdlib.h>
++#include "../optimizations.h"
+ 
+ #define PURESTCONSOLE2CHANNEL_URI "https://hannesbraun.net/ns/lv2/airwindows/purestconsole2channel"
+ 
+@@ -19,13 +20,11 @@ typedef struct {
+ 	float* output[2];
+ 
+ 	double biquadA[15];
+-	uint32_t fpdL;
+-	uint32_t fpdR;
+ } PurestConsole2Channel;
+ 
+ static LV2_Handle instantiate(
+ 	const LV2_Descriptor* descriptor,
+-	double rate,
++	realdouble rate,
+ 	const char* bundle_path,
+ 	const LV2_Feature* const* features)
+ {
+@@ -61,10 +60,6 @@ static void activate(LV2_Handle instance)
+ 	for (int x = 0; x < 15; x++) {
+ 		purestConsole2Channel->biquadA[x] = 0.0;
+ 	}
+-	purestConsole2Channel->fpdL = 1.0;
+-	while (purestConsole2Channel->fpdL < 16386) purestConsole2Channel->fpdL = rand() * UINT32_MAX;
+-	purestConsole2Channel->fpdR = 1.0;
+-	while (purestConsole2Channel->fpdR < 16386) purestConsole2Channel->fpdR = rand() * UINT32_MAX;
+ }
+ 
+ static void run(LV2_Handle instance, uint32_t sampleFrames)
+@@ -90,8 +85,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 	while (sampleFrames-- > 0) {
+ 		double inputSampleL = *in1;
+ 		double inputSampleR = *in2;
+-		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = purestConsole2Channel->fpdL * 1.18e-17;
+-		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = purestConsole2Channel->fpdR * 1.18e-17;
+ 
+ 		if (purestConsole2Channel->biquadA[0] < 0.49999) {
+ 			double tempSample = purestConsole2Channel->biquadA[2] * inputSampleL + purestConsole2Channel->biquadA[3] * purestConsole2Channel->biquadA[7] + purestConsole2Channel->biquadA[4] * purestConsole2Channel->biquadA[8] - purestConsole2Channel->biquadA[5] * purestConsole2Channel->biquadA[9] - purestConsole2Channel->biquadA[6] * purestConsole2Channel->biquadA[10];
+@@ -117,20 +110,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 		inputSampleR = sin(inputSampleR);
+ 		//amplitude aspect
+ 
+-		//begin 32 bit stereo floating point dither
+-		int expon;
+-		frexpf((float)inputSampleL, &expon);
+-		purestConsole2Channel->fpdL ^= purestConsole2Channel->fpdL << 13;
+-		purestConsole2Channel->fpdL ^= purestConsole2Channel->fpdL >> 17;
+-		purestConsole2Channel->fpdL ^= purestConsole2Channel->fpdL << 5;
+-		inputSampleL += (((double)purestConsole2Channel->fpdL - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		frexpf((float)inputSampleR, &expon);
+-		purestConsole2Channel->fpdR ^= purestConsole2Channel->fpdR << 13;
+-		purestConsole2Channel->fpdR ^= purestConsole2Channel->fpdR >> 17;
+-		purestConsole2Channel->fpdR ^= purestConsole2Channel->fpdR << 5;
+-		inputSampleR += (((double)purestConsole2Channel->fpdR - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		//end 32 bit stereo floating point dither
+-
+ 		*out1 = (float) inputSampleL;
+ 		*out2 = (float) inputSampleR;
+ 
 diff --git a/src/PurestConsoleBuss/PurestConsoleBuss.c b/src/PurestConsoleBuss/PurestConsoleBuss.c
 index 663ff27..a8cae6c 100644
 --- a/src/PurestConsoleBuss/PurestConsoleBuss.c
@@ -2137,9 +2344,9 @@ index 663ff27..a8cae6c 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define PURESTCONSOLEBUSS_URI "https://hannesbraun.net/ns/lv2/airwindows/purestconsolebuss"
-
+ 
 @@ -16,14 +17,11 @@ typedef enum {
  typedef struct {
  	const float* input[2];
@@ -2148,7 +2355,7 @@ index 663ff27..a8cae6c 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } PurestConsoleBuss;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2159,7 +2366,7 @@ index 663ff27..a8cae6c 100644
 @@ -51,14 +49,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	PurestConsoleBuss* purestConsoleBuss = (PurestConsoleBuss*) instance;
@@ -2169,7 +2376,7 @@ index 663ff27..a8cae6c 100644
 -	while (purestConsoleBuss->fpdR < 16386) purestConsoleBuss->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -75,8 +66,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -2178,13 +2385,13 @@ index 663ff27..a8cae6c 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = purestConsoleBuss->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = purestConsoleBuss->fpdR * 1.18e-17;
-
+ 
  		if (inputSampleL > 1.0) inputSampleL = 1.0;
  		if (inputSampleL < -1.0) inputSampleL = -1.0;
 @@ -88,20 +77,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleR = asin(inputSampleR);
  		//amplitude aspect
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2201,7 +2408,7 @@ index 663ff27..a8cae6c 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/PurestConsoleChannel/PurestConsoleChannel.c b/src/PurestConsoleChannel/PurestConsoleChannel.c
 index cee3dcb..29f7187 100644
 --- a/src/PurestConsoleChannel/PurestConsoleChannel.c
@@ -2211,9 +2418,9 @@ index cee3dcb..29f7187 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define PURESTCONSOLECHANNEL_URI "https://hannesbraun.net/ns/lv2/airwindows/purestconsolechannel"
-
+ 
 @@ -16,14 +17,11 @@ typedef enum {
  typedef struct {
  	const float* input[2];
@@ -2222,7 +2429,7 @@ index cee3dcb..29f7187 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } PurestConsoleChannel;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2233,7 +2440,7 @@ index cee3dcb..29f7187 100644
 @@ -51,14 +49,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	PurestConsoleChannel* purestConsoleChannel = (PurestConsoleChannel*) instance;
@@ -2243,7 +2450,7 @@ index cee3dcb..29f7187 100644
 -	while (purestConsoleChannel->fpdR < 16386) purestConsoleChannel->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -75,27 +66,11 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -2252,11 +2459,11 @@ index cee3dcb..29f7187 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = purestConsoleChannel->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = purestConsoleChannel->fpdR * 1.18e-17;
-
+ 
  		inputSampleL = sin(inputSampleL);
  		inputSampleR = sin(inputSampleR);
  		//amplitude aspect
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2273,7 +2480,7 @@ index cee3dcb..29f7187 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/PurestGain/PurestGain.c b/src/PurestGain/PurestGain.c
 index 97c9925..b06c780 100644
 --- a/src/PurestGain/PurestGain.c
@@ -2283,20 +2490,20 @@ index 97c9925..b06c780 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define PURESTGAIN_URI "https://hannesbraun.net/ns/lv2/airwindows/purestgain"
-
+ 
 @@ -22,8 +23,6 @@ typedef struct {
  	const float* gain;
  	const float* slowfade;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  	//default stuff
  	double gainchase;
  	double settingchase;
 @@ -33,7 +32,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2313,15 +2520,15 @@ index 97c9925..b06c780 100644
 -	purestGain->fpdR = 1.0;
 -	while (purestGain->fpdR < 16386) purestGain->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -143,8 +138,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
-
+ 
  		inputSampleL = *in1;
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = purestGain->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = purestGain->fpdR * 1.18e-17;
-
+ 
  		if (1.0 == outputgain) {
  			*out1 = *in1;
 @@ -152,19 +145,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
@@ -2349,15 +2556,15 @@ index 03acec9..e6eb262 100644
 --- a/src/RightoMono/RightoMono.c
 +++ b/src/RightoMono/RightoMono.c
 @@ -2,6 +2,7 @@
-
+ 
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define RIGHTOMONO_URI "https://hannesbraun.net/ns/lv2/airwindows/rightomono"
-
+ 
 @@ -22,7 +23,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2374,9 +2581,9 @@ index 0e99ac2..b55f35e 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define SIDEPASS_URI "https://hannesbraun.net/ns/lv2/airwindows/sidepass"
-
+ 
 @@ -24,13 +25,11 @@ typedef struct {
  	double iirSampleA;
  	double iirSampleB;
@@ -2384,7 +2591,7 @@ index 0e99ac2..b55f35e 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Sidepass;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2401,7 +2608,7 @@ index 0e99ac2..b55f35e 100644
 -	sidepass->fpdR = 1.0;
 -	while (sidepass->fpdR < 16386) sidepass->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -95,8 +90,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -2409,13 +2616,13 @@ index 0e99ac2..b55f35e 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = sidepass->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = sidepass->fpdR * 1.18e-17;
-
+ 
  		mid = inputSampleL + inputSampleR;
  		side = inputSampleL - inputSampleR;
 @@ -113,20 +106,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleL = (mid + side) / 2.0;
  		inputSampleR = (mid - side) / 2.0;
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2432,7 +2639,7 @@ index 0e99ac2..b55f35e 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/Slew/Slew.c b/src/Slew/Slew.c
 index e23ad33..97fe6fb 100644
 --- a/src/Slew/Slew.c
@@ -2442,17 +2649,17 @@ index e23ad33..97fe6fb 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define SLEW_URI "https://hannesbraun.net/ns/lv2/airwindows/slew"
-
+ 
 @@ -22,13 +23,11 @@ typedef struct {
-
+ 
  	double lastSampleL;
  	double lastSampleR;
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Slew;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2466,7 +2673,7 @@ index e23ad33..97fe6fb 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = slew->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = slew->fpdR * 1.18e-17;
-
+ 
  		clamp = inputSampleL - slew->lastSampleL;
  		outputSampleL = inputSampleL;
 diff --git a/src/SlewOnly/SlewOnly.c b/src/SlewOnly/SlewOnly.c
@@ -2478,17 +2685,17 @@ index d2de114..2148b40 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define SLEWONLY_URI "https://hannesbraun.net/ns/lv2/airwindows/slewonly"
-
+ 
 @@ -19,13 +20,11 @@ typedef struct {
-
+ 
  	double lastSampleL;
  	double lastSampleR;
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } SlewOnly;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2502,7 +2709,7 @@ index d2de114..2148b40 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = slewonly->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = slewonly->fpdR * 1.18e-17;
-
+ 
  		outputSampleL = (inputSampleL - slewonly->lastSampleL) * trim;
  		outputSampleR = (inputSampleR - slewonly->lastSampleR) * trim;
 diff --git a/src/Spiral/Spiral.c b/src/Spiral/Spiral.c
@@ -2514,9 +2721,9 @@ index 05a3361..619b60a 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define SPIRAL_URI "https://hannesbraun.net/ns/lv2/airwindows/spiral"
-
+ 
 @@ -16,14 +17,11 @@ typedef enum {
  typedef struct {
  	const float* input[2];
@@ -2525,7 +2732,7 @@ index 05a3361..619b60a 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Spiral;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2536,7 +2743,7 @@ index 05a3361..619b60a 100644
 @@ -51,14 +49,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data)
  	}
  }
-
+ 
 -static void activate(LV2_Handle instance)
 -{
 -	Spiral* spiral = (Spiral*) instance;
@@ -2546,13 +2753,13 @@ index 05a3361..619b60a 100644
 -	while (spiral->fpdR < 16386) spiral->fpdR = rand() * UINT32_MAX;
 -}
 +static void activate(LV2_Handle instance) {}
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
  {
 @@ -73,28 +64,10 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		double inputSampleL = *in1;
  		double inputSampleR = *in2;
-
+ 
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = spiral->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = spiral->fpdR * 1.18e-17;
 -
@@ -2560,7 +2767,7 @@ index 05a3361..619b60a 100644
  		//clip to 1.2533141373155 to reach maximum output
  		inputSampleL = sin(inputSampleL * fabs(inputSampleL)) / ((fabs(inputSampleL) == 0.0) ? 1 : fabs(inputSampleL));
  		inputSampleR = sin(inputSampleR * fabs(inputSampleR)) / ((fabs(inputSampleR) == 0.0) ? 1 : fabs(inputSampleR));
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2577,7 +2784,7 @@ index 05a3361..619b60a 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/StarChild/StarChild.c b/src/StarChild/StarChild.c
 index c45f41d..e16f9ef 100644
 --- a/src/StarChild/StarChild.c
@@ -2587,20 +2794,20 @@ index c45f41d..e16f9ef 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define STARCHILD_URI "https://hannesbraun.net/ns/lv2/airwindows/starchild"
-
+ 
 @@ -23,8 +24,6 @@ typedef struct {
  	const float* grain;
  	const float* drywet;
-
+ 
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  	//default stuff
-
+ 
  	double d[45102];
 @@ -47,7 +46,7 @@ typedef struct {
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2618,7 +2825,7 @@ index c45f41d..e16f9ef 100644
 -	starchild->fpdR = 1.0;
 -	while (starchild->fpdR < 16386) starchild->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -437,8 +431,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -2628,11 +2835,11 @@ index c45f41d..e16f9ef 100644
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = starchild->fpdR * 1.18e-17;
  		drySampleL = inputSampleL;
  		drySampleR = inputSampleR;
-
+ 
 @@ -1058,20 +1050,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		inputSampleR += drySampleR;
  		//here we combine the tanks with the dry signal
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2649,7 +2856,7 @@ index c45f41d..e16f9ef 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/SubsOnly/SubsOnly.c b/src/SubsOnly/SubsOnly.c
 index 886ae22..e649464 100644
 --- a/src/SubsOnly/SubsOnly.c
@@ -2659,9 +2866,9 @@ index 886ae22..e649464 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define SUBSONLY_URI "https://hannesbraun.net/ns/lv2/airwindows/subsonly"
-
+ 
 @@ -71,14 +72,11 @@ typedef struct {
  	double iirSampleXR;
  	double iirSampleYR;
@@ -2670,7 +2877,7 @@ index 886ae22..e649464 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } SubsOnly;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2684,9 +2891,9 @@ index 886ae22..e649464 100644
  		inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = subsonly->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = subsonly->fpdR * 1.18e-17;
-
+ 
  		gain = gaintarget;
-
+ 
 diff --git a/src/Ultrasonic/Ultrasonic.c b/src/Ultrasonic/Ultrasonic.c
 index 57b2398..6aacb3b 100644
 --- a/src/Ultrasonic/Ultrasonic.c
@@ -2696,9 +2903,9 @@ index 57b2398..6aacb3b 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define ULTRASONIC_URI "https://hannesbraun.net/ns/lv2/airwindows/ultrasonic"
-
+ 
 @@ -22,13 +23,11 @@ typedef struct {
  	double biquadC[15];
  	double biquadD[15];
@@ -2706,7 +2913,7 @@ index 57b2398..6aacb3b 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } Ultrasonic;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2723,7 +2930,7 @@ index 57b2398..6aacb3b 100644
 -	ultrasonic->fpdR = 1.0;
 -	while (ultrasonic->fpdR < 16386) ultrasonic->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -136,8 +131,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -2731,13 +2938,13 @@ index 57b2398..6aacb3b 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = ultrasonic->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = ultrasonic->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = ultrasonic->biquadA[2] * inputSampleL + ultrasonic->biquadA[3] * ultrasonic->biquadA[7] + ultrasonic->biquadA[4] * ultrasonic->biquadA[8] - ultrasonic->biquadA[5] * ultrasonic->biquadA[9] - ultrasonic->biquadA[6] * ultrasonic->biquadA[10];
  		ultrasonic->biquadA[8] = ultrasonic->biquadA[7];
 @@ -209,20 +202,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		ultrasonic->biquadE[14] = ultrasonic->biquadE[13];
  		ultrasonic->biquadE[13] = inputSampleR; // DF1 right
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2754,7 +2961,7 @@ index 57b2398..6aacb3b 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/UltrasonicLite/UltrasonicLite.c b/src/UltrasonicLite/UltrasonicLite.c
 index f73d3f5..ef932f2 100644
 --- a/src/UltrasonicLite/UltrasonicLite.c
@@ -2764,9 +2971,9 @@ index f73d3f5..ef932f2 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define ULTRASONICLITE_URI "https://hannesbraun.net/ns/lv2/airwindows/ultrasoniclite"
-
+ 
 @@ -18,13 +19,11 @@ typedef struct {
  	const float* input[2];
  	float* output[2];
@@ -2774,7 +2981,7 @@ index f73d3f5..ef932f2 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } UltrasonicLite;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2791,7 +2998,7 @@ index f73d3f5..ef932f2 100644
 -	ultrasoniclite->fpdR = 1.0;
 -	while (ultrasoniclite->fpdR < 16386) ultrasoniclite->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -90,8 +85,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -2799,13 +3006,13 @@ index f73d3f5..ef932f2 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = ultrasoniclite->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = ultrasoniclite->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = ultrasoniclite->biquadA[2] * inputSampleL + ultrasoniclite->biquadA[3] * ultrasoniclite->biquadA[7] + ultrasoniclite->biquadA[4] * ultrasoniclite->biquadA[8] - ultrasoniclite->biquadA[5] * ultrasoniclite->biquadA[9] - ultrasoniclite->biquadA[6] * ultrasoniclite->biquadA[10];
  		ultrasoniclite->biquadA[8] = ultrasoniclite->biquadA[7];
 @@ -107,20 +100,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		ultrasoniclite->biquadA[14] = ultrasoniclite->biquadA[13];
  		ultrasoniclite->biquadA[13] = inputSampleR; //DF1 right
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2822,7 +3029,7 @@ index f73d3f5..ef932f2 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
 diff --git a/src/UltrasonicMed/UltrasonicMed.c b/src/UltrasonicMed/UltrasonicMed.c
 index 2231697..29d91be 100644
 --- a/src/UltrasonicMed/UltrasonicMed.c
@@ -2832,9 +3039,9 @@ index 2231697..29d91be 100644
  #include <stdint.h>
  #include <stdlib.h>
 +#include "../optimizations.h"
-
+ 
  #define ULTRASONICMED_URI "https://hannesbraun.net/ns/lv2/airwindows/ultrasonicmed"
-
+ 
 @@ -19,13 +20,11 @@ typedef struct {
  	float* output[2];
  	double biquadA[15];
@@ -2842,7 +3049,7 @@ index 2231697..29d91be 100644
 -	uint32_t fpdL;
 -	uint32_t fpdR;
  } UltrasonicMed;
-
+ 
  static LV2_Handle instantiate(
  	const LV2_Descriptor* descriptor,
 -	double rate,
@@ -2859,7 +3066,7 @@ index 2231697..29d91be 100644
 -	ultrasonicMed->fpdR = 1.0;
 -	while (ultrasonicMed->fpdR < 16386) ultrasonicMed->fpdR = rand() * UINT32_MAX;
  }
-
+ 
  static void run(LV2_Handle instance, uint32_t sampleFrames)
 @@ -105,8 +100,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  	while (sampleFrames-- > 0) {
@@ -2867,13 +3074,13 @@ index 2231697..29d91be 100644
  		double inputSampleR = *in2;
 -		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = ultrasonicMed->fpdL * 1.18e-17;
 -		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = ultrasonicMed->fpdR * 1.18e-17;
-
+ 
  		double outSampleL = ultrasonicMed->biquadA[2] * inputSampleL + ultrasonicMed->biquadA[3] * ultrasonicMed->biquadA[7] + ultrasonicMed->biquadA[4] * ultrasonicMed->biquadA[8] - ultrasonicMed->biquadA[5] * ultrasonicMed->biquadA[9] - ultrasonicMed->biquadA[6] * ultrasonicMed->biquadA[10];
  		ultrasonicMed->biquadA[8] = ultrasonicMed->biquadA[7];
 @@ -136,20 +129,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
  		ultrasonicMed->biquadB[14] = ultrasonicMed->biquadB[13];
  		ultrasonicMed->biquadB[13] = inputSampleR; //DF1 right
-
+ 
 -		//begin 32 bit stereo floating point dither
 -		int expon;
 -		frexpf((float)inputSampleL, &expon);
@@ -2890,10 +3097,79 @@ index 2231697..29d91be 100644
 -
  		*out1 = (float) inputSampleL;
  		*out2 = (float) inputSampleR;
-
+ 
+diff --git a/src/Vibrato/Vibrato.c b/src/Vibrato/Vibrato.c
+index 8f63069..551d6d1 100644
+--- a/src/Vibrato/Vibrato.c
++++ b/src/Vibrato/Vibrato.c
+@@ -4,6 +4,7 @@
+ #include <stdbool.h>
+ #include <stdint.h>
+ #include <stdlib.h>
++#include "../optimizations.h"
+ 
+ #define VIBRATO_URI "https://hannesbraun.net/ns/lv2/airwindows/vibrato"
+ 
+@@ -44,13 +45,11 @@ typedef struct {
+ 	double airFactorR;
+ 
+ 	bool flip;
+-	uint32_t fpdL;
+-	uint32_t fpdR;
+ } Vibrato;
+ 
+ static LV2_Handle instantiate(
+ 	const LV2_Descriptor* descriptor,
+-	double rate,
++	realdouble rate,
+ 	const char* bundle_path,
+ 	const LV2_Feature* const* features)
+ {
+@@ -115,11 +114,6 @@ static void activate(LV2_Handle instance)
+ 	vibrato->airFactorR = 0.0;
+ 
+ 	vibrato->flip = false;
+-
+-	vibrato->fpdL = 1.0;
+-	while (vibrato->fpdL < 16386) vibrato->fpdL = rand() * UINT32_MAX;
+-	vibrato->fpdR = 1.0;
+-	while (vibrato->fpdR < 16386) vibrato->fpdR = rand() * UINT32_MAX;
+ }
+ 
+ static void run(LV2_Handle instance, uint32_t sampleFrames)
+@@ -141,8 +135,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 	while (sampleFrames-- > 0) {
+ 		double inputSampleL = *in1;
+ 		double inputSampleR = *in2;
+-		if (fabs(inputSampleL) < 1.18e-23) inputSampleL = vibrato->fpdL * 1.18e-17;
+-		if (fabs(inputSampleR) < 1.18e-23) inputSampleR = vibrato->fpdR * 1.18e-17;
+ 		double drySampleL = inputSampleL;
+ 		double drySampleR = inputSampleR;
+ 
+@@ -219,20 +211,6 @@ static void run(LV2_Handle instance, uint32_t sampleFrames)
+ 		}
+ 		//Inv/Dry/Wet control
+ 
+-		//begin 32 bit stereo floating point dither
+-		int expon;
+-		frexpf((float)inputSampleL, &expon);
+-		vibrato->fpdL ^= vibrato->fpdL << 13;
+-		vibrato->fpdL ^= vibrato->fpdL >> 17;
+-		vibrato->fpdL ^= vibrato->fpdL << 5;
+-		inputSampleL += (((double)vibrato->fpdL - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		frexpf((float)inputSampleR, &expon);
+-		vibrato->fpdR ^= vibrato->fpdR << 13;
+-		vibrato->fpdR ^= vibrato->fpdR >> 17;
+-		vibrato->fpdR ^= vibrato->fpdR << 5;
+-		inputSampleR += (((double)vibrato->fpdR - (uint32_t)0x7fffffff) * 5.5e-36l * pow(2, expon + 62));
+-		//end 32 bit stereo floating point dither
+-
+ 		*out1 = (float) inputSampleL;
+ 		*out2 = (float) inputSampleR;
+ 
 diff --git a/src/optimizations.h b/src/optimizations.h
 new file mode 100644
-index 0000000..8670aea
+index 0000000..1f6516b
 --- /dev/null
 +++ b/src/optimizations.h
 @@ -0,0 +1,25 @@

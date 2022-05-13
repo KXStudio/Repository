@@ -1,0 +1,31 @@
+Source: dragonfly-reverb
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 8),
+  pkg-config,
+  libgl1-mesa-dev | libgl-dev,
+  libglu1-mesa-dev | libglu-dev,
+  libjack-jackd2-dev | libjack-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  fftw3-static,
+  liblo-static
+Standards-Version: 4.5.0
+Homepage: https://michaelwillis.github.io/dragonfly-reverb/
+XSC-KXStudio-VCS: https://github.com/michaelwillis/dragonfly-reverb
+Rules-Requires-Root: no
+
+Package: dragonfly-reverb
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: standalone-plugin, lv2-plugin, vst-plugin, vst3-plugin
+Description: A set of free reverb effects
+ Dragonfly Reverb is a bundle of free audio reverb effects.
+ .
+ Theirs DSP are based on the well-known freeverb3 and its GUI is made with the help of the DPF toolkit.
+ .
+ KXStudio package imported from LibraZiK

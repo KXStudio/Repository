@@ -1,0 +1,95 @@
+--- dragonfly-reverb-3.2.6.orig/Makefile
++++ dragonfly-reverb-3.2.6/Makefile
+@@ -17,7 +17,7 @@ CAN_GENERATE_TTL = true
+ endif
+ 
+ dgl:
+-	$(MAKE) -C dpf/dgl
++	$(MAKE) -C dpf/dgl FILE_BROWSER_DISABLED=true
+ 
+ plugins: dgl
+ 	$(MAKE) all -C plugins/dragonfly-hall-reverb
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-early-reflections/DistrhoPluginInfo.h
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-early-reflections/DistrhoPluginInfo.h
+@@ -20,7 +20,6 @@
+ #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
+ #define DISTRHO_PLUGIN_INFO_H_INCLUDED
+ 
+-#define DISTRHO_PLUGIN_BRAND "Dragonfly"
+ #define DISTRHO_PLUGIN_NAME  "Dragonfly Early Reflections"
+ #define DISTRHO_PLUGIN_URI   "urn:dragonfly:early"
+ 
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-early-reflections/Makefile
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-early-reflections/Makefile
+@@ -51,6 +51,8 @@ FILES_UI  = $(FILES_COMMON) \
+ # --------------------------------------------------------------
+ # Do some magic
+ 
++FILE_BROWSER_DISABLED = true
++SKIP_RTAUDIO_FALLBACK = true
+ include ../../dpf/Makefile.plugins.mk
+ 
+ # --------------------------------------------------------------
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-hall-reverb/DistrhoPluginInfo.h
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-hall-reverb/DistrhoPluginInfo.h
+@@ -21,7 +21,6 @@
+ #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
+ #define DISTRHO_PLUGIN_INFO_H_INCLUDED
+ 
+-#define DISTRHO_PLUGIN_BRAND "Dragonfly"
+ #define DISTRHO_PLUGIN_NAME  "Dragonfly Hall Reverb"
+ #define DISTRHO_PLUGIN_URI   "https://github.com/michaelwillis/dragonfly-reverb"
+ 
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-hall-reverb/Makefile
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-hall-reverb/Makefile
+@@ -51,6 +51,8 @@ FILES_UI  = $(FILES_COMMON) \
+ # --------------------------------------------------------------
+ # Do some magic
+ 
++FILE_BROWSER_DISABLED = true
++SKIP_RTAUDIO_FALLBACK = true
+ include ../../dpf/Makefile.plugins.mk
+ 
+ # --------------------------------------------------------------
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-plate-reverb/DistrhoPluginInfo.h
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-plate-reverb/DistrhoPluginInfo.h
+@@ -20,7 +20,6 @@
+ #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
+ #define DISTRHO_PLUGIN_INFO_H_INCLUDED
+ 
+-#define DISTRHO_PLUGIN_BRAND "Dragonfly"
+ #define DISTRHO_PLUGIN_NAME  "Dragonfly Plate Reverb"
+ #define DISTRHO_PLUGIN_URI   "urn:dragonfly:plate"
+ 
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-plate-reverb/Makefile
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-plate-reverb/Makefile
+@@ -51,6 +51,8 @@ FILES_UI  = $(FILES_COMMON) \
+ # --------------------------------------------------------------
+ # Do some magic
+ 
++FILE_BROWSER_DISABLED = true
++SKIP_RTAUDIO_FALLBACK = true
+ include ../../dpf/Makefile.plugins.mk
+ 
+ # --------------------------------------------------------------
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-room-reverb/DistrhoPluginInfo.h
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-room-reverb/DistrhoPluginInfo.h
+@@ -20,7 +20,6 @@
+ #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
+ #define DISTRHO_PLUGIN_INFO_H_INCLUDED
+ 
+-#define DISTRHO_PLUGIN_BRAND "Dragonfly"
+ #define DISTRHO_PLUGIN_NAME  "Dragonfly Room Reverb"
+ #define DISTRHO_PLUGIN_URI   "urn:dragonfly:room"
+ 
+--- dragonfly-reverb-3.2.6.orig/plugins/dragonfly-room-reverb/Makefile
++++ dragonfly-reverb-3.2.6/plugins/dragonfly-room-reverb/Makefile
+@@ -51,6 +51,8 @@ FILES_UI  = $(FILES_COMMON) \
+ # --------------------------------------------------------------
+ # Do some magic
+ 
++FILE_BROWSER_DISABLED = true
++SKIP_RTAUDIO_FALLBACK = true
+ include ../../dpf/Makefile.plugins.mk
+ 
+ # --------------------------------------------------------------

@@ -1,0 +1,161 @@
+Source: kxstudio-meta
+Section: metapackages
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+
+# -------------------------------------------------------------------------------------------------
+
+Package: kxstudio-meta-all
+Architecture: all
+Depends: ${misc:Depends},
+  kxstudio-meta-audio-applications, kxstudio-meta-audio-plugins
+Description: KXStudio meta-packages - All
+ This is a meta-package that depends on all meta-packages of the KXStudio repositories.
+
+# -------------------------------------------------------------------------------------------------
+# Audio
+
+Package: kxstudio-meta-audio-applications
+Architecture: all
+Depends: ${misc:Depends},
+# KXStudio Tools
+  cadence, carla, carla-git,
+# Other Tools
+  jaaa, non-session-manager, paulstretch
+# TODO: a2jmidid, jack-capture, jack-keyboard,
+# --------------------
+Recommends:
+# CLI Tools
+  ladish,
+# Non Stuff
+  non-mixer, non-sequencer | non-sequencer-git, non-timeline
+# TODO: lmms, seq24
+# --------------------
+Description: KXStudio meta-packages - Audio
+ This is a meta-package that provides the audio part of the KXStudio repositories.
+
+Package: kxstudio-meta-audio-plugins
+Architecture: all
+Depends: ${misc:Depends},
+  adlplug, amsynth, calf-plugins, dragonfly-reverb, dpf-plugins, drumgizmo, helm, hybridreverb2,
+  lsp-plugins, regrader, shiro-plugins, wolf-shaper, wolf-spectrum, zam-plugins, zynaddsubfx
+# TODO: bristol, phasex, qmidiarp, rakarrack
+Recommends:
+# FIXME surge armhf FTBFS
+  surge,
+  kxstudio-meta-audio-plugins-collection | kxstudio-meta-audio-plugins-ladspa,
+  kxstudio-meta-audio-plugins-collection | kxstudio-meta-audio-plugins-dssi,
+  kxstudio-meta-audio-plugins-collection | kxstudio-meta-audio-plugins-lv2,
+  kxstudio-meta-audio-plugins-collection | kxstudio-meta-audio-plugins-vst
+Description: KXStudio meta-packages - Audio plugins
+ This is a meta-package that provides the audio plugins part of the KXStudio repositories.
+
+Package: kxstudio-meta-audio-plugins-collection
+Architecture: all
+Depends: ${misc:Depends},
+# LADSPA-only plugins
+#  ste-plugins,
+# DSSI-only plugins
+#  dssi-example-plugins, whysynth, wsynth-dssi, xsynth-dssi,
+# LV2 single
+  avldrums.lv2, drmr, eq10q, linuxsampler-lv2 | linuxsampler-lv2-32chan, geonkick, rubberband-lv2,
+# LV2 collection
+  caps-lv2, die-plugins, infamous-plugins, tap-lv2, x42-plugins,
+# LV2 harry
+  artyfx, fabla, sorcer,
+# LV2 rncbc
+  drumkv1-lv2, padthv1-lv2, samplv1-lv2, synthv1-lv2,
+# LV2 DISTRHO
+  arctican-plugins-lv2, dexed-lv2, distrho-plugin-ports-lv2, drowaudio-plugins-lv2, easyssp-lv2, juce-opl-lv2,
+  klangfalter-lv2, luftikus-lv2, obxd-lv2, pitcheddelay-lv2, tal-plugins-lv2, teragonaudio-plugins-lv2,
+# LV2 Guitarix
+  gxplugins, gxvoxtonebender,
+# LV2 MOD
+  mod-cv-plugins, mod-distortion, mod-pitchshifter, mod-utilities,
+# LV2 Open Music Kontrollers
+  moony.lv2, sherlock.lv2,
+# VST
+  jackass, pizmidi-plugins, oxefmsynth
+# TODO: ste-plugins, ir.lv2 | ir.lv2-1.2, setbfree,
+# TODO: fomp, invada-studio-plugins-lv2, mod-mda-lv2 | mda-lv2, swh-lv2,
+# Broken stuff
+Conflicts: csladspa, naspro-bridges
+Description: KXStudio meta-packages - Collection of good audio plugins
+ This is a meta-package that provides the good audio plugins part of the KXStudio repositories.
+
+# -------------------------------------------------------------------------------------------------
+# Audio Plugins (separate)
+
+Package: kxstudio-meta-audio-plugins-ladspa
+Architecture: all
+Depends: ${misc:Depends},
+  amb-plugins, autotalent, blepvco, blop, caps, cmt, rubberband-ladspa
+# TODO: fil-plugins, g2reverb, invada-studio-plugins-ladspa, mcp-plugins, omins, rev-plugins
+# TODO: tap-plugins, ste-plugins, swh-plugins, vco-plugins, wah-plugins
+Conflicts: csladspa
+Description: KXStudio meta-packages - LADSPA Audio plugins
+ This is a meta-package that provides the LADSPA audio plugins part of the KXStudio repositories.
+
+Package: kxstudio-meta-audio-plugins-dssi
+Architecture: all
+Depends: ${misc:Depends},
+  linuxsampler-dssi
+# TODO:  dssi-example-plugins, fluidsynth-dssi, hexter, ll-scope, ls16, sineshaper, whysynth, wsynth-dssi, xsynth-dssi
+Description: KXStudio meta-packages - DSSI Audio plugins
+ This is a meta-package that provides the DSSI audio plugins part of the KXStudio repositories.
+
+Package: kxstudio-meta-audio-plugins-lv2
+Architecture: all
+Depends: ${misc:Depends},
+# Single
+  abgate, avldrums.lv2, drmr, eq10q, linuxsampler-lv2 | linuxsampler-lv2-32chan,
+  geonkick, noise-repellent, rubberband-lv2,
+# Collections
+  caps-lv2, die-plugins, infamous-plugins, tap-lv2, x42-plugins,
+# blablack
+  ams-lv2, beatslash-lv2,
+# B* stuff
+  bchoppr, bsequencer, bshapr, bslizr,
+# Harry
+  artyfx, fabla, sorcer,
+# DISTRHO
+  arctican-plugins-lv2, dexed-lv2, distrho-plugin-ports-lv2, drowaudio-plugins-lv2, easyssp-lv2, juce-opl-lv2,
+  juced-plugins-lv2, klangfalter-lv2, lufsmeter-lv2, luftikus-lv2, obxd-lv2, pitcheddelay-lv2, tal-plugins-lv2,
+  temper-lv2, teragonaudio-plugins-lv2, wolpertinger-lv2,
+# Guitarix
+  gxplugins, gxvoxtonebender,
+# Open Music Kontrollers
+  moony.lv2, sherlock.lv2,
+# MOD
+  mod-cv-plugins, mod-distortion, mod-pitchshifter, mod-utilities,
+# rncbc
+  drumkv1-lv2, padthv1-lv2, samplv1-lv2, synthv1-lv2
+# TODO: freaked-plugins, ir.lv2 | ir.lv2-1.2,
+# TODO: lv2fil, lv2vocoder, newtonator, setbfree, sooperlooper-lv2, triceratops-lv2, vocproc,
+# TODO: invada-studio-plugins-lv2, fomp, mod-mda-lv2 | mda-lv2, rkrlv2, swh-lv2,
+# TODO: deteriorate-lv2, midimsg-lv2,
+# TODO: eteroj.lv2, midi-matrix.lv2, vm.lv2, synthpod,
+# Broken stuff
+Conflicts: naspro-bridges
+Description: KXStudio meta-packages - LV2 Audio plugins
+ This is a meta-package that provides the LV2 audio plugins part of the KXStudio repositories.
+
+Package: kxstudio-meta-audio-plugins-vst
+Architecture: all
+Depends: ${misc:Depends},
+# Simple without UI
+  jackass, linuxsampler-vst, pizmidi-plugins,
+# DISTRHO stuff
+  arctican-plugins-vst, dexed-vst, distrho-plugin-ports-vst, drowaudio-plugins-vst, easyssp-vst, juce-opl-vst,
+  juced-plugins-vst, klangfalter-vst, lufsmeter-vst, luftikus-vst, obxd-vst, pitcheddelay-vst, tal-plugins-vst,
+  temper-vst, teragonaudio-plugins-vst, wolpertinger-vst,
+# Other
+  oxefmsynth
+# TODO: foo-yc20-vst, mda-vst, airwindows
+Description: KXStudio meta-packages - VST Audio plugins
+ This is a meta-package that provides the VST audio plugins of the KXStudio repositories.
+
+# -------------------------------------------------------------------------------------------------

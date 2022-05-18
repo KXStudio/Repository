@@ -1,0 +1,459 @@
+kxstudio-meta (7.0.0) focal; urgency=medium
+
+  * First focal version, remove recommended packages
+
+ -- falkTX <falktx@falktx.com>  Wed, 18 May 2022 10:51:24 +0100
+
+kxstudio-meta (6.1.7) bionic; urgency=medium
+
+  * Add die-plugins
+
+ -- falkTX <falktx@gmail.com>  Fri, 25 Dec 2020 13:41:26 +0000
+
+kxstudio-meta (6.1.6) bionic; urgency=medium
+
+  * Add geonkick, b* stuff
+
+ -- falkTX <falktx@gmail.com>  Sun, 26 Jan 2020 20:07:12 +0000
+
+kxstudio-meta (6.1.5) bionic; urgency=medium
+
+  * Remove ll-scope, sineshaper from depends of dssi
+  * Add mod-cv-plugins, regrader and temper
+
+ -- falkTX <falktx@gmail.com>  Sun, 26 Jan 2020 18:24:49 +0000
+
+kxstudio-meta (6.1.4) bionic; urgency=medium
+
+  * Make gigedit recommends, not depends
+
+ -- falkTX <falktx@gmail.com>  Thu, 14 Nov 2019 16:50:53 +0000
+
+kxstudio-meta (6.1.3) bionic; urgency=medium
+
+  * Add a few plugins
+
+ -- falkTX <falktx@gmail.com>  Wed, 30 Oct 2019 11:56:39 +0100
+
+kxstudio-meta (6.1.2) bionic; urgency=medium
+
+  * Fix the recommends-all
+
+ -- falkTX <falktx@gmail.com>  Tue, 15 Oct 2019 01:09:33 +0100
+
+kxstudio-meta (6.1.1) bionic; urgency=medium
+
+  * zynaddsubfx is in
+
+ -- falkTX <falktx@gmail.com>  Wed, 09 Oct 2019 17:43:45 +0100
+
+kxstudio-meta (6.1.0) bionic; urgency=medium
+
+  * Remove non-kx stuff from metas, add "recommended" set
+
+ -- falkTX <falktx@gmail.com>  Wed, 02 Oct 2019 00:34:13 +0100
+
+kxstudio-meta (6.0.3) bionic; urgency=medium
+
+  * Remove holap from audio-plugins
+
+ -- falkTX <falktx@gmail.com>  Tue, 01 Oct 2019 05:02:46 +0100
+
+kxstudio-meta (6.0.2) bionic; urgency=medium
+
+  * Packages should be "all" archs, not "any"
+
+ -- falkTX <falktx@gmail.com>  Sun, 15 Sep 2019 18:27:17 +0100
+
+kxstudio-meta (6.0.1) bionic; urgency=medium
+
+  * Remove vamp
+
+ -- falkTX <falktx@gmail.com>  Sun, 15 Sep 2019 18:22:53 +0100
+
+kxstudio-meta (6.0.0) bionic; urgency=medium
+
+  * Cleanup, remove non-audio things
+
+ -- falkTX <falktx@gmail.com>  Sun, 15 Sep 2019 18:17:20 +0100
+
+kxstudio-meta (5.9.56) trusty; urgency=medium
+
+  * Add baloo to live-conflicts
+
+ -- falkTX <falktx@gmail.com>  Sun, 12 Aug 2018 18:01:34 +0200
+
+kxstudio-meta (5.9.55) trusty; urgency=medium
+
+  * Add airwindows to meta-audio-vst
+  * Add a bunch more to live-conflicts
+
+ -- falkTX <falktx@gmail.com>  Sun, 12 Aug 2018 16:48:37 +0200
+
+kxstudio-meta (5.9.54) trusty; urgency=medium
+
+  * Add juce-opl-lv2
+  * Conflicts on naspro-bridges and csladspa, they're broken
+
+ -- falkTX <falktx@gmail.com>  Mon, 14 May 2018 09:30:04 +0200
+
+kxstudio-meta (5.9.53) trusty; urgency=medium
+
+  * Prefer simplescreenrecorder when available
+
+ -- falkTX <falktx@gmail.com>  Mon, 02 Apr 2018 22:46:01 +0200
+
+kxstudio-meta (5.9.52) trusty; urgency=medium
+
+  * Add hydrogen-drumkits-effects to live-conflicts
+  * Prefer zyn git over regular zyn
+
+ -- falkTX <falktx@gmail.com>  Sun, 01 Apr 2018 19:44:18 +0200
+
+kxstudio-meta (5.9.51) trusty; urgency=medium
+
+  * Add vcvrack to audio
+
+ -- falkTX <falktx@gmail.com>  Fri, 09 Feb 2018 09:54:05 +0100
+
+kxstudio-meta (5.9.50) trusty; urgency=medium
+
+  * Add padthv1-lv2
+
+ -- falkTX <falktx@gmail.com>  Sun, 10 Sep 2017 19:08:00 +0200
+
+kxstudio-meta (5.9.49) trusty; urgency=medium
+
+  * More plugins
+
+ -- falkTX <falktx@gmail.com>  Sat, 17 Jun 2017 21:05:09 +0200
+
+kxstudio-meta (5.9.48) trusty; urgency=medium
+
+  * Remove some stuff from live-conflicts
+
+ -- falkTX <falktx@gmail.com>  Wed, 24 May 2017 15:50:22 +0200
+
+kxstudio-meta (5.9.47) trusty; urgency=medium
+
+  * Add Open Music Kontrollers plugins
+
+ -- falkTX <falktx@gmail.com>  Sat, 20 May 2017 18:16:21 +0200
+
+kxstudio-meta (5.9.46) trusty; urgency=medium
+
+  * Require ardour, guitarix
+  * Require zynaddsubfx | zynaddsubfx-git (yoshimi skipped)
+  * Remove | qtractor-svn and | hydrogen-svn
+  * Move v1 series to lv2 and collection
+
+ -- falkTX <falktx@gmail.com>  Sat, 15 Apr 2017 14:36:49 +0200
+
+kxstudio-meta (5.9.45) trusty; urgency=medium
+
+  * Add rubberband-lv2 and avldrums.lv2 to plugin collection
+
+ -- falkTX <falktx@gmail.com>  Mon, 16 Jan 2017 14:00:51 +0100
+
+kxstudio-meta (5.9.44) trusty; urgency=medium
+
+  * Allow non-sequencer | non-sequencer-git
+
+ -- falkTX <falktx@gmail.com>  Sun, 06 Mar 2016 15:05:04 +0100
+
+kxstudio-meta (5.9.43) trusty; urgency=medium
+
+  * Add eq10q to default install
+
+ -- falkTX <falktx@gmail.com>  Sat, 26 Dec 2015 12:44:19 +0000
+
+kxstudio-meta (5.9.42) trusty; urgency=medium
+
+  * Accept guitarix-dbg as replacement of guitarix
+
+ -- falkTX <falktx@gmail.com>  Fri, 02 Oct 2015 12:29:08 +0200
+
+kxstudio-meta (5.9.41) trusty; urgency=medium
+
+  * Add oxefmsynth to (vst) plugins
+
+ -- falkTX <falktx@gmail.com>  Tue, 29 Sep 2015 12:09:51 +0200
+
+kxstudio-meta (5.9.40) trusty; urgency=medium
+
+  * Add infamous-plugins to audio-plugins-collection
+
+ -- falkTX <falktx@gmail.com>  Wed, 09 Sep 2015 11:43:58 +0200
+
+kxstudio-meta (5.9.39) trusty; urgency=medium
+
+  * Make zynaddsubfx-dssi-git installable
+
+ -- falkTX <falktx@gmail.com>  Tue, 08 Sep 2015 11:24:54 +0200
+
+kxstudio-meta (5.9.38) trusty; urgency=medium
+
+  * Add gigedit to audio
+
+ -- falkTX <falktx@gmail.com>  Mon, 27 Jul 2015 14:04:21 +0200
+
+kxstudio-meta (5.9.37) trusty; urgency=medium
+
+  * Fix typo
+
+ -- falkTX <falktx@gmail.com>  Sun, 26 Jul 2015 17:03:45 +0200
+
+kxstudio-meta (5.9.36) trusty; urgency=medium
+
+  * Add rkrlv2 and infamous-plugins to lv2
+
+ -- falkTX <falktx@gmail.com>  Sun, 26 Jul 2015 16:49:50 +0200
+
+kxstudio-meta (5.9.35) trusty; urgency=medium
+
+  * Update plugins
+
+ -- falkTX <falktx@gmail.com>  Tue, 14 Jul 2015 22:48:05 +0200
+
+kxstudio-meta (5.9.34) trusty; urgency=medium
+
+  * Add mlocate to live-conflicts package
+
+ -- falkTX <falktx@gmail.com>  Sat, 20 Jun 2015 18:00:13 +0200
+
+kxstudio-meta (5.9.33) trusty; urgency=medium
+
+  * Update for dpf-plugins
+
+ -- falkTX <falktx@gmail.com>  Wed, 17 Jun 2015 14:27:18 +0200
+
+kxstudio-meta (5.9.32) lucid; urgency=medium
+
+  * Add distrho-ndc-plugs to audio-plugins
+
+ -- falkTX <falktx@gmail.com>  Sun, 26 Apr 2015 22:44:45 +0200
+
+kxstudio-meta (5.9.31) lucid; urgency=medium
+
+  * Prefer stable calf-plugins
+
+ -- falkTX <falktx@gmail.com>  Sun, 26 Apr 2015 22:01:22 +0200
+
+kxstudio-meta (5.9.30) lucid; urgency=medium
+
+  * Switch to ardour4
+
+ -- falkTX <falktx@gmail.com>  Sun, 19 Apr 2015 13:30:49 +0200
+
+kxstudio-meta (5.9.29) lucid; urgency=medium
+
+  * Add kipi-plugins and libreoffice-math to live-conflicts
+
+ -- falkTX <falktx@gmail.com>  Tue, 24 Mar 2015 16:58:41 +0100
+
+kxstudio-meta (5.9.28) lucid; urgency=medium
+
+  * Allow zynaddsubfx | zynaddsubfx-git
+
+ -- falkTX <falktx@gmail.com>  Wed, 25 Feb 2015 01:13:29 +0000
+
+kxstudio-meta (5.9.27) lucid; urgency=medium
+
+  * Fix carla win64 bridge install on 32bit
+    (shouldn't be installed in the first place on 32bit)
+
+ -- falkTX <falktx@gmail.com>  Mon, 23 Feb 2015 15:57:57 +0000
+
+kxstudio-meta (5.9.26) lucid; urgency=medium
+
+  * Prefer calf-plugins-git and carla-git
+
+ -- falkTX <falktx@gmail.com>  Wed, 04 Feb 2015 01:15:09 +0000
+
+kxstudio-meta (5.9.25) lucid; urgency=medium
+
+  * add newtonator to lv2
+
+ -- falkTX <falktx@gmail.com>  Tue, 27 Jan 2015 20:56:27 +0000
+
+kxstudio-meta (5.9.24) lucid; urgency=medium
+
+  * Allow to install "ir.lv2-1.2" instead of "ir.lv2"
+
+ -- falkTX <falktx@gmail.com>  Sun, 25 Jan 2015 16:57:19 +0000
+
+kxstudio-meta (5.9.23) lucid; urgency=medium
+
+  * Add mod-sdk-lv2
+
+ -- falkTX <falktx@gmail.com>  Wed, 17 Dec 2014 01:50:41 +0000
+
+kxstudio-meta (5.9.22) lucid; urgency=medium
+
+  * Reworked metas, prefer stable versions
+  * Add mod and live-conflicts
+
+ -- falkTX <falktx@gmail.com>  Tue, 16 Dec 2014 18:57:53 +0000
+
+kxstudio-meta (5.9.20) lucid; urgency=medium
+
+  * Fix restricted extras (meta-codec was removed)
+
+ -- falkTX <falktx@gmail.com>  Sun, 16 Nov 2014 03:12:01 +0000
+
+kxstudio-meta (5.9.19) lucid; urgency=medium
+
+  * Remove unmaintained or bad ladspa plugins:
+    - foo-plugins
+    - leet-plugins
+    - vcf-plugins
+    - vocoder-ladspa
+    - wasp-ladspa
+  * Remove ll-plugins-lv2 and ssg-lv2
+
+ -- falkTX <falktx@gmail.com>  Wed, 12 Nov 2014 02:48:41 +0000
+
+kxstudio-meta (5.9.18) lucid; urgency=medium
+
+  * Add audio-plugins-collection and wine
+  * Add new lv2 plugins
+  * Small rework
+
+ -- falkTX <falktx@gmail.com>  Sat, 08 Nov 2014 18:57:32 +0000
+
+kxstudio-meta (5.9.17) lucid; urgency=medium
+
+  * Remove codecs
+
+ -- falkTX <falktx@gmail.com>  Sun, 02 Nov 2014 23:46:08 +0000
+
+kxstudio-meta (5.9.16) lucid; urgency=medium
+
+  * Add x42-plugins and zam-plugins
+  * Prefer calf-git over regular calf
+
+ -- falkTX <falktx@gmail.com>  Wed, 29 Oct 2014 04:28:38 +0000
+
+kxstudio-meta (5.9.15) lucid; urgency=medium
+
+  * gimp-dimage-color should be recommends, not depends
+
+ -- falkTX <falktx@gmail.com>  Thu, 23 Oct 2014 21:16:27 +0100
+
+kxstudio-meta (5.9.14) lucid; urgency=medium
+
+  * Update for carla-lv2/vst
+
+ -- falkTX <falktx@gmail.com>  Mon, 29 Sep 2014 00:00:41 +0100
+
+kxstudio-meta (5.9.13) lucid; urgency=medium
+
+  * Add qmidiarp
+
+ -- falkTX <falktx@gmail.com>  Mon, 25 Aug 2014 16:54:05 +0100
+
+kxstudio-meta (5.9.12) lucid; urgency=medium
+
+  * Remove lisaloqt, laborejo
+  * Add new distrho plugin ports
+
+ -- falkTX <falktx@gmail.com>  Mon, 25 Aug 2014 16:52:43 +0100
+
+kxstudio-meta (5.9.11) lucid; urgency=medium
+
+  * Update for distrho DPF based plugins
+
+ -- falkTX <falktx@gmail.com>  Sat, 12 Jul 2014 16:37:09 +0100
+
+kxstudio-meta (5.9.10) lucid; urgency=medium
+
+  * Add dexed and safe-plugins
+
+ -- falkTX <falktx@gmail.com>  Sat, 28 Jun 2014 22:36:36 +0100
+
+kxstudio-meta (5.9.9) lucid; urgency=medium
+
+  * Fix for carla
+
+ -- falkTX <falktx@gmail.com>  Sat, 14 Jun 2014 19:26:33 +0100
+
+kxstudio-meta (5.9.8) lucid; urgency=medium
+
+  * Ad jackass to vst meta
+
+ -- falkTX <falktx@gmail.com>  Tue, 29 Apr 2014 15:19:30 +0100
+
+kxstudio-meta (5.9.7) lucid; urgency=low
+
+  * Add option for calf-plugins-git
+
+ -- falkTX <falktx@gmail.com>  Sun, 27 Apr 2014 13:37:40 +0100
+
+kxstudio-meta (5.9.6) lucid; urgency=medium
+
+  * Move vst plugins that have lv2 versions to recommends
+
+ -- falkTX <falktx@gmail.com>  Fri, 25 Apr 2014 12:13:36 +0000
+
+kxstudio-meta (5.9.5) lucid; urgency=medium
+
+  * Add ingen, carla-plugins-lv2
+
+ -- falkTX <falktx@gmail.com>  Sat, 19 Apr 2014 17:43:10 +0100
+
+kxstudio-meta (5.9.4) lucid; urgency=medium
+
+  * More lv2 plugins
+
+ -- falkTX <falktx@gmail.com>  Wed, 16 Apr 2014 16:04:56 +0000
+
+kxstudio-meta (5.9.3) lucid; urgency=medium
+
+  * Make cabbage stuff suggests, not recommends
+  * Add obxd and teragonaudio-plugins to lv2+vst
+
+ -- falkTX <falktx@gmail.com>  Mon, 24 Mar 2014 22:12:01 +0000
+
+kxstudio-meta (5.9.2) lucid; urgency=medium
+
+  * artyfx, fabla and sorcer are now depends
+  * ams.lv2 | avw.lv2
+
+ -- falkTX <falktx@gmail.com>  Thu, 20 Mar 2014 17:02:38 +0000
+
+kxstudio-meta (5.9.1) lucid; urgency=medium
+
+  * Add g2reverb to ladspa
+
+ -- falkTX <falktx@gmail.com>  Sun, 09 Mar 2014 13:39:50 +0000
+
+kxstudio-meta (5.9) lucid; urgency=low
+
+  * Make some things recommends only
+    - This is temporary, until all the debian stuff in handled
+
+ -- falkTX <falktx@gmail.com>  Thu, 06 Mar 2014 03:36:33 +0100
+
+kxstudio-meta (5.0.3) lucid; urgency=low
+
+  * Fix for carla-dbg
+
+ -- falkTX <falktx@gmail.com>  Sat, 18 Jan 2014 17:46:26 +0000
+
+kxstudio-meta (5.0.2) lucid; urgency=low
+
+  * carla | carla-git
+
+ -- falkTX <falktx@gmail.com>  Thu, 24 Oct 2013 21:53:49 +0100
+
+kxstudio-meta (5.0.1) lucid; urgency=low
+
+  * Add artyfx to LV2
+
+ -- falkTX <falktx@gmail.com>  Tue, 15 Oct 2013 17:53:54 +0100
+
+kxstudio-meta (5.0) lucid; urgency=low
+
+  * Initial release for Debian
+
+ -- falkTX <falktx@gmail.com>  Tue, 01 Oct 2013 09:50:07 +0100

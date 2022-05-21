@@ -1,0 +1,76 @@
+Source: carla
+Section: sound
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester,
+  pkg-config,
+  libasound2-dev,
+  libpulse-dev,
+  libgl1-mesa-dev | libgl-dev,
+  libglu1-mesa-dev | libglu-dev,
+  libmagic-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  qtbase5-dev,
+  qtbase5-dev-tools,
+  pyqt5-dev-tools,
+  fftw3-static,
+  libfluidsynth-static,
+  liblo-static,
+  libmxml-static,
+  zlib-static
+Standards-Version: 4.5.0
+Homepage: https://kx.studio/Applications:Carla
+Rules-Requires-Root: no
+
+Package: carla
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, carla-data (= ${source:Version}), python3-liblo, python3-pyqt5, python3-pyqt5.qtsvg
+Recommends: python3-rdflib, python3-pyqt5.qtopengl
+Breaks: carla-git
+Replaces: carla-git
+Description: audio plugin host
+ Carla is an audio plugin host, with support for many audio drivers and plugin
+ formats. It has some nice features like automation of parameters via MIDI CC
+ and full OSC control. Currently supports LADSPA, DSSI, LV2, VST2/3 and AU
+ plugin formats, plus SF2 and SFZ sounds banks.
+ .
+ This package contains the main application.
+
+Package: carla-data
+Architecture: all
+Depends: ${misc:Depends}
+Breaks: carla-git-data
+Replaces: carla-git-data
+Description: audio plugin host (common data)
+ Carla is an audio plugin host, with support for many audio drivers and plugin
+ formats. It has some nice features like automation of parameters via MIDI CC
+ and full OSC control. Currently supports LADSPA, DSSI, LV2, VST2/3 and AU
+ plugin formats, plus SF2 and SFZ sounds banks.
+ .
+ This package contains common non-binary data.
+
+Package: carla-dev
+Architecture: all
+Depends: ${misc:Depends}
+Description: audio plugin host - development libraries
+ Carla is an audio plugin host, with support for many audio drivers and plugin
+ formats. It has some nice features like automation of parameters via MIDI CC
+ and full OSC control. Currently supports LADSPA, DSSI, LV2, VST2/3 and AU
+ plugin formats, plus SF2 and SFZ sounds banks.
+ .
+ This package contains the development libraries.
+
+Package: carla-lv2
+Architecture: all
+Depends: ${misc:Depends}, carla | carla-git
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: carla-vst
+Architecture: all
+Depends: ${misc:Depends}, carla | carla-git
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.

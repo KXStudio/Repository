@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio-audio-plugin.mk
+
+EXTRA_MAKE_ARGS = NOOPT=true PREFIX=/usr EXTERNAL_PLUGINS=true
+
+override_dh_auto_configure:
+	$(MAKE) features
+
+override_dh_auto_build:
+	dh_auto_build -- $(EXTRA_MAKE_ARGS)
+
+override_dh_auto_install:
+	dh_auto_install -- $(EXTRA_MAKE_ARGS)
+	
+	# FIXME these properties need to be defined first:
+# 	http://moddevices.com/ns/mod#fileTypes
+# 	http://kxstudio.sf.net/ns/lv2ext/external-ui#Widget
+# 	http://kxstudio.sf.net/ns/lv2ext/programs#Interface
+# 	http://harrisonconsoles.com/lv2/inlinedisplay#interface
+# 	http://harrisonconsoles.com/lv2/inlinedisplay#queue_draw
+# 	http://kxstudio.sf.net/carla/ui-ext ??
+# 	$(call kxstudio_audio_plugin_test)
+
+override_dh_auto_clean:
+	dh_auto_clean
+	$(MAKE) distclean
+
+override_dh_shlibdeps:
+	dh_shlibdeps
+	# remove pulse versioned depends, causes issues trying to install on debian
+	sed -i "s/libpulse0 (>= 0.99.1)/libpulse0/" debian/carla.substvars
+
+%:
+	dh $@

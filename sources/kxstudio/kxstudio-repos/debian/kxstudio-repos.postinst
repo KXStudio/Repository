@@ -25,7 +25,7 @@ deb http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic main
 " > /etc/apt/sources.list.d/kxstudio-debian-ppas.list
 fi
 
-if [ ! -f /etc/apt/sources.list.d/kxstudio-debian-ppas.list ]; then
+if [ ! -f /etc/apt/sources.list.d/kxstudio-debian-ppas-2.list ]; then
   echo "deb http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu focal main
 #deb-src http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu focal main
 
@@ -53,6 +53,7 @@ rm -f /etc/apt/sources.list.d/kxstudio-debian.list
 rm -f /etc/apt/sources.list.d/kxstudio-debian.new.list
 rm -f /etc/apt/sources.list.d/kxstudio-debian.gcc5.list
 rm -f /etc/apt/sources.list.d/kxstudio-debian.gcc5plus.list
+rm -f /etc/apt/sources.list.d/kxstudio-external.list
 rm -f /etc/apt/sources.list.d/kxstudio-free.list
 rm -f /etc/apt/sources.list.d/kxstudio-free.gcc5.list
 
@@ -64,10 +65,11 @@ rm -f /etc/apt/sources.list.d/kxstudio-non-free.list
 ###########################################################################################
 # Fix for Ubuntu version upgrades messing up stuff
 
-VERSIONS=("cosmic" "disco" "eoan")
+VERSIONS=("cosmic" "disco" "eoan" "focal" "impish" "jammy")
 
 for VERSION in ${VERSIONS[@]}; do
-  sed "s/ $VERSION / bionic /"  -i /etc/apt/sources.list.d/kxstudio-debian-ppas.list
+  sed "s/ $VERSION / bionic /" -i /etc/apt/sources.list.d/kxstudio-debian-ppas.list
+  sed "s/ $VERSION / focal /" -i /etc/apt/sources.list.d/kxstudio-debian-ppas-2.list
 
   rm -f /etc/apt/sources.list.d/kxstudio-debian-libs-"$VERSION".list
   rm -f /etc/apt/sources.list.d/kxstudio-debian-music-"$VERSION".list

@@ -1,3 +1,9 @@
+kxstudio-repos (11.1.0) focal; urgency=medium
+
+  * Remove old non-PPA repo
+
+ -- falkTX <falktx@falktx.com>  Sun, 22 May 2022 19:15:00 +0100
+
 kxstudio-repos (11.0.1) focal; urgency=medium
 
   * Update for 20.04 as builder base

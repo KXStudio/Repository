@@ -1,5 +1,0 @@
-debian/ardour.desktop usr/share/applications/
-debian/ardour.xml     usr/share/mime/packages/
-debian/extra/ardour   usr/bin/
-
-tmp/Ardour_*-*/*      opt/ardour/

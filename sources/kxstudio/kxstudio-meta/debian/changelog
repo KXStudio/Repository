@@ -1,3 +1,9 @@
+kxstudio-meta (7.0.1) focal; urgency=medium
+
+  * Allow studio-controls as replacement for cadence
+
+ -- falkTX <falktx@falktx.com>  Sun, 22 May 2022 20:39:49 +0100
+
 kxstudio-meta (7.0.0) focal; urgency=medium
 
   * First focal version, remove recommended packages

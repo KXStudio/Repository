@@ -1,0 +1,672 @@
+--- mpg123-static-1.29.3.orig/src/libmpg123/check_neon.S
++++ mpg123-static-1.29.3/src/libmpg123/check_neon.S
+@@ -18,7 +18,6 @@
+ #endif
+ 
+ 	.text
+-	GLOBAL_SYMBOL ASM_NAME(check_neon)
+ #ifdef __ELF__
+ 	.type ASM_NAME(check_neon), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct36_3dnow.S
++++ mpg123-static-1.29.3/src/libmpg123/dct36_3dnow.S
+@@ -30,7 +30,6 @@
+ 
+ #include "mangle.h"
+ 
+-	.globl ASM_NAME(dct36_3dnow)
+ /*	.type	 ASM_NAME(dct36_3dnow),@function */
+ ASM_NAME(dct36_3dnow):
+ 	pushl %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct36_3dnowext.S
++++ mpg123-static-1.29.3/src/libmpg123/dct36_3dnowext.S
+@@ -43,7 +43,6 @@
+ 
+ 	.text
+ 	ALIGN32
+-.globl ASM_NAME(dct36_3dnowext)
+ 	/* .type	ASM_NAME(dct36_3dnowext), @function */
+ ASM_NAME(dct36_3dnowext):
+ 	pushl	%ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct36_avx.S
++++ mpg123-static-1.29.3/src/libmpg123/dct36_avx.S
+@@ -69,7 +69,6 @@ dct36_avx_sign:
+ 	.long 0x80000000,0x80000000,0x80000000,0x80000000
+ 	.text
+ 	ALIGN16
+-	.globl ASM_NAME(dct36_avx)
+ ASM_NAME(dct36_avx):
+ #ifdef IS_MSABI
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct36_neon.S
++++ mpg123-static-1.29.3/src/libmpg123/dct36_neon.S
+@@ -47,7 +47,6 @@ dct36_neon_COS9:
+ 	.word 0x3f3504f3
+ 	
+ 	ALIGN4
+-	GLOBAL_SYMBOL ASM_NAME(dct36_neon)
+ #ifdef __ELF__
+ 	.type ASM_NAME(dct36_neon), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct36_neon64.S
++++ mpg123-static-1.29.3/src/libmpg123/dct36_neon64.S
+@@ -44,7 +44,6 @@ dct36_aarch64_COS9:
+ 	
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(dct36_neon64)
+ #ifdef __ELF__
+ 	.type ASM_NAME(dct36_neon64), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct36_sse.S
++++ mpg123-static-1.29.3/src/libmpg123/dct36_sse.S
+@@ -61,7 +61,6 @@ dct36_sse_sign:
+ 	.long 0x80000000,0x80000000,0x80000000,0x80000000
+ 	.text
+ 	ALIGN16
+-	.globl ASM_NAME(dct36_sse)
+ ASM_NAME(dct36_sse):
+ 	push		%ebp
+ 	mov			%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct36_x86_64.S
++++ mpg123-static-1.29.3/src/libmpg123/dct36_x86_64.S
+@@ -72,7 +72,6 @@ dct36_x86_64_sign:
+ 	.long 0x80000000,0x80000000,0x80000000,0x80000000
+ 	.text
+ 	ALIGN16
+-	.globl ASM_NAME(dct36_x86_64)
+ ASM_NAME(dct36_x86_64):
+ #ifdef IS_MSABI
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_3dnow.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_3dnow.S
+@@ -14,7 +14,6 @@
+ 
+ #include "mangle.h"
+ 
+-	.globl ASM_NAME(dct64_3dnow)
+ /*	.type	 ASM_NAME(dct64_3dnow),@function */
+ ASM_NAME(dct64_3dnow):
+ 	subl $256,%esp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_3dnowext.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_3dnowext.S
+@@ -37,7 +37,6 @@ x_plus_minus_3dnow:
+ 
+ 	.text
+ 	ALIGN32
+-.globl ASM_NAME(dct64_3dnowext)
+ 	/* .type	ASM_NAME(dct64_3dnowext), @function */
+ ASM_NAME(dct64_3dnowext):
+ 	pushl	%ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_avx.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_avx.S
+@@ -58,7 +58,6 @@ costab_avx:
+ 	.long 0
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(dct64_avx)
+ ASM_NAME(dct64_avx):
+ #ifdef IS_MSABI
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_avx_float.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_avx_float.S
+@@ -58,7 +58,6 @@ costab_avx:
+ 	.long 0
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(dct64_real_avx)
+ ASM_NAME(dct64_real_avx):
+ #ifdef IS_MSABI
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_mmx.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_mmx.S
+@@ -11,11 +11,9 @@
+ .text
+ 
+ 	ALIGN32
+-.globl ASM_NAME(dct64_mmx)
+ ASM_NAME(dct64_mmx):
+ 
+ 	xorl %ecx,%ecx
+-.globl ASM_NAME(dct64_MMX)
+ ASM_NAME(dct64_MMX):
+ 	pushl %ebx
+ 	pushl %esi
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_neon.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_neon.S
+@@ -51,7 +51,6 @@ costab_arm:
+ 	.word 1060439283
+ 	.word 1060439283
+ 	ALIGN4
+-	GLOBAL_SYMBOL ASM_NAME(dct64_neon)
+ #ifdef __ELF__
+ 	.type ASM_NAME(dct64_neon), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_neon64.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_neon64.S
+@@ -49,7 +49,6 @@ costab_neon_aarch64:
+ 	.word 1060439283
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(dct64_neon64)
+ #ifdef __ELF__
+ 	.type ASM_NAME(dct64_neon64), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_neon64_float.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_neon64_float.S
+@@ -49,7 +49,6 @@ costab_neon_aarch64:
+ 	.word 1060439283
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(dct64_real_neon64)
+ #ifdef __ELF__
+ 	.type ASM_NAME(dct64_real_neon64), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_neon_float.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_neon_float.S
+@@ -51,7 +51,6 @@ costab_arm:
+ 	.word 1060439283
+ 	.word 1060439283
+ 	ALIGN4
+-	GLOBAL_SYMBOL ASM_NAME(dct64_real_neon)
+ #ifdef __ELF__
+ 	.type ASM_NAME(dct64_real_neon), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_sse.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_sse.S
+@@ -36,7 +36,6 @@ mask:
+ 	
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(dct64_sse)
+ ASM_NAME(dct64_sse):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_sse_float.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_sse_float.S
+@@ -36,7 +36,6 @@ mask:
+ 	
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(dct64_real_sse)
+ ASM_NAME(dct64_real_sse):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_x86_64.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_x86_64.S
+@@ -69,7 +69,6 @@ ASM_NAME(costab_x86_64):
+ 	.long 0
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(dct64_x86_64)
+ ASM_NAME(dct64_x86_64):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movq		%rcx, ARG0
+--- mpg123-static-1.29.3.orig/src/libmpg123/dct64_x86_64_float.S
++++ mpg123-static-1.29.3/src/libmpg123/dct64_x86_64_float.S
+@@ -69,7 +69,6 @@ ASM_NAME(costab_x86_64):
+ 	.long 0
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(dct64_real_x86_64)
+ ASM_NAME(dct64_real_x86_64):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movq		%rcx, ARG0
+--- mpg123-static-1.29.3.orig/src/libmpg123/equalizer_3dnow.S
++++ mpg123-static-1.29.3/src/libmpg123/equalizer_3dnow.S
+@@ -10,7 +10,6 @@
+ 
+ .text
+ 	ALIGN4
+-.globl ASM_NAME(do_equalizer_3dnow)
+ /*	.type	 ASM_NAME(do_equalizer_3dnow),@function */
+ /* void do_equalizer(real *bandPtr,int channel, real equalizer[2][32]); */
+ ASM_NAME(do_equalizer_3dnow):
+--- mpg123-static-1.29.3.orig/src/libmpg123/getcpuflags.S
++++ mpg123-static-1.29.3/src/libmpg123/getcpuflags.S
+@@ -20,7 +20,6 @@
+ .text
+ 	ALIGN4
+ 
+-.globl ASM_NAME(getcpuflags)
+ /*	.type ASM_NAME(getcpuflags),@function */
+ ASM_NAME(getcpuflags):
+ 	pushl %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/getcpuflags_x86_64.S
++++ mpg123-static-1.29.3/src/libmpg123/getcpuflags_x86_64.S
+@@ -10,7 +10,6 @@
+ 
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(getcpuflags)
+ ASM_NAME(getcpuflags):
+ 	push	%rbp
+ 	mov		%rsp, %rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_3dnow.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_3dnow.S
+@@ -52,7 +52,6 @@ ftoi_magic:
+ #endif
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_3dnow_asm)
+ /* int synth_1to1_3dnow_asm(real *bandPtr, int channel, unsigned char *out, unsigned char *buffs, int *bo, real *decwin); */
+ ASM_NAME(synth_1to1_3dnow_asm):
+ 	subl $24,%esp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_arm.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_arm.S
+@@ -23,7 +23,6 @@
+ 
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_arm_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_arm_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_arm_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_arm_accurate.S
+@@ -23,7 +23,6 @@
+ 
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_arm_accurate_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_arm_accurate_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_i586.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_i586.S
+@@ -45,7 +45,6 @@
+ 	ALIGN8
+ .text
+ /* int synth_1to1_i586_asm(real *bandPtr, int channel, unsigned char *out, unsigned char *buffs, int *bo, real *decwin); */
+-.globl ASM_NAME(synth_1to1_i586_asm)
+ ASM_NAME(synth_1to1_i586_asm):
+ 	subl $12,%esp
+ 	pushl %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_i586_dither.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_i586_dither.S
+@@ -26,7 +26,6 @@
+ 	ALIGN8
+ .text
+ /* int synth_1to1_i586_asm_dither(real *bandPtr, int channel, unsigned char *out, unsigned char *buffs, int bo_and_ditherindex[2], real *decwin, real* dithernoise); */
+-.globl ASM_NAME(synth_1to1_i586_asm_dither)
+ ASM_NAME(synth_1to1_i586_asm_dither):
+ 	subl $16,%esp
+ 	pushl %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_mmx.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_mmx.S
+@@ -24,7 +24,6 @@
+ 
+ .text
+ 
+-.globl ASM_NAME(synth_1to1_MMX)
+ /* int synth_1to1_MMX(real *bandPtr, int channel, short *out, short *buffs, int *bo, float *decwins); */
+ ASM_NAME(synth_1to1_MMX):
+         pushl %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon.S
+@@ -25,7 +25,6 @@
+ #endif
+ 
+ 	.text
+-	GLOBAL_SYMBOL ASM_NAME(synth_1to1_neon_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_neon_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon64.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon64.S
+@@ -19,7 +19,6 @@ maxmin_s16:
+ 	.word   -32768
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_neon64_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_neon64_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon64_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon64_accurate.S
+@@ -19,7 +19,6 @@ maxmin_s16:
+ 	.word   -956301312
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_neon64_accurate_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_neon64_accurate_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon64_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon64_float.S
+@@ -18,7 +18,6 @@ scale:
+ 	.word   939524096
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_real_neon64_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_real_neon64_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon64_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon64_s32.S
+@@ -20,7 +20,6 @@ maxmin_s32:
+ 	.word   1199570944
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_s32_neon64_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s32_neon64_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon_accurate.S
+@@ -23,7 +23,6 @@
+ #endif
+ 
+ 	.text
+-	.globl ASM_NAME(synth_1to1_neon_accurate_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_neon_accurate_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon_float.S
+@@ -25,7 +25,6 @@
+ #endif
+ 
+ 	.text
+-	GLOBAL_SYMBOL ASM_NAME(synth_1to1_real_neon_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_real_neon_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_neon_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_neon_s32.S
+@@ -25,7 +25,6 @@
+ #endif
+ 
+ 	.text
+-	GLOBAL_SYMBOL ASM_NAME(synth_1to1_s32_neon_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s32_neon_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_sse3d.h
++++ mpg123-static-1.29.3/src/libmpg123/synth_sse3d.h
+@@ -44,7 +44,6 @@ null_one:
+ 	.text
+ 	ALIGN16
+ 	/* void SYNTH_NAME(real *bandPtr, int channel, short *samples, short *buffs, int *bo, float *decwins) */
+-.globl SYNTH_NAME
+ SYNTH_NAME:
+ 	pushl	%ebp
+ /* stack:0=ebp 4=back 8=bandptr 12=channel 16=samples 20=buffs 24=bo 28=decwins */
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_sse_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_sse_accurate.S
+@@ -39,7 +39,6 @@ maxmin_s16:
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_sse_accurate_asm)
+ ASM_NAME(synth_1to1_sse_accurate_asm):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_sse_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_sse_float.S
+@@ -33,7 +33,6 @@ scale_sse:
+ 	.long   939524096
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_real_sse_asm)
+ ASM_NAME(synth_1to1_real_sse_asm):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_sse_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_sse_s32.S
+@@ -45,7 +45,6 @@ maxmin_s32:
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s32_sse_asm)
+ ASM_NAME(synth_1to1_s32_sse_asm):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_avx.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_avx.S
+@@ -34,7 +34,6 @@
+ */
+ 
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s_avx_asm)
+ ASM_NAME(synth_1to1_s_avx_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_avx_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_avx_accurate.S
+@@ -58,7 +58,6 @@ maxmin_avx:
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-	.globl ASM_NAME(synth_1to1_s_avx_accurate_asm)
+ ASM_NAME(synth_1to1_s_avx_accurate_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_avx_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_avx_float.S
+@@ -43,7 +43,6 @@ scale_avx:
+ 	.long   939524096
+ 	.text
+ 	ALIGN16
+-	.globl ASM_NAME(synth_1to1_real_s_avx_asm)
+ ASM_NAME(synth_1to1_real_s_avx_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_avx_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_avx_s32.S
+@@ -60,7 +60,6 @@ scale_avx:
+ 	.long   1199570944
+ 	.text
+ 	ALIGN16
+-	.globl ASM_NAME(synth_1to1_s32_s_avx_asm)
+ ASM_NAME(synth_1to1_s32_s_avx_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	push		%rbp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon.S
+@@ -26,7 +26,6 @@
+ #endif
+ 
+ 	.text
+-	GLOBAL_SYMBOL ASM_NAME(synth_1to1_s_neon_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s_neon_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon64.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon64.S
+@@ -19,7 +19,6 @@ maxmin_s16:
+ 	.word   -32768
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_s_neon64_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s_neon64_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon64_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon64_accurate.S
+@@ -19,7 +19,6 @@ maxmin_s16:
+ 	.word   -956301312
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_s_neon64_accurate_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s_neon64_accurate_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon64_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon64_float.S
+@@ -18,7 +18,6 @@ scale:
+ 	.word   939524096
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_real_s_neon64_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_real_s_neon64_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon64_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon64_s32.S
+@@ -20,7 +20,6 @@ maxmin_s32:
+ 	.word   1199570944
+ 	.text
+ 	ALIGN4
+-	.globl ASM_NAME(synth_1to1_s32_s_neon64_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s32_s_neon64_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon_accurate.S
+@@ -24,7 +24,6 @@
+ #endif
+ 
+ 	.text
+-	.globl ASM_NAME(synth_1to1_s_neon_accurate_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s_neon_accurate_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon_float.S
+@@ -26,7 +26,6 @@
+ #endif
+ 
+ 	.text
+-	GLOBAL_SYMBOL ASM_NAME(synth_1to1_real_s_neon_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_real_s_neon_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_neon_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_neon_s32.S
+@@ -26,7 +26,6 @@
+ #endif
+ 
+ 	.text
+-	GLOBAL_SYMBOL ASM_NAME(synth_1to1_s32_s_neon_asm)
+ #ifdef __ELF__
+ 	.type ASM_NAME(synth_1to1_s32_s_neon_asm), %function
+ #endif
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_sse_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_sse_accurate.S
+@@ -42,7 +42,6 @@ maxmin_s16:
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s_sse_accurate_asm)
+ ASM_NAME(synth_1to1_s_sse_accurate_asm):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_sse_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_sse_float.S
+@@ -37,7 +37,6 @@ scale_sse:
+ 	.long   939524096
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_real_s_sse_asm)
+ ASM_NAME(synth_1to1_real_s_sse_asm):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_sse_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_sse_s32.S
+@@ -48,7 +48,6 @@ maxmin_s32:
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s32_s_sse_asm)
+ ASM_NAME(synth_1to1_s32_s_sse_asm):
+ 	pushl		%ebp
+ 	movl		%esp, %ebp
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_x86_64.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_x86_64.S
+@@ -55,7 +55,6 @@ ASM_NAME(maxmin_x86_64):
+ 	.long   -32769
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s_x86_64_asm)
+ ASM_NAME(synth_1to1_s_x86_64_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movl		40(%rsp), %eax /* 5th argument; placed after 32-byte shadow space */
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_x86_64_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_x86_64_accurate.S
+@@ -54,7 +54,6 @@ ASM_NAME(maxmin_s16):
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s_x86_64_accurate_asm)
+ ASM_NAME(synth_1to1_s_x86_64_accurate_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movl		40(%rsp), %eax /* 5th argument; placed after 32-byte shadow space */
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_x86_64_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_x86_64_float.S
+@@ -48,7 +48,6 @@ ASM_NAME(scale_x86_64):
+ 	.long   939524096
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_real_s_x86_64_asm)
+ ASM_NAME(synth_1to1_real_s_x86_64_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movl		40(%rsp), %eax /* 5th argument; placed after 32-byte shadow space */
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_stereo_x86_64_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_stereo_x86_64_s32.S
+@@ -61,7 +61,6 @@ ASM_NAME(maxmin_s32):
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s32_s_x86_64_asm)
+ ASM_NAME(synth_1to1_s32_s_x86_64_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movl		40(%rsp), %eax /* 5th argument; placed after 32-byte shadow space */
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_x86_64.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_x86_64.S
+@@ -55,7 +55,6 @@ ASM_NAME(maxmin_x86_64):
+ 	.long   -32769
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_x86_64_asm)
+ ASM_NAME(synth_1to1_x86_64_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movq		%rcx, ARG0
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_x86_64_accurate.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_x86_64_accurate.S
+@@ -54,7 +54,6 @@ ASM_NAME(maxmin_s16):
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_x86_64_accurate_asm)
+ ASM_NAME(synth_1to1_x86_64_accurate_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movq		%rcx, ARG0
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_x86_64_float.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_x86_64_float.S
+@@ -48,7 +48,6 @@ ASM_NAME(scale_x86_64):
+ 	.long   939524096
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_real_x86_64_asm)
+ ASM_NAME(synth_1to1_real_x86_64_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movq		%rcx, ARG0
+--- mpg123-static-1.29.3.orig/src/libmpg123/synth_x86_64_s32.S
++++ mpg123-static-1.29.3/src/libmpg123/synth_x86_64_s32.S
+@@ -61,7 +61,6 @@ ASM_NAME(maxmin_s32):
+ 	.long   -956301312
+ 	.text
+ 	ALIGN16
+-.globl ASM_NAME(synth_1to1_s32_x86_64_asm)
+ ASM_NAME(synth_1to1_s32_x86_64_asm):
+ #ifdef IS_MSABI /* should save xmm6-15 */
+ 	movq		%rcx, ARG0
+--- mpg123-static-1.29.3.orig/src/libmpg123/tabinit_mmx.S
++++ mpg123-static-1.29.3/src/libmpg123/tabinit_mmx.S
+@@ -12,7 +12,6 @@
+ 
+ .data
+ 	ALIGN32
+-.globl ASM_NAME(costab_mmxsse)
+ ASM_NAME(costab_mmxsse):
+ 	.long 1056974725
+ 	.long 1057056395
+@@ -86,7 +85,6 @@ intwindiv:
+ .text
+ 	ALIGN32
+ /* void make_decode_tables_mmx_asm(long scaleval, float* decwin_mmx, float *decwins); */
+-.globl ASM_NAME(make_decode_tables_mmx_asm)
+ ASM_NAME(make_decode_tables_mmx_asm):
+ 	pushl %ebp
+ 	mov %esp,%ebp

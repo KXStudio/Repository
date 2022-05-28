@@ -30,6 +30,20 @@ include-binaries
 !/libs/kxstudio-build-scripts/*.supp
 !/libs/kxstudio-build-scripts/debian/copyright
 
+/apps/*/*
+!/apps/*/debian
+/apps/*/debian/*
+!/apps/*/debian/patches
+/apps/*/debian/patches/*
+!/apps/*/debian/patches/*.patch
+!/apps/*/debian/patches/series
+!/apps/*/debian/source/format
+!/apps/*/debian/changelog
+!/apps/*/debian/control
+!/apps/*/debian/install
+!/apps/*/debian/*.install
+!/apps/*/debian/rules
+
 /plugins/*/*
 !/plugins/*/debian
 /plugins/*/debian/*

@@ -26,7 +26,7 @@ fi
 CARLA_BRIDGE_NATIVE_BIN=/opt/kxstudio/lib/carla/carla-bridge-native
 CARLA_DISCOVERY_NATIVE_BIN=/opt/kxstudio/lib/carla/carla-discovery-native
 
-VALRIND_BIN="valgrind --error-exitcode=255 --leak-check=full --track-origins=yes --suppressions=$(dirname ${0})/kxstudio-audio-plugin.supp"
+VALRIND_BIN="valgrind --error-exitcode=255 --leak-check=full --track-origins=yes --suppressions=$(dirname ${0})/kxstudio-audio-plugin.supp ${VALGRIND_EXTRA_ARGS}"
 VALRIND_DISCOVERY_BIN="${VALRIND_BIN} ${CARLA_DISCOVERY_NATIVE_BIN}"
 
 # skip main valgrind test on armhf, incomplete syscall support

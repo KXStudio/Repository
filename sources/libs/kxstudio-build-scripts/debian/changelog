@@ -1,3 +1,9 @@
+kxstudio-build-scripts (10) focal; urgency=medium
+
+  * Allow to pass custom valgrind args
+
+ -- falkTX <falktx@falktx.com>  Sun, 29 May 2022 00:05:47 +0100
+
 kxstudio-build-scripts (9) focal; urgency=medium
 
   * Allow to ignore lv2lint and lto

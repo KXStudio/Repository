@@ -1,0 +1,86 @@
+Source: lsp-plugins
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 9),
+  libcairo-dev,
+  libgl1-mesa-dev,
+  libglu1-mesa-dev,
+  libjack-jackd2-dev | libjack-dev,
+  ladspa-sdk,
+  lv2-dev,
+  php-cli,
+  libexpat-static,
+  libsndfile-static
+Standards-Version: 4.5.0
+Homepage: http://lsp-plug.in/
+XSC-KXStudio-VCS: https://github.com/sadko4u/lsp-plugins
+Rules-Requires-Root: no
+
+Package: lsp-plugins
+Provides: standalone-plugin, lv2-plugin, vst-plugin, ladspa-plugin
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Breaks:
+ lsp-plugins-jack (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-ladspa (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-lv2 (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-vst (<< 5:1.1.10-1kxstudio1)
+Conflicts:
+ lsp-plugins-jack (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-ladspa (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-lv2 (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-vst (<< 5:1.1.10-1kxstudio1)
+Description: LSP (Linux Studio Plugins) audio-plugins package
+ This package provide 91 plugins.
+ .
+ Audio effects: limiters, dynamic processors, expanders, gates,
+ graphic equalisers, impulse responses, impulse reverbs, compressors,
+ multiband compressors, parametric equalisers, phase detector,
+ sidechain multiband compressors, sidechain limiters,
+ sidechain dynamic processors, sidechain expanders, sidechain gates,
+ sidechain compressors, slapback delays, delay compensators, triggers.
+ .
+ Synths: samplers, and multisamplers.
+ .
+ Tools: latency meters, oscillators, profiler, spectrum analyzers,
+ and MIDI triggers
+ .
+ Available as LV2, LADSPA and jack-standalone.
+ .
+ Documentation page : http://librazik.tuxfamily.org/doc2/paquets
+ .
+ KXStudio package imported from LibraZiK
+
+Package: lsp-plugins-data
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: lsp-plugins-jack
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: lsp-plugins-ladspa
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: lsp-plugins-lv2
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: lsp-plugins-vst
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.

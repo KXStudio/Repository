@@ -1,3 +1,9 @@
+kxstudio-build-scripts (9) focal; urgency=medium
+
+  * Allow to ignore lv2lint and lto
+
+ -- falkTX <falktx@falktx.com>  Sat, 28 May 2022 20:21:32 +0100
+
 kxstudio-build-scripts (8) focal; urgency=medium
 
   * Ignore lv2_generate_ttl symbol

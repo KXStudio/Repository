@@ -47,8 +47,9 @@ cp -r /usr/lib/lv2/{atom,buf-size,core,data-access,instance-access,midi,paramete
 if [ -d debian/${PKG_NAME}/usr/lib/lv2 ]; then
     pushd debian/${PKG_NAME}/usr/lib/lv2
     lv2_validate */*.ttl
-    lv2lint -s lv2_generate_ttl $(lv2ls)
-    # -l ld-linux-x86-64.so.2 -M nopack $(lv2ls)
+    if [ -z "${LV2LINT_SKIP}" ]; then
+        lv2lint ${LV2LINT_EXTRA_FLAGS} -s lv2_generate_ttl $(lv2ls)
+    fi
     for p in $(ls); do
         ${VALRIND_DISCOVERY_BIN} lv2 ./${p}
     done

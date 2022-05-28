@@ -7,7 +7,6 @@ FLAGS += -fPIC -DPIC
 FLAGS += -fdata-sections -ffunction-sections
 FLAGS += -fno-common
 FLAGS += -fno-gnu-unique
-FLAGS += -fno-strict-aliasing -flto -ffat-lto-objects
 FLAGS += -fvisibility=hidden
 FLAGS += -DNDEBUG
 
@@ -21,6 +20,9 @@ endif
 
 ifeq ($(KXSTUDIO_NO_FASTMATH),)
 FLAGS += -ffast-math
+endif
+ifeq ($(KXSTUDIO_NO_LTO),)
+FLAGS += -fno-strict-aliasing -flto -ffat-lto-objects
 endif
 
 export CFLAGS = $(FLAGS)

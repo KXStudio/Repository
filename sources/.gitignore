@@ -19,6 +19,7 @@ include-binaries
 !/libs/*/debian/patches/series
 !/libs/*/debian/source/format
 !/libs/*/debian/changelog
+!/libs/*/debian/clean
 !/libs/*/debian/control
 !/libs/*/debian/install
 !/libs/*/debian/*.install
@@ -39,6 +40,7 @@ include-binaries
 !/apps/*/debian/patches/series
 !/apps/*/debian/source/format
 !/apps/*/debian/changelog
+!/apps/*/debian/clean
 !/apps/*/debian/control
 !/apps/*/debian/install
 !/apps/*/debian/*.install
@@ -53,6 +55,7 @@ include-binaries
 !/plugins/*/debian/patches/series
 !/plugins/*/debian/source/format
 !/plugins/*/debian/changelog
+!/plugins/*/debian/clean
 !/plugins/*/debian/control
 !/plugins/*/debian/install
 !/plugins/*/debian/*.install

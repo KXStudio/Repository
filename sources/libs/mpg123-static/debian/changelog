@@ -1,4 +1,4 @@
-mpg123-static (6:1.29.3-2kxstudio4) focal; urgency=medium
+mpg123-static (6:1.29.3-2kxstudio5) focal; urgency=medium
 
   * Hide assembly symbols too
 

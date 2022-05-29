@@ -3,14 +3,6 @@
 KXSTUDIO_NO_FASTMATH = y
 include /usr/share/dpkg/kxstudio.mk
 
-ifeq ($(DEB_HOST_ARCH),armhf)
-EXTRA_CONFIG = --with-cpu=arm_nofpu
-else ifeq ($(DEB_HOST_ARCH),arm64)
-EXTRA_CONFIG = --with-cpu=generic_nofpu
-else
-EXTRA_CONFIG = --with-cpu=x86-64
-endif
-
 override_dh_auto_configure:
 	./configure --disable-maintainer-mode \
 		    --prefix=/opt/kxstudio \
@@ -18,6 +10,7 @@ override_dh_auto_configure:
 		    --disable-shared \
 		    --enable-lfs-alias \
 		    --with-audio=dummy \
+		    -with-cpu=generic_nofpu \
 		    $(EXTRA_CONFIG)
 
 override_dh_auto_install:

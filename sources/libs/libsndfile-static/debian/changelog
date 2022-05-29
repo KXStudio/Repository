@@ -1,3 +1,9 @@
+libsndfile-static (6:1.1.0-2kxstudio6) focal; urgency=medium
+
+  * Fix mis-exported mpg123 symbols
+
+ -- falkTX <falktx@falktx.com>  Sat, 28 May 2022 22:45:48 +0100
+
 libsndfile-static (6:1.1.0-2kxstudio4) focal; urgency=medium
 
   * Fix missing mp3 support

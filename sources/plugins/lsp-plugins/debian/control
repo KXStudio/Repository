@@ -5,6 +5,7 @@ Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-audio-plugin-tester (>= 9),
   libcairo-dev,
+  libfreetype-dev,
   libgl1-mesa-dev,
   libglu1-mesa-dev,
   libjack-jackd2-dev | libjack-dev,

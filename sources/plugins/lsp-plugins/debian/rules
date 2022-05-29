@@ -16,13 +16,8 @@ endif
 export EXE_FLAGS = $(LDFLAGS)
 export SO_FLAGS = $(LDFLAGS)
 
-# handy if we want to hide symbols, still does not work though.. :(
-# export CFLAGS += -DLSP_DSP_LIB_BUILTIN -DLSP_DSP_UNITS_BUILTIN
-# export CXXFLAGS += -DLSP_DSP_LIB_BUILTIN -DLSP_DSP_UNITS_BUILTIN
-
-# FIXME https://github.com/sadko4u/lsp-plugins/issues/253
-export LV2LINT_SKIP = y
-export LV2LINT_EXTRA_FLAGS = -s 'INT123_*'
+# FIXME a lib is causing leaks
+export VALGRIND_EXTRA_ARGS = --leak-check=no
 
 %:
 	dh $@
@@ -51,6 +46,5 @@ override_dh_auto_install:
 
 override_dh_install:
 	dh_install
-
-	# FIXME http://lsp-plug.in/plugins/lv2/art_delay_mono has memory leaks, also symbol exports
-	#$(call kxstudio_audio_plugin_test)
+	# FIXME Fails due to memory issues, https://github.com/lsp-plugins/lsp-plugins-crossover/issues/2
+	# $(call kxstudio_audio_plugin_test)

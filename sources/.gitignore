@@ -38,7 +38,7 @@ include-binaries
 /apps/*/debian/patches/*
 !/apps/*/debian/patches/*.patch
 !/apps/*/debian/patches/series
-!/apps/*/debian/source/format
+!/apps/*/debian/source
 !/apps/*/debian/changelog
 !/apps/*/debian/clean
 !/apps/*/debian/control
@@ -53,7 +53,7 @@ include-binaries
 /plugins/*/debian/patches/*
 !/plugins/*/debian/patches/*.patch
 !/plugins/*/debian/patches/series
-!/plugins/*/debian/source/format
+!/plugins/*/debian/source
 !/plugins/*/debian/changelog
 !/plugins/*/debian/clean
 !/plugins/*/debian/control

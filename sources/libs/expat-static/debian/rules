@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_PREFIX=/opt/kxstudio \
+		-DBUILD_SHARED_LIBS=OFF \
+		../expat
+
+%:
+	dh $@ -Scmake

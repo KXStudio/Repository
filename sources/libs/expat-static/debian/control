@@ -1,0 +1,21 @@
+Source: expat-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  cmake
+#  libbsd-dev
+Standards-Version: 4.5.0
+Homepage: https://libexpat.github.io/
+Rules-Requires-Root: no
+
+Package: libexpat-static
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: XML parsing C library (static)
+ Expat is a C library for parsing XML.
+ It is a stream-oriented parser in which an application registers handlers
+ for things the parser might find in the XML document (like start tags).
+ .
+ This package provides the static library used in KXStudio builds.

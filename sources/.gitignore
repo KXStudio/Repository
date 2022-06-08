@@ -17,7 +17,7 @@ include-binaries
 /libs/*/debian/patches/*
 !/libs/*/debian/patches/*.patch
 !/libs/*/debian/patches/series
-!/libs/*/debian/source/format
+!/libs/*/debian/source
 !/libs/*/debian/changelog
 !/libs/*/debian/clean
 !/libs/*/debian/control

@@ -1,0 +1,18 @@
+Source: mod-lv2-extensions
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.0
+Homepage: https://github.com/moddevices/mod-lv2-extensions/
+Rules-Requires-Root: no
+
+Package: mod-lv2-extensions
+Architecture: all
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Recommends: lv2-dev
+Conflicts: mod-sdk-lv2
+Replaces: mod-sdk-lv2
+Description: MOD LV2 extensions
+ Custom LV2 Extensions used by MOD Devices.

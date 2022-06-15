@@ -1,0 +1,4 @@
+01_dont-run-ldconfig.patch
+02_hidden-suil-api.patch
+03_fix-libs.patch
+04_hardcoded-suil-module-dir.patch

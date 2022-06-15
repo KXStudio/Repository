@@ -1,0 +1,9 @@
+--- suil-static-0.10.12.orig/suil.pc.in
++++ suil-static-0.10.12/suil.pc.in
+@@ -7,5 +7,5 @@ Name: Suil
+ Version: @SUIL_VERSION@
+ Description: LV2 plugin UI hosting library
+ Requires: @SUIL_PKG_DEPS@
+-Libs: -L${libdir} -l@LIB_SUIL@
++Libs: -L${libdir} -l@LIB_SUIL@ -ldl
+ Cflags: -I${includedir}/suil-@SUIL_MAJOR_VERSION@

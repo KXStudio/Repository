@@ -1,0 +1,52 @@
+Source: suil-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  python3,
+  pkg-config,
+  libgtk2.0-dev,
+  libgtk-3-dev,
+  libqt5x11extras5-dev,
+  lv2-dev (>= 6:1.18.4-1kxstudio1)
+Standards-Version: 4.5.0
+Homepage: http://drobilla.net/software/suil/
+Rules-Requires-Root: no
+
+Package: libsuil-static
+Architecture: any
+Depends: ${misc:Depends}, lv2-dev
+Conflicts: suil-static
+Breaks: suil-static
+Description: library for loading and wrapping LV2 plugin UIs (static)
+ Suil makes it possible to load a UI of any toolkit in a host using
+ any other toolkit (assuming the toolkits are both supported by
+ Suil). Hosts do not need to build against or link to foreign toolkit
+ libraries to use UIs written with that toolkit (Suil performs its
+ magic at runtime using dynamically loaded modules). The API
+ is designed such that hosts do not need to explicitly support
+ particular toolkits whatsoever - if Suil supports a particular
+ toolkit, then all hosts that use Suil will support that toolkit
+ "for free". Suil currently supports GTK-2+ and Qt4
+ .
+ This package provides the development files for suil.
+
+Package: libsuil-kxstudio
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Conflicts: suil-libs
+Breaks: suil-libs
+Section: libs
+Description: library for loading and wrapping LV2 plugin UIs
+ Suil makes it possible to load a UI of any toolkit in a host using
+ any other toolkit (assuming the toolkits are both supported by
+ Suil). Hosts do not need to build against or link to foreign toolkit
+ libraries to use UIs written with that toolkit (Suil performs its
+ magic at runtime using dynamically loaded modules). The API
+ is designed such that hosts do not need to explicitly support
+ particular toolkits whatsoever - if Suil supports a particular
+ toolkit, then all hosts that use Suil will support that toolkit
+ "for free". Suil currently supports GTK-2+ and Qt4
+ .
+ This package provides the shared libraries.

@@ -15,10 +15,9 @@ Homepage: http://lv2plug.in/
 Rules-Requires-Root: no
 
 Package: lv2-dev
-Architecture: any
+Architecture: amd64 arm64 armhf
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}, sordi
-# mod-sdk-lv2, kxstudio-lv2-extensions
+Depends: ${misc:Depends}, sordi
 Description: LV2 audio plugin specification
  LV2 is a simple but extensible successor of LADSPA plugins,
  intended to address the limitations of LADSPA which many
@@ -33,7 +32,7 @@ Description: LV2 audio plugin specification
 
 Package: lv2-examples
 Section: sound
-Architecture: any
+Architecture: amd64 arm64 armhf
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: lv2-plugin
 Description: LV2 audio plugin specification (example plugins)

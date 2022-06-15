@@ -7,7 +7,7 @@ Build-Depends: debhelper-compat (= 13),
   python3,
   pkg-config,
   libsndfile-static (>= 6:1.1.0-2kxstudio3),
-  libsratom-static (>= 6:0.6.8-1kxstudio2)
+  libsratom-static (>= 6:0.6.10-1kxstudio1)
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/lilv/
 Rules-Requires-Root: no

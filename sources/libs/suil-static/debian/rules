@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+SUIL_MODULE_DIR = /usr/lib/$(DEB_TARGET_MULTIARCH)/suil-kxstudio
+
+export CFLAGS += -DKXSTUDIO_SUIL_MODULE_DIR='"$(SUIL_MODULE_DIR)"'
+export CXXFLAGS += -DKXSTUDIO_SUIL_MODULE_DIR='"$(SUIL_MODULE_DIR)"'
+export LDFLAGS += -Wl,-z,nodelete
+
+WAF = python3 ./waf
+
+override_dh_auto_configure:
+	$(WAF) configure \
+		--static \
+		--no-shared \
+		--prefix=/opt/kxstudio \
+		--strict
+
+override_dh_auto_build:
+	$(WAF)
+
+override_dh_auto_clean:
+	$(WAF) clean || true
+
+override_dh_auto_install:
+	$(WAF) install --destdir=$(CURDIR)/debian/tmp
+	mkdir -p $(CURDIR)/debian/tmp/usr/lib/$(DEB_TARGET_MULTIARCH)
+	mv $(CURDIR)/debian/tmp/opt/kxstudio/lib/suil-0 $(CURDIR)/debian/tmp$(SUIL_MODULE_DIR)
+
+%:
+	dh $@

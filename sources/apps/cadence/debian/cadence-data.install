@@ -1,0 +1,18 @@
+# Shared Code/Data
+/usr/share/cadence/src/shared.py
+/usr/share/cadence/src/shared_cadence.py
+/usr/share/cadence/src/shared_canvasjack.py
+/usr/share/cadence/src/shared_settings.py
+/usr/share/cadence/src/resources_rc.py
+/usr/share/cadence/src/ui_settings_app.py
+
+# Shared Modules
+/usr/share/cadence/src/jacklib.py
+/usr/share/cadence/src/jacklib_helpers.py
+/usr/share/cadence/src/patchcanvas.py
+/usr/share/cadence/src/patchcanvas_theme.py
+/usr/share/cadence/src/systray.py
+
+# Widgets
+/usr/share/cadence/src/canvaspreviewframe.py
+/usr/share/cadence/src/clickablelabel.py

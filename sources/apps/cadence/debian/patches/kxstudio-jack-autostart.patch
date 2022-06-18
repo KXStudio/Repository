@@ -1,0 +1,42 @@
+diff --git a/src/cadence.py b/src/cadence.py
+index 277abcd..699b0f0 100755
+--- a/src/cadence.py
++++ b/src/cadence.py
+@@ -2135,7 +2135,7 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
+ 
+         usingAlsaLoop = bool(GlobalSettings.value("ALSA-Audio/BridgeIndexType", iAlsaFileNone, type=int) == iAlsaFileLoop)
+ 
+-        self.cb_jack_autostart.setChecked(GlobalSettings.value("JACK/AutoStart", False, type=bool))
++        self.cb_jack_autostart.setChecked(GlobalSettings.value("JACK/AutoStart", wantJackStart, type=bool))
+         self.cb_a2j_autostart.setChecked(GlobalSettings.value("A2J/AutoStart", True, type=bool))
+         self.cb_pulse_autostart.setChecked(GlobalSettings.value("Pulse2JACK/AutoStart", havePulseAudio and not usingAlsaLoop, type=bool))
+ 
+diff --git a/src/cadence_session_start.py b/src/cadence_session_start.py
+index 9c97f49..1fa6068 100755
+--- a/src/cadence_session_start.py
++++ b/src/cadence_session_start.py
+@@ -43,7 +43,7 @@ def forceReset():
+ # Start JACK, A2J and Pulse, according to user settings
+ def startSession(systemStarted):
+     # Check if JACK is set to auto-start
+-    if systemStarted and not GlobalSettings.value("JACK/AutoStart", False, type=bool):
++    if systemStarted and not GlobalSettings.value("JACK/AutoStart", wantJackStart, type=bool):
+         print("JACK is set to NOT auto-start on login")
+         return True
+ 
+diff --git a/src/shared_cadence.py b/src/shared_cadence.py
+index 92c597e..67f9b9c 100644
+--- a/src/shared_cadence.py
++++ b/src/shared_cadence.py
+@@ -69,6 +69,11 @@ iAlsaFileMax   = 4
+ GlobalSettings = QSettings("Cadence", "GlobalSettings")
+ 
+ # ------------------------------------------------------------------------------------------------------------
++# KXStudio Check
++
++wantJackStart = os.path.exists("/usr/share/kxstudio/config/config/Cadence/GlobalSettings.conf")
++
++# ------------------------------------------------------------------------------------------------------------
+ # Get Process list
+ 
+ def getProcList():

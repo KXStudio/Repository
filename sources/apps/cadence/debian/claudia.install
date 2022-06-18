@@ -1,0 +1,13 @@
+/usr/bin/claudia
+/usr/bin/claudia-launcher
+/usr/share/cadence/src/claudia.py
+/usr/share/cadence/src/claudia_database.py
+/usr/share/cadence/src/claudia_launcher.py
+/usr/share/cadence/src/ui_claudia.py
+/usr/share/cadence/src/ui_claudia_*.py
+
+/usr/share/cadence/icons/
+/usr/share/cadence/templates/
+
+/usr/share/applications/claudia*.desktop
+/usr/share/icons/hicolor/*/apps/claudia*

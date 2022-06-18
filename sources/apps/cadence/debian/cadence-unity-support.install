@@ -1,0 +1,4 @@
+data/unity/cadence-unity-support         /usr/bin/
+data/unity/cadence-unity-support.desktop /usr/share/applications/
+
+data/unity/cadence-unity-support.desktop /etc/xdg/autostart/

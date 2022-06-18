@@ -1,0 +1,83 @@
+Source: cadence
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  pkg-config,
+  qtbase5-dev,
+  qtbase5-dev-tools,
+  python3-pyqt5,
+  pyqt5-dev-tools
+Standards-Version: 4.5.0
+Homepage: https://kx.studio/Applications:Cadence
+Rules-Requires-Root: no
+
+Package: cadence
+Architecture: all
+Depends: ${misc:Depends}, cadence-tools, catia, claudia | catarina
+Recommends: a2jmidid
+Description: JACK audio toolbox
+ Cadence is a set of tools useful for audio production.
+ .
+ This package contains the main application.
+
+Package: cadence-data
+Architecture: all
+Depends: ${misc:Depends}, python3-pyqt5, python3-pyqt5.qtsvg
+Description: JACK audio toolbox (data files)
+ Cadence is a set of tools useful for audio production.
+ .
+ This package contains the shared data and modules.
+
+Package: cadence-unity-support
+Architecture: all
+Depends: ${misc:Depends}, cadence, gir1.2-unity-5.0
+Suggests: unity
+Description: JACK audio toolbox (Unity support)
+ Cadence is a set of tools useful for audio production.
+ .
+ This package contains a small daemon that shows JACK
+ related data in the Cadence icon when using Unity.
+
+Package: cadence-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, cadence-data,
+  dbus-x11, python3-dbus, python3-dbus.mainloop.pyqt5, jack-capture
+Recommends: python3-pyqt5.qtopengl, pulseaudio-module-jack
+Description: JACK audio toolbox (small tools)
+ Cadence is a set of tools useful for audio production.
+ .
+ This package contains the small tools used in Cadence.
+
+Package: catarina
+Architecture: all
+Depends: ${misc:Depends}, cadence-data
+Description: cadence patchbay (test application)
+ Catarina is a testing ground for the 'PatchCanvas'
+ module used in the Cadence tools.
+
+Package: catia
+Architecture: all
+Depends: ${misc:Depends}, cadence-tools
+Recommends: a2jmidid
+Description: extended JACK patchbay
+ Catia is a nice JACK Audio Patchbay with A2J Bridge integration.
+ It also includes Jack Transport support and the ability to
+ render jack projects.
+ .
+ This package is part of the Cadence tools.
+
+Package: claudia
+Architecture: all
+Depends: ${misc:Depends}, cadence-tools, ladish
+Recommends: a2jmidid
+Description: extended ladish frontend
+ Claudia is a Graphical User Interface to LADISH.
+ .
+ It has more features than gladish, including:
+ - Jack Transport
+ - Configurable Canvas
+ - App Templates
+ - Render projects (realtime or freewheel mode)
+ .
+ This package is part of the Cadence tools.

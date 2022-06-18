@@ -1,0 +1,18 @@
+# Binaries
+/usr/bin/cadence-*
+
+# Tools
+/usr/share/cadence/src/cadence_aloop_daemon.py
+/usr/share/cadence/src/cadence_session_start.py
+/usr/share/cadence/src/jacksettings.py
+/usr/share/cadence/src/logs.py
+/usr/share/cadence/src/render.py
+
+# UI
+/usr/share/cadence/src/ui_logs.py
+/usr/share/cadence/src/ui_render.py
+/usr/share/cadence/src/ui_settings_jack.py
+
+# Other
+/usr/share/cadence/pulse2jack/
+/usr/share/cadence/pulse2loopback/

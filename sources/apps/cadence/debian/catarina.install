@@ -1,0 +1,7 @@
+/usr/bin/catarina
+/usr/share/cadence/src/catarina.py
+/usr/share/cadence/src/ui_catarina.py
+/usr/share/cadence/src/ui_catarina_*.py
+
+/usr/share/applications/catarina.desktop
+/usr/share/icons/hicolor/*/apps/catarina.*

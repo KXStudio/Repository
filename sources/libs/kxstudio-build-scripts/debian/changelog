@@ -1,3 +1,9 @@
+kxstudio-build-scripts (13) focal; urgency=medium
+
+  * Set CMAKE_PREFIX_PATH
+
+ -- falkTX <falktx@falktx.com>  Wed, 22 Jun 2022 19:43:08 +0100
+
 kxstudio-build-scripts (12) focal; urgency=medium
 
   * Depend on kxstudio-lv2-extensions and mod-lv2-extensions

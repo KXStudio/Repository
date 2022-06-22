@@ -30,6 +30,7 @@ export CXXFLAGS = $(FLAGS) -fvisibility-inlines-hidden
 export CPPFLAGS =
 export LDFLAGS = $(FLAGS) -Wl,-O1,--as-needed,--no-undefined,--gc-sections,--strip-all -Werror=odr -Werror=lto-type-mismatch
 export PATH := /opt/kxstudio/bin:$(PATH)
+export CMAKE_PREFIX_PATH = /opt/kxstudio/lib/cmake
 export PKG_CONFIG_PATH = /opt/kxstudio/lib/pkgconfig
 
 ifeq ($(KXSTUDIO_EXPLICIT_PATH_INCLUDE),y)

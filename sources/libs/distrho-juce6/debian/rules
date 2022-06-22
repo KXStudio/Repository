@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/opt/kxstudio \
+		-DJUCE_BUILD_HELPER_TOOLS=ON \
+		-DJUCE_INSTALL_DESTINATION=lib/cmake/JUCE6
+
+override_dh_auto_install:
+	dh_auto_install
+	install -d $(CURDIR)/debian/distrho-juce6-bin/opt/kxstudio/bin
+	install -m 755 $(CURDIR)/obj-*/extras/Build/juceaide/juceaide_artefacts/Release/juceaide \
+		$(CURDIR)/debian/distrho-juce6-bin/opt/kxstudio/bin/juceaide6
+
+%:
+	dh $@ -Scmake

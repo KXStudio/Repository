@@ -22,7 +22,9 @@ include-binaries
 !/libs/*/debian/clean
 !/libs/*/debian/control
 !/libs/*/debian/install
+!/libs/*/debian/links
 !/libs/*/debian/*.install
+!/libs/*/debian/*.links
 !/libs/*/debian/rules
 
 !/libs/kxstudio-build-scripts/*.mk
@@ -43,7 +45,9 @@ include-binaries
 !/apps/*/debian/clean
 !/apps/*/debian/control
 !/apps/*/debian/install
+!/apps/*/debian/links
 !/apps/*/debian/*.install
+!/apps/*/debian/*.links
 !/apps/*/debian/rules
 
 /plugins/*/*
@@ -58,7 +62,9 @@ include-binaries
 !/plugins/*/debian/clean
 !/plugins/*/debian/control
 !/plugins/*/debian/install
+!/plugins/*/debian/links
 !/plugins/*/debian/*.install
+!/plugins/*/debian/*.links
 !/plugins/*/debian/rules
 
 /kxstudio/kxstudio-repos/keyrings/

@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio-audio-plugin.mk
+
+ifeq ($(DEB_HOST_ARCH),armhf)
+JUCE_ARCHITECTURE = armv7l
+else ifeq ($(DEB_HOST_ARCH),arm64)
+JUCE_ARCHITECTURE = aarch64
+else
+JUCE_ARCHITECTURE = x86_64
+endif
+
+export LDFLAGS += -Wl,--version-script=$(CURDIR)/debian/vitling-crypt.sym
+export LV2LINT_EXTRA_FLAGS = -s lv2_generate_ttl
+
+# FIXME lv2lint gives false positives
+export LV2LINT_SKIP = y
+#     [FAIL]  Plugin Extension Data
+#               lv2:extensionData <http://kxstudio.sf.net/ns/lv2ext/programs#Interface> not valid
+#               seeAlso: <http://lv2plug.in/ns/lv2core#ExtensionData>
+#     [FAIL]  UI Toolkit
+#               UI toolkit <http://kxstudio.sf.net/ns/lv2ext/external-ui#Widget> unkown
+#               seeAlso: <http://lv2plug.in/ns/extensions/ui#ui>
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DJUCE_LINUX_TARGET_ARCHITECTURE=$(JUCE_ARCHITECTURE)
+
+override_dh_auto_build:
+	DESTDIR=$(CURDIR)/tmp dh_auto_build
+
+override_dh_auto_install:
+	mv $(CURDIR)/tmp $(CURDIR)/debian/vitling-crypt
+	$(call kxstudio_audio_plugin_test)
+
+%:
+	dh $@ -Scmake

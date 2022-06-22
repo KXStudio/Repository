@@ -1,0 +1,22 @@
+Source: vitling-crypt
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 13),
+  distrho-juce6-dev (>= 6:6.0.7+git2022-06-22-62658da8-1kxstudio1)
+Standards-Version: 4.5.0
+Homepage: https://www.vitling.xyz/plugins/
+XSC-KXStudio-VCS: https://github.com/DISTRHO-Ports/crypt/
+Rules-Requires-Root: no
+
+Package: vitling-crypt
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin, vst-plugin, vst3-plugin
+Description: Hyper-Unison Synthesiser from Bow Church/Vitling
+ Crypt is a software synthesiser plugin designed for creating spacious cold
+ hyper-unisoned synth sounds, built for the Bow Church project.
+ .
+ It features CPU-efficient unison oscillation of up to 64 detuned oscillators,
+ and parameters to create dirt and space in the sound.

@@ -46,7 +46,13 @@ cp -r /usr/lib/lv2/{atom,buf-size,core,data-access,instance-access,midi,paramete
 
 if [ -d debian/${PKG_NAME}/usr/lib/lv2 ]; then
     pushd debian/${PKG_NAME}/usr/lib/lv2
-    lv2_validate */*.ttl
+    lv2_validate \
+        /usr/lib/lv2/kx-*/*.ttl \
+        /usr/lib/lv2/mod.lv2/*.ttl \
+        /usr/lib/lv2/modgui.lv2/*.ttl \
+        /usr/lib/lv2/mod-hmi.lv2/*.ttl \
+        /usr/lib/lv2/mod-license.lv2/*.ttl \
+        */*.ttl
     if [ -z "${LV2LINT_SKIP}" ]; then
         lv2lint ${LV2LINT_EXTRA_FLAGS} -s lv2_generate_ttl $(lv2ls)
     fi

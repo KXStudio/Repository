@@ -1,0 +1,21 @@
+diff --git a/modules/juce_audio_devices/juce_audio_devices.h b/modules/juce_audio_devices/juce_audio_devices.h
+index 567322216..45edf2174 100644
+--- a/modules/juce_audio_devices/juce_audio_devices.h
++++ b/modules/juce_audio_devices/juce_audio_devices.h
+@@ -42,7 +42,6 @@
+   dependencies:       juce_audio_basics, juce_events
+   OSXFrameworks:      CoreAudio CoreMIDI AudioToolbox
+   iOSFrameworks:      CoreAudio CoreMIDI AudioToolbox AVFoundation
+-  linuxPackages:      alsa
+   mingwLibs:          winmm
+ 
+  END_JUCE_MODULE_DECLARATION
+@@ -106,7 +105,7 @@
+     Enables ALSA audio devices (Linux only).
+ */
+ #ifndef JUCE_ALSA
+- #define JUCE_ALSA 1
++ #define JUCE_ALSA 0
+ #endif
+ 
+ /** Config: JUCE_JACK

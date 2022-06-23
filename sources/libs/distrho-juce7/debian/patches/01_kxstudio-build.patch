@@ -1,0 +1,13 @@
+diff --git a/extras/Build/CMake/JUCEUtils.cmake b/extras/Build/CMake/JUCEUtils.cmake
+index 58e65087c..cb13f9fee 100644
+--- a/extras/Build/CMake/JUCEUtils.cmake
++++ b/extras/Build/CMake/JUCEUtils.cmake
+@@ -84,7 +84,7 @@ define_property(TARGET PROPERTY JUCE_COPY_PLUGIN_AFTER_BUILD INHERITED
+     FULL_DOCS "Whether or not plugins should be copied after building")
+ set_property(GLOBAL PROPERTY JUCE_COPY_PLUGIN_AFTER_BUILD FALSE)
+ 
+-if((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME MATCHES ".*BSD"))
++if((CMAKE_SYSTEM_NAME STREQUAL "LinuxIgnoredForKXStudio") OR (CMAKE_SYSTEM_NAME MATCHES ".*BSD"))
+     _juce_create_pkgconfig_target(JUCE_CURL_LINUX_DEPS libcurl)
+     _juce_create_pkgconfig_target(JUCE_BROWSER_LINUX_DEPS webkit2gtk-4.0 gtk+-x11-3.0)
+ elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")

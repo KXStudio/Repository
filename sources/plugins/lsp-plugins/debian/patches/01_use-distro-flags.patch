@@ -1,0 +1,20 @@
+--- lsp-plugins-1.2.2.orig/make/tools.mk
++++ lsp-plugins-1.2.2/make/tools.mk
+@@ -110,7 +110,7 @@ else
+ endif
+ 
+ # Define flags for (cross) build
+-CFLAGS             ?= \
++CFLAGS             += \
+   $(CFLAGS_EXT) \
+   -fdata-sections \
+   -ffunction-sections \
+@@ -120,7 +120,7 @@ CFLAGS             ?= \
+ 
+ CDEFS              += -DLSP_INSTALL_PREFIX=\\\"$(PREFIX)\\\"
+   
+-CXXFLAGS           ?= \
++CXXFLAGS           += \
+   $(CXXFLAGS_EXT) \
+   -std=c++98 \
+   -fno-exceptions \

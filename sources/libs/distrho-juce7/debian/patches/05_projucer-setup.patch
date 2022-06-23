@@ -24,3 +24,21 @@ index b84d91da6..0ae17c508 100644
  
      //==============================================================================
      template <class FileType>
+diff --git a/extras/Projucer/Source/Settings/jucer_StoredSettings.cpp b/extras/Projucer/Source/Settings/jucer_StoredSettings.cpp
+index b5608a7..8e77343 100644
+--- a/extras/Projucer/Source/Settings/jucer_StoredSettings.cpp
++++ b/extras/Projucer/Source/Settings/jucer_StoredSettings.cpp
+@@ -358,11 +358,11 @@ static String getFallbackPathForOS (const Identifier& key, DependencyPathOS os)
+ {
+     if (key == Ids::jucePath)
+     {
+-        return (os == TargetOS::windows ? "C:\\JUCE" : "~/JUCE");
++        return (os == TargetOS::windows ? "C:\\JUCE" : "/opt/kxstudio/include/JUCE-6.1.6");
+     }
+     else if (key == Ids::defaultJuceModulePath)
+     {
+-        return (os == TargetOS::windows ? "C:\\JUCE\\modules" : "~/JUCE/modules");
++        return (os == TargetOS::windows ? "C:\\JUCE\\modules" : "/opt/kxstudio/include/JUCE-6.1.6/modules");
+     }
+     else if (key == Ids::defaultUserModulePath)
+     {

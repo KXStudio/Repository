@@ -2,6 +2,8 @@
 
 include /usr/share/dpkg/kxstudio.mk
 
+export CXXFLAGS += -DJUCER_ENABLE_GPL_MODE=1
+
 override_dh_auto_configure:
 	dh_auto_configure -- \
 		-DCMAKE_BUILD_TYPE=Release \

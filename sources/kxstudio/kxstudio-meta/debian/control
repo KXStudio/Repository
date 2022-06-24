@@ -22,7 +22,7 @@ Package: kxstudio-meta-audio-applications
 Architecture: all
 Depends: ${misc:Depends},
 # KXStudio Tools
-  cadence | studio-controls, carla, carla-git,
+  cadence | studio-controls, carla | carla-git,
 # Other Tools
   jaaa, linuxaudio-new-session-manager | non-session-manager, paulstretch
 # TODO: a2jmidid, jack-capture, jack-keyboard,

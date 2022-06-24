@@ -1,3 +1,9 @@
+kxstudio-meta (7.0.3) focal; urgency=medium
+
+  * Fix a silly bad typo
+
+ -- falkTX <falktx@falktx.com>  Fri, 24 Jun 2022 10:46:31 +0100
+
 kxstudio-meta (7.0.2) focal; urgency=medium
 
   * Tweaks for non things

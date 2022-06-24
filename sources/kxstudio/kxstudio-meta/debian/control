@@ -24,14 +24,14 @@ Depends: ${misc:Depends},
 # KXStudio Tools
   cadence | studio-controls, carla, carla-git,
 # Other Tools
-  jaaa, non-session-manager, paulstretch
+  jaaa, linuxaudio-new-session-manager | non-session-manager, paulstretch
 # TODO: a2jmidid, jack-capture, jack-keyboard,
 # --------------------
 Recommends:
 # CLI Tools
   ladish,
 # Non Stuff
-  non-mixer, non-sequencer | non-sequencer-git, non-timeline
+  non-mixer, non-timeline
 # TODO: lmms, seq24
 # --------------------
 Description: KXStudio meta-packages - Audio

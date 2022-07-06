@@ -23,9 +23,35 @@ Package: dragonfly-reverb
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Provides: standalone-plugin, lv2-plugin, vst-plugin, vst3-plugin
+Breaks:
+ dragonfly-reverb-standalone (<< 6:3.2.6-1kxstudio1),
+ dragonfly-reverb-lv2 (<< 6:3.2.6-1kxstudio1),
+ dragonfly-reverb-vst (<< 6:3.2.6-1kxstudio1)
+Conflicts:
+ dragonfly-reverb-standalone (<< 6:3.2.6-1kxstudio1),
+ dragonfly-reverb-lv2 (<< 6:3.2.6-1kxstudio1),
+ dragonfly-reverb-vst (<< 6:3.2.6-1kxstudio1)
 Description: A set of free reverb effects
  Dragonfly Reverb is a bundle of free audio reverb effects.
  .
  Theirs DSP are based on the well-known freeverb3 and its GUI is made with the help of the DPF toolkit.
  .
  KXStudio package imported from LibraZiK
+
+Package: dragonfly-reverb-standalone
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: dragonfly-reverb-lv2
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: dragonfly-reverb-vst
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.

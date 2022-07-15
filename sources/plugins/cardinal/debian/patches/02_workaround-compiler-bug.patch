@@ -1,0 +1,18 @@
+--- cardinal-22.03.orig/plugins/Bidoo/src/ZINC.cpp
++++ cardinal-22.03/plugins/Bidoo/src/ZINC.cpp
+@@ -123,6 +123,7 @@ struct ZINC : BidooModule {
+ 	const float slewMax = 500.0f;
+ 	const float shapeScale = 0.1f;
+ 
++	__attribute__((optimize(1)))
+ 	ZINC() {
+ 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+ 
+@@ -145,6 +146,7 @@ struct ZINC : BidooModule {
+ 		}
+ 	}
+ 
++	__attribute__((optimize(1)))
+ 	void process(const ProcessArgs &args) override {
+ 		float inM = inputs[IN_MOD].getVoltage() / 5.0f;
+ 		float inC = inputs[IN_CARR].getVoltage() / 5.0f;

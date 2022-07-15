@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_LTO = y
+include /usr/share/dpkg/kxstudio-audio-plugin.mk
+
+ifeq ($(DEB_HOST_ARCH),armhf)
+export CFLAGS += -mno-unaligned-access
+export CXXFLAGS += -mno-unaligned-access
+endif
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	rm -rf src/Rack/dep/zstd-1.4.5/build/VS2008
+	rm -rf src/Rack/dep/zstd-1.4.5/build/VS2010
+	rm -rf src/Rack/dep/zstd-1.4.5/build/VS_scripts
+
+override_dh_auto_build:
+	dh_auto_build -- PREFIX=/usr CIBUILD=true NOOPT=true
+
+override_dh_auto_install:
+	dh_auto_install -- PREFIX=/usr CIBUILD=true NOOPT=true DESTDIR=$(CURDIR)/debian/tmp/
+# 	$(call kxstudio_audio_plugin_test)

@@ -1,0 +1,137 @@
+Source: cardinal
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester,
+  debhelper (>= 9~),
+  libdbus-1-dev,
+  libgl1-mesa-dev | libgl-dev,
+  libmagic-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  cmake,
+  wget,
+  liblo-static,
+  libsndfile-static,
+  fftw3-static,
+  zlib-static,
+  python3
+Homepage: https://github.com/DISTRHO/Cardinal
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+
+Package: cardinal
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, cardinal-data
+Provides: standalone-plugin
+Recommends: carla | carla-git, mpv
+Description: virtual modular synthesizer plugin
+ Free and open-source virtual modular synthesizer plugin,
+ available as JACK standalone and LV2, VST2 and VST3 audio plugin for FreeBSD, Linux, macOS and Windows.
+ It is based on the popular VCV Rack but with a focus on being a fully self-contained plugin version.
+ .
+ Cardinal contains Rack, some 3rd-party modules and a few internal utilities all in a single binary.
+ All "Core" modules from Rack have been replaced by Cardinal equivalents, simplified to better work for an audio plugin.
+ .
+ Cardinal does not load external modules and does not connect to the official Rack library/store.
+ All VCV branding has been removed (to the best of authors knowledge) in order to avoid any trademark issues.
+ .
+ Cardinal provides 3 plugin variants - "main", Synth and FX.
+ They are all equivalent in performance and behaviour, with only the IO and metadata that changes.
+ FX and Synth variants both have 2 audio outputs, while "main" has 8.
+ All variants have MIDI input and output support.
+ .
+ This package provides the standalone application.
+
+Package: cardinal-data
+Architecture: all
+Depends: ${misc:Depends}
+Description: virtual modular synthesizer plugin
+ Free and open-source virtual modular synthesizer plugin,
+ available as JACK standalone and LV2, VST2 and VST3 audio plugin for FreeBSD, Linux, macOS and Windows.
+ It is based on the popular VCV Rack but with a focus on being a fully self-contained plugin version.
+ .
+ Cardinal contains Rack, some 3rd-party modules and a few internal utilities all in a single binary.
+ All "Core" modules from Rack have been replaced by Cardinal equivalents, simplified to better work for an audio plugin.
+ .
+ Cardinal does not load external modules and does not connect to the official Rack library/store.
+ All VCV branding has been removed (to the best of authors knowledge) in order to avoid any trademark issues.
+ .
+ Cardinal provides 3 plugin variants - "main", Synth and FX.
+ They are all equivalent in performance and behaviour, with only the IO and metadata that changes.
+ FX and Synth variants both have 2 audio outputs, while "main" has 8.
+ All variants have MIDI input and output support.
+ .
+ This package provides the architecture independent resources, shared between all Cardinal packages.
+
+Package: cardinal-lv2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, cardinal-data
+Provides: lv2-plugin
+Recommends: carla | carla-git, mpv
+Description: virtual modular synthesizer plugin
+ Free and open-source virtual modular synthesizer plugin,
+ available as JACK standalone and LV2, VST2 and VST3 audio plugin for FreeBSD, Linux, macOS and Windows.
+ It is based on the popular VCV Rack but with a focus on being a fully self-contained plugin version.
+ .
+ Cardinal contains Rack, some 3rd-party modules and a few internal utilities all in a single binary.
+ All "Core" modules from Rack have been replaced by Cardinal equivalents, simplified to better work for an audio plugin.
+ .
+ Cardinal does not load external modules and does not connect to the official Rack library/store.
+ All VCV branding has been removed (to the best of authors knowledge) in order to avoid any trademark issues.
+ .
+ Cardinal provides 3 plugin variants - "main", Synth and FX.
+ They are all equivalent in performance and behaviour, with only the IO and metadata that changes.
+ FX and Synth variants both have 2 audio outputs, while "main" has 8.
+ All variants have MIDI input and output support.
+ .
+ This package provides the LV2 plugin.
+
+Package: cardinal-vst2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, cardinal-data
+Provides: vst-plugin
+Recommends: carla | carla-git, mpv
+Description: virtual modular synthesizer plugin
+ Free and open-source virtual modular synthesizer plugin,
+ available as JACK standalone and LV2, VST2 and VST3 audio plugin for FreeBSD, Linux, macOS and Windows.
+ It is based on the popular VCV Rack but with a focus on being a fully self-contained plugin version.
+ .
+ Cardinal contains Rack, some 3rd-party modules and a few internal utilities all in a single binary.
+ All "Core" modules from Rack have been replaced by Cardinal equivalents, simplified to better work for an audio plugin.
+ .
+ Cardinal does not load external modules and does not connect to the official Rack library/store.
+ All VCV branding has been removed (to the best of authors knowledge) in order to avoid any trademark issues.
+ .
+ Cardinal provides 3 plugin variants - "main", Synth and FX.
+ They are all equivalent in performance and behaviour, with only the IO and metadata that changes.
+ FX and Synth variants both have 2 audio outputs, while "main" has 8.
+ All variants have MIDI input and output support.
+ .
+ This package provides the VST2 plugin.
+
+Package: cardinal-vst3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, cardinal-data
+Provides: vst3-plugin
+Recommends: carla | carla-git, mpv
+Description: virtual modular synthesizer plugin
+ Free and open-source virtual modular synthesizer plugin,
+ available as JACK standalone and LV2, VST2 and VST3 audio plugin for FreeBSD, Linux, macOS and Windows.
+ It is based on the popular VCV Rack but with a focus on being a fully self-contained plugin version.
+ .
+ Cardinal contains Rack, some 3rd-party modules and a few internal utilities all in a single binary.
+ All "Core" modules from Rack have been replaced by Cardinal equivalents, simplified to better work for an audio plugin.
+ .
+ Cardinal does not load external modules and does not connect to the official Rack library/store.
+ All VCV branding has been removed (to the best of authors knowledge) in order to avoid any trademark issues.
+ .
+ Cardinal provides 3 plugin variants - "main", Synth and FX.
+ They are all equivalent in performance and behaviour, with only the IO and metadata that changes.
+ FX and Synth variants both have 2 audio outputs, while "main" has 8.
+ All variants have MIDI input and output support.
+ .
+ This package provides the VST3 plugin. Please note the VST3 version is considered experimental.

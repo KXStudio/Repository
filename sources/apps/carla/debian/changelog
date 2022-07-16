@@ -1,3 +1,9 @@
+carla (6:2.5.0-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sat, 16 Jul 2022 00:36:18 +0100
+
 carla (6:2.4.3-1kxstudio3) focal; urgency=medium
 
   * Fix missing VST3 support

@@ -1,0 +1,31 @@
+Source: master-me
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 8),
+  pkg-config,
+  libgl1-mesa-dev | libgl-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  faustpp
+Standards-Version: 4.5.0
+Homepage: https://github.com/trummerschlunk/master_me
+Rules-Requires-Root: no
+
+Package: master-me
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: standalone-plugin, lv2-plugin, vst-plugin, vst3-plugin
+Description: Automatic audio mastering plugin
+ master_me is an audio plug-in which optimizes sound in live streaming
+ situations.
+ .
+ Introducing no latency, it takes care of master levels and 'polishes' the
+ sound with a chain of effects, closely modeled after the audio chain of
+ Klaus Scheuermann's mastering studio in Berlin, Germany.
+ .
+ Although tempting, it is NOT intended to automatically master your produced
+ music. Your art deserves closer, offline attention.

@@ -5,17 +5,21 @@ Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
   dh-python,
-  python3
+  python3,
+  python3-setuptools
 Standards-Version: 4.5.0
 Homepage: https://github.com/jpcima/faustpp
 Rules-Requires-Root: no
 
 Package: faustpp
 Architecture: any
-Depends: ${misc:Depends}, python3-jinja2
+Depends: ${misc:Depends}, python3:any, python3-jinja2, python3-pkg-resources, faust
 Description: post-processor for faust
- faustpp is a post-processor for faust, which allows to generate with more flexibility.
+ faustpp is a post-processor for faust, which allows to generate with more
+ flexibility.
  .
- Using a template language known as Jinja2, it is allowed to manipulate metadata with
- iteration and conditional constructs, to easily generate custom code tailored for the job.
+ Using a template language known as Jinja2, it is allowed to manipulate
+ metadata with iteration and conditional constructs, to easily generate custom
+ code tailored for the job.
+ .
  Custom metadata can be handled by the template mechanism.

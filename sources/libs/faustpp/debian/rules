@@ -1,4 +1,9 @@
 #!/usr/bin/make -f
 
+override_dh_install:
+	dh_install
+	rm -rf debian/faustpp/usr/lib/python3.*/dist-packages/faustpp/__pycache__
+	mv debian/faustpp/usr/lib/python3.* debian/faustpp/usr/lib/python3
+
 %:
 	dh $@ -Spybuild

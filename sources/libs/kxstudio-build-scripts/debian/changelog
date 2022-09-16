@@ -1,3 +1,9 @@
+kxstudio-build-scripts (14) focal; urgency=medium
+
+  * Ignore lsp-plugins-vst2 for plugin checks
+
+ -- falkTX <falktx@falktx.com>  Fri, 16 Sep 2022 14:24:48 +0100
+
 kxstudio-build-scripts (13) focal; urgency=medium
 
   * Set CMAKE_PREFIX_PATH

@@ -85,7 +85,7 @@ fi
 
 if [ -d debian/${PKG_NAME}/usr/lib/vst ]; then
     pushd debian/${PKG_NAME}/usr/lib/vst
-    for p in $(ls .so */*.so 2>/dev/null | grep -e '.*\.so' -e '.*\.vst/.*\.so' | grep -v 'lib.*\.so' | grep -v 'carla-bridge-lv2.so'); do
+    for p in $(ls .so */*.so 2>/dev/null | grep -e '.*\.so' -e '.*\.vst/.*\.so' | grep -v 'lib.*\.so' | grep -v 'carla-bridge-lv2.so' | grep -v 'lsp-plugins-vst2.*\.so'); do
         ${VALRIND_DISCOVERY_BIN} vst2 ./${p}
         ${VALRIND_BRIDGE_BIN} vst2 ./${p} "" 1>/dev/null;
     done

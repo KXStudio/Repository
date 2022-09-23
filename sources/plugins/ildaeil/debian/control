@@ -1,0 +1,26 @@
+Source: ildaeil
+Section: sound
+Priority: extra
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 8),
+  pkg-config,
+  libgl1-mesa-dev | libgl-dev,
+  libglu1-mesa-dev | libglu-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  libsndfile-static
+Standards-Version: 4.5.0
+Homepage: https://github.com/DISTRHO/Ildaeil
+Rules-Requires-Root: no
+
+Package: ildaeil
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin, vst-plugin, vst3-plugin, clap-plugin
+Description: mini-plugin host as a plugin
+ DISTRHO Ildaeil is mini-plugin host working as a plugin, allowing one-to-one plugin format reusage.
+ The idea is to load it as a plugin inside your DAW and then other the "real" plugin inside Ildaeil.
+ This allows, for example, a VST3 host to load LV2 plugins.

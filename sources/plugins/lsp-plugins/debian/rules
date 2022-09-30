@@ -16,17 +16,11 @@ endif
 export EXE_FLAGS = $(LDFLAGS)
 export SO_FLAGS = $(LDFLAGS)
 
-# FIXME a lib is causing leaks
-export VALGRIND_EXTRA_ARGS = --leak-check=no
-
 %:
 	dh $@
 
 override_dh_auto_configure:
 	$(MAKE) config ARCHITECTURE=$(ARCHITECTURE) FEATURES='ladspa lv2 vst2 jack' PREFIX=/usr
-	# make it read our custom flags too
-	sed -i 's/^EXE_FLAGS=/EXE_FLAGS+=/' .config.mk
-	sed -i 's/^SO_FLAGS=/SO_FLAGS+=/' .config.mk
 
 override_dh_auto_install:
 	dh_auto_install
@@ -39,11 +33,6 @@ override_dh_auto_install:
 	rm debian/tmp/usr/lib/*.so
 	rm -r debian/tmp/usr/lib/pkgconfig
 
-	# Make lv2 validators happy
-	sed -i -z 's|\tfoaf:mbox <mailto:lsp.plugin@gmail.com> ;\n\tfoaf:homepage <http://lsp-plug.in/#v_sadovnikov>|\tfoaf:mbox <mailto:lsp.plugin+sadko@gmail.com> ;\n\tfoaf:homepage <http://lsp-plug.in/#v_sadovnikov>|g' debian/tmp/usr/lib/lv2/lsp-plugins.lv2/*.ttl
-
 override_dh_install:
 	dh_install
-	# FIXME Fails due to memory issues
-	# TODO report issue on http://lsp-plug.in/plugins/lv2/mb_expander_lr
-	# $(call kxstudio_audio_plugin_test)
+	$(call kxstudio_audio_plugin_test)

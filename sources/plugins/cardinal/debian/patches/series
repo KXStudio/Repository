@@ -1,2 +1,3 @@
 01_vendored-libs.patch
 02_workaround-compiler-bug.patch
+03_acfba5687e726f09b96a626a1aa548c876f4ffc0.patch

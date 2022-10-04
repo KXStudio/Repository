@@ -1,19 +1,9 @@
-bin/DragonflyEarlyReflections        usr/bin/
-bin/DragonflyEarlyReflections-vst.so usr/lib/vst/
-bin/DragonflyEarlyReflections.lv2    usr/lib/lv2/
-bin/DragonflyEarlyReflections.vst3   usr/lib/vst3/
+bin/DragonflyEarlyReflections usr/bin/
+bin/DragonflyHallReverb       usr/bin/
+bin/DragonflyPlateReverb      usr/bin/
+bin/DragonflyRoomReverb       usr/bin/
 
-bin/DragonflyHallReverb        usr/bin/
-bin/DragonflyHallReverb-vst.so usr/lib/vst/
-bin/DragonflyHallReverb.lv2    usr/lib/lv2/
-bin/DragonflyHallReverb.vst3   usr/lib/vst3/
-
-bin/DragonflyPlateReverb        usr/bin/
-bin/DragonflyPlateReverb-vst.so usr/lib/vst/
-bin/DragonflyPlateReverb.lv2    usr/lib/lv2/
-bin/DragonflyPlateReverb.vst3   usr/lib/vst3/
-
-bin/DragonflyRoomReverb        usr/bin/
-bin/DragonflyRoomReverb-vst.so usr/lib/vst/
-bin/DragonflyRoomReverb.lv2    usr/lib/lv2/
-bin/DragonflyRoomReverb.vst3   usr/lib/vst3/
+bin/*.clap   usr/lib/clap/
+bin/*.lv2    usr/lib/lv2/
+bin/*-vst.so usr/lib/vst/
+bin/*.vst3   usr/lib/vst3/

@@ -1,3 +1,9 @@
+ildaeil (6:1.2-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Fri, 14 Oct 2022 22:12:54 +0100
+
 ildaeil (6:1.1-1kxstudio1) focal; urgency=medium
 
   * Initial package

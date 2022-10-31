@@ -1,0 +1,74 @@
+Source: dpf-plugins
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 15),
+  debhelper (>= 9~),
+  pkg-config,
+  libgl1-mesa-dev | libgl-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  liblo-static
+Standards-Version: 4.5.0
+Homepage: https://github.com/DISTRHO/DPF-Plugins
+Rules-Requires-Root: no
+
+Package: dpf-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks:
+ dpf-plugins-common (<< 5:20200103),
+ dpf-plugins-ladspa (<< 5:20200103),
+ dpf-plugins-dssi (<< 5:20200103),
+ dpf-plugins-lv2 (<< 5:20200103),
+ dpf-plugins-vst (<< 5:20200103)
+Conflicts:
+ dpf-plugins-common (<< 5:20200103),
+ dpf-plugins-ladspa (<< 5:20200103),
+ dpf-plugins-dssi (<< 5:20200103),
+ dpf-plugins-lv2 (<< 5:20200103),
+ dpf-plugins-vst (<< 5:20200103)
+Provides: standalone-plugin, ladspa-plugin, dssi-plugin, lv2-plugin, vst-plugin, vst3-plugin, clap-plugin
+Description: audio plugin collection from DISTRHO
+ Collection of DPF-based plugins in LADSPA, DSSI, LV2, VST2, VST3 and CLAP formats.
+ .
+ The list of plugins/packs are:
+  - glBars
+  - Kars
+  - Mini-Series (3BandEQ, 3BandSplitter, PingPongPan)
+  - ndc-Plugs (Amplitude Imposer, Cycle Shifter, Soul Force)
+  - MVerb
+  - Nekobi
+
+Package: dpf-plugins-common
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: dpf-plugins-ladspa
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: dpf-plugins-dssi
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: dpf-plugins-lv2
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: dpf-plugins-vst
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.

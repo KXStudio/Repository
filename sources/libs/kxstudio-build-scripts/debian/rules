@@ -34,13 +34,12 @@ export LDFLAGS=
 override_dh_auto_configure:
 	mkdir -p build
 	tar -x -C build --overwrite --strip-components=1 -f carla.tar.gz
-	patch -d build -p1 -i ../carla-fixes.patch
 
 override_dh_auto_build:
 	$(MAKE) all -C build $(CARLA_BACKEND_EXTRAFLAGS)
 
 override_dh_auto_clean:
-	if [ ! -f carla.tar.gz ]; then wget https://github.com/falkTX/Carla/archive/refs/tags/v2.4.3.tar.gz -O carla.tar.gz; fi
+	if [ ! -f carla.tar.gz ]; then wget https://github.com/falkTX/Carla/archive/refs/tags/v2.5.2.tar.gz -O carla.tar.gz; fi
 	rm -rf build
 
 %:

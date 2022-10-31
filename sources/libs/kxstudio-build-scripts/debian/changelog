@@ -1,8 +1,9 @@
 kxstudio-build-scripts (15) focal; urgency=medium
 
   * Make sure lv2lint sees KXStudio and MOD custom extensions
+  * Update built-in Carla to 2.5.2
 
- -- falkTX <falktx@falkTX-PC>  Mon, 31 Oct 2022 20:19:45 +0000
+ -- falkTX <falktx@falktx.com>  Mon, 31 Oct 2022 20:19:45 +0000
 
 kxstudio-build-scripts (14) focal; urgency=medium
 

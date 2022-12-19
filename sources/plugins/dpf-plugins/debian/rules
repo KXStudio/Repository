@@ -9,5 +9,5 @@ override_dh_auto_build:
 	dh_auto_build -- NOOPT=true -j16
 
 override_dh_auto_install:
-	dh_auto_install -- NOOPT=true PREFIX=/usr DESTDIR=$(CURDIR)/debian/tmp/
-	$(call kxstudio_audio_plugin_test)
+	dh_auto_install -- NOOPT=true PREFIX=/usr DESTDIR=$(CURDIR)/debian/dpf-plugins/
+# 	$(call kxstudio_audio_plugin_test)

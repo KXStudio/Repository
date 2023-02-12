@@ -1,3 +1,9 @@
+lsp-plugins (6:1.2.4-1kxstudio3) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Tue, 27 Dec 2022 13:40:50 +0000
+
 lsp-plugins (6:1.2.3-1kxstudio2) focal; urgency=medium
 
   * Update

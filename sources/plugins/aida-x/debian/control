@@ -1,0 +1,33 @@
+Source: aida-x
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 15),
+  debhelper (>= 9~),
+  cmake,
+  pkg-config,
+  python3,
+  libasound2-dev,
+  libdbus-1-dev,
+  libgl1-mesa-dev | libgl-dev,
+  libx11-dev,
+  libxext-dev,
+  libxrandr-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/AidaDSP/AIDA-X
+Rules-Requires-Root: no
+
+Package: aida-x
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: standalone-plugin, lv2-plugin, vst-plugin, vst3-plugin, clap-plugin
+Description: Amp Model Player leveraging AI
+ AIDA-X is an Amp Model Player, allowing it to load models of AI trained music gear, which you can then play through!
+ .
+ Its main intended use is to provide high fidelity simulations of amplifiers.
+ However, it is also possible to run entire signal chains consisting of any combination of amp, cab, dist, drive, fuzz, boost and eq.
+ .
+ For ease of use, this plugin also contains a cabinet simulator via impulse response files, which runs after the Amp Model.
+ .
+ CLAP, LV2, VST2 and VST3 plugin formats are supported, plus a standalone.

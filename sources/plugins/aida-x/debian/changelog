@@ -1,3 +1,9 @@
+aida-x (6:0.2.0-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sat, 15 Apr 2023 14:22:47 +0200
+
 aida-x (6:0.1.0-1kxstudio1) focal; urgency=medium
 
   * Initial package

@@ -1,3 +1,9 @@
+kxstudio-lv2-extensions (6:2022-09-28-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sat, 22 Apr 2023 19:45:20 +0200
+
 kxstudio-lv2-extensions (6:2022-02-19-1kxstudio1) focal; urgency=medium
 
   * Initial package

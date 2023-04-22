@@ -18,7 +18,7 @@ Rules-Requires-Root: no
 Package: master-me
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Provides: standalone-plugin, lv2-plugin, vst-plugin, vst3-plugin, clap-plugin
+Provides: standalone-plugin, ladspa-plugin, lv2-plugin, vst-plugin, vst3-plugin, clap-plugin
 Description: Automatic audio mastering plugin
  master_me is an audio plug-in which optimizes sound in live streaming
  situations.

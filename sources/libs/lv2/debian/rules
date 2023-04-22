@@ -2,33 +2,14 @@
 
 include /usr/share/dpkg/kxstudio.mk
 
-WAF = python3 ./waf
-
 override_dh_auto_configure:
-	$(WAF) configure \
-		--prefix=/usr \
-		--mandir=/usr/share/man \
-		--strict \
-		--test
-
-override_dh_auto_build:
-	$(WAF)
-
-override_dh_auto_clean:
-	$(WAF) clean || true
-
-override_dh_auto_install:
-	$(WAF) install --destdir=$(CURDIR)/debian/tmp
-
-override_dh_auto_test:
-	$(WAF) test
+	dh_auto_configure -- -Ddocs=disabled -Dplugins=enabled -Dstrict=false -Dtests=disabled -Dlv2dir=/usr/lib/lv2
+	# NOTE -Dstrict=true fails under 20.04 base
+	# NOTE -Dtests=enabled fails under 20.04 base
 
 override_dh_install:
 	dh_install
 	rm -rf debian/lv2-dev/usr/lib/lv2/eg*.lv2
-	# move .pc files to a multiarch directory
-	mkdir debian/lv2-dev/usr/lib/$(DEB_HOST_MULTIARCH)
-	mv debian/lv2-dev/usr/lib/pkgconfig debian/lv2-dev/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig
 
 %:
 	dh $@

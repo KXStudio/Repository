@@ -4,12 +4,19 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
-  python3,
+  meson,
   pkg-config,
   libsndfile-static (>= 6:1.1.0-2kxstudio3),
   libsamplerate-static (>= 6:0.2.2-1kxstudio3),
   libgtk2.0-dev,
-  lcov
+  black,
+  codespell,
+  flake8,
+  lcov,
+  pylint,
+  python3-rdflib,
+  serdi,
+  sordi
 Standards-Version: 4.5.0
 Homepage: http://lv2plug.in/
 Rules-Requires-Root: no

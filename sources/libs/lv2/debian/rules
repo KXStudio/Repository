@@ -3,7 +3,7 @@
 include /usr/share/dpkg/kxstudio.mk
 
 override_dh_auto_configure:
-	dh_auto_configure -- -Ddocs=disabled -Dplugins=enabled -Dstrict=false -Dtests=disabled -Dlv2dir=/usr/lib/lv2
+	dh_auto_configure -- -Ddocs=disabled -Dplugins=enabled -Dstrict=false -Dtests=disabled -Dold_headers=false -Dlv2dir=/usr/lib/lv2
 	# NOTE -Dstrict=true fails under 20.04 base
 	# NOTE -Dtests=enabled fails under 20.04 base
 

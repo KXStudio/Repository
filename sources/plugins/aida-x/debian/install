@@ -1,3 +1,4 @@
+obj-*/bin/AIDA-X         /usr/bin/
 obj-*/bin/AIDA-X.clap    /usr/lib/clap/
 obj-*/bin/AIDA-X.lv2     /usr/lib/lv2/
 obj-*/bin/AIDA-X-vst2.so /usr/lib/vst/

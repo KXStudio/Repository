@@ -50,6 +50,12 @@ include-binaries
 !/apps/*/debian/*.links
 !/apps/*/debian/rules
 
+# https://launchpad.net/~falktx/+archive/ubuntu/carla+obs/
+!/apps/obs-studio/*
+/apps/obs-studio/*.xz
+/apps/obs-studio/*.gz
+/apps/obs-studio/obs-studio
+
 /plugins/*/*
 !/plugins/*/debian
 /plugins/*/debian/*

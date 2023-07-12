@@ -4,11 +4,11 @@ set -e
 
 PPA_URL="https://launchpad.net/~obsproject/+archive/ubuntu/obs-studio"
 SUFFIX="0obsproject1"
-VERSION="29.1.2"
+VERSION="29.1.3"
 DISTS=("focal" "jammy" "kinetic" "lunar")
-RVER=5
+RVER=1
 
-wget -c "${PPA_URL}/+files/obs-studio_29.1.2.orig.tar.gz"
+wget -c "${PPA_URL}/+files/obs-studio_${VERSION}.orig.tar.gz"
 
 for d in ${DISTS[@]}; do
   wget -c "${PPA_URL}/+sourcefiles/obs-studio/${VERSION}-${SUFFIX}~${d}/obs-studio_${VERSION}-${SUFFIX}~${d}.debian.tar.xz"

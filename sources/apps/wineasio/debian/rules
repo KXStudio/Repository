@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+DEB_BUILD_ARCH = $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+
+CFLAGS += -fno-lto
+
+%:
+	dh $@
+
+override_dh_auto_build:
+ifeq ($(DEB_BUILD_ARCH),amd64)
+	$(MAKE) WINEBUILD=winebuild-development WINECC=winegcc-development 64
+endif
+ifeq ($(DEB_BUILD_ARCH),i386)
+	$(MAKE) WINEBUILD=winebuild-development WINECC=winegcc-development 32
+endif
+
+override_dh_auto_install:
+	$(MAKE) -C gui install DESTDIR=$(CURDIR)/debian/tmp
+	install -m 755 wineasio-register $(CURDIR)/debian/tmp/usr/bin/
+
+override_dh_shlibdeps:
+ifeq ($(DEB_BUILD_ARCH),amd64)
+	env LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/x86_64-linux-gnu/wine-development dh_shlibdeps
+	sed -i "s/, libwine-development//" debian/wineasio-amd64.substvars
+endif
+ifeq ($(DEB_BUILD_ARCH),i386)
+	env LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/i386-linux-gnu/wine-development dh_shlibdeps
+	sed -i "s/, libwine-development//" debian/wineasio-i386.substvars
+endif

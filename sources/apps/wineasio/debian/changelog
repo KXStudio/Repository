@@ -1,0 +1,47 @@
+wineasio (5:1.2.0b-1kxstudio1) bionic; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Fri, 29 Sep 2023 23:12:13 +0200
+
+wineasio (5:1.1.0-2kxstudio1) bionic; urgency=medium
+
+  * Update for a few more fixes
+
+ -- falkTX <falktx@gmail.com>  Fri, 18 Feb 2022 15:27:05 +0000
+
+wineasio (5:1.1.0-1kxstudio1) bionic; urgency=medium
+
+  * Update to fix wine6.5 compat
+
+ -- falkTX <falktx@gmail.com>  Wed, 24 Nov 2021 21:28:41 +0000
+
+wineasio (5:1.0.0-1kxstudio1) bionic; urgency=medium
+
+  * Stable release tag
+
+ -- falkTX <falktx@gmail.com>  Tue, 14 Jul 2020 03:51:55 +0100
+
+wineasio (5:0.10.0~git20200331) bionic; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Tue, 31 Mar 2020 01:54:04 +0100
+
+wineasio (5:0.10.0~git20200209) bionic; urgency=medium
+
+  * Update and refresh package
+
+ -- falkTX <falktx@gmail.com>  Sat, 08 Feb 2020 16:08:46 +0000
+
+wineasio (0.9.0+git20110613-2kxstudio2) precise; urgency=low
+
+  * Make wineasio multiarch
+
+ -- falkTX <falktx@gmail.com>  Mon, 30 Apr 2012 19:31:22 +0100
+
+wineasio (0.9.0+git20110613-1kxstudio2) precise; urgency=low
+
+  * Initial release
+
+ -- falkTX <falktx@gmail.com>  Fri, 18 Dec 2009 18:03:10 +0000

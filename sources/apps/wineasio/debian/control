@@ -1,0 +1,51 @@
+Source: wineasio
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper (>= 9), pkg-config,
+  libjack-jackd2-dev | libjack-dev,
+  libwine-development-dev [amd64 i386],
+  wine32-development-tools [i386],
+  wine64-development-tools [amd64],
+Standards-Version: 3.9.2
+XSC-KXStudio-VCS: https://github.com/wineasio/wineasio/
+
+Package: wineasio
+Architecture: i386 amd64
+Depends: ${misc:Depends}, wineasio-i386 [i386 amd64], wineasio-amd64 [amd64], wineasio-data
+Description: ASIO to JACK driver for WINE
+ WineASIO is a ASIO driver for Wine,
+ allowing to run Windows audio applications with
+ low latency (as JACK clients).
+
+Package: wineasio-data
+Architecture: all
+Depends: ${misc:Depends}, python3-pyqt5
+Description: ASIO to JACK driver for WINE
+ WineASIO is a ASIO driver for Wine,
+ allowing to run Windows audio applications with
+ low latency (as JACK clients).
+ .
+ This package provides the shared data used for the settings tool
+
+Package: wineasio-i386
+Architecture: i386
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: ASIO to JACK driver for WINE (32bit)
+ WineASIO is a ASIO driver for Wine,
+ allowing to run Windows audio applications with
+ low latency (as JACK clients).
+ .
+ This package provides the 32bit driver
+
+Package: wineasio-amd64
+Architecture: amd64
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: ASIO to JACK driver for WINE (64bit)
+ WineASIO is a ASIO driver for Wine,
+ allowing to run Windows audio applications with
+ low latency (as JACK clients).
+ .
+ This package provides the 64bit driver

@@ -1,0 +1,7 @@
+/usr/lib/x86_64-linux-gnu/wine/x86_64-unix/wineasio64.dll.so /opt/wine-devel/lib64/wine/x86_64-unix/wineasio64.dll.so
+/usr/lib/x86_64-linux-gnu/wine/x86_64-unix/wineasio64.dll.so /opt/wine-stable/lib64/wine/x86_64-unix/wineasio64.dll.so
+/usr/lib/x86_64-linux-gnu/wine/x86_64-unix/wineasio64.dll.so /opt/wine-staging/lib64/wine/x86_64-unix/wineasio64.dll.so
+
+/usr/lib/x86_64-linux-gnu/wine/x86_64-windows/wineasio64.dll /opt/wine-devel/lib64/wine/x86_64-windows/wineasio64.dll
+/usr/lib/x86_64-linux-gnu/wine/x86_64-windows/wineasio64.dll /opt/wine-stable/lib64/wine/x86_64-windows/wineasio64.dll
+/usr/lib/x86_64-linux-gnu/wine/x86_64-windows/wineasio64.dll /opt/wine-staging/lib64/wine/x86_64-windows/wineasio64.dll

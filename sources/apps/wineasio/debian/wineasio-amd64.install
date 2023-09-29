@@ -1,0 +1,2 @@
+build64/*.dll    usr/lib/x86_64-linux-gnu/wine/x86_64-windows/
+build64/*.dll.so usr/lib/x86_64-linux-gnu/wine/x86_64-unix/

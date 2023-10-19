@@ -20,18 +20,13 @@ export SO_FLAGS = $(LDFLAGS)
 	dh $@
 
 override_dh_auto_configure:
-	$(MAKE) config ARCHITECTURE=$(ARCHITECTURE) FEATURES='ladspa lv2 vst2 jack' PREFIX=/usr
+	$(MAKE) config ARCHITECTURE=$(ARCHITECTURE) FEATURES='clap jack ladspa lv2 vst2' PREFIX=/usr
 
 override_dh_auto_install:
 	dh_auto_install
 
-	# Remove versioned ladspa plugin
-	mv debian/tmp/usr/lib/ladspa/lsp-plugins-ladspa-*.so debian/tmp/usr/lib/ladspa/lsp-plugins-ladspa.so
-
 	# Remove unused files
 	rm debian/tmp/usr/lib/*.a
-	rm debian/tmp/usr/lib/*.so
-	rm -r debian/tmp/usr/include
 	rm -r debian/tmp/usr/lib/pkgconfig
 
 override_dh_install:

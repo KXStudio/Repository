@@ -2,7 +2,9 @@ Source: wineasio
 Section: sound
 Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
-Build-Depends: debhelper (>= 9), pkg-config,
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  pkg-config,
   libjack-jackd2-dev | libjack-dev,
   libwine-development-dev [amd64 i386],
   wine32-development-tools [i386],

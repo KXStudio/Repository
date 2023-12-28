@@ -1,0 +1,47 @@
+Source: distrho-juce-7.0
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  cmake,
+  pkg-config,
+  libfreetype6-dev,
+  libgl1-mesa-dev | libglvnd-dev,
+  libx11-dev,
+  libxcomposite-dev,
+  libxcursor-dev,
+  libxrandr-dev,
+  libxrender-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/DISTRHO/JUCE/
+Rules-Requires-Root: no
+
+Package: distrho-juce-7.0-bin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: cross-platform C++ framework with DISTRHO/KXStudio changes
+ JUCE is an open-source cross-platform C++ application framework for creating
+ high quality desktop and mobile applications, including LV2, VST2, VST3, AU,
+ AUv3 and AAX audio plug-ins.
+ .
+ This package provides the DISTRHO/KXStudio fork of JUCE, version 7.0.
+
+Package: distrho-juce-7.0-dev
+Architecture: all
+Depends: ${misc:Depends}, distrho-juce-7.0-bin,
+  cmake,
+  pkg-config,
+  libfreetype6-dev,
+  libgl1-mesa-dev | libglvnd-dev,
+  libx11-dev,
+  libxcomposite-dev,
+  libxcursor-dev,
+  libxrandr-dev,
+  libxrender-dev
+Description: cross-platform C++ framework with DISTRHO/KXStudio changes
+ JUCE is an open-source cross-platform C++ application framework for creating
+ high quality desktop and mobile applications, including LV2, VST2, VST3, AU,
+ AUv3 and AAX audio plug-ins.
+ .
+ This package provides the DISTRHO/KXStudio fork of JUCE, version 7.0.

@@ -1,4 +1,4 @@
-wineasio (5:1.2.0b-1kxstudio3) bionic; urgency=medium
+wineasio (5:1.2.0b-1kxstudio4) bionic; urgency=medium
 
   * Fix compat with legacy wine
 

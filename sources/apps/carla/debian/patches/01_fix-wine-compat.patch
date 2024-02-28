@@ -1,0 +1,94 @@
+commit 85beab57e1616f1b5bc923319d7abbbcc86ceea2
+Author: falkTX <falktx@falktx.com>
+Date:   Wed Feb 28 22:16:15 2024 +0100
+
+    wine related fixes
+    
+    Signed-off-by: falkTX <falktx@falktx.com>
+
+diff --git a/source/bridges-plugin/CarlaBridgePlugin.cpp b/source/bridges-plugin/CarlaBridgePlugin.cpp
+index cbf79ebf1..991cf4257 100644
+--- a/source/bridges-plugin/CarlaBridgePlugin.cpp
++++ b/source/bridges-plugin/CarlaBridgePlugin.cpp
+@@ -86,6 +86,11 @@ static void saveSignalHandler(int) noexcept
+     gSaveNow = true;
+ }
+ #elif defined(CARLA_OS_WIN)
++static LONG WINAPI winExceptionFilter(_EXCEPTION_POINTERS*)
++{
++    return EXCEPTION_EXECUTE_HANDLER;
++}
++
+ static BOOL WINAPI winSignalHandler(DWORD dwCtrlType) noexcept
+ {
+     if (dwCtrlType == CTRL_C_EVENT)
+@@ -115,6 +120,8 @@ static void initSignalHandler()
+     sigaction(SIGUSR1, &sig, nullptr);
+ #elif defined(CARLA_OS_WIN)
+     SetConsoleCtrlHandler(winSignalHandler, TRUE);
++    SetErrorMode(SEM_NOGPFAULTERRORBOX);
++    SetUnhandledExceptionFilter(winExceptionFilter);
+ #endif
+ }
+ 
+diff --git a/source/discovery/carla-discovery.cpp b/source/discovery/carla-discovery.cpp
+index 43a3af0d7..996c33247 100644
+--- a/source/discovery/carla-discovery.cpp
++++ b/source/discovery/carla-discovery.cpp
+@@ -132,7 +132,6 @@ protected:
+ 
+ CarlaScopedPointer<DiscoveryPipe> gPipe;
+ 
+-
+ // --------------------------------------------------------------------------------------------------------------------
+ // Don't print ELF/EXE related errors since discovery can find multi-architecture binaries
+ 
+@@ -151,6 +150,16 @@ static void print_lib_error(const char* const filename)
+     }
+ }
+ 
++#ifdef CARLA_OS_WIN
++// --------------------------------------------------------------------------------------------------------------------
++// Do not show error message box on Windows
++
++static LONG WINAPI winExceptionFilter(_EXCEPTION_POINTERS*)
++{
++    return EXCEPTION_EXECUTE_HANDLER;
++}
++#endif
++
+ // --------------------------------------------------------------------------------------------------------------------
+ // Plugin Checks
+ 
+@@ -2305,13 +2314,19 @@ int main(int argc, const char* argv[])
+ #endif
+ 
+ #ifdef CARLA_OS_WIN
++    // init win32 stuff that plugins might use
+     OleInitialize(nullptr);
+     CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
++
+ # ifndef __WINPTHREADS_VERSION
+     // (non-portable) initialization of statically linked pthread library
+     pthread_win32_process_attach_np();
+     pthread_win32_thread_attach_np();
+ # endif
++
++    // do not show error message box on Windows
++    SetErrorMode(SEM_NOGPFAULTERRORBOX);
++    SetUnhandledExceptionFilter(winExceptionFilter);
+ #endif
+ 
+     // ---------------------------------------------------------------------------------------------------------------
+diff --git a/source/jackbridge/Makefile b/source/jackbridge/Makefile
+index a7bd0a4cf..a95776ef8 100644
+--- a/source/jackbridge/Makefile
++++ b/source/jackbridge/Makefile
+@@ -22,6 +22,7 @@ WINE_32BIT_FLAGS = $(32BIT_FLAGS) -fpermissive
+ WINE_64BIT_FLAGS = $(64BIT_FLAGS) -fpermissive
+ WINE_BUILD_FLAGS = $(filter-out -flto,$(BUILD_CXX_FLAGS))
+ WINE_LINK_FLAGS  = $(filter-out -flto -static-libgcc -static-libstdc++,$(LINK_FLAGS))
++WINE_LINK_FLAGS += -nostartfiles
+ WINE_LINK_FLAGS += $(LIBDL_LIBS)
+ WINE_LINK_FLAGS += -pthread
+ WINE_LINK_FLAGS += -lstdc++

@@ -14,7 +14,8 @@ XSC-KXStudio-VCS: https://github.com/wineasio/wineasio/
 
 Package: wineasio
 Architecture: i386 amd64
-Depends: ${misc:Depends}, wineasio-i386 [i386 amd64], wineasio-amd64 [amd64], wineasio-data
+Depends: ${misc:Depends}, wineasio-i386 [i386], wineasio-amd64 [amd64], wineasio-data
+Recommends: wineasio-i386 [amd64]
 Description: ASIO to JACK driver for WINE
  WineASIO is a ASIO driver for Wine,
  allowing to run Windows audio applications with

@@ -1,3 +1,9 @@
+liblo-static (6:0.32-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Thu, 07 Mar 2024 09:57:04 +0100
+
 liblo-static (6:0.31-1kxstudio2) focal; urgency=medium
 
   * Initial package

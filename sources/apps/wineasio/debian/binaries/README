@@ -1,0 +1,6 @@
+Storing the final binaries here, which is needed due to launchpad not allowing:
+ - installing i386 packages on x86_64 builders
+ - generating i386 packages from a PPA
+
+Either of those would allow wineasio packaging, but both are not possible and thus we build it outside of PPAs.
+Builds are created within a container to help reproducibility, see https://github.com/wineasio/wineasio/tree/master/docker

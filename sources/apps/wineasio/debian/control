@@ -14,8 +14,7 @@ XSC-KXStudio-VCS: https://github.com/wineasio/wineasio/
 
 Package: wineasio
 Architecture: i386 amd64
-Depends: ${misc:Depends}, wineasio-i386 [i386], wineasio-amd64 [amd64], wineasio-data
-Recommends: wineasio-i386 [amd64]
+Depends: ${misc:Depends}, wineasio-i386 [i386 amd64], wineasio-amd64 [amd64], wineasio-data
 Description: ASIO to JACK driver for WINE
  WineASIO is a ASIO driver for Wine,
  allowing to run Windows audio applications with
@@ -32,9 +31,9 @@ Description: ASIO to JACK driver for WINE
  This package provides the shared data used for the settings tool
 
 Package: wineasio-i386
-Architecture: i386
+Architecture: i386 amd64
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}, libjack-jackd2-0 | libjack0 | pipewire-jack
 Description: ASIO to JACK driver for WINE (32bit)
  WineASIO is a ASIO driver for Wine,
  allowing to run Windows audio applications with
@@ -45,7 +44,7 @@ Description: ASIO to JACK driver for WINE (32bit)
 Package: wineasio-amd64
 Architecture: amd64
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}, libjack-jackd2-0 | libjack0 | pipewire-jack
 Description: ASIO to JACK driver for WINE (64bit)
  WineASIO is a ASIO driver for Wine,
  allowing to run Windows audio applications with

@@ -1,4 +1,4 @@
-wineasio (5:1.2.0b-1kxstudio6) focal; urgency=medium
+wineasio (5:1.2.0b-4kxstudio1) focal; urgency=medium
 
   * Fix compat with legacy wine
 

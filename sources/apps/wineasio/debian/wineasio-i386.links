@@ -1,8 +1,11 @@
 /usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /usr/lib/i386-linux-gnu/wine/wineasio32.dll.so
 /usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /usr/lib/i386-linux-gnu/wine-development/wineasio32.dll.so
 /usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /opt/wine-devel/lib/wine/i386-unix/wineasio32.dll.so
+/usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /opt/wine-devel/lib/wine/i386-unix/wineasio32.so
 /usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /opt/wine-stable/lib/wine/i386-unix/wineasio32.dll.so
+/usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /opt/wine-stable/lib/wine/i386-unix/wineasio32.so
 /usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /opt/wine-staging/lib/wine/i386-unix/wineasio32.dll.so
+/usr/lib/i386-linux-gnu/wine/i386-unix/wineasio32.dll.so /opt/wine-staging/lib/wine/i386-unix/wineasio32.so
 
 /usr/lib/i386-linux-gnu/wine/i386-windows/wineasio32.dll /usr/lib/i386-linux-gnu/wine/wineasio32.dll
 /usr/lib/i386-linux-gnu/wine/i386-windows/wineasio32.dll /usr/lib/i386-linux-gnu/wine-development/wineasio32.dll

@@ -1,0 +1,4 @@
+debian/binaries/wineasio32.dll
+debian/binaries/wineasio32.dll.so2
+debian/binaries/wineasio64.dll
+debian/binaries/wineasio64.dll.so2

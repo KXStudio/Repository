@@ -8,7 +8,6 @@
 *.upload
 
 files
-include-binaries
 
 /libs/*/*
 !/libs/*/debian
@@ -38,6 +37,7 @@ include-binaries
 /apps/*/debian/*
 !/apps/*/debian/patches
 /apps/*/debian/patches/*
+!/apps/*/debian/binaries
 !/apps/*/debian/patches/*.patch
 !/apps/*/debian/patches/series
 !/apps/*/debian/source

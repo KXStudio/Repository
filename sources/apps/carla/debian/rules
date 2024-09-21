@@ -12,7 +12,7 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	dh_auto_install -- $(EXTRA_MAKE_ARGS)
-	
+
 	# FIXME these properties need to be defined first:
 # 	http://harrisonconsoles.com/lv2/inlinedisplay#interface
 # 	http://harrisonconsoles.com/lv2/inlinedisplay#queue_draw
@@ -22,6 +22,7 @@ override_dh_auto_install:
 override_dh_auto_clean:
 	dh_auto_clean
 	$(MAKE) distclean
+# 	find . -name .libmagic-tmp -delete
 
 override_dh_shlibdeps:
 	dh_shlibdeps

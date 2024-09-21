@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio.mk
+
+DEB_BUILD_ARCH = $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	$(MAKE) distclean
+	find . -name .libmagic-tmp -delete
+
+override_dh_auto_build:
+	$(MAKE) AR=i686-w64-mingw32-ar CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ win32
+	$(MAKE) AR=x86_64-w64-mingw32-ar CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ plugin-wine win64
+	install -m 644 debian/binaries/*.* bin/
+ifeq ($(DEB_BUILD_ARCH),amd64)
+	install -m 644 debian/binaries/bin64/*.* bin/
+else
+	install -m 644 debian/binaries/bin32/*.* bin/
+endif
+# 	$(MAKE) plugin
+# 	$(MAKE) plugin-wine
+# ifeq ($(DEB_BUILD_ARCH),amd64)
+# 	$(MAKE) wine64
+# else
+# 	$(MAKE) wine32
+# endif
+
+override_dh_auto_install:
+	# skip
+
+override_dh_shlibdeps:
+	# skip

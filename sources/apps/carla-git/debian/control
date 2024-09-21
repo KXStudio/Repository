@@ -1,0 +1,75 @@
+Source: carla-git
+Section: sound
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester,
+  pkg-config,
+  libasound2-dev,
+  libpulse-dev,
+  libgl1-mesa-dev | libgl-dev,
+  libglu1-mesa-dev | libglu-dev,
+  libmagic-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  qtbase5-dev,
+  qtbase5-dev-tools,
+  pyqt5-dev-tools,
+  fftw3-static,
+  libfluidsynth-static,
+  liblo-static,
+  libmxml-static,
+  zlib-static
+Standards-Version: 3.9.2
+Homepage: https://kx.studio/Applications:Carla
+XSC-KXStudio-VCS: https://github.com/falkTX/Carla
+
+Package: carla-git
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, carla-git-data (= ${source:Version}), python3-liblo, python3-pyqt5, python3-pyqt5.qtsvg
+Recommends: python3-rdflib, python3-pyqt5.qtopengl
+Breaks: carla, carla-dev, carla-lv2 (<< 5:2.0.0+git20190321), carla-vst (<< 5:2.0.0+git20190321)
+Replaces: carla, carla-dev, carla-lv2 (<< 5:2.0.0+git20190321), carla-vst (<< 5:2.0.0+git20190321)
+Description: audio plugin host
+  Carla is an audio plugin host, with support for many audio drivers and plugin formats.
+  It has some nice features like automation of parameters via MIDI CC and full OSC control.
+  Currently supports LADSPA, DSSI, LV2 and VST plugin formats, plus GIG, SF2 and SFZ sounds banks.
+  .
+  This package contains the main application.
+
+Package: carla-git-data
+Architecture: all
+Depends: ${misc:Depends}
+Breaks: carla-data
+Replaces: carla-data
+Description: audio plugin host (common data)
+  Carla is an audio plugin host, with support for many audio drivers and plugin formats.
+  It has some nice features like automation of parameters via MIDI CC and full OSC control.
+  Currently supports LADSPA, DSSI, LV2 and VST plugin formats, plus GIG, SF2 and SFZ sounds banks.
+  .
+  This package contains common non-binary data.
+
+Package: carla-bridge-linux32
+Architecture: i386
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: carla | carla-git
+Description: audio plugin host (linux32 bridge)
+  Carla is an audio plugin host, with support for many audio drivers and plugin formats.
+  It has some nice features like automation of parameters via MIDI CC and full OSC control.
+  Currently supports LADSPA, DSSI, LV2 and VST plugin formats, plus GIG, SF2 and SFZ sounds banks.
+  .
+  This package provides the linux32 bridge for loading 32bit Linux plugins.
+
+Package: carla-bridge-linux64
+Architecture: amd64
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: carla | carla-git
+Description: audio plugin host (linux64 bridge)
+  Carla is an audio plugin host, with support for many audio drivers and plugin formats.
+  It has some nice features like automation of parameters via MIDI CC and full OSC control.
+  Currently supports LADSPA, DSSI, LV2 and VST plugin formats, plus GIG, SF2 and SFZ sounds banks.
+  .
+  This package provides the linux64 bridge for loading 64bit Linux plugins.

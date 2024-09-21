@@ -1,0 +1,7 @@
+/usr/lib/carla/carla-bridge-win32.exe    /usr/lib/lv2/carla.lv2/carla-bridge-win32.exe
+/usr/lib/carla/carla-discovery-win32.exe /usr/lib/lv2/carla.lv2/carla-discovery-win32.exe
+/usr/lib/carla/jackbridge-wine32.dll     /usr/lib/lv2/carla.lv2/jackbridge-wine32.dll
+
+/usr/lib/carla/carla-bridge-win32.exe    /usr/lib/vst/carla.vst/carla-bridge-win32.exe
+/usr/lib/carla/carla-discovery-win32.exe /usr/lib/vst/carla.vst/carla-discovery-win32.exe
+/usr/lib/carla/jackbridge-wine32.dll     /usr/lib/vst/carla.vst/jackbridge-wine32.dll

@@ -1,0 +1,2 @@
+bin/CarlaVstShellBridged.dll*   /usr/lib/winvst/
+bin/CarlaVstFxShellBridged.dll* /usr/lib/winvst/

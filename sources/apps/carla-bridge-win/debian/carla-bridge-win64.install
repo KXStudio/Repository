@@ -1,0 +1,2 @@
+bin/*-win64.exe           /usr/lib/carla/
+bin/jackbridge-wine64.dll /usr/lib/carla/

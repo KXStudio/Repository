@@ -1,0 +1,5 @@
+/usr/lib/carla/carla-bridge-posix32    /usr/lib/lv2/carla.lv2/carla-bridge-posix32
+/usr/lib/carla/carla-discovery-posix32 /usr/lib/lv2/carla.lv2/carla-discovery-posix32
+
+/usr/lib/carla/carla-bridge-posix32    /usr/lib/vst/carla.vst/carla-bridge-posix32
+/usr/lib/carla/carla-discovery-posix32 /usr/lib/vst/carla.vst/carla-discovery-posix32

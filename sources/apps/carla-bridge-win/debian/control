@@ -1,0 +1,56 @@
+Source: carla-bridge-win
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  pkg-config,
+  libgl1-mesa-dev | libgl-dev,
+  libx11-dev,
+  mingw-w64 [amd64 i386],
+  g++-mingw-w64 [amd64 i386],
+  libwine-dev [amd64 i386],
+  wine32-tools [i386],
+  wine64-tools [amd64]
+Standards-Version: 3.9.2
+Homepage: https://kx.studio/Applications:Carla
+XSC-KXStudio-VCS: https://github.com/falkTX/Carla
+
+Package: carla-bridge-win32
+Architecture: amd64 i386
+Multi-Arch: allowed
+Depends: ${shlibs:Depends}, ${misc:Depends}, wine | wine-development | wine-stable | wine-staging
+Breaks: carla-bridge-wine32 (<< 5:2.0.0+git20190321)
+Replaces: carla-bridge-wine32 (<< 5:2.0.0+git20190321)
+Description: carla 32bit windows bridge
+ This package provides the Carla win32 bridge.
+
+Package: carla-bridge-win64
+Architecture: amd64
+Multi-Arch: allowed
+Depends: ${shlibs:Depends}, ${misc:Depends}, wine | wine-development | wine-stable | wine-staging
+Breaks: carla-bridge-wine64 (<< 5:2.0.0+git20190321)
+Replaces: carla-bridge-wine64 (<< 5:2.0.0+git20190321)
+Description: carla 64bit windows bridge
+ This package provides the Carla win64 bridge.
+
+Package: carla-vst-wine
+Architecture: amd64 i386
+Depends: ${shlibs:Depends}, ${misc:Depends}, carla | carla-git, wine | wine-development | wine-stable | wine-staging
+Description: carla VST for windows applications
+ This package provides the Carla wine VST plugin.
+ .
+ This allows to load Carla inside a Windows host (running under wine) but loading the linux-native version of Carla,
+ thus enabling the use of linux-native plugins inside a Windows host.
+
+Package: carla-bridge-wine32
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: carla-bridge-wine64
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.

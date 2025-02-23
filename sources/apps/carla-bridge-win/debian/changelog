@@ -1,3 +1,9 @@
+carla-bridge-win (5:2.6.0~git20241214-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sat, 14 Dec 2024 21:55:39 +0100
+
 carla-bridge-win (5:2.6.0~git20240921-1kxstudio1) focal; urgency=medium
 
   * New package

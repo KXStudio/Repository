@@ -1,0 +1,23 @@
+Source: lv2-gtk-ui-bridge
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts,
+  libgtk2.0-dev,
+  libgtk-3-dev,
+  lv2-dev,
+  libx11-dev,
+  pkg-config,
+  liblilv-static
+Standards-Version: 4.5.0
+Homepage: https://github.com/falkTX/lv2-gtk-ui-bridge
+Rules-Requires-Root: no
+
+Package: lv2-gtk-ui-bridge
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: lv2-plugin
+Description: LV2 Gtk2/3 UIs as LV2 X11 UIs 
+ lv2-gtk-ui-bridge is a special LV2 bundle that allows to use legacy LV2 Gtk2/3 UIs as LV2 X11 UIs.
+ This increases the compatibility of such UIs to hosts that do not support the legacy UI types.

@@ -4,9 +4,12 @@
 *.debian.*
 *.dsc
 *.orig.*
+*.substvars
 *.tar.*
 *.upload
 
+.debhelper/
+debhelper-build-stamp
 files
 
 /libs/*/*

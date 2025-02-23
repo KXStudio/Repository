@@ -1,3 +1,11 @@
+kxstudio-repos (11.2.0) focal; urgency=medium
+
+  * Update signing key
+  * Remove old falktx key
+  * Cleanup postinst script
+
+ -- falkTX <falktx@falktx.com>  Sun, 23 Feb 2025 19:25:38 +0100
+
 kxstudio-repos (11.1.0) focal; urgency=medium
 
   * Remove old non-PPA repo

@@ -1,0 +1,25 @@
+Source: podcast-plugins
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 8),
+  pkg-config,
+  libgl1-mesa-dev | libgl-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  python3
+Standards-Version: 4.5.0
+Homepage: https://github.com/trummerschlunk/PodcastPlugins
+Rules-Requires-Root: no
+
+Package: podcast-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: standalone-plugin, ladspa-plugin, lv2-plugin, vst-plugin, vst3-plugin, clap-plugin
+Description: Automatic audio mastering plugin
+ Podcast Plugins are easy-to-use plugins for speech enhancement, specifically
+ designed for podcasters who can't or don't want to dig deeper into the craft
+ of sound engineering.

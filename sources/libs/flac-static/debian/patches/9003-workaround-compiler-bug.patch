@@ -1,0 +1,13 @@
+--- flac-static-1.5.0.orig/src/libFLAC/window.c
++++ flac-static-1.5.0/src/libFLAC/window.c
+@@ -178,6 +178,10 @@ void FLAC__window_rectangle(FLAC__real *
+ 		window[n] = 1.0f;
+ }
+ 
++#ifdef __arm__
++/* workaround compiler bug */
++__attribute__((optimize(1)))
++#endif
+ void FLAC__window_triangle(FLAC__real *window, const FLAC__int32 L)
+ {
+ 	FLAC__int32 n;

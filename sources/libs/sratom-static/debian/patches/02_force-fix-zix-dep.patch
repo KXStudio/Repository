@@ -1,0 +1,24 @@
+--- sratom-static-0.6.18.orig/meson.build
++++ sratom-static-0.6.18/meson.build
+@@ -119,6 +119,12 @@ c_suppressions = cc.get_supported_argume
+ 
+ m_dep = cc.find_library('m', required: false)
+ 
++zix_dep = dependency(
++  'zix-0',
++  fallback: 'zix',
++  version: '>= 0.4.0'
++)
++
+ serd_dep = dependency(
+   'serd-0',
+   fallback: 'serd',
+@@ -171,7 +177,7 @@ libsratom = library(
+   sources,
+   c_args: c_suppressions + extra_c_args + ['-DSRATOM_INTERNAL'],
+   darwin_versions: [major_version + '.0.0', meson.project_version()],
+-  dependencies: [m_dep, lv2_dep, serd_dep, sord_dep],
++  dependencies: [m_dep, lv2_dep, zix_dep, serd_dep, sord_dep],
+   gnu_symbol_visibility: 'hidden',
+   include_directories: include_dirs,
+   install: true,

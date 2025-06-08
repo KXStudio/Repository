@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
-  python3,
+  meson,
   libzix-static (>= 6:0.6.2-1kxstudio1)
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/serd/
@@ -12,7 +12,7 @@ Rules-Requires-Root: no
 
 Package: libserd-static
 Architecture: any
-Depends: ${misc:Depends}
+Depends: ${misc:Depends}, libzix-static
 Conflicts: serd-static
 Breaks: serd-static
 Description: lightweight RDF syntax library (static)

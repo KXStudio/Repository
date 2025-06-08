@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
-  python3,
+  meson,
   pkg-config,
   libsord-static (>= 6:0.16.18-1kxstudio1),
   lv2-dev (>= 6:1.18.4-1kxstudio1)

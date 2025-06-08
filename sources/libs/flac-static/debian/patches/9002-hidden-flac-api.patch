@@ -1,54 +1,57 @@
---- flac-static-1.3.3.orig/include/FLAC++/export.h
-+++ flac-static-1.3.3/include/FLAC++/export.h
-@@ -56,24 +56,8 @@
-  * \{
+diff --git a/include/FLAC/export.h b/include/FLAC/export.h
+index cde72b7..3a60cf0 100644
+--- a/include/FLAC/export.h
++++ b/include/FLAC/export.h
+@@ -61,26 +61,8 @@
+  * build static, shared or **both**. Therefore, DLL_EXPORT, which is set
+  * by libtool, must override FLAC__NO_DLL on building shared components
   */
- 
--#if defined(FLAC__NO_DLL)
- #define FLACPP_API
- 
--#elif defined(_MSC_VER)
--#ifdef FLACPP_API_EXPORTS
--#define	FLACPP_API __declspec(dllexport)
+-#if defined(_WIN32)
+-
+-#if defined(FLAC__NO_DLL) && !(defined(DLL_EXPORT))
+-#define FLAC_API
 -#else
--#define FLACPP_API __declspec(dllimport)
--#endif
--
--#elif defined(FLAC__USE_VISIBILITY_ATTR)
--#define FLACPP_API __attribute__ ((visibility ("default")))
--
--#else
--#define FLACPP_API
--
--#endif
--
- /* These #defines will mirror the libtool-based library version number, see
-  * http://www.gnu.org/software/libtool/manual/libtool.html#Libtool-versioning
-  */
---- flac-static-1.3.3.orig/include/FLAC/export.h
-+++ flac-static-1.3.3/include/FLAC/export.h
-@@ -56,24 +56,8 @@
-  * \{
-  */
- 
--#if defined(FLAC__NO_DLL)
- #define FLAC_API
- 
--#elif defined(_MSC_VER)
 -#ifdef FLAC_API_EXPORTS
 -#define	FLAC_API __declspec(dllexport)
 -#else
 -#define FLAC_API __declspec(dllimport)
+-#endif
 -#endif
 -
 -#elif defined(FLAC__USE_VISIBILITY_ATTR)
 -#define FLAC_API __attribute__ ((visibility ("default")))
 -
 -#else
--#define FLAC_API
--
+ #define FLAC_API
+ 
 -#endif
 -
- /** These #defines will mirror the libtool-based library version number, see
+ /** These \#defines will mirror the libtool-based library version number, see
   * http://www.gnu.org/software/libtool/manual/libtool.html#Libtool-versioning
   */
+diff --git a/include/FLAC++/export.h b/include/FLAC++/export.h
+index 19370fa..45b4752 100644
+--- a/include/FLAC++/export.h
++++ b/include/FLAC++/export.h
+@@ -72,21 +72,7 @@
+  * build static, shared or **both**. Therefore, DLL_EXPORT, which is set
+  * by libtool, must override FLAC__NO_DLL on building shared components
+  */
+-#if defined(_WIN32)
+-#if defined(FLAC__NO_DLL) && !(defined(DLL_EXPORT))
+ #define FLACPP_API
+-#else
+-#ifdef FLACPP_API_EXPORTS
+-#define	FLACPP_API __declspec(dllexport)
+-#else
+-#define FLACPP_API __declspec(dllimport)
+-#endif
+-#endif
+-#elif defined(FLAC__USE_VISIBILITY_ATTR)
+-#define FLACPP_API __attribute__ ((visibility ("default")))
+-#else
+-#define FLACPP_API
+-#endif
+ 
+ /** These \#defines will mirror the libtool-based library version number, see
+  * http://www.gnu.org/software/libtool/manual/libtool.html#Libtool-versioning

@@ -15,5 +15,5 @@
  Requires.private: @OGG_PACKAGE@
 -Libs: -L${libdir} -lFLAC
 +Libs: -L${libdir} -lFLAC -logg -lm
- Libs.private: -lm
+ Libs.private: -lm @FLAC_STATIC_LIBS@
  Cflags: -I${includedir}

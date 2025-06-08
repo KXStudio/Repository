@@ -1,3 +1,9 @@
+flac-static (6:1.5.0-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sun, 08 Jun 2025 09:52:14 +0200
+
 flac-static (6:1.3.3-1kxstudio2) focal; urgency=medium
 
   * Initial package

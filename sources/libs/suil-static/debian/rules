@@ -9,23 +9,17 @@ export CFLAGS += -DKXSTUDIO_SUIL_MODULE_DIR='"$(SUIL_MODULE_DIR)"'
 export CXXFLAGS += -DKXSTUDIO_SUIL_MODULE_DIR='"$(SUIL_MODULE_DIR)"'
 export LDFLAGS += -Wl,-z,nodelete
 
-WAF = python3 ./waf
-
 override_dh_auto_configure:
-	$(WAF) configure \
-		--static \
-		--no-shared \
-		--prefix=/opt/kxstudio \
-		--strict
-
-override_dh_auto_build:
-	$(WAF)
-
-override_dh_auto_clean:
-	$(WAF) clean || true
+	dh_auto_configure -- --prefix=/opt/kxstudio --libdir=lib \
+	-Ddefault_library=static \
+	-Ddocs=disabled \
+	-Dgtk2=enabled \
+	-Dgtk3=enabled \
+	-Dqt5=enabled \
+	-Dqt6=disabled
 
 override_dh_auto_install:
-	$(WAF) install --destdir=$(CURDIR)/debian/tmp
+	dh_auto_install
 	mkdir -p $(CURDIR)/debian/tmp/usr/lib/$(DEB_TARGET_MULTIARCH)
 	mv $(CURDIR)/debian/tmp/opt/kxstudio/lib/suil-0 $(CURDIR)/debian/tmp$(SUIL_MODULE_DIR)
 

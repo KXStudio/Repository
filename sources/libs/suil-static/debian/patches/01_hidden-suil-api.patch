@@ -1,0 +1,19 @@
+--- suil-static-0.10.22.orig/include/suil/suil.h
++++ suil-static-0.10.22/include/suil/suil.h
+@@ -21,15 +21,7 @@
+ #endif
+ 
+ // SUIL_API exposes symbols in the public API
+-#ifndef SUIL_API
+-#  ifdef SUIL_STATIC
+-#    define SUIL_API
+-#  elif defined(SUIL_INTERNAL)
+-#    define SUIL_API SUIL_LIB_EXPORT
+-#  else
+-#    define SUIL_API SUIL_LIB_IMPORT
+-#  endif
+-#endif
++#define SUIL_API
+ 
+ #ifdef __cplusplus
+ extern "C" {

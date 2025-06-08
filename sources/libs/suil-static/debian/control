@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
-  python3,
+  meson,
   pkg-config,
   libgtk2.0-dev,
   libgtk-3-dev,

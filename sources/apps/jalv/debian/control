@@ -4,14 +4,14 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
-  python3,
+  meson,
   pkg-config,
   libgtk2.0-dev,
   libgtk-3-dev,
   qtbase5-dev,
   libjack-dev,
-  liblilv-static (>= 6:0.24.14-1kxstudio3),
-  libsuil-static (>= 6:0.10.12-1kxstudio3),
+  liblilv-static (>= 6:0.24.26-1kxstudio1),
+  libsuil-static (>= 6:0.10.22-1kxstudio1),
   lv2-dev (>= 6:1.18.4-1kxstudio3)
 Standards-Version: 4.5.0
 Homepage: https://drobilla.net/software/jalv/
@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 
 Package: jalv
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, libsuil-kxstudio (>= 6:0.10.12-1kxstudio3)
+Depends: ${misc:Depends}, ${shlibs:Depends}, libsuil-kxstudio (>= 6:0.10.22-1kxstudio1)
 Description: tool to run LV2 plugins as stand-alone applications
  jalv is a stand-alone version of lv2jack that supports plugin UIs
  via libsuil. It allows one to run an LV2 plugin as a JACK application.

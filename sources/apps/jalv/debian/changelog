@@ -1,3 +1,9 @@
+jalv (6:1.6.8-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sun, 08 Jun 2025 14:12:55 +0200
+
 jalv (6:1.6.6-1kxstudio1) focal; urgency=medium
 
   * Initial package

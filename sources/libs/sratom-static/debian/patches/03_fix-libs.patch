@@ -1,9 +1,0 @@
---- sratom-static-0.4.4.orig/sratom.pc.in
-+++ sratom-static-0.4.4/sratom.pc.in
-@@ -7,5 +7,5 @@ Name: Sratom
- Version: @SRATOM_VERSION@
- Description: LV2 Atom RDF serialisation library
- Requires: @SRATOM_PKG_DEPS@
--Libs: -L${libdir} -l@LIB_SRATOM@
-+Libs: -L${libdir} -l@LIB_SRATOM@ -lsord-0 -lserd-0 -lm
- Cflags: -I${includedir}/sratom-@SRATOM_MAJOR_VERSION@

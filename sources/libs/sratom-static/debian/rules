@@ -3,27 +3,8 @@
 KXSTUDIO_NO_FASTMATH = y
 include /usr/share/dpkg/kxstudio.mk
 
-WAF = python3 ./waf
-
 override_dh_auto_configure:
-	$(WAF) configure \
-		--static \
-		--no-shared \
-		--prefix=/opt/kxstudio \
-		--strict \
-		--test
-
-override_dh_auto_build:
-	$(WAF)
-
-override_dh_auto_clean:
-	$(WAF) clean || true
-
-override_dh_auto_install:
-	$(WAF) install --destdir=$(CURDIR)/debian/tmp
-
-override_dh_auto_test:
-	$(WAF) test
+	dh_auto_configure -- --prefix=/opt/kxstudio --libdir lib -Ddefault_library=static -Ddocs=disabled
 
 %:
 	dh $@

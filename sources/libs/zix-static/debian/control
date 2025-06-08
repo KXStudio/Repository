@@ -1,0 +1,18 @@
+Source: zix-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  meson
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+
+Package: libzix-static
+Architecture: any
+Depends: ${misc:Depends}
+Description: lightweight RDF syntax library (static)
+ Serd is a lightweight C library for RDF syntax which supports reading
+ and writing Turtle and NTriples.
+ .
+ This package provides the static library used in KXStudio builds.

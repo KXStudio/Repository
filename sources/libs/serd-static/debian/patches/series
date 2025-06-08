@@ -1,3 +1,1 @@
-01_dont-run-ldconfig.patch
-02_hidden-serd-api.patch
-03_force-libs.patch
+01_hidden-serd-api.patch

@@ -1,3 +1,9 @@
+lilv-static (6:0.24.26-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sun, 08 Jun 2025 13:50:34 +0200
+
 lilv-static (6:0.24.14-1kxstudio3) focal; urgency=medium
 
   * Update

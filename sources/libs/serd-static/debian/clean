@@ -1,13 +1,1 @@
-.lock-waf_linux_build
-.lock-waf_linux2_build
-build/.lock-waf_linux_build
-build/.lock-waf_linux2_build
-build/.wafpickle-*
-build/c4che/_cache.py
-build/c4che/build.config.py
-build/config.log
-__pycache__/*.pyc
-waflib/*.pyc
-waflib/*/*.pyc
-waflib/__pycache__/*.pyc
-waflib/*/__pycache__/*.pyc
+test/serd_test_util/__pycache__/*

@@ -4,7 +4,8 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
-  python3
+  python3,
+  libzix-static (>= 6:0.6.2-1kxstudio1)
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/serd/
 Rules-Requires-Root: no

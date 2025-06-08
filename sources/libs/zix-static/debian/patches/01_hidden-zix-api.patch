@@ -1,0 +1,24 @@
+diff --git a/include/zix/attributes.h b/include/zix/attributes.h
+index 518e5fb..c3a5633 100644
+--- a/include/zix/attributes.h
++++ b/include/zix/attributes.h
+@@ -19,18 +19,7 @@
+ #  define ZIX_END_DECLS   ///< End public API definitions
+ #endif
+ 
+-// ZIX_API must be used to decorate things in the public API
+-#ifndef ZIX_API
+-#  if defined(_WIN32) && !defined(ZIX_STATIC) && defined(ZIX_INTERNAL)
+-#    define ZIX_API __declspec(dllexport)
+-#  elif defined(_WIN32) && !defined(ZIX_STATIC)
+-#    define ZIX_API __declspec(dllimport)
+-#  elif defined(__GNUC__)
+-#    define ZIX_API __attribute__((visibility("default")))
+-#  else
+-#    define ZIX_API
+-#  endif
+-#endif
++#define ZIX_API
+ 
+ // GCC function attributes
+ #ifdef __GNUC__

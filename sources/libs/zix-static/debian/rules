@@ -4,7 +4,7 @@ KXSTUDIO_NO_FASTMATH = y
 include /usr/share/dpkg/kxstudio.mk
 
 override_dh_auto_configure:
-	dh_auto_configure -- --prefix=/opt/kxstudio --libdir lib -Ddefault_library=static -Ddocs=disabled
+	dh_auto_configure -- --prefix=/opt/kxstudio --libdir lib -Dbenchmarks=disabled -Ddefault_library=static -Ddocs=disabled
 
 %:
 	dh $@

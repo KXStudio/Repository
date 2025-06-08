@@ -1,0 +1,24 @@
+diff --git a/include/sord/sord.h b/include/sord/sord.h
+index 93f9c07..3e37b0d 100644
+--- a/include/sord/sord.h
++++ b/include/sord/sord.h
+@@ -14,18 +14,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
+-// SORD_API must be used to decorate things in the public API
+-#ifndef SORD_API
+-#  if defined(_WIN32) && !defined(SORD_STATIC) && defined(SORD_INTERNAL)
+-#    define SORD_API __declspec(dllexport)
+-#  elif defined(_WIN32) && !defined(SORD_STATIC)
+-#    define SORD_API __declspec(dllimport)
+-#  elif defined(__GNUC__)
+-#    define SORD_API __attribute__((visibility("default")))
+-#  else
+-#    define SORD_API
+-#  endif
+-#endif
++#define SORD_API
+ 
+ #ifdef __cplusplus
+ extern "C" {

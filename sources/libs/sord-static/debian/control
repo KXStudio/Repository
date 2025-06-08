@@ -7,7 +7,7 @@ Build-Depends: debhelper-compat (= 13),
   python3,
   pkg-config,
   libpcre3-static (>= 6:8.39-1kxstudio2),
-  libserd-static (>= 6:0.30.12-1kxstudio1)
+  libserd-static (>= 6:0.32.4-1kxstudio1)
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/sord/
 Rules-Requires-Root: no

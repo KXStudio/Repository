@@ -1,4 +1,1 @@
-01_dont-run-ldconfig.patch
-02_hidden-lilv-api.patch
-03_fix-static-build.patch
-04_force-libs.patch
+01_hidden-lilv-api.patch

@@ -6,7 +6,7 @@
  Version: @VERSION@
 -Libs: -L${libdir} -lsndfile
 -Libs.private: @EXTERNAL_MPEG_LIBS@
-+Libs: -L${libdir} -lsndfile -lmp3lame -lmpg123 -lopus -lFLAC -lvorbisenc -lvorbis -logg -lm
++Libs: -L${libdir} -lsndfile -lmp3lame -lmpg123 -lopus -lFLAC -lvorbisenc -lvorbis -logg -lm -pthread
 +Libs.private:
  Cflags: -I${includedir}
  

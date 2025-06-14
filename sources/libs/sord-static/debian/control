@@ -6,7 +6,7 @@ Build-Depends: debhelper-compat (= 13),
   kxstudio-build-scripts (>= 5),
   meson,
   pkg-config,
-  libpcre3-static (>= 6:8.39-1kxstudio2),
+  libpcre2-dev,
   libserd-static (>= 6:0.32.4-1kxstudio1)
 Standards-Version: 4.5.0
 Homepage: http://drobilla.net/software/sord/

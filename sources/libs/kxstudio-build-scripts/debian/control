@@ -16,6 +16,7 @@ Package: kxstudio-audio-plugin-tester
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
     kxstudio-build-scripts,
+    darkglass-lv2-extensions,
     kxstudio-lv2-extensions,
     mod-lv2-extensions,
     lilv-utils,

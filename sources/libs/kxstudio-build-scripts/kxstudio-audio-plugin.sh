@@ -43,11 +43,12 @@ export LV2_PATH=$(pwd)/debian/${PKG_NAME}/usr/lib/lv2:/tmp/lv2-spec
 rm -rf /tmp/lv2-spec
 mkdir /tmp/lv2-spec
 cp -r /usr/lib/lv2/{atom,buf-size,core,data-access,instance-access,midi,parameters,port-groups,port-props,options,patch,presets,resize-port,state,time,ui,units,urid,worker}.lv2 /tmp/lv2-spec/
-cp -r /usr/lib/lv2/kx-* /usr/lib/lv2/mod.lv2 /usr/lib/lv2/modgui.lv2 /usr/lib/lv2/mod-hmi.lv2 /usr/lib/lv2/mod-license.lv2 /tmp/lv2-spec/
+cp -r /usr/lib/lv2/dg-* /usr/lib/lv2/kx-* /usr/lib/lv2/mod.lv2 /usr/lib/lv2/modgui.lv2 /usr/lib/lv2/mod-hmi.lv2 /usr/lib/lv2/mod-license.lv2 /tmp/lv2-spec/
 
 if [ -d debian/${PKG_NAME}/usr/lib/lv2 ]; then
     pushd debian/${PKG_NAME}/usr/lib/lv2
     lv2_validate \
+        /usr/lib/lv2/dg-*/*.ttl \
         /usr/lib/lv2/kx-*/*.ttl \
         /usr/lib/lv2/mod.lv2/*.ttl \
         /usr/lib/lv2/modgui.lv2/*.ttl \

@@ -1,0 +1,35 @@
+Source: zam-plugins
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 8),
+  pkg-config,
+  libgl1-mesa-dev | libgl-dev,
+  libx11-dev,
+  libxcursor-dev,
+  libxext-dev,
+  libxrandr-dev,
+  liblo-static,
+  libsamplerate-static,
+  fftw3-static
+Standards-Version: 4.5.0
+Homepage: http://www.zamaudio.com/?p=976
+XSC-KXStudio-VCS: https://github.com/zamaudio/zam-plugins
+Rules-Requires-Root: no
+
+Package: zam-plugins
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Provides: standalone-plugin, ladspa-plugin, lv2-plugin, vst-plugin
+Description: Collection of LV2, LADSPA, LINUX-VST and JACK plugins
+ Plugins for high quality audio processing.
+ .
+ The purpose of these plugins is to provide high quality DSP without
+ using an excessive amount of CPU.
+ .
+ There currently is no official documentation on how to use these plugins,
+ but anyone who is familiar with outboard gear should be able to work it out.
+ The default settings and almost every slider is calibrated to standard ranges.

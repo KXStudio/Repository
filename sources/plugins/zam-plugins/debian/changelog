@@ -1,0 +1,148 @@
+zam-plugins (6:4.4-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sat, 21 Jun 2025 17:04:15 +0200
+
+zam-plugins (5:3.14-1kxstudio1) bionic; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Sun, 20 Dec 2020 11:49:42 +0000
+
+zam-plugins (5:3.13) bionic; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Sun, 19 Jul 2020 18:07:49 +0100
+
+zam-plugins (5:3.12.1) bionic; urgency=medium
+
+  * Rebuild for math problems
+
+ -- falkTX <falktx@gmail.com>  Thu, 14 May 2020 14:41:58 +0100
+
+zam-plugins (5:3.12) bionic; urgency=medium
+
+  * Update to tagged release
+
+ -- falkTX <falktx@gmail.com>  Sun, 15 Dec 2019 15:20:42 +0000
+
+zam-plugins (5:3.11+git20190808.3) bionic; urgency=medium
+
+  * Update and build for arm
+
+ -- falkTX <falktx@gmail.com>  Sun, 08 Sep 2019 03:39:54 +0100
+
+zam-plugins (1:3.10-1kxstudio2) trusty; urgency=medium
+
+  * Compress package
+
+ -- falkTX <falktx@gmail.com>  Mon, 02 Apr 2018 23:23:04 +0200
+
+zam-plugins (1:3.10-1kxstudio1) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Sun, 18 Feb 2018 14:23:46 +0100
+
+zam-plugins (1:3.9-1kxstudio1) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Sun, 04 Feb 2018 18:25:02 +0100
+
+zam-plugins (1:3.8-1kxstudio1) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Tue, 09 May 2017 15:12:46 +0100
+
+zam-plugins (1:3.7-1kxstudio1) trusty; urgency=medium
+
+  * Update to 3.7 version
+
+ -- falkTX <falktx@gmail.com>  Wed, 27 Jul 2016 11:24:34 +0200
+
+zam-plugins (1:3.6+git20151113-1kxstudio1) trusty; urgency=medium
+
+  * Update to latest git
+
+ -- falkTX <falktx@gmail.com>  Mon, 02 Nov 2015 16:36:46 +0100
+
+zam-plugins (1:3.5-1kxstudio1) lucid; urgency=medium
+
+  * Backport, don't disable optimizations on 32bit
+
+ -- falkTX <falktx@gmail.com>  Wed, 29 Oct 2014 01:21:23 +0000
+
+zam-plugins (3.5~repack0-7) unstable; urgency=medium
+
+  * Fix build on hurd-i386.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Sun, 19 Oct 2014 22:45:23 +0200
+
+zam-plugins (3.5~repack0-6) unstable; urgency=medium
+
+  * Disable build on hurd-i386.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Sun, 19 Oct 2014 22:15:45 +0200
+
+zam-plugins (3.5~repack0-5) unstable; urgency=medium
+
+  * Fix watch file.
+  * Fix build on non linux (Closes: #765617) (Closes: #765613)
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Thu, 16 Oct 2014 20:17:46 +0200
+
+zam-plugins (3.5~repack0-4) unstable; urgency=medium
+
+  * Build arch linux-any.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Wed, 15 Oct 2014 12:11:46 +0200
+
+zam-plugins (3.5~repack0-3) unstable; urgency=medium
+
+  * Fix source in copyright file.
+  * Fix homepage.
+  * Update README.debian file.
+  * Tune g++ flags for amd64 i386.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Wed, 15 Oct 2014 07:25:09 +0200
+
+zam-plugins (3.5~repack0-2) unstable; urgency=medium
+
+  * Tune g++ flags.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Tue, 14 Oct 2014 23:32:21 +0200
+
+zam-plugins (3.5~repack0-1) unstable; urgency=low
+
+  * Imported Upstream version 3.5~repack0
+  * Update description.
+  * Update copyright file.
+  * Added fix install patch.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Tue, 14 Oct 2014 12:32:37 +0200
+
+zam-plugins (3.3~repack0-1) experimental; urgency=low
+
+  * Imported Upstream version 3.2~repack0
+  * Add get-orig-source to rules file.
+  * Compression now tar.gz.
+  * Remove unused build deps.
+  * Added liblo-dev and libjack-dev as build deps.
+  * Tuned build deps for libgl-dev.
+  * Bump Standards.
+  * Add libgl-dev to build deps.
+  * Use embeded libs.
+  * Refreshed patch.
+  * Added local-options file. 
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Sun, 13 Jul 2014 11:43:07 +0200
+
+zam-plugins (2.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #730305)
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Mon, 02 Dec 2013 17:38:15 +0100

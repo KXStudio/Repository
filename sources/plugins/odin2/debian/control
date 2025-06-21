@@ -1,0 +1,23 @@
+Source: odin2
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 13),
+  distrho-juce-6.1-dev
+Standards-Version: 4.5.0
+Homepage: https://thewavewarden.com/pages/odin-2
+XSC-KXStudio-VCS: https://github.com/DISTRHO-Ports/odin2/
+Rules-Requires-Root: no
+
+Package: odin2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin, vst-plugin, vst3-plugin
+Description: 24-voice polyphonic synthesizer
+ Odin 2 is a 24-voice polyphonic powerhouse that will transport you from your studio straight to Valhalla.
+ Whether you're after earth-shattering basses, soaring leads, or otherworldly FX, Odin 2 delivers it all.
+ Harness the classic warmth of analog waveforms — or draw custom ones.
+ High-quality emulations of legendary analog filters, like the Moog Ladder, the Korg 35 and many more let you shape your sound.
+ Finish it off with five onboard FX or dive into endless modulation possibilities.
+ There’s a whole world to explore in Odin 2.

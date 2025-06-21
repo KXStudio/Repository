@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio-audio-plugin.mk
+
+export LDFLAGS += -Wl,--version-script=$(CURDIR)/debian/odin2.sym
+export LV2LINT_EXTRA_FLAGS = -t 'UI*Widget'
+
+export LV2LINT_SKIP = y
+#   <https://github.com/vitling/crypt#ParentUI>
+#     [FAIL]  UI Widget
+#               failed to return a valid widget
+#               seeAlso: <http://lv2plug.in/ns/extensions/ui#X11UI>
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_BUILD_TYPE=Release
+
+override_dh_auto_build:
+	DESTDIR=$(CURDIR)/tmp dh_auto_build -- -j2
+
+override_dh_auto_install:
+	mv $(CURDIR)/tmp $(CURDIR)/debian/odin2
+	# has many memory issues
+	# $(call kxstudio_audio_plugin_test)
+
+%:
+	dh $@ -Scmake

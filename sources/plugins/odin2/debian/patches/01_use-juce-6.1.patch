@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73244371..2503ca01 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@ project(Odin2 VERSION 2.4.1 LANGUAGES C CXX ASM)
+ 
+ # ================== CMake Subdirs ======================
+ add_subdirectory(libs/clap-juce-extensions EXCLUDE_FROM_ALL)
+-find_package(JUCE REQUIRED)
++find_package(JUCE-6.1.6 REQUIRED)
+ 
+ # ================= Git Commit Hash =====================
+ find_package(Git)

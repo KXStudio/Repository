@@ -1,0 +1,31 @@
+--- vitling-crypt-0.3.0+git2025-06-25.orig/CMakeLists.txt
++++ vitling-crypt-0.3.0+git2025-06-25/CMakeLists.txt
+@@ -19,7 +19,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET 10.12 CA
+ 
+ project(CRYPT_SYNTH_PLUGIN VERSION 0.3.0)
+ 
+-find_package(JUCE REQUIRED)
++find_package(JUCE-6.1.6 REQUIRED)
+ 
+ juce_add_plugin(CryptSynthPlugin
+         VERSION 0.3.0                               # Set this if the plugin version is different to the project version
+--- vitling-crypt-0.3.0+git2025-06-25.orig/CryptPlugin.cpp
++++ vitling-crypt-0.3.0+git2025-06-25/CryptPlugin.cpp
+@@ -128,7 +128,7 @@ public:
+ 
+         fillWaveTable();
+ 
+-        envParams = {.attack = getParameterValue("attack"), .decay = 0.1, .sustain = 1.0, .release = getParameterValue("release")};
++        envParams = {getParameterValue("attack"), 0.1, 1.0, getParameterValue("release")};
+     }
+ 
+     ~SuperSawVoice() override = default;
+@@ -157,7 +157,7 @@ public:
+ 
+     void startNote(int midiNoteNumber, float velocity, juce::SynthesiserSound *sound, int currentPitchWheelPosition) override {
+         envelope.setSampleRate(getSampleRate());
+-        envParams = {.attack = getParameterValue("attack"), .decay = 0.1, .sustain = 1.0, .release = getParameterValue("release")};
++        envParams = {getParameterValue("attack"), 0.1, 1.0, getParameterValue("release")};
+         envelope.setParameters(envParams);
+ 
+         setFrequency(MidiMessage::getMidiNoteInHertz(midiNoteNumber), getParameterValue("spread"), true);

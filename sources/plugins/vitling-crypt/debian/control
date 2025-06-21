@@ -4,10 +4,10 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-audio-plugin-tester (>= 13),
-  distrho-juce6-dev (>= 6:6.0.7+git2022-06-22-62658da8-1kxstudio1)
+  distrho-juce-6.1-dev
 Standards-Version: 4.5.0
 Homepage: https://www.vitling.xyz/plugins/
-XSC-KXStudio-VCS: https://github.com/DISTRHO-Ports/crypt/
+XSC-KXStudio-VCS: https://github.com/DISTRHO-Ports/vitling-crypt/
 Rules-Requires-Root: no
 
 Package: vitling-crypt

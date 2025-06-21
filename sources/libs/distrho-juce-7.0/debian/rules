@@ -13,7 +13,7 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	dh_auto_build
-	make -C extras/Projucer/Builds/LinuxMakefile CONFIG=Release
+	make -C extras/Projucer/Builds/LinuxMakefile CONFIG=Release -j $(nproc)
 
 override_dh_auto_clean:
 	dh_auto_clean

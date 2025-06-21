@@ -1,3 +1,9 @@
+distrho-juce-7.0 (6:7.0.9+git2024-11-07-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sat, 21 Jun 2025 22:42:05 +0200
+
 distrho-juce-7.0 (6:7.0.9+git2023-12-25-1kxstudio2) focal; urgency=medium
 
   * Initial package

@@ -2,5 +2,6 @@
 02_skip-alsa-dependency.patch
 03_versioned-juceaide.patch
 04_copy-to-destdir.patch
-05_projucer-setup.patch
-06_disable-xinerama.patch
+05_always-generate-lv2-helper.patch
+06_projucer-setup.patch
+07_disable-xinerama.patch

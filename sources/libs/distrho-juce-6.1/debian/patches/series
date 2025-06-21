@@ -2,3 +2,4 @@
 02_skip-alsa-dependency.patch
 03_versioned-juceaide.patch
 04_copy-to-destdir.patch
+05_disable-xinerama.patch

@@ -1,0 +1,2 @@
+src/tunefish4/Builds/LinuxMakefile/build/Tunefish4.lv2/*.* /usr/lib/lv2/Tunefish4.lv2/
+src/tunefish4/Builds/LinuxMakefile/build/Tunefish4.so      /usr/lib/vst/

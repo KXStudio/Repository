@@ -1,0 +1,20 @@
+Source: tunefish4
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 13),
+  distrho-juce-6.0-dev
+Standards-Version: 4.5.0
+Homepage: https://thewavewarden.com/pages/odin-2
+XSC-KXStudio-VCS: https://github.com/DISTRHO-Ports/tunefish4/
+Rules-Requires-Root: no
+
+Package: tunefish4
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin, vst-plugin
+Description: tiny virtual synthesizer
+ Tunefish is a very tiny virtual analog synthesizer.
+ It is developed to fit into about 10kb of compressed machine code while still producing an audio quality that can compete with commercial synthesizers.
+ This plugin, unlike the version of TF which is used in 64k intros is of course larger, mainly because it has a UI and uses the excellent Juce framework for C++.

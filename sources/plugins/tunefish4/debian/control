@@ -4,14 +4,15 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   kxstudio-audio-plugin-tester (>= 13),
-  distrho-juce-6.0-dev
+  distrho-juce-6.0-dev,
+  python
 Standards-Version: 4.5.0
 Homepage: https://thewavewarden.com/pages/odin-2
 XSC-KXStudio-VCS: https://github.com/DISTRHO-Ports/tunefish4/
 Rules-Requires-Root: no
 
 Package: tunefish4
-Architecture: any
+Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Provides: lv2-plugin, vst-plugin
 Description: tiny virtual synthesizer

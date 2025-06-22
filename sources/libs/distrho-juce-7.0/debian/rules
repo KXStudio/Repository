@@ -1,5 +1,6 @@
 #!/usr/bin/make -f
 
+KXSTUDIO_NO_LTO = y
 include /usr/share/dpkg/kxstudio.mk
 
 export CXXFLAGS += -DJUCER_ENABLE_GPL_MODE=1
@@ -13,7 +14,7 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	dh_auto_build
-	make -C extras/Projucer/Builds/LinuxMakefile CONFIG=Release -j $(nproc)
+	make -C extras/Projucer/Builds/LinuxMakefile CONFIG=Release -j 2
 
 override_dh_auto_clean:
 	dh_auto_clean

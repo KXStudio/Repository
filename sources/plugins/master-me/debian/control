@@ -10,7 +10,7 @@ Build-Depends: debhelper-compat (= 13),
   libxcursor-dev,
   libxext-dev,
   libxrandr-dev,
-  faustpp
+  python3
 Standards-Version: 4.5.0
 Homepage: https://github.com/trummerschlunk/master_me
 Rules-Requires-Root: no

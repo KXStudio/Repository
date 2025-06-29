@@ -7,7 +7,7 @@ Build-Depends: debhelper-compat (= 13),
   distrho-juce-6.0-dev,
   python
 Standards-Version: 4.5.0
-Homepage: https://thewavewarden.com/pages/odin-2
+Homepage: https://tunefish-synth.com/
 XSC-KXStudio-VCS: https://github.com/DISTRHO-Ports/tunefish4/
 Rules-Requires-Root: no
 

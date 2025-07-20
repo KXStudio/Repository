@@ -1,0 +1,18 @@
+Source: j2sc
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  python3-pyqt6,
+  pyqt6-dev-tools
+Standards-Version: 4.5.0
+Homepage: https://kx.studio/Applications:J2SC
+Rules-Requires-Root: no
+
+Package: j2sc
+Architecture: all
+Depends: ${misc:Depends}, jackd2, python3-dbus, python3-pyqt6
+Recommends: a2jmidid
+Description: JACK 2 Simple Configurator
+ J2SC stands for JACK 2 Simple Configurator and is, as the name says, a
+ configuration tool for JACK2.

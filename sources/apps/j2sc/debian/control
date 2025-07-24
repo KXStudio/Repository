@@ -7,11 +7,12 @@ Build-Depends: debhelper-compat (= 13),
   pyqt6-dev-tools
 Standards-Version: 4.5.0
 Homepage: https://kx.studio/Applications:J2SC
+XSC-KXStudio-VCS: https://github.com/falkTX/J2SC
 Rules-Requires-Root: no
 
 Package: j2sc
 Architecture: all
-Depends: ${misc:Depends}, jackd2, python3-dbus, python3-pyqt6
+Depends: ${misc:Depends}, jackd2, python3-dbus, python3-dbus.mainloop.pyqt6, python3-pyqt6
 Recommends: a2jmidid
 Description: JACK 2 Simple Configurator
  J2SC stands for JACK 2 Simple Configurator and is, as the name says, a

@@ -1,3 +1,9 @@
+wineasio (5:1.3.0-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Thu, 24 Jul 2025 21:58:52 +0200
+
 wineasio (5:1.2.0b-4kxstudio1) focal; urgency=medium
 
   * Fix compat with legacy wine

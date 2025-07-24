@@ -22,7 +22,7 @@ Description: ASIO to JACK driver for WINE
 
 Package: wineasio-data
 Architecture: all
-Depends: ${misc:Depends}, python3-pyqt5
+Depends: ${misc:Depends}, python3-pyqt6 | python3-pyqt5
 Description: ASIO to JACK driver for WINE
  WineASIO is a ASIO driver for Wine,
  allowing to run Windows audio applications with

@@ -1,0 +1,24 @@
+Source: helio-workstation
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester,
+  libfreetype6-dev, libx11-dev, libxcomposite-dev, libxrender-dev, libxcursor-dev,
+  libxinerama-dev, libxext-dev, libxrandr-dev,
+  libasound2-dev, libjack-jackd2-dev,
+  ladspa-sdk,
+  libgl1-mesa-dev | libgl-dev, libglu1-mesa-dev | libglu-dev
+Standards-Version: 4.5.0
+Homepage: https://helio.fm/
+XSC-KXStudio-VCS: https://github.com/helio-fm/helio-sequencer/
+Rules-Requires-Root: no
+
+Package: helio-workstation
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: music sequencer designed to be used on all major platforms
+  Helio is free and open-source software, aimed to be a modern music creation tool;
+  It features high-performance core, linear-based sequencer with clean interface,
+  integrated version control providing intelligent synchronization between devices,
+  saved undo history, UI translations and themes, and more.

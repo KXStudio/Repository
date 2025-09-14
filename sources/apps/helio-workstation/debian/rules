@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio-audio-plugin.mk
+
+ifeq ($(DEB_HOST_ARCH),armhf)
+TARGET_ARCH = -march=armv7ve
+else ifeq ($(DEB_HOST_ARCH),arm64)
+DEB_HOST_64BIT = true
+TARGET_ARCH = -march=armv8-a
+else
+DEB_HOST_64BIT = true
+TARGET_ARCH =
+endif
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+ifeq ($(DEB_HOST_64BIT),true)
+	$(MAKE) -C $(CURDIR)/Projects/LinuxMakefile CONFIG=Release64 TARGET_ARCH=$(TARGET_ARCH) clean
+else
+	$(MAKE) -C $(CURDIR)/Projects/LinuxMakefile CONFIG=Release32 TARGET_ARCH=$(TARGET_ARCH) clean
+endif
+
+override_dh_auto_build:
+ifeq ($(DEB_HOST_64BIT),true)
+	$(MAKE) -C $(CURDIR)/Projects/LinuxMakefile CONFIG=Release64 TARGET_ARCH=$(TARGET_ARCH) -j $(shell nproc)
+else
+	$(MAKE) -C $(CURDIR)/Projects/LinuxMakefile CONFIG=Release32 TARGET_ARCH=$(TARGET_ARCH) -j $(shell nproc)
+endif

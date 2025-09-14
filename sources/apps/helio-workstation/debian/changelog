@@ -1,0 +1,29 @@
+helio-workstation (6:3.16-1kxstudio1) focal; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@falktx.com>  Sun, 14 Sep 2025 16:59:41 +0200
+
+helio-workstation (5:3.3+distrhojuce2) bionic; urgency=medium
+
+  * Set homepage in control file
+
+ -- falkTX <falktx@gmail.com>  Sun, 28 Feb 2021 14:29:20 +0000
+
+helio-workstation (5:3.3+distrhojuce1) bionic; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Sat, 27 Feb 2021 18:00:21 +0000
+
+helio-workstation (5:3.0+distrhojuce2) bionic; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Thu, 02 Jul 2020 21:30:08 +0100
+
+helio-workstation (2:1.7+git20170831.2) trusty; urgency=medium
+
+  * Initial package
+
+ -- falkTX <falktx@gmail.com>  Mon, 28 Aug 2017 09:59:51 +0100

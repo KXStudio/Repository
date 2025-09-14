@@ -1,0 +1,3 @@
+Projects/LinuxMakefile/build/helio /usr/bin/
+Resources/logo-v2.png              /usr/share/helio-workstation/
+debian/helio-workstation.desktop   /usr/share/applications/

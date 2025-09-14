@@ -1,0 +1,360 @@
+diff --git a/Projects/LinuxMakefile/Makefile b/Projects/LinuxMakefile/Makefile
+index 0e1965c..4fde8aa 100644
+--- a/Projects/LinuxMakefile/Makefile
++++ b/Projects/LinuxMakefile/Makefile
+@@ -35,13 +35,13 @@ ifeq ($(CONFIG),Debug)
+     TARGET_ARCH := 
+   endif
+ 
+-  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DDEBUG=1" "-D_DEBUG=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2 libcurl) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
++  JUCE_CPPFLAGS := $(DEPFLAGS) "-DNO_NETWORK" "-DJUCE_USE_CURL=0" "-DJUCE_MODAL_LOOPS_PERMITTED=1" "-DLINUX=1" "-DDEBUG=1" "-D_DEBUG=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
+   JUCE_CPPFLAGS_APP :=  "-DJucePlugin_Build_VST=0" "-DJucePlugin_Build_VST3=0" "-DJucePlugin_Build_AU=0" "-DJucePlugin_Build_AUv3=0" "-DJucePlugin_Build_RTAS=0" "-DJucePlugin_Build_AAX=0" "-DJucePlugin_Build_Standalone=0" "-DJucePlugin_Build_Unity=0"
+   JUCE_TARGET_APP := helio
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0 -fpermissive -Wno-unknown-pragmas -Wno-reorder -Wno-dynamic-class-memaccess $(CFLAGS)
+-  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++14 $(CXXFLAGS)
+-  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2 libcurl) -fvisibility=hidden -lrt -ldl -lpthread -lGL $(LDFLAGS)
++  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++17 $(CXXFLAGS)
++  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2) -fvisibility=hidden -lrt -ldl -lpthread -lGL $(LDFLAGS)
+ 
+   CLEANCMD = rm -rf $(JUCE_OUTDIR)/$(TARGET) $(JUCE_OBJDIR)
+ endif
+@@ -56,13 +56,13 @@ ifeq ($(CONFIG),Tests)
+     TARGET_ARCH := 
+   endif
+ 
+-  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DDEBUG=1" "-D_DEBUG=1" "-DJUCE_UNIT_TESTS=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2 libcurl) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
++  JUCE_CPPFLAGS := $(DEPFLAGS) "-DNO_NETWORK" "-DJUCE_USE_CURL=0" "-DJUCE_MODAL_LOOPS_PERMITTED=1" "-DLINUX=1" "-DDEBUG=1" "-D_DEBUG=1" "-DJUCE_UNIT_TESTS=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
+   JUCE_CPPFLAGS_APP :=  "-DJucePlugin_Build_VST=0" "-DJucePlugin_Build_VST3=0" "-DJucePlugin_Build_AU=0" "-DJucePlugin_Build_AUv3=0" "-DJucePlugin_Build_RTAS=0" "-DJucePlugin_Build_AAX=0" "-DJucePlugin_Build_Standalone=0" "-DJucePlugin_Build_Unity=0"
+   JUCE_TARGET_APP := helio
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0 -fpermissive -Wno-unknown-pragmas -Wno-reorder -Wno-dynamic-class-memaccess $(CFLAGS)
+-  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++14 $(CXXFLAGS)
+-  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2 libcurl) -fvisibility=hidden -lrt -ldl -lpthread -lGL $(LDFLAGS)
++  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++17 $(CXXFLAGS)
++  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2) -fvisibility=hidden -lrt -ldl -lpthread -lGL $(LDFLAGS)
+ 
+   CLEANCMD = rm -rf $(JUCE_OUTDIR)/$(TARGET) $(JUCE_OBJDIR)
+ endif
+@@ -77,13 +77,13 @@ ifeq ($(CONFIG),Release32)
+     TARGET_ARCH := -m32
+   endif
+ 
+-  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DNDEBUG=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2 libcurl) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
++  JUCE_CPPFLAGS := $(DEPFLAGS) "-DNO_NETWORK" "-DJUCE_USE_CURL=0" "-DJUCE_MODAL_LOOPS_PERMITTED=1" "-DLINUX=1" "-DNDEBUG=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
+   JUCE_CPPFLAGS_APP :=  "-DJucePlugin_Build_VST=0" "-DJucePlugin_Build_VST3=0" "-DJucePlugin_Build_AU=0" "-DJucePlugin_Build_AUv3=0" "-DJucePlugin_Build_RTAS=0" "-DJucePlugin_Build_AAX=0" "-DJucePlugin_Build_Standalone=0" "-DJucePlugin_Build_Unity=0"
+   JUCE_TARGET_APP := helio
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -O3 -flto -fpermissive -Wno-unknown-pragmas -Wno-reorder -Wno-dynamic-class-memaccess $(CFLAGS)
+-  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++14 $(CXXFLAGS)
+-  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2 libcurl) -fvisibility=hidden -flto -lrt -ldl -lpthread -lGL $(LDFLAGS)
++  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++17 $(CXXFLAGS)
++  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2) -fvisibility=hidden -flto -lrt -ldl -lpthread -lGL $(LDFLAGS)
+ 
+   CLEANCMD = rm -rf $(JUCE_OUTDIR)/$(TARGET) $(JUCE_OBJDIR)
+ endif
+@@ -98,13 +98,13 @@ ifeq ($(CONFIG),Release64)
+     TARGET_ARCH := -m64
+   endif
+ 
+-  JUCE_CPPFLAGS := $(DEPFLAGS) "-DLINUX=1" "-DNDEBUG=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2 libcurl) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
++  JUCE_CPPFLAGS := $(DEPFLAGS) "-DNO_NETWORK" "-DJUCE_USE_CURL=0" "-DJUCE_MODAL_LOOPS_PERMITTED=1" "-DLINUX=1" "-DNDEBUG=1" "-DJUCER_LINUX_MAKE_B650AE49=1" "-DJUCE_APP_VERSION=3.16" "-DJUCE_APP_VERSION_HEX=0x31000" $(shell pkg-config --cflags alsa freetype2) -pthread -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../Projucer/JuceLibraryCode -I../../ThirdParty/JUCE/modules -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/serd -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sord/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/sratom -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lilv/src -I../../ThirdParty/JUCE/modules/juce_audio_processors/format_types/LV2_SDK/lv2 -I../../ThirdParty/ASIO/common -I../../Source/ -I../../Source/Core -I../../Source/Core/Audio -I../../Source/Core/Audio/BuiltIn -I../../Source/Core/Audio/BuiltIn/SoundFont -I../../Source/Core/Audio/Instruments -I../../Source/Core/Audio/Transport -I../../Source/Core/Configuration -I../../Source/Core/Configuration/Resources -I../../Source/Core/Configuration/Resources/Models -I../../Source/Core/CommandPalette -I../../Source/Core/Midi -I../../Source/Core/Midi/Patterns -I../../Source/Core/Midi/Patterns/Modifiers -I../../Source/Core/Midi/Sequences -I../../Source/Core/Midi/Sequences/Events -I../../Source/Core/Network -I../../Source/Core/Network/Models -I../../Source/Core/Network/Requests -I../../Source/Core/Network/Services -I../../Source/Core/Serialization -I../../Source/Core/Tree -I../../Source/Core/Undo -I../../Source/Core/Undo/Actions -I../../Source/Core/VCS -I../../Source/Core/VCS/DiffLogic -I../../Source/Core/Workspace -I../../Source/UI/ -I../../Source/UI/Common -I../../Source/UI/Dialogs -I../../Source/UI/Headline -I../../Source/UI/Input -I../../Source/UI/Menus -I../../Source/UI/Menus/Base -I../../Source/UI/Menus/SelectionMenus -I../../Source/UI/Pages/Instruments -I../../Source/UI/Pages/Instruments/Editor -I../../Source/UI/Pages/Project -I../../Source/UI/Pages/Settings -I../../Source/UI/Pages/VCS -I../../Source/UI/Pages/Dashboard -I../../Source/UI/Popups -I../../Source/UI/Sequencer -I../../Source/UI/Sequencer/EditorPanels -I../../Source/UI/Sequencer/EditorPanels/AutomationEditor -I../../Source/UI/Sequencer/EditorPanels/VelocityEditor -I../../Source/UI/Sequencer/Header -I../../Source/UI/Sequencer/Helpers -I../../Source/UI/Sequencer/MiniMaps -I../../Source/UI/Sequencer/MiniMaps/AnnotationsMap -I../../Source/UI/Sequencer/MiniMaps/KeySignaturesMap -I../../Source/UI/Sequencer/MiniMaps/PianoMap -I../../Source/UI/Sequencer/MiniMaps/TimeSignaturesMap -I../../Source/UI/Sequencer/PatternRoll -I../../Source/UI/Sequencer/PianoRoll -I../../Source/UI/Sequencer/Sidebars -I../../Source/UI/Themes $(CPPFLAGS)
+   JUCE_CPPFLAGS_APP :=  "-DJucePlugin_Build_VST=0" "-DJucePlugin_Build_VST3=0" "-DJucePlugin_Build_AU=0" "-DJucePlugin_Build_AUv3=0" "-DJucePlugin_Build_RTAS=0" "-DJucePlugin_Build_AAX=0" "-DJucePlugin_Build_Standalone=0" "-DJucePlugin_Build_Unity=0"
+   JUCE_TARGET_APP := helio
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -O3 -flto -fpermissive -Wno-unknown-pragmas -Wno-reorder -Wno-dynamic-class-memaccess $(CFLAGS)
+-  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++14 $(CXXFLAGS)
+-  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2 libcurl) -fvisibility=hidden -flto -lrt -ldl -lpthread -lGL $(LDFLAGS)
++  JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++17 $(CXXFLAGS)
++  JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2) -fvisibility=hidden -flto -lrt -ldl -lpthread -lGL $(LDFLAGS)
+ 
+   CLEANCMD = rm -rf $(JUCE_OUTDIR)/$(TARGET) $(JUCE_OBJDIR)
+ endif
+@@ -132,7 +132,7 @@ all : $(JUCE_OUTDIR)/$(JUCE_TARGET_APP)
+ 
+ $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) : $(OBJECTS_APP) $(RESOURCES)
+ 	@command -v pkg-config >/dev/null 2>&1 || { echo >&2 "pkg-config not installed. Please, install it."; exit 1; }
+-	@pkg-config --print-errors alsa freetype2 libcurl
++	@pkg-config --print-errors alsa freetype2
+ 	@echo Linking "Helio - App"
+ 	-$(V_AT)mkdir -p $(JUCE_BINDIR)
+ 	-$(V_AT)mkdir -p $(JUCE_LIBDIR)
+diff --git a/Source/Core/Audio/AudioMonitor.cpp b/Source/Core/Audio/AudioMonitor.cpp
+index a590ada..1dbccca 100644
+--- a/Source/Core/Audio/AudioMonitor.cpp
++++ b/Source/Core/Audio/AudioMonitor.cpp
+@@ -74,8 +74,12 @@ void AudioMonitor::audioDeviceAboutToStart(AudioIODevice *device)
+     this->sampleRate = device->getCurrentSampleRate();
+ }
+ 
+-void AudioMonitor::audioDeviceIOCallback(const float **inputChannelData, int numInputChannels,
+-    float **outputChannelData, int numOutputChannels, int numSamples)
++void AudioMonitor::audioDeviceIOCallbackWithContext(const float* const* inputChannelData,
++                                                    int numInputChannels,
++                                                    float* const* outputChannelData,
++                                                    int numOutputChannels,
++                                                    int numSamples,
++                                                    const AudioIODeviceCallbackContext&)
+ {
+     const int minNumChannels = jmin(AudioMonitor::numChannels, numOutputChannels);
+     
+diff --git a/Source/Core/Audio/AudioMonitor.h b/Source/Core/Audio/AudioMonitor.h
+index 52586c3..73f80fe 100644
+--- a/Source/Core/Audio/AudioMonitor.h
++++ b/Source/Core/Audio/AudioMonitor.h
+@@ -28,8 +28,7 @@ public:
+     //===------------------------------------------------------------------===//
+ 
+     void audioDeviceAboutToStart(AudioIODevice *device) override;
+-    void audioDeviceIOCallback(const float **inputChannelData, int numInputChannels,
+-        float **outputChannelData, int numOutputChannels, int numSamples) override;
++    void audioDeviceIOCallbackWithContext(const float* const*, int, float* const*, int, int, const AudioIODeviceCallbackContext&) override;
+     void audioDeviceStopped() override {}
+     
+     //===------------------------------------------------------------------===//
+diff --git a/Source/Core/Audio/Instruments/Instrument.cpp b/Source/Core/Audio/Instruments/Instrument.cpp
+index 920ea86..c27cd60 100644
+--- a/Source/Core/Audio/Instruments/Instrument.cpp
++++ b/Source/Core/Audio/Instruments/Instrument.cpp
+@@ -928,9 +928,12 @@ void Instrument::AudioCallback::setProcessor(AudioProcessor *const newOne)
+     }
+ }
+ 
+-void Instrument::AudioCallback::audioDeviceIOCallback(const float** const inputChannelData,
+-    const int numInputChannels, float **const outputChannelData,
+-    const int numOutputChannels, const int numSamples)
++void Instrument::AudioCallback::audioDeviceIOCallbackWithContext(const float* const* inputChannelData,
++                                                                 int numInputChannels,
++                                                                 float* const* outputChannelData,
++                                                                 int numOutputChannels,
++                                                                 int numSamples,
++                                                                 const AudioIODeviceCallbackContext&)
+ {
+     jassert(this->sampleRate > 0 && this->blockSize > 0);
+ 
+diff --git a/Source/Core/Audio/Instruments/Instrument.h b/Source/Core/Audio/Instruments/Instrument.h
+index 2855a42..66d9437 100644
+--- a/Source/Core/Audio/Instruments/Instrument.h
++++ b/Source/Core/Audio/Instruments/Instrument.h
+@@ -60,7 +60,7 @@ public:
+         void setProcessor(AudioProcessor *processor);
+         MidiMessageCollector &getMidiMessageCollector() noexcept { return messageCollector; }
+ 
+-        void audioDeviceIOCallback(const float **, int, float **, int, int) override;
++        void audioDeviceIOCallbackWithContext(const float* const*, int, float* const*, int, int, const AudioIODeviceCallbackContext&) override;
+         void audioDeviceAboutToStart(AudioIODevice *) override;
+         void audioDeviceStopped() override;
+         void handleIncomingMidiMessage(MidiInput *, const MidiMessage &) override;
+diff --git a/Source/Core/Audio/Instruments/PluginScanner.cpp b/Source/Core/Audio/Instruments/PluginScanner.cpp
+index 6f89425..ae4d488 100644
+--- a/Source/Core/Audio/Instruments/PluginScanner.cpp
++++ b/Source/Core/Audio/Instruments/PluginScanner.cpp
+@@ -111,7 +111,7 @@ void PluginScanner::runInitialScan()
+ 
+     if (!this->isThreadRunning())
+     {
+-        this->startThread(0);
++        this->startThread(Thread::Priority::background);
+     }
+ 
+     // prepare search paths, prepare specific files to scan,
+@@ -161,7 +161,7 @@ void PluginScanner::scanFolderAndAddResults(const File &dir)
+ 
+     if (!this->isThreadRunning())
+     {
+-        this->startThread(0);
++        this->startThread(Thread::Priority::background);
+     }
+ 
+     // prepare search paths and resume search thread
+diff --git a/Source/Core/Audio/Transport/PlayerThread.cpp b/Source/Core/Audio/Transport/PlayerThread.cpp
+index c654c33..c3bbcb4 100644
+--- a/Source/Core/Audio/Transport/PlayerThread.cpp
++++ b/Source/Core/Audio/Transport/PlayerThread.cpp
+@@ -38,7 +38,7 @@ void PlayerThread::startPlayback(Transport::PlaybackContext::Ptr context)
+     this->sequences = this->transport.getPlaybackCache();
+     this->speedMultiplier = 1.f;
+     this->speedMultiplierChanged = false;
+-    this->startThread(10);
++    this->startRealtimeThread({});
+ }
+ 
+ void PlayerThread::setSpeedMultiplier(float multiplier)
+diff --git a/Source/Core/Audio/Transport/RendererThread.cpp b/Source/Core/Audio/Transport/RendererThread.cpp
+index 5f54ea8..b8bb141 100644
+--- a/Source/Core/Audio/Transport/RendererThread.cpp
++++ b/Source/Core/Audio/Transport/RendererThread.cpp
+@@ -95,7 +95,7 @@ bool RendererThread::startRendering(const URL &target, RenderFormat format,
+         if (writer != nullptr)
+         {
+             DBG(this->renderTarget.getLocalFile().getFullPathName());
+-            this->startThread(9);
++            this->startThread(Thread::Priority::highest);
+         }
+ 
+         return true;
+diff --git a/Source/Core/Network/Requests/AuthThread.h b/Source/Core/Network/Requests/AuthThread.h
+index a7d4ca4..556d3a8 100644
+--- a/Source/Core/Network/Requests/AuthThread.h
++++ b/Source/Core/Network/Requests/AuthThread.h
+@@ -48,7 +48,7 @@ public:
+         }
+ 
+         this->provider = provider;
+-        this->startThread(3);
++        this->startThread(Thread::Priority::low);
+     }
+ 
+ private:
+diff --git a/Source/Core/Network/Requests/BaseConfigSyncThread.h b/Source/Core/Network/Requests/BaseConfigSyncThread.h
+index e8b5815..dcf7147 100644
+--- a/Source/Core/Network/Requests/BaseConfigSyncThread.h
++++ b/Source/Core/Network/Requests/BaseConfigSyncThread.h
+@@ -44,7 +44,7 @@ public:
+ 
+         this->delay = delayMs;
+         this->resourceType = resourceType;
+-        this->startThread(3);
++        this->startThread(Thread::Priority::low);
+     }
+     
+ private:
+diff --git a/Source/Core/Network/Requests/ProjectCloneThread.cpp b/Source/Core/Network/Requests/ProjectCloneThread.cpp
+index 519196e..1797cbb 100644
+--- a/Source/Core/Network/Requests/ProjectCloneThread.cpp
++++ b/Source/Core/Network/Requests/ProjectCloneThread.cpp
+@@ -42,7 +42,7 @@ void ProjectCloneThread::doClone(WeakReference<VersionControl> vcs, const String
+ 
+     this->vcs = vcs;
+     this->projectId = projectId;
+-    this->startThread(7);
++    this->startThread(Thread::Priority::high);
+ }
+ 
+ void ProjectCloneThread::run()
+diff --git a/Source/Core/Network/Requests/ProjectDeleteThread.cpp b/Source/Core/Network/Requests/ProjectDeleteThread.cpp
+index de0a7d5..c21615f 100644
+--- a/Source/Core/Network/Requests/ProjectDeleteThread.cpp
++++ b/Source/Core/Network/Requests/ProjectDeleteThread.cpp
+@@ -41,7 +41,7 @@ void ProjectDeleteThread::doDelete(const String &projectId)
+     }
+ 
+     this->projectId = projectId;
+-    this->startThread(9);
++    this->startThread(Thread::Priority::highest);
+ }
+ 
+ void ProjectDeleteThread::run()
+diff --git a/Source/Core/Network/Requests/RequestUserProfileThread.h b/Source/Core/Network/Requests/RequestUserProfileThread.h
+index b2a9582..4d85e0e 100644
+--- a/Source/Core/Network/Requests/RequestUserProfileThread.h
++++ b/Source/Core/Network/Requests/RequestUserProfileThread.h
+@@ -46,7 +46,7 @@ public:
+         }
+ 
+         this->shouldFetchAvatar = fetchAvatarData;
+-        this->startThread(3);
++        this->startThread(Thread::Priority::low);
+     }
+     
+ private:
+diff --git a/Source/Core/Network/Requests/RevisionsSyncThread.cpp b/Source/Core/Network/Requests/RevisionsSyncThread.cpp
+index 4af4c70..8a7996b 100644
+--- a/Source/Core/Network/Requests/RevisionsSyncThread.cpp
++++ b/Source/Core/Network/Requests/RevisionsSyncThread.cpp
+@@ -50,7 +50,7 @@ void RevisionsSyncThread::doFetch(WeakReference<VersionControl> vcs,
+     this->vcs = vcs;
+     this->idsToPull = {};
+     this->idsToPush = {};
+-    this->startThread(2); // bg fetching is a really low priority task
++    this->startThread(Thread::Priority::background); // bg fetching is a really low priority task
+ }
+ 
+ void RevisionsSyncThread::doSync(WeakReference<VersionControl> vcs,
+@@ -71,7 +71,7 @@ void RevisionsSyncThread::doSync(WeakReference<VersionControl> vcs,
+     this->vcs = vcs;
+     this->idsToPull = revisionIdsToPull;
+     this->idsToPush = revisionIdsToPush;
+-    this->startThread(7);
++    this->startThread(Thread::Priority::high);
+ }
+ 
+ void RevisionsSyncThread::run()
+diff --git a/Source/Core/Network/Requests/TokenUpdateThread.h b/Source/Core/Network/Requests/TokenUpdateThread.h
+index 5860cdc..a67cfc3 100644
+--- a/Source/Core/Network/Requests/TokenUpdateThread.h
++++ b/Source/Core/Network/Requests/TokenUpdateThread.h
+@@ -44,7 +44,7 @@ public:
+         }
+ 
+         this->delay = delayMs;
+-        this->startThread(3);
++        this->startThread(Thread::Priority::low);
+     }
+     
+ private:
+diff --git a/Source/Core/Network/Requests/UpdatesCheckThread.h b/Source/Core/Network/Requests/UpdatesCheckThread.h
+index b4f0dfa..b68dba0 100644
+--- a/Source/Core/Network/Requests/UpdatesCheckThread.h
++++ b/Source/Core/Network/Requests/UpdatesCheckThread.h
+@@ -53,7 +53,7 @@ public:
+         }
+ 
+         this->delay = delayMs;
+-        this->startThread(3);
++        this->startThread(Thread::Priority::low);
+     }
+     
+ private:
+diff --git a/Source/Core/Network/Services/ResourceSyncService.cpp b/Source/Core/Network/Services/ResourceSyncService.cpp
+index bfd465e..d6163db 100644
+--- a/Source/Core/Network/Services/ResourceSyncService.cpp
++++ b/Source/Core/Network/Services/ResourceSyncService.cpp
+@@ -32,7 +32,7 @@ ResourceSyncService::ResourceSyncService() :
+     synchronizer(this->prepareSyncThread())
+ {
+     this->prepareUpdatesCheckThread()->checkForUpdates(UPDATE_INFO_TIMEOUT_MS);
+-    this->synchronizer->startThread(6);
++    this->synchronizer->startThread(Thread::Priority::high);
+ 
+     // todo subscribe on user profile changes
+     // detect resources missing locally
+diff --git a/Source/UI/Common/MetronomeEditor.h b/Source/UI/Common/MetronomeEditor.h
+index 9c913fe..3563713 100644
+--- a/Source/UI/Common/MetronomeEditor.h
++++ b/Source/UI/Common/MetronomeEditor.h
+@@ -221,7 +221,7 @@ public:
+                 this->playButton->setPlaying(false);
+             };
+ 
+-            this->metronomePreviewThread->startThread(5);
++            this->metronomePreviewThread->startThread(Thread::Priority::normal);
+         }
+         else if (commandId == CommandIDs::TransportStop)
+         {
+diff --git a/Source/UI/Dialogs/KeySignatureDialog.cpp b/Source/UI/Dialogs/KeySignatureDialog.cpp
+index 65d7117..83a31c0 100644
+--- a/Source/UI/Dialogs/KeySignatureDialog.cpp
++++ b/Source/UI/Dialogs/KeySignatureDialog.cpp
+@@ -428,7 +428,7 @@ void KeySignatureDialog::handleCommandMessage(int commandId)
+             this->playButton->setPlaying(false);
+         };
+ 
+-        this->scalePreviewThread->startThread(5);
++        this->scalePreviewThread->startThread(Thread::Priority::normal);
+     }
+     else if (commandId == CommandIDs::TransportStop)
+     {
+diff --git a/Source/UI/Sequencer/MiniMaps/ProjectMapsScroller.cpp b/Source/UI/Sequencer/MiniMaps/ProjectMapsScroller.cpp
+index 3a7e099..446139e 100644
+--- a/Source/UI/Sequencer/MiniMaps/ProjectMapsScroller.cpp
++++ b/Source/UI/Sequencer/MiniMaps/ProjectMapsScroller.cpp
+@@ -183,7 +183,7 @@ void ProjectMapsScroller::mouseDown(const MouseEvent &event)
+         event.mods.isLeftButtonDown())
+     {
+         const auto mapBounds = this->getMapBounds();
+-        this->drawingNewScreenRange = {
++        this->drawingNewScreenRange = Rectangle<float>{
+             (event.position.x - mapBounds.getX()) / float(mapBounds.getWidth()),
+             (event.position.y - mapBounds.getY()) / float(mapBounds.getHeight()), 0, 0 };
+ 

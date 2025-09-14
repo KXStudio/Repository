@@ -1,0 +1,37 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ helio-workstation (6:3.16-1kxstudio1) focal; urgency=medium
+ .
+   * Update
+Author: falkTX <falktx@falktx.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout https://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: (upstream|backport|vendor|other), (<patch-url>|commit:<commit-id>)
+Bug: <upstream-bugtracker-url>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: (no|not-needed|<patch-forwarded-url>)
+Applied-Upstream: <version>, (<commit-url>|commit:<commid-id>)
+Reviewed-By: <name and email of someone who approved/reviewed the patch>
+Last-Update: 2025-09-14
+
+--- helio-workstation-3.16.orig/ThirdParty/JUCE/modules/juce_audio_basics/synthesisers/juce_Synthesiser.h
++++ helio-workstation-3.16/ThirdParty/JUCE/modules/juce_audio_basics/synthesisers/juce_Synthesiser.h
+@@ -100,6 +100,8 @@ public:
+     */
+     int getCurrentlyPlayingNote() const noexcept                        { return currentlyPlayingNote; }
+ 
++    int getCurrentPlayingChannel() const noexcept                     { return currentPlayingMidiChannel; }
++
+     /** Returns the sound that this voice is currently playing.
+         Returns nullptr if it's not playing.
+     */

@@ -1,0 +1,20 @@
+--- pixman-static-0.46.4.orig/pixman/pixman-compiler.h
++++ pixman-static-0.46.4/pixman/pixman-compiler.h
+@@ -90,16 +90,7 @@
+ #endif
+ 
+ /* GCC visibility */
+-#if defined(__GNUC__) && __GNUC__ >= 4 && !defined(_WIN32)
+-#   define PIXMAN_EXPORT __attribute__ ((visibility("default")))
+-/* Sun Studio 8 visibility */
+-#elif defined(__SUNPRO_C) && (__SUNPRO_C >= 0x550)
+-#   define PIXMAN_EXPORT __global
+-#elif defined (_MSC_VER) || defined(__MINGW32__)
+-#   define PIXMAN_EXPORT PIXMAN_API
+-#else
+-#   define PIXMAN_EXPORT
+-#endif
++#define PIXMAN_EXPORT
+ 
+ /* member offsets */
+ #define CONTAINER_OF(type, member, data)				\

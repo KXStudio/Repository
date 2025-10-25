@@ -1,0 +1,21 @@
+Source: pixman-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  meson,
+  pkg-config
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+
+Package: pixman-static
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: pixel-manipulation library for X and cairo (static)
+ A library for manipulating pixel regions -- a set of Y-X banded
+ rectangles, image compositing using the Porter/Duff model
+ and implicit mask generation for geometric primitives including
+ trapezoids, triangles, and rectangles.
+ .
+ This package provides the static library used in KXStudio builds.

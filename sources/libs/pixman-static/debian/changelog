@@ -1,0 +1,5 @@
+pixman-static (6:0.46.4-1kxstudio1) focal; urgency=medium
+
+  * Initial pakage
+
+ -- falkTX <falktx@falktx.com>  Sat, 25 Oct 2025 20:26:40 +0200

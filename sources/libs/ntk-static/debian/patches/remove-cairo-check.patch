@@ -1,0 +1,11 @@
+--- ntk-static-0.0.0+git20130824.orig/wscript
++++ ntk-static-0.0.0+git20130824/wscript
+@@ -91,8 +91,6 @@ def configure(conf):
+     conf.check_cfg(package='xft', uselib_store='XFT', args="--cflags --libs",
+                    mandatory=True)
+ 
+-    conf.check_cfg(package='cairo', uselib_store='CAIRO', args="--cflags --libs",
+-                   atleast_version='1.10.0', mandatory=True)
+ 
+ 
+     conf.check(header_name='unistd.h', define_name='HAVE_UNISTD_H', mandatory=False)

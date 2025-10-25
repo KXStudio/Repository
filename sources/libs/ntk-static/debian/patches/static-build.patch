@@ -1,0 +1,44 @@
+--- ntk-static-0.0.0+git20141018.orig/fluid/wscript
++++ ntk-static-0.0.0+git20141018/fluid/wscript
+@@ -32,10 +32,7 @@ def build(bld):
+ ''',
+                  target='ntk-fluid',
+                  includes = [ '.', '../' ],
+-                 use = [ 'ntk_images_shared', 'ntk_shared' ],
+-		 # FIXME: why is this now neccessary with new waf version?
+-                 uselib = [
+- 'LIBJPEG', 'LIBPNG', 'LIBZ', 'DL', 'M', 'PTHREAD' ,
+-                    'X11', 'FONTCONFIG', 'XFT', 'CAIRO', 'DL', 'M', 'PTHREAD' ], 
++                 use = [ 'ntk_images_static', 'ntk_static' ],
++                 lib = [ 'cairo', 'pixman-1', 'png16', 'fontconfig', 'freetype', 'Xft', 'Xrender', 'X11', 'dl', 'z' ],
+                  install_path = '${BINDIR}' )
+     
+--- ntk-static-0.0.0+git20141018.orig/wscript
++++ ntk-static-0.0.0+git20141018/wscript
+@@ -43,9 +43,6 @@ def makelib(bld,*k,**kw):
+     kw['features' ] = 'c cxx cxxstlib'
+     kw['name'] = kw['target'] + '_static'
+     bld.shlib(*k,**kw)
+-    kw['features' ] = 'c cxx cxxshlib'
+-    kw['name'] = kw['target'] + '_shared'
+-    bld.stlib(*k,**kw)
+ 
+ # from autowaf
+ def run_ldconfig(ctx):
+@@ -501,11 +498,12 @@ src/Fl_Gl_Window.cxx
+ 
+ 
+     bld.program(
+-	source = 'src/ntk-chtheme.cxx',
+-	target = 'ntk-chtheme',
++        source = 'src/ntk-chtheme.cxx',
++        target = 'ntk-chtheme',
+         includes = [ '.' ], 
+-        use = ['ntk_images_shared', 'ntk_shared'],
+-	install_path = "${BINDIR}" )
++        use = [ 'ntk_images_static', 'ntk_static' ],
++        lib = [ 'cairo', 'pixman-1', 'png16', 'fontconfig', 'freetype', 'Xft', 'Xrender', 'X11', 'dl', 'z' ],
++        install_path = "${BINDIR}" )
+ 
+     # bld( features = 'subst',
+     #      source = 'ntk-config.in',

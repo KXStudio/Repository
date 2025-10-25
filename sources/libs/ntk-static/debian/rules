@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_EXPLICIT_PATH_INCLUDE = y
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_configure:
+	./waf configure --prefix=/opt/kxstudio
+
+override_dh_auto_build:
+	./waf build
+
+override_dh_auto_install:
+	./waf install --destdir=$(CURDIR)/debian/ntk-static
+	find $(CURDIR)/debian/ntk-static -name \*.la -delete
+
+override_dh_auto_clean:
+	./waf clean || true
+	rm -f .lock-waf_linux_build
+	rm -rf .waf3-*/ build/
+
+%:
+	dh $@

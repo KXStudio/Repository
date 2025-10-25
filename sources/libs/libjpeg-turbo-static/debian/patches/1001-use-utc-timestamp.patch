@@ -1,0 +1,19 @@
+Author: Vagrant Cascadian <vagrant@reproducible-builds.org>
+Description: Use UTC timezone for build timestamp
+
+While CMake respects SOURCE_DATE_EPOCH, it still can produce a
+different date depending on the timezone of the running system.
+
+Specify timezone in UTC to enable a reproducible build.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,7 @@
+   set(GENERATOR_IS_MULTI_CONFIG TRUE)
+ endif()
+ 
+-string(TIMESTAMP DEFAULT_BUILD "%Y%m%d")
++string(TIMESTAMP DEFAULT_BUILD "%Y%m%d" UTC)
+ set(BUILD ${DEFAULT_BUILD} CACHE STRING "Build string (default: ${DEFAULT_BUILD})")
+ 
+ # NOTE: On Windows, this does nothing except when using MinGW or Cygwin.

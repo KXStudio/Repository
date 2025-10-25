@@ -1,0 +1,4 @@
+1001-use-utc-timestamp.patch
+2001_dont-set-RPATH.patch
+1001_fix-groff-warning-macro-f-not-defined.patch
+0001_initialize-simd-support-before-every-use.patch

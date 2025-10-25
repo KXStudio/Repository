@@ -1,0 +1,18 @@
+--- libpng-static-1.6.50.orig/configure.ac
++++ libpng-static-1.6.50/configure.ac
+@@ -167,15 +167,6 @@ AC_CHECK_FUNCS([pow], ,
+ AC_CHECK_FUNC([clock_gettime], , [AC_MSG_WARN([not building timepng])])
+ AM_CONDITIONAL([HAVE_CLOCK_GETTIME], [test "$ac_cv_func_clock_gettime" = "yes"])
+ 
+-AC_ARG_WITH(zlib-prefix,
+-   AS_HELP_STRING([[[--with-zlib-prefix]]],
+-      [prefix that may have been used in installed zlib]),
+-      [ZPREFIX=${withval}],
+-      [ZPREFIX='z_'])
+-AC_CHECK_LIB([z], [zlibVersion], ,
+-  [AC_CHECK_LIB([z], [${ZPREFIX}zlibVersion], ,
+-     [AC_MSG_ERROR([zlib not installed])])])
+-
+ # The following is for pngvalid, to ensure it catches FP errors even on
+ # platforms that don't enable FP exceptions, the function appears in the math
+ # library (typically), it's not an error if it is not found.

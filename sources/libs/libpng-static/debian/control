@@ -1,0 +1,21 @@
+Source: libpng-static
+Section: libs
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  autoconf,
+  automake,
+  libtool,
+  pkg-config,
+  zlib-static
+Standards-Version: 3.8.4
+
+Package: libpng-static
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, zlib-static
+Description: PNG library (static)
+ libpng is a library implementing an interface for reading and writing
+ PNG (Portable Network Graphics) format files.
+ .
+ This package provides the static library used in KXStudio builds.

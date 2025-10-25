@@ -1,0 +1,29 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_EXPLICIT_PATH_INCLUDE = y
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+LDFLAGS += -lz
+
+override_dh_auto_configure:
+	./configure --disable-maintainer-mode \
+		    --prefix=/opt/kxstudio \
+		    --enable-static \
+		    --disable-shared
+	ln -s /opt/kxstudio/include/zconf.h .
+	ln -s /opt/kxstudio/include/zlib.h .
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f zconf.h zlib.h
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove unwanted
+	rm $(CURDIR)/debian/libpng-static/opt/kxstudio/lib/*.la
+	rm -r $(CURDIR)/debian/libpng-static/opt/kxstudio/bin
+	rm -r $(CURDIR)/debian/libpng-static/opt/kxstudio/share
+
+%:
+	dh $@

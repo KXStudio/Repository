@@ -21,7 +21,7 @@ XSC-KXStudio-VCS: https://github.com/sadko4u/lsp-plugins
 Rules-Requires-Root: no
 
 Package: lsp-plugins
-Provides: standalone-plugin, clap-plugin, ladspa-plugin, lv2-plugin, vst-plugin
+Provides: standalone-plugin, clap-plugin, ladspa-plugin, lv2-plugin, vst-plugin, vst3-plugin
 Architecture: any
 Depends:
  ${misc:Depends},
@@ -32,35 +32,30 @@ Breaks:
  lsp-plugins-jack (<< 5:1.1.10-1kxstudio1),
  lsp-plugins-ladspa (<< 5:1.1.10-1kxstudio1),
  lsp-plugins-lv2 (<< 5:1.1.10-1kxstudio1),
- lsp-plugins-vst (<< 5:1.1.10-1kxstudio1)
+ lsp-plugins-vst (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-vst3 (<< 5:1.1.10-1kxstudio1)
 Conflicts:
  lsp-plugins-clap (<< 5:1.1.10-1kxstudio1),
  lsp-plugins-jack (<< 5:1.1.10-1kxstudio1),
  lsp-plugins-ladspa (<< 5:1.1.10-1kxstudio1),
  lsp-plugins-lv2 (<< 5:1.1.10-1kxstudio1),
- lsp-plugins-vst (<< 5:1.1.10-1kxstudio1)
+ lsp-plugins-vst (<< 5:1.1.10-1kxstudio1),
+ lsp-plugins-vst3 (<< 5:1.1.10-1kxstudio1)
 Description: LSP (Linux Studio Plugins) audio-plugins
  Linux Studio Plugins (LSP) provides a collection of audio effects,
  synthesizers, and a selection of audio tools for music and sound
  production. It provides standalone Jack clients and integrates
- into the CLAP, LADSPA, LV2 and VST2 plugin formats.
+ into the CLAP, LADSPA, LV2, VST2 and VST3 plugin formats.
  .
  This package provides all supported formats and the JACK standalones.
  .
  KXStudio package initially imported from LibraZiK.
 
 Package: lsp-plugins-r3d-glx
-Architecture: any
-Depends:
- ${misc:Depends},
- ${shlibs:Depends}
-Description: LSP (Linux Studio Plugins) r3d-glx library
- Linux Studio Plugins (LSP) provides a collection of audio effects,
- synthesizers, and a selection of audio tools for music and sound
- production. It provides standalone Jack clients and integrates
- into the CLAP, LADSPA, LV2 and VST2 plugin formats.
- .
- This package provides the LSP r3d-glx library.
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
 
 Package: lsp-plugins-data
 Architecture: all
@@ -93,6 +88,12 @@ Description: Dummy package
  This is a dummy package and can be safely removed if nothing depends on it.
 
 Package: lsp-plugins-vst
+Architecture: all
+Depends: ${misc:Depends}
+Description: Dummy package
+ This is a dummy package and can be safely removed if nothing depends on it.
+
+Package: lsp-plugins-vst3
 Architecture: all
 Depends: ${misc:Depends}
 Description: Dummy package

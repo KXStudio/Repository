@@ -20,13 +20,17 @@ export SO_FLAGS = $(LDFLAGS)
 	dh $@
 
 override_dh_auto_configure:
-	$(MAKE) config ARCHITECTURE=$(ARCHITECTURE) FEATURES='clap jack ladspa lv2 vst2' PREFIX=/usr
+	$(MAKE) config ARCHITECTURE=$(ARCHITECTURE) FEATURES='clap jack ladspa lv2 vst2 vst3 ui' PREFIX=/usr LSP_R3D_GLX_LIB_TYPE=src
+
+override_dh_auto_build:
+	dh_auto_build -- -j$(nproc) LSP_R3D_GLX_LIB_TYPE=src
 
 override_dh_auto_install:
-	dh_auto_install
+	dh_auto_install -- LSP_R3D_GLX_LIB_TYPE=src
 
 	# Remove unused files
 	rm debian/tmp/usr/lib/*.a
+	rm debian/tmp/usr/lib/*.so
 	rm -r debian/tmp/usr/lib/pkgconfig
 
 override_dh_install:

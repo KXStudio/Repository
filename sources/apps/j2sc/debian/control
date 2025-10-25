@@ -4,7 +4,8 @@ Priority: optional
 Maintainer: falkTX <falktx@falktx.com>
 Build-Depends: debhelper-compat (= 13),
   python3-pyqt6,
-  pyqt6-dev-tools
+  pyqt6-dev-tools,
+  alsa-utils
 Standards-Version: 4.5.0
 Homepage: https://kx.studio/Applications:J2SC
 XSC-KXStudio-VCS: https://github.com/falkTX/J2SC

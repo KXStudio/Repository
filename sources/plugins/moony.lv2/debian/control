@@ -1,0 +1,36 @@
+Source: moony.lv2
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 9),
+  meson,
+  pkg-config,
+  libcairo-dev,
+  lv2-dev,
+  libx11-dev,
+  libxext-dev,
+  libgl1-mesa-dev | libgl-dev,
+  libglu1-mesa-dev | libglu-dev,
+  libglew-dev
+Standards-Version: 3.8.4
+
+Package: moony.lv2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin
+Description: realtime Lua as programmable glue in LV2
+ Moony is a realtime Lua as programmable glue in LV2.
+ .
+ Currently the following plugins are contained in this plugin bundle:
+  - C1 x C1
+  - C2 x C2
+  - C4 x C4
+ .
+  - A1 x A1
+  - A2 x A2
+  - A4 x A4
+ .
+  - C1+A1 x C1+A1
+  - C2+A1 x C2+A1
+  - C4+A1 x C4+A1

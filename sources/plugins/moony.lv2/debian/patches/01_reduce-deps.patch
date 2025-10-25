@@ -1,0 +1,33 @@
+--- moony.lv2-0.40.0.orig/meson.build
++++ moony.lv2-0.40.0/meson.build
+@@ -5,7 +5,6 @@ project('moony.lv2', 'c', default_option
+ 	'b_lto=false',
+ 	'c_std=gnu11'])
+ 
+-d2tk = subproject('d2tk')
+ nk_pugl = subproject('nk_pugl')
+ 
+ lv2libdir = get_option('lv2libdir')
+@@ -14,14 +13,6 @@ gc_method = get_option('gc-method')
+ 
+ inst_dir = join_paths(lv2libdir, meson.project_name())
+ 
+-if get_option('use-backend-nanovg').enabled()
+-	d2tk_dep = d2tk.get_variable('d2tk_nanovg')
+-elif get_option('use-backend-cairo').enabled()
+-	d2tk_dep = d2tk.get_variable('d2tk_cairo')
+-else
+-	error('no valid UI backend given')
+-endif
+-
+ nk_pugl_dep = nk_pugl.get_variable('nk_pugl_gl')
+ cousine_regular_ttf = nk_pugl.get_variable('cousine_regular_ttf')
+ 
+@@ -45,7 +36,6 @@ thread_dep = dependency('threads')
+ 
+ dsp_deps = [m_dep, lv2_dep, cairo_dep, thread_dep]
+ nk_ui_deps = [m_dep, lv2_dep, cairo_dep, thread_dep, nk_pugl_dep]
+-d2tk_ui_deps = [m_dep, lv2_dep, d2tk_dep]
+ 
+ if cc.has_member('LV2UI_Request_Value', 'request',
+ 		prefix : '#include <lv2/lv2plug.in/ns/extensions/ui/ui.h>')

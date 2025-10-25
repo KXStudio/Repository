@@ -1,0 +1,142 @@
+--- moony.lv2-0.40.0.orig/canvas.lv2/canvas.lv2/canvas.h
++++ moony.lv2-0.40.0/canvas.lv2/canvas.lv2/canvas.h
+@@ -22,9 +22,9 @@
+ extern "C" {
+ #endif
+ 
+-#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/forge.h>
++#include <lv2/core/lv2.h>
++#include <lv2/atom/atom.h>
++#include <lv2/atom/forge.h>
+ 
+ #define CANVAS_URI                "http://open-music-kontrollers.ch/lv2/canvas"
+ #define CANVAS_PREFIX             CANVAS_URI"#"
+--- moony.lv2-0.40.0.orig/canvas.lv2/canvas.lv2/lv2_extensions.h
++++ moony.lv2-0.40.0/canvas.lv2/canvas.lv2/lv2_extensions.h
+@@ -17,7 +17,7 @@
+ #ifndef _ardour_lv2_extensions_h_
+ #define _ardour_lv2_extensions_h_
+ 
+-#include "lv2/lv2plug.in/ns/lv2core/lv2.h"
++#include "lv2/core/lv2.h"
+ 
+ /**
+    @defgroup inlinedisplay Inline-Display
+--- moony.lv2-0.40.0.orig/include/moony.h
++++ moony.lv2-0.40.0/include/moony.h
+@@ -30,23 +30,23 @@
+ #	define munlock(...)
+ #endif
+ 
+-#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/util.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/forge.h>
+-#include <lv2/lv2plug.in/ns/ext/midi/midi.h>
+-#include <lv2/lv2plug.in/ns/ext/time/time.h>
+-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include <lv2/lv2plug.in/ns/ext/worker/worker.h>
+-#include <lv2/lv2plug.in/ns/ext/log/log.h>
+-#include <lv2/lv2plug.in/ns/ext/log/logger.h>
+-#include <lv2/lv2plug.in/ns/ext/state/state.h>
+-#include <lv2/lv2plug.in/ns/ext/buf-size/buf-size.h>
+-#include <lv2/lv2plug.in/ns/ext/options/options.h>
+-#include <lv2/lv2plug.in/ns/ext/patch/patch.h>
+-#include <lv2/lv2plug.in/ns/ext/parameters/parameters.h>
+-#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
+-#include <lv2/lv2plug.in/ns/extensions/ui/ui.h>
+-#include <lv2/lv2plug.in/ns/extensions/units/units.h>
++#include <lv2/atom/atom.h>
++#include <lv2/atom/util.h>
++#include <lv2/atom/forge.h>
++#include <lv2/midi/midi.h>
++#include <lv2/time/time.h>
++#include <lv2/urid/urid.h>
++#include <lv2/worker/worker.h>
++#include <lv2/log/log.h>
++#include <lv2/log/logger.h>
++#include <lv2/state/state.h>
++#include <lv2/buf-size/buf-size.h>
++#include <lv2/options/options.h>
++#include <lv2/patch/patch.h>
++#include <lv2/parameters/parameters.h>
++#include <lv2/core/lv2.h>
++#include <lv2/ui/ui.h>
++#include <lv2/units/units.h>
+ 
+ typedef struct _atom_ser_t atom_ser_t;
+ 
+--- moony.lv2-0.40.0.orig/osc.lv2/osc.lv2/forge.h
++++ moony.lv2-0.40.0/osc.lv2/osc.lv2/forge.h
+@@ -24,7 +24,7 @@
+ #include <osc.lv2/util.h>
+ #include <osc.lv2/reader.h>
+ 
+-#include <lv2/lv2plug.in/ns/ext/atom/forge.h>
++#include <lv2/atom/forge.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+--- moony.lv2-0.40.0.orig/osc.lv2/osc.lv2/osc.h
++++ moony.lv2-0.40.0/osc.lv2/osc.lv2/osc.h
+@@ -20,9 +20,9 @@
+ 
+ #include <stdint.h>
+ 
+-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
+-#include <lv2/lv2plug.in/ns/ext/midi/midi.h>
++#include <lv2/urid/urid.h>
++#include <lv2/atom/atom.h>
++#include <lv2/midi/midi.h>
+ 
+ #define LV2_OSC_URI                 "http://open-music-kontrollers.ch/lv2/osc"
+ #define LV2_OSC_PREFIX              LV2_OSC_URI "#"	
+--- moony.lv2-0.40.0.orig/osc.lv2/osc.lv2/util.h
++++ moony.lv2-0.40.0/osc.lv2/osc.lv2/util.h
+@@ -29,7 +29,7 @@
+ 
+ #include <osc.lv2/osc.h>
+ 
+-#include <lv2/lv2plug.in/ns/ext/atom/util.h>
++#include <lv2/atom/util.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+--- moony.lv2-0.40.0.orig/timely.lv2/timely.h
++++ moony.lv2-0.40.0/timely.lv2/timely.h
+@@ -20,11 +20,11 @@
+ 
+ #include <math.h>
+ 
+-#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
+-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/forge.h>
+-#include <lv2/lv2plug.in/ns/ext/time/time.h>
++#include <lv2/core/lv2.h>
++#include <lv2/urid/urid.h>
++#include <lv2/atom/atom.h>
++#include <lv2/atom/forge.h>
++#include <lv2/time/time.h>
+ 
+ typedef struct _timely_t timely_t;
+ typedef void (*timely_cb_t)(timely_t *timely, int64_t frames, LV2_URID type,
+--- moony.lv2-0.40.0.orig/xpress.lv2/xpress.lv2/xpress.h
++++ moony.lv2-0.40.0/xpress.lv2/xpress.lv2/xpress.h
+@@ -33,10 +33,10 @@ extern "C" {
+ #	include <unistd.h>
+ #endif
+ 
+-#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
+-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/forge.h>
++#include <lv2/core/lv2.h>
++#include <lv2/urid/urid.h>
++#include <lv2/atom/atom.h>
++#include <lv2/atom/forge.h>
+ 
+ /*****************************************************************************
+  * API START

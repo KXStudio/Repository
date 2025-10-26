@@ -1,0 +1,28 @@
+Source: zita-resampler-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  make
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+
+Package: libzita-resampler-static
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: C++ library for resampling audio signals (static)
+ Zita resampler is a C++ library for resampling audio signals. It is
+ designed to be used within a real-time processing context, to be
+ fast, and to provide high-quality sample rate conversion.
+ .
+ The library operates on signals represented in single-precision
+ floating point format. For multichannel operation both the input and
+ output signals are assumed to be stored as interleaved samples.
+ .
+ The API allows a trade-off between quality and CPU load. For the
+ latter a range of approximately 1:6 is available. Even at the
+ highest quality setting libzita-resampler will be faster than most
+ similar libraries, e.g. libsamplerate.
+ .
+ This package provides the static library used in KXStudio builds.

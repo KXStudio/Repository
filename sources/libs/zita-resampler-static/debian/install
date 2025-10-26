@@ -1,0 +1,2 @@
+source/*.a                /opt/kxstudio/lib/
+source/zita-resampler/*.h /opt/kxstudio/include/zita-resampler/

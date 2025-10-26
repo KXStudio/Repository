@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/kxstudio.mk
+
+ifeq ($(DEB_HOST_ARCH),armhf)
+else ifeq ($(DEB_HOST_ARCH),arm64)
+CXXFLAGS += -DENABLE_NEON
+else
+CXXFLAGS += -DENABLE_SSE2
+endif
+
+override_dh_auto_build:
+	$(MAKE) -C source
+
+override_dh_auto_clean:
+	$(MAKE) -C source clean
+
+%:
+	dh $@

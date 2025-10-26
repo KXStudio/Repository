@@ -5,7 +5,7 @@
  Requires: cairo >= 1.9.0
  Requires.private: x11 xft
 -Libs: -L${libdir} -lntk
-+Libs: -L${libdir} -lntk -lcairo -lgobject-2.0 -lglib-2.0 -lpixman-1 -lpng16 -lfontconfig -lXft -lfreetype -lXrender -lX11 -ldl -lz
++Libs: -L${libdir} -lntk -lcairo -lgobject-2.0 -lglib-2.0 -lpixman-1 -lpng16 -lfontconfig -lXft -lfreetype -lXrender -lX11 -ldl -lz -pthread
  Cflags: -I${includedir}/ntk @CFLAGS@
 --- ntk-static-0.0.0+git20130930.orig/ntk_images.pc.in
 +++ ntk-static-0.0.0+git20130930/ntk_images.pc.in
@@ -14,5 +14,5 @@
  Requires: cairo >= 1.9.0
  Requires.private: x11 xft
 -Libs: -L${libdir} -lntk_images -lntk
-+Libs: -L${libdir} -lntk_images -lntk -lcairo -lgobject-2.0 -lglib-2.0 -lpixman-1 -lpng16 -lfontconfig -lXft -lfreetype -lXrender -lX11 -ldl -lz
++Libs: -L${libdir} -lntk_images -lntk -lcairo -lgobject-2.0 -lglib-2.0 -lpixman-1 -lpng16 -lfontconfig -lXft -lfreetype -lXrender -lX11 -ldl -lz -pthread
  Cflags: -I${includedir}/ntk @CFLAGS@

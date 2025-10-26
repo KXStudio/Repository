@@ -1,0 +1,25 @@
+From 4945915eeb096752e728b783c49b580f1710dff7 Mon Sep 17 00:00:00 2001
+From: David Runge <dave@sleepmap.de>
+Date: Thu, 21 May 2020 17:24:48 +0200
+Subject: [PATCH] Fixing build with lv2 >= 1.18.0
+
+gui/sorcer_ui.cxx:
+Replacing all occurrences of _LV2UI_Descriptor with LV2UI_Descriptor as
+the former has been replaced by the latter with lv2 1.18.0.
+---
+ gui/sorcer_ui.cxx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gui/sorcer_ui.cxx b/gui/sorcer_ui.cxx
+index 60edbe4..3bd25a3 100644
+--- a/gui/sorcer_ui.cxx
++++ b/gui/sorcer_ui.cxx
+@@ -44,7 +44,7 @@ typedef struct {
+   LV2UI_Controller controller;
+ } SorcerGUI;
+ 
+-static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
++static LV2UI_Handle instantiate(const struct LV2UI_Descriptor * descriptor,
+                 const char * plugin_uri,
+                 const char * bundle_path,
+                 LV2UI_Write_Function write_function,

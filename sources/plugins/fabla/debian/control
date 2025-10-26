@@ -1,0 +1,29 @@
+Source: fabla
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>, Jeremy Jongepier <jeremy@autostatic.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 15),
+  debhelper (>= 9~),
+  cmake,
+  lv2-dev,
+  libcairomm-1.0-dev,
+  libgl1-mesa-dev | libgl-dev,
+  libsndfile-static,
+  ntk-static
+Standards-Version: 4.5.0
+Homepage: http://openavproductions.com/fabla/
+XSC-KXStudio-VCS: https://github.com/openAVproductions/openAV-Fabla
+Rules-Requires-Root: no
+
+Package: fabla
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin
+Description: Fabla drum sampler plugin instrument
+ Fabla is a drum sampler plugin instrument.
+ It is ideal for loading up your favorite sampled sounds and bashing
+ away on a MIDI controller.
+ Or if it’s crafty beat programming your after that’s cool too!
+ The ADSR envelope allows the shaping of hi-hats and kicks while the
+ compressor beefs up the sound for those thumping kicks!

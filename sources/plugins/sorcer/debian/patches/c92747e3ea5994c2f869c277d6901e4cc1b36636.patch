@@ -1,0 +1,23 @@
+From c92747e3ea5994c2f869c277d6901e4cc1b36636 Mon Sep 17 00:00:00 2001
+From: Olivier Humbert <trebmuh@users.noreply.github.com>
+Date: Fri, 30 Dec 2016 23:23:40 +0100
+Subject: [PATCH] Update CMakeLists.txt
+
+updates version number
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6114080..f9f0702 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@ project (sorcer)
+ 
+ set(SORCER_VERSION_MAJOR "1")
+ set(SORCER_VERSION_MINOR "1")
+-set(SORCER_VERSION_PATCH "2")
++set(SORCER_VERSION_PATCH "3")
+ 
+ set(SORCER_VERSION "${SORCER_VERSION_MAJOR}.${SORCER_VERSION_MINOR}.${SORCER_VERSION_PATCH}")
+ 

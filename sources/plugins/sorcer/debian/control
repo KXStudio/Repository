@@ -1,0 +1,30 @@
+Source: sorcer
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>, Jeremy Jongepier <jeremy@autostatic.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 15),
+  debhelper (>= 9~),
+  cmake,
+  lv2-dev,
+  libboost-dev,
+  libcairomm-1.0-dev,
+  libgl1-mesa-dev | libgl-dev,
+  libsndfile-static,
+  ntk-static
+Standards-Version: 4.5.0
+Homepage: http://www.openavproductions.com/sorcer
+XSC-KXStudio-VCS: https://github.com/openAVproductions/openAV-Sorcer
+Rules-Requires-Root: no
+
+Package: sorcer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin
+Description: Polyphonic wavetable synth
+ Sorcer is a polyphonic wavetable synth LV2 plugin.
+ Its sonic fingerprint is one of harsh modulated sub-bass driven walls of sound.
+ Two morphing wavetable oscillators and one sine oscillator provide the generation routines.
+ The LFO can be mapped to wavetable modulation as well as filter cutoff.
+ An ADSR allows for shaping the resulting sound, while a master volume finishes the signal chain.
+ Easily creating a variety of dubstep basslines and harsh pad sounds.

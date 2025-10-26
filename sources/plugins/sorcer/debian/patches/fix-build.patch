@@ -1,0 +1,43 @@
+--- sorcer-1.1.3.orig/faust/main.cpp
++++ sorcer-1.1.3/faust/main.cpp
+@@ -709,10 +709,10 @@ float 	mydsp::ftbl0[65536];
+ #include <bitset>
+ #include <boost/circular_buffer.hpp>
+ 
+-#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
+-#include <lv2/lv2plug.in/ns/ext/dynmanifest/dynmanifest.h>
+-#include <lv2/lv2plug.in/ns/ext/atom/util.h>
+-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
++#include <lv2/core/lv2.h>
++#include <lv2/dynmanifest/dynmanifest.h>
++#include <lv2/atom/util.h>
++#include <lv2/urid/urid.h>
+ 
+ #ifndef URI_PREFIX
+ #define URI_PREFIX "http://www.openavproductions.com"
+--- sorcer-1.1.3.orig/gui/sorcer_ui.cxx
++++ sorcer-1.1.3/gui/sorcer_ui.cxx
+@@ -28,10 +28,10 @@
+ #include "sorcer_widget.h"
+ 
+ // core spec include
+-#include "lv2/lv2plug.in/ns/lv2core/lv2.h"
++#include "lv2/core/lv2.h"
+ 
+ // GUI
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ using namespace std;
+ 
+--- sorcer-1.1.3.orig/gui/sorcer_widget.h
++++ sorcer-1.1.3/gui/sorcer_widget.h
+@@ -4,7 +4,7 @@
+ #define sorcer_widget_h
+ #include <FL/Fl.H>
+ #include <FL/Fl_Double_Window.H>
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ using namespace std;
+ #include "ports.h"
+ #include "avtk.h"

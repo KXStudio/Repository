@@ -1,0 +1,96 @@
+--- fabla-1.4.0+git20251026.orig/dsp/fabla.cxx
++++ fabla-1.4.0+git20251026/dsp/fabla.cxx
+@@ -24,8 +24,8 @@
+ #include <string.h>
+ 
+ #include "shared.h"
+-#include "lv2/lv2plug.in/ns/ext/atom/forge.h"
+-#include "lv2/lv2plug.in/ns/ext/state/state.h"
++#include "lv2/atom/forge.h"
++#include "lv2/state/state.h"
+ 
+ #include "voice.hxx"
+ #include "sample.hxx"
+--- fabla-1.4.0+git20251026.orig/dsp/shared.h
++++ fabla-1.4.0+git20251026/dsp/shared.h
+@@ -25,12 +25,12 @@
+ #include <string>
+ #include <sstream>
+ 
+-#include "lv2/lv2plug.in/ns/ext/atom/util.h"
+-#include "lv2/lv2plug.in/ns/ext/log/log.h"
+-#include "lv2/lv2plug.in/ns/ext/log/logger.h"
+-#include "lv2/lv2plug.in/ns/ext/urid/urid.h"
+-#include "lv2/lv2plug.in/ns/ext/worker/worker.h"
+-#include "lv2/lv2plug.in/ns/ext/time/time.h"
++#include "lv2/atom/util.h"
++#include "lv2/log/log.h"
++#include "lv2/log/logger.h"
++#include "lv2/urid/urid.h"
++#include "lv2/worker/worker.h"
++#include "lv2/time/time.h"
+ 
+ #define LV2_MIDI__MidiEvent "http://lv2plug.in/ns/ext/midi#MidiEvent"
+ 
+--- fabla-1.4.0+git20251026.orig/gui/fabla.h
++++ fabla-1.4.0+git20251026/gui/fabla.h
+@@ -8,10 +8,10 @@
+ #include <libgen.h>
+ using namespace Avtk;
+ #include <FL/x.H>
+-#include "lv2/lv2plug.in/ns/lv2core/lv2.h"
++#include "lv2/core/lv2.h"
+ #include <FL/Fl_Box.H>
+ #include "../dsp/ports.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ #include "../dsp/shared.h"
+ #include "fabla.hxx"
+ #include "header.c"
+--- fabla-1.4.0+git20251026.orig/gui/fabla.hxx
++++ fabla-1.4.0+git20251026/gui/fabla.hxx
+@@ -25,7 +25,7 @@
+ #include "../dsp/ports.h"
+ #include "../dsp/shared.h"
+ 
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ 
+ class FablaUI;
+--- fabla-1.4.0+git20251026.orig/gui/fabla_ui.cxx
++++ fabla-1.4.0+git20251026/gui/fabla_ui.cxx
+@@ -36,13 +36,13 @@
+ #include "fabla.hxx"
+ 
+ // core spec include
+-#include "lv2/lv2plug.in/ns/lv2core/lv2.h"
++#include "lv2/core/lv2.h"
+ 
+ // GUI
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+-#include "lv2/lv2plug.in/ns/ext/atom/util.h"
+-//#include "lv2/lv2plug.in/ns/ext/atom/forge.h"
++#include "lv2/atom/util.h"
++//#include "lv2/atom/forge.h"
+ 
+ #include <sndfile.h>
+ 
+--- fabla-1.4.0+git20251026.orig/gui/ui_helpers.cxx
++++ fabla-1.4.0+git20251026/gui/ui_helpers.cxx
+@@ -28,10 +28,10 @@
+ 
+ #include "fabla.hxx"
+ 
+-#include "lv2/lv2plug.in/ns/ext/atom/forge.h"
++#include "lv2/atom/forge.h"
+ 
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
+-#include "lv2/lv2plug.in/ns/ext/atom/atom.h"
++#include "lv2/ui/ui.h"
++#include "lv2/atom/atom.h"
+ 
+ void initForge(Fabla* self)
+ {

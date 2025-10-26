@@ -10,7 +10,7 @@ override_dh_auto_configure:
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/opt/kxstudio \
 		-DJUCE_BUILD_HELPER_TOOLS=ON \
-		-DJUCE_INSTALL_DESTINATION=lib/cmake/JUCE-7.0.9
+		-DJUCE_INSTALL_DESTINATION=lib/cmake/JUCE-7.0.12
 
 override_dh_auto_build:
 	dh_auto_build
@@ -27,11 +27,11 @@ override_dh_auto_install:
 		$(CURDIR)/debian/tmp/opt/kxstudio/bin/Projucer70
 	install -m 755 $(CURDIR)/obj-*/extras/Build/juceaide/juceaide_artefacts/Release/juceaide \
 		$(CURDIR)/debian/tmp/opt/kxstudio/bin/juceaide70
-# 	mv $(CURDIR)/debian/tmp/opt/kxstudio/bin/JUCE-7.0.9/juce_lv2_helper \
+# 	mv $(CURDIR)/debian/tmp/opt/kxstudio/bin/JUCE-7.0.12/juce_lv2_helper \
 # 		$(CURDIR)/debian/tmp/opt/kxstudio/bin/juce70_lv2_helper
-# 	mv $(CURDIR)/debian/tmp/opt/kxstudio/bin/JUCE-7.0.9/juce_vst3_helper \
+# 	mv $(CURDIR)/debian/tmp/opt/kxstudio/bin/JUCE-7.0.12/juce_vst3_helper \
 # 		$(CURDIR)/debian/tmp/opt/kxstudio/bin/juce70_vst3_helper
-# 	rmdir $(CURDIR)/debian/tmp/opt/kxstudio/bin/JUCE-7.0.9
+# 	rmdir $(CURDIR)/debian/tmp/opt/kxstudio/bin/JUCE-7.0.12
 
 %:
 	dh $@ -Scmake

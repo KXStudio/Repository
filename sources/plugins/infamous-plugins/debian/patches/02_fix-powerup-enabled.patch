@@ -1,0 +1,11 @@
+--- infamous-plugins-0.3.2.orig/src/powerup/powerup.ttl
++++ infamous-plugins-0.3.2/src/powerup/powerup.ttl
+@@ -45,7 +45,7 @@
+                 lv2:minimum 0 ;
+                 lv2:maximum 1 ;
+                 lv2:portProperty lv2:toggled ;
+-                lv2:portProperty lv2:enabled ;
++                lv2:designation lv2:enabled ;
+                 lv2:portProperty lv2:integer ;
+         ], [
+                 a lv2:InputPort, lv2:ControlPort ;

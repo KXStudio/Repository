@@ -1,0 +1,344 @@
+--- infamous-plugins-0.3.2.orig/src/bentdelay/falter.c
++++ infamous-plugins-0.3.2/src/bentdelay/falter.c
+@@ -1,6 +1,6 @@
+     //Spencer Jackson
+ //falter.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<string.h>
+--- infamous-plugins-0.3.2.orig/src/casynth/casynth.h
++++ infamous-plugins-0.3.2/src/casynth/casynth.h
+@@ -1,11 +1,11 @@
+ //Spencer Jackson
+ //casynth.h
+ 
+-#include<lv2.h>
+-#include<lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include<lv2/lv2plug.in/ns/ext/midi/midi.h>
+-#include<lv2/lv2plug.in/ns/ext/atom/util.h>
+-#include<lv2/lv2plug.in/ns/ext/time/time.h>
++#include<lv2/core/lv2.h>
++#include<lv2/urid/urid.h>
++#include<lv2/midi/midi.h>
++#include<lv2/atom/util.h>
++#include<lv2/time/time.h>
+ #include<note.h>
+ 
+ #define CASYNTH_URI "http://ssj71.github.io/infamousPlugins/plugs.html#casynth"
+--- infamous-plugins-0.3.2.orig/src/casynth/casynth_ui.fl
++++ infamous-plugins-0.3.2/src/casynth/casynth_ui.fl
+@@ -10,7 +10,7 @@ class CaSynthUI {open
+       label {the infamous cellular automaton synth} open
+       xywh {329 483 460 600} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/casynth/casynth_ui_main.cxx
++++ infamous-plugins-0.3.2/src/casynth/casynth_ui_main.cxx
+@@ -6,7 +6,7 @@
+ #include <FL/x.H>
+ 
+ #include "casynth_ui.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ #include <ctime>
+ 
+ #define CASYNTHUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#casynth_ui"
+--- infamous-plugins-0.3.2.orig/src/cheapdist/cheapdist.c
++++ infamous-plugins-0.3.2/src/cheapdist/cheapdist.c
+@@ -1,6 +1,6 @@
+ //Spencer Jackson
+ //cheapdist.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<math.h>
+--- infamous-plugins-0.3.2.orig/src/cheapdist/cheapdist_ui.fl
++++ infamous-plugins-0.3.2/src/cheapdist/cheapdist_ui.fl
+@@ -10,7 +10,7 @@ class CheapDistUI {open
+       label {the infamous envelope follower} open
+       xywh {662 403 252 193} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/cheapdist/cheapdist_ui_main.cxx
++++ infamous-plugins-0.3.2/src/cheapdist/cheapdist_ui_main.cxx
+@@ -3,7 +3,7 @@
+ #include <FL/x.H>
+ 
+ #include "cheapdist_ui.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ #define CHEAPDISTUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#cheapdist_ui"
+ 
+--- infamous-plugins-0.3.2.orig/src/envfollower/envfollower.c
++++ infamous-plugins-0.3.2/src/envfollower/envfollower.c
+@@ -6,12 +6,12 @@
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<math.h>
+-#include<lv2.h>
+-#include<lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include<lv2/lv2plug.in/ns/ext/midi/midi.h>
+-#include<lv2/lv2plug.in/ns/ext/atom/util.h>
+-#include "lv2/lv2plug.in/ns/ext/time/time.h"
+-#include "lv2/lv2plug.in/ns/ext/atom/forge.h"
++#include<lv2/core/lv2.h>
++#include<lv2/urid/urid.h>
++#include<lv2/midi/midi.h>
++#include<lv2/atom/util.h>
++#include "lv2/time/time.h"
++#include "lv2/atom/forge.h"
+ #include "rms_calc.h"
+ 
+ 
+--- infamous-plugins-0.3.2.orig/src/envfollower/envfollowerCV_ui.fl
++++ infamous-plugins-0.3.2/src/envfollower/envfollowerCV_ui.fl
+@@ -10,7 +10,7 @@ class EnvFollowerUI {open
+       label {the infamous envelope follower} open
+       xywh {234 720 603 420} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/envfollower/envfollower_ui.fl
++++ infamous-plugins-0.3.2/src/envfollower/envfollower_ui.fl
+@@ -10,7 +10,7 @@ class EnvFollowerUI {open
+       label {the infamous envelope follower} open
+       xywh {234 720 603 420} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/envfollower/envfollower_ui_main.cxx
++++ infamous-plugins-0.3.2/src/envfollower/envfollower_ui_main.cxx
+@@ -7,7 +7,7 @@
+ #else
+ #include "envfollower_ui.h"
+ #endif
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ #define ENVFOLLOWERUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#envfollower_ui"
+ #define ENVFOLLOWERCVUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#envfollowerCV_ui"
+--- infamous-plugins-0.3.2.orig/src/ewham/ewham.c
++++ infamous-plugins-0.3.2/src/ewham/ewham.c
+@@ -1,6 +1,6 @@
+ //Spencer Jackson
+ //ewham.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<string.h>
+--- infamous-plugins-0.3.2.orig/src/hip2b/hip2b_ui.fl
++++ infamous-plugins-0.3.2/src/hip2b/hip2b_ui.fl
+@@ -10,7 +10,7 @@ class Hip2BUI {open
+       label {the infamous hip2b} open
+       xywh {312 258 400 400} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/hip2b/hip2b_ui_main.cxx
++++ infamous-plugins-0.3.2/src/hip2b/hip2b_ui_main.cxx
+@@ -3,7 +3,7 @@
+ #include <FL/x.H>
+ 
+ #include "hip2b_ui.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ #define HIP2BUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#hip2b_ui"
+ 
+--- infamous-plugins-0.3.2.orig/src/hip2b/square.c
++++ infamous-plugins-0.3.2/src/hip2b/square.c
+@@ -1,6 +1,6 @@
+ //Spencer Jackson
+ //square.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<math.h>
+--- infamous-plugins-0.3.2.orig/src/lushlife/lushlife.cc
++++ infamous-plugins-0.3.2/src/lushlife/lushlife.cc
+@@ -1,6 +1,6 @@
+ //Spencer Jackson
+ //lushlife.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<string.h>
+--- infamous-plugins-0.3.2.orig/src/lushlife/lushlife_ui.fl
++++ infamous-plugins-0.3.2/src/lushlife/lushlife_ui.fl
+@@ -10,7 +10,7 @@ class LushLifeUI {open
+       label {the infamous lush life} open
+       xywh {630 400 630 400} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/lushlife/lushlife_ui_main.cxx
++++ infamous-plugins-0.3.2/src/lushlife/lushlife_ui_main.cxx
+@@ -6,7 +6,7 @@
+ #include <FL/x.H>
+ 
+ #include "lushlife_ui.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ #include <ctime>
+ 
+ #define LUSHLIFEUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#lushlife_ui"
+--- infamous-plugins-0.3.2.orig/src/mindi/mindi.c
++++ infamous-plugins-0.3.2/src/mindi/mindi.c
+@@ -6,12 +6,12 @@
+ #include<stdio.h>
+ #include<stdbool.h>
+ #include<math.h>
+-#include<lv2.h>
+-#include<lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include<lv2/lv2plug.in/ns/ext/midi/midi.h>
+-#include<lv2/lv2plug.in/ns/ext/atom/util.h>
+-#include "lv2/lv2plug.in/ns/ext/time/time.h"
+-#include "lv2/lv2plug.in/ns/ext/atom/forge.h"
++#include<lv2/core/lv2.h>
++#include<lv2/urid/urid.h>
++#include<lv2/midi/midi.h>
++#include<lv2/atom/util.h>
++#include "lv2/time/time.h"
++#include "lv2/atom/forge.h"
+ 
+ //midi stuff
+ #define MIDI_NOTE_OFF        0x80
+--- infamous-plugins-0.3.2.orig/src/octolo/octolo.c
++++ infamous-plugins-0.3.2/src/octolo/octolo.c
+@@ -1,9 +1,9 @@
+ //Spencer Jackson
+ //octolo.c
+-#include<lv2.h>
+-#include<lv2/lv2plug.in/ns/ext/urid/urid.h>
+-#include<lv2/lv2plug.in/ns/ext/atom/util.h>
+-#include<lv2/lv2plug.in/ns/ext/time/time.h>
++#include<lv2/core/lv2.h>
++#include<lv2/urid/urid.h>
++#include<lv2/atom/util.h>
++#include<lv2/time/time.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<string.h>
+--- infamous-plugins-0.3.2.orig/src/powercut/powercut.c
++++ infamous-plugins-0.3.2/src/powercut/powercut.c
+@@ -1,6 +1,6 @@
+ //Spencer Jackson
+ //stuck.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<string.h>
+--- infamous-plugins-0.3.2.orig/src/powercut/powercut_ui.fl
++++ infamous-plugins-0.3.2/src/powercut/powercut_ui.fl
+@@ -10,7 +10,7 @@ class PowerCutUI {open
+       label {the infamous power cut} open
+       xywh {56 491 487 318} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/powercut/powercut_ui_main.cxx
++++ infamous-plugins-0.3.2/src/powercut/powercut_ui_main.cxx
+@@ -5,7 +5,7 @@
+ #include <FL/x.H>
+ 
+ #include "powercut_ui.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ #define POWERCUTUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#powercut_ui"
+ 
+--- infamous-plugins-0.3.2.orig/src/powerup/powerup.c
++++ infamous-plugins-0.3.2/src/powerup/powerup.c
+@@ -1,6 +1,6 @@
+ //Spencer Jackson
+ //stuck.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<string.h>
+--- infamous-plugins-0.3.2.orig/src/powerup/powerup_ui.fl
++++ infamous-plugins-0.3.2/src/powerup/powerup_ui.fl
+@@ -10,7 +10,7 @@ class PowerUpUI {open
+       label {the infamous power cut} open
+       xywh {60 491 487 318} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/powerup/powerup_ui_main.cxx
++++ infamous-plugins-0.3.2/src/powerup/powerup_ui_main.cxx
+@@ -5,7 +5,7 @@
+ #include <FL/x.H>
+ 
+ #include "powerup_ui.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ #define POWERUPUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#powerup_ui"
+ 
+--- infamous-plugins-0.3.2.orig/src/stuck/stuck.c
++++ infamous-plugins-0.3.2/src/stuck/stuck.c
+@@ -1,6 +1,6 @@
+ //Spencer Jackson
+ //stuck.c
+-#include<lv2.h>
++#include<lv2/core/lv2.h>
+ #include<stdlib.h>
+ #include<stdio.h>
+ #include<string.h>
+--- infamous-plugins-0.3.2.orig/src/stuck/stuck_ui.fl
++++ infamous-plugins-0.3.2/src/stuck/stuck_ui.fl
+@@ -10,7 +10,7 @@ class StuckUI {open
+       label {the infamous stuck} open
+       xywh {1442 28 1436 1740} type Double box UP_BOX resizable
+       code0 {\#include"ffffltk.h"}
+-      code1 {\#include"lv2/lv2plug.in/ns/extensions/ui/ui.h"}
++      code1 {\#include"lv2/ui/ui.h"}
+       code2 {using namespace ffffltk;}
+       code3 {o->show();} visible
+     } {
+--- infamous-plugins-0.3.2.orig/src/stuck/stuck_ui_main.cxx
++++ infamous-plugins-0.3.2/src/stuck/stuck_ui_main.cxx
+@@ -5,7 +5,7 @@
+ #include <FL/x.H>
+ 
+ #include "stuck_ui.h"
+-#include "lv2/lv2plug.in/ns/extensions/ui/ui.h"
++#include "lv2/ui/ui.h"
+ 
+ #define STUCKUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#stuck_ui"
+ #define STUCKSTACKERUI_URI "http://ssj71.github.io/infamousPlugins/plugs.html#stuckstacker_ui"

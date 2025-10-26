@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+KXSTUDIO_EXPLICIT_PATH_INCLUDE = y
+include /usr/share/dpkg/kxstudio-audio-plugin.mk
+
+%:
+	dh $@ -Scmake
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f src/infamous-rule
+
+override_dh_auto_build:
+	dh_auto_build
+	$(CC) src/rule.c $(CFLAGS) -o src/infamous-rule
+
+override_dh_auto_install:
+	dh_auto_install
+# 	$(call kxstudio_audio_plugin_test)
+# 	many failures related to missing doap:Project type

@@ -1,0 +1,23 @@
+Source: infamous-plugins
+Section: sound
+Priority: optional
+Maintainer: Jeremy Jongepier <jeremy@autostatic.com>, falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 15),
+  debhelper (>= 9~),
+  cmake,
+  lv2-dev,
+  fftw3-static,
+  ntk-static,
+  libzita-resampler-static
+Standards-Version: 3.9.3
+Homepage: http://infamousplugins.sourceforge.net/
+
+Package: infamous-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin
+Description: creative LV2 plugins suitable for live use
+ Infamous Plugins is a collection of LV2 plugins that will hopefully helps fill some holes,
+ supplying non-existing plugins for linux audio.
+

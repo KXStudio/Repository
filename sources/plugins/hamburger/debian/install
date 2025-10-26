@@ -1,0 +1,3 @@
+obj-*-linux-gnu/Hamburger_artefacts/Release/LV2/*.*  /usr/lib/lv2/
+obj-*-linux-gnu/Hamburger_artefacts/Release/VST/*.*  /usr/lib/vst/Hamburger.so
+obj-*-linux-gnu/Hamburger_artefacts/Release/VST3/*.* /usr/lib/vst3/

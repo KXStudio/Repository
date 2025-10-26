@@ -1,0 +1,19 @@
+Source: hamburger
+Section: sound
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-audio-plugin-tester (>= 13),
+  distrho-juce-7.0-dev (>= 6:7.0.12+git2025-09-14-1kxstudio1)
+Standards-Version: 4.5.0
+Homepage: https://aviaryaudio.com/plugins/hamburgerv2
+XSC-KXStudio-VCS: https://github.com/Davit-G/Hamburger
+Rules-Requires-Root: no
+
+Package: hamburger
+Architecture: amd64 arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: lv2-plugin, vst-plugin, vst3-plugin
+Description: distortion on steroids
+ A distortion and dynamics plugin designed to tastefully saturate any sound.
+ Also capable of complete sonic destruction.

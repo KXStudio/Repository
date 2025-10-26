@@ -1,0 +1,123 @@
+--- hamburger-0.5.orig/CMakeLists.txt
++++ hamburger-0.5/CMakeLists.txt
+@@ -76,23 +76,10 @@ project(Hamburger VERSION "${ProjectVers
+ # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
+ # endif()
+ 
+-FetchContent_Declare(
+-	JUCE
+-	GIT_REPOSITORY https://github.com/juce-framework/JUCE.git
+-	GIT_TAG 51d11a2be6d5c97ccf12b4e5e827006e19f0555a
+-	GIT_PROGRESS TRUE
+-    GIT_SHALLOW 1
+-)
+-
+-FetchContent_MakeAvailable(JUCE)
++find_package(JUCE-7.0.12 REQUIRED)
+ 
+ # set commit hash for use in general idk
+-execute_process(
+-    COMMAND git log -1 --format=%h
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
+-    OUTPUT_VARIABLE GIT_HASH
+-    OUTPUT_STRIP_TRAILING_WHITESPACE
+-)
++set(GIT_HASH "0.5")
+ 
+ 
+ if(APPLE)
+@@ -128,7 +115,7 @@ juce_add_plugin("${BaseTargetName}"
+     VST3_COPY_DIR "${outdir}"
+ 	VST_COPY_DIR "${outdir}"
+ 	AU_COPY_DIR "${outdir}"
+-    FORMATS VST3 Standalone AU                  # The formats to build. Other valid formats are: AAX Unity VST AU AUv3
++    FORMATS LV2 VST VST3
+     VST3_CATEGORIES Fx Distortion Dynamics
+ )
+ 
+@@ -192,10 +179,10 @@ juce_add_binary_data("${BaseTargetName}B
+ )
+ set_target_properties("${BaseTargetName}BinaryData" PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
+ 
+-FetchContent_Declare (melatonin_perfetto
+-  GIT_REPOSITORY https://github.com/sudara/melatonin_perfetto.git
+-  GIT_SHALLOW 1
+-  GIT_TAG origin/main)
++# FetchContent_Declare (melatonin_perfetto
++#   GIT_REPOSITORY https://github.com/sudara/melatonin_perfetto.git
++#   GIT_SHALLOW 1
++#   GIT_TAG origin/main)
+     
+ # FetchContent_Declare (melatonin_inspector
+ #     GIT_REPOSITORY https://github.com/sudara/melatonin_inspector.git
+@@ -203,21 +190,21 @@ FetchContent_Declare (melatonin_perfetto
+ #     GIT_TAG origin/main
+ #     SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/melatonin_inspector)
+ 
+-FetchContent_Declare (clap-juce-extensions
+-    GIT_REPOSITORY https://github.com/free-audio/clap-juce-extensions.git
+-    GIT_SHALLOW 1
+-    GIT_TAG origin/main)
++# FetchContent_Declare (clap-juce-extensions
++#     GIT_REPOSITORY https://github.com/free-audio/clap-juce-extensions.git
++#     GIT_SHALLOW 1
++#     GIT_TAG origin/main)
+ 
+-FetchContent_MakeAvailable (clap-juce-extensions)
++# FetchContent_MakeAvailable (clap-juce-extensions)
+ 
+ if (PERFETTO)
+ FetchContent_MakeAvailable (melatonin_perfetto)
+ endif()
+ 
+ 
+-clap_juce_extensions_plugin(TARGET "${BaseTargetName}"
+-CLAP_ID "com.AviaryAudio.${PluginName}"
+-CLAP_FEATURES effect "distortion analog compressor" audio-effect)
++# clap_juce_extensions_plugin(TARGET "${BaseTargetName}"
++# CLAP_ID "com.AviaryAudio.${PluginName}"
++# CLAP_FEATURES effect "distortion analog compressor" audio-effect)
+ 
+ target_link_libraries("${BaseTargetName}"
+     PRIVATE
+--- hamburger-0.5.orig/PluginProcessor.h
++++ hamburger-0.5/PluginProcessor.h
+@@ -22,11 +22,11 @@
+ // profiling
+ // #include <melatonin_perfetto/melatonin_perfetto.h>
+ 
+-#include "clap-juce-extensions/clap-juce-extensions.h"
++// #include "clap-juce-extensions/clap-juce-extensions.h"
+ 
+ 
+ //==============================================================================
+-class AudioPluginAudioProcessor : public juce::AudioProcessor, public clap_juce_extensions::clap_properties
++class AudioPluginAudioProcessor : public juce::AudioProcessor
+ 
+ {
+ public:
+@@ -117,4 +117,4 @@ private:
+ 
+ 
+     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessor)
+-};
+\ No newline at end of file
++};
+--- hamburger-0.5.orig/gui/PresetPanel.h
++++ hamburger-0.5/gui/PresetPanel.h
+@@ -46,7 +46,7 @@ public:
+ 	}
+ 
+     const juce::Typeface::Ptr quicksandTypeface = juce::Typeface::createSystemTypefaceFor(BinaryData::QuicksandBold_ttf, BinaryData::QuicksandBold_ttfSize);
+-    Font quicksandFont = juce::Font(FontOptions(quicksandTypeface));
++    Font quicksandFont = juce::Font(quicksandTypeface);
+ 
+ 	void initFiles(bool ignoreCollapsedStates = false)
+ 	{
+@@ -553,4 +553,4 @@ private:
+ 	CustomListBoxModel listBoxModel;
+ 
+ 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetPanel)
+-};
+\ No newline at end of file
++};

@@ -1,0 +1,13 @@
+--- hamburger-0.5.orig/CMakeLists.txt
++++ hamburger-0.5/CMakeLists.txt
+@@ -111,10 +111,6 @@ juce_add_plugin("${BaseTargetName}"
+     IS_MIDI_EFFECT FALSE                 # Is this plugin a MIDI effect?
+     # EDITOR_WANTS_KEYBOARD_FOCUS TRUE/FALSE    # Does the editor need keyboard focus?
+ 
+-    COPY_PLUGIN_AFTER_BUILD TRUE        # Should the plugin be installed to a default location after building?
+-    VST3_COPY_DIR "${outdir}"
+-	VST_COPY_DIR "${outdir}"
+-	AU_COPY_DIR "${outdir}"
+     FORMATS LV2 VST VST3
+     VST3_CATEGORIES Fx Distortion Dynamics
+ )

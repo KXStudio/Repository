@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_NO_FASTMATH = y
+include /usr/share/dpkg/kxstudio.mk
+
+export GLEW_DEST = /opt/kxstudio
+export GLEW_PREFIX = /opt/kxstudio
+
+export BINDIR = /opt/kxstudio/bin
+export INCDIR = /opt/kxstudio/include/GL
+export PKGDIR = /opt/kxstudio/lib/pkgconfig
+
+override_dh_auto_configure:
+	rm -f config/config.guess
+	ln -sf /usr/share/misc/config.guess config/
+
+override_dh_auto_build:
+	dh_auto_build -- \
+		GL_LDFLAGS=-lGL \
+		GLU_LDFLAGS=-lGLU \
+		GLUT_LDFLAGS=-lglut \
+		LIBDIR=/opt/kxstudio/lib \
+		SYSTEM=$(firstword $(subst -, ,$(DEB_HOST_GNU_SYSTEM))) \
+		'LD=$$(CC)' \
+		'OPT=$(CFLAGS)'
+
+override_dh_auto_install:
+	$(MAKE) install.all DESTDIR=$(CURDIR)/debian/tmp LIBDIR=/opt/kxstudio/lib
+	rm $(CURDIR)/debian/tmp/opt/kxstudio/lib/*.so*
+
+override_dh_auto_clean:
+	rm -f config/config.guess
+	ln -sf /usr/share/misc/config.guess config/
+	dh_auto_clean
+
+%:
+	dh $@

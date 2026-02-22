@@ -12,7 +12,7 @@ Build-Depends: debhelper-compat (= 13),
   libxext-dev,
   libgl1-mesa-dev | libgl-dev,
   libglu1-mesa-dev | libglu-dev,
-  libglew-dev
+  libglew-static
 Standards-Version: 3.8.4
 
 Package: moony.lv2

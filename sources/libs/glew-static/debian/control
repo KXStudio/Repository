@@ -1,0 +1,27 @@
+Source: glew-static
+Section: devel
+Priority: optional
+Maintainer: falkTX <falktx@falktx.com>
+Build-Depends: debhelper-compat (= 13),
+  kxstudio-build-scripts (>= 5),
+  libgl1-mesa-dev | libgl-dev,
+  libglu1-mesa-dev | libglu-dev,
+  libx11-dev,
+  libxi-dev,
+  libxmu-dev
+Standards-Version: 4.5.0
+Homepage: http://glew.sourceforge.net
+Rules-Requires-Root: no
+
+Package: libglew-static
+Architecture: any
+Depends: ${misc:Depends}
+Description: OpenGL Extension Wrangler (static)
+ The OpenGL Extension Wrangler, GLEW for short, is a library that
+ handles initialization of OpenGL extensions in a portable and simple
+ way. Once the program initializes the library and checks the
+ availability of extensions, it can safely call the entry points defined
+ by the extension. Currently GLEW supports almost all the extensions
+ found in the OpenGL extension registry (http://www.opengl.org/registry).
+ .
+ This package provides the static library used in KXStudio builds.

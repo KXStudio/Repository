@@ -25,6 +25,7 @@ files
 !/libs/*/debian/control
 !/libs/*/debian/install
 !/libs/*/debian/links
+!/libs/*/debian/not-installed
 !/libs/*/debian/*.install
 !/libs/*/debian/*.links
 !/libs/*/debian/rules
@@ -49,6 +50,7 @@ files
 !/apps/*/debian/control
 !/apps/*/debian/install
 !/apps/*/debian/links
+!/apps/*/debian/not-installed
 !/apps/*/debian/*.install
 !/apps/*/debian/*.links
 !/apps/*/debian/rules
@@ -72,6 +74,7 @@ files
 !/plugins/*/debian/control
 !/plugins/*/debian/install
 !/plugins/*/debian/links
+!/plugins/*/debian/not-installed
 !/plugins/*/debian/*.install
 !/plugins/*/debian/*.links
 !/plugins/*/debian/rules

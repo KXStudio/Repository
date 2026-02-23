@@ -11,7 +11,7 @@ export INCDIR = /opt/kxstudio/include/GL
 export PKGDIR = /opt/kxstudio/lib/pkgconfig
 
 override_dh_auto_configure:
-	rm -f config/config.guess
+	mv config/config.guess config/config.guess.bak
 	ln -sf /usr/share/misc/config.guess config/
 
 override_dh_auto_build:
@@ -29,8 +29,7 @@ override_dh_auto_install:
 	rm $(CURDIR)/debian/tmp/opt/kxstudio/lib/*.so*
 
 override_dh_auto_clean:
-	rm -f config/config.guess
-	ln -sf /usr/share/misc/config.guess config/
+	if [ -e config/config.guess.bak ]; then mv config/config.guess.bak config/config.guess; fi
 	dh_auto_clean
 
 %:

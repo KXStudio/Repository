@@ -1,4 +1,4 @@
-glew-static (6:2.2.0-1kxstudio8) focal; urgency=medium
+glew-static (6:2.2.0-1kxstudio1) focal; urgency=medium
 
   * Initial package
 

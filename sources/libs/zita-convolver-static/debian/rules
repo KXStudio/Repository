@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+KXSTUDIO_EXPLICIT_PATH_INCLUDE = y
+include /usr/share/dpkg/kxstudio.mk
+
+override_dh_auto_build:
+	$(MAKE) -C source
+
+override_dh_auto_clean:
+	$(MAKE) -C source clean
+
+%:
+	dh $@

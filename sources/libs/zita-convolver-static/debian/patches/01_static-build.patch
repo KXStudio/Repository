@@ -1,0 +1,26 @@
+--- zita-convolver-static-4.0.3.orig/source/Makefile
++++ zita-convolver-static-4.0.3/source/Makefile
+@@ -34,11 +34,11 @@ VERSION = $(MAJVERS).$(MINVERS)
+ CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+ CPPFLAGS += -DENABLE_VECTOR_MODE 
+ CXXFLAGS += -fPIC -Wall -ffast-math -funroll-loops -O2
+-CXXFLAGS += -march=native
+ LDLFAGS += 
+ LDLIBS +=
+ 
+ 
++ZITA-CONVOLVER_A = libzita-convolver.a
+ ZITA-CONVOLVER_SO = libzita-convolver.so
+ ZITA-CONVOLVER_MAJ = $(ZITA-CONVOLVER_SO).$(MAJVERS)
+ ZITA-CONVOLVER_MIN = $(ZITA-CONVOLVER_MAJ).$(MINVERS)
+@@ -47,6 +47,10 @@ ZITA-CONVOLVER_O = zita-convolver.o
+ ZITA-CONVOLVER_H = zita-convolver.h 
+ 
+ 
++$(ZITA-CONVOLVER_A):	$(ZITA-CONVOLVER_O)
++	rm -f $@
++	ar crs $@ $^
++
+ $(ZITA-CONVOLVER_MIN):	$(ZITA-CONVOLVER_O)
+ 	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(ZITA-CONVOLVER_MAJ) -o $(ZITA-CONVOLVER_MIN) $(ZITA-CONVOLVER_O) $(ZITA-CONVOLVER_DEP)
+ 
